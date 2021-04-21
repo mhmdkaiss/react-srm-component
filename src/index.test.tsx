@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { SRM } from '../dist'
 
-describe('ExampleComponent', () => {
+describe('SRM', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(SRM).toBeTruthy()
   })
 })

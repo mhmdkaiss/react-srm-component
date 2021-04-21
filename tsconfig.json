@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "outDir": "dist",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "jsx": "react",
     "sourceMap": true,
@@ -15,8 +20,21 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "example"]
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "example"
+  ]
 }
