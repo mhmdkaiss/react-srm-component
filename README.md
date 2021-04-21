@@ -1,4 +1,4 @@
-[logo](https://user-images.githubusercontent.com/5578546/115530331-f63cbd00-a293-11eb-9174-722f0fa9b9d8.png "SRM")
+![logo](https://user-images.githubusercontent.com/5578546/115530331-f63cbd00-a293-11eb-9174-722f0fa9b9d8.png "SRM")
 
 # srm
 
