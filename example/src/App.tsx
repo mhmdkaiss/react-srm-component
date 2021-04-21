@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SRM } from '@rgoupil/srm'
+import { SRM } from '@robingoupil/srm'
 
 const App = () => {
   return SRM("test", () => <></>);

@@ -1,6 +1,6 @@
 {
-  "name": "@rgoupil/srm",
-  "version": "0.0.2",
+  "name": "@robingoupil/srm",
+  "version": "0.0.3",
   "description": "Core library for Standalone React Module",
   "author": "rgoupil",
   "license": "MIT",

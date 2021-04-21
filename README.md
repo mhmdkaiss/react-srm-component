@@ -11,11 +11,11 @@ Core library for Standalone React Module
 ## Install
 
 ```bash
-yarn add @rgoupil/srm
+yarn add @robingoupil/srm
 ```
 
 ```bash
-npm install --save @rgoupil/srm
+npm install --save @robingoupil/srm
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install --save @rgoupil/srm
 ```tsx
 import React, { Component } from 'react'
 
-import { SRM } from '@rgoupil/srm'
+import { SRM } from '@robingoupil/srm'
 
 class Example extends Component {
   render() {
