@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { ExampleComponent } from 'srm'
-import 'srm/dist/index.css'
+import { SRM } from '@rgoupil/srm'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return SRM("test", () => <></>);
 }
 
 export default App
