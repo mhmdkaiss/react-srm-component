@@ -1,4 +1,6 @@
-![logo](https://user-images.githubusercontent.com/5578546/115530331-f63cbd00-a293-11eb-9174-722f0fa9b9d8.png "SRM")
+<p align="center">
+  <img width="200" height="200" alt="SRM logo" title="SRM" src="https://user-images.githubusercontent.com/5578546/115530331-f63cbd00-a293-11eb-9174-722f0fa9b9d8.png">
+</p>
 
 # srm
 
