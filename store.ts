@@ -1,4 +1,4 @@
-import { action, Action, createContextStore } from "easy-peasy";
+import { action, Action, createContextStore, thunk } from "easy-peasy";
 
 export type Messages = { [term: string]: string };
 
@@ -16,6 +16,7 @@ export interface ContextStoreModel {
   setLanguage: Action<ContextStoreModel, string | undefined>;
   loadMessages: LoadMessagesFunction;
   messages: Messages;
+  updateLanguage: Action<ContextStoreModel, { language?: string, messages?: Messages }>;
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
@@ -28,11 +29,15 @@ const ContextStore = createContextStore<ContextStoreModel>(
         state.basename = value || "/";
       }),
       language: "en",
-      setLanguage: action<ContextStoreModel>((state, value) => {
-        state.language = value || "en";
-
-        state.loadMessages?.(state.language)
-          .then(messages => state.messages = messages);
+      setLanguage: thunk<ContextStoreModel, string | undefined>(async (actions, lang = 'en', { getState }) => {
+        actions.updateLanguage({
+          language: lang,
+          messages: await getState().loadMessages?.(lang),
+        });
+      }),
+      updateLanguage: action<ContextStoreModel>((state, { language, messages }) => {
+        state.language = language;
+        state.messages = messages;
       }),
       loadMessages: async () => ({}),
       messages: {},
