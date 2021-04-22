@@ -1,6 +1,6 @@
 {
   "name": "@robingoupil/srm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Core library for Standalone React Module",
   "author": "rgoupil",
   "license": "MIT",
@@ -24,11 +24,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "easy-peasy": "^3.3.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-intl": "^5.0.0",
-    "react-router-dom": "^5.2.0",
-    "easy-peasy": "^3.3.0"
+    "react-router-dom": "^5.2.0"
   },
   "dependencies": {
     "@formatjs/intl-locale": "^2.4.16",
