@@ -1,13 +1,13 @@
-import React, { memo, ReactElement } from "react";
-import ReactDOM from "react-dom";
-import * as packg from "./package.json";
-import { Store } from "easy-peasy";
-import { IntlProvider } from "react-intl";
-import _SRMStore, { ContextStoreModel } from "./store";
+import React, { memo, ReactElement } from 'react';
+import ReactDOM from 'react-dom';
+import * as packg from './package.json';
+import { Store } from 'easy-peasy';
+import { IntlProvider } from 'react-intl';
+import _SRMStore, { ContextStoreModel, Messages } from './store';
 
-import "@formatjs/intl-locale/polyfill";
-import "@formatjs/intl-relativetimeformat/polyfill";
-import "@formatjs/intl-relativetimeformat/locale-data/en";
+import '@formatjs/intl-locale/polyfill';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/locale-data/en';
 
 export const SRMStore = _SRMStore;
 
@@ -29,6 +29,7 @@ interface PropsCommon {
     commands: string | Array<string>,
     options?: { queryParams?: any }
   ) => any;
+  loadMessages?: (lang: string) => Promise<{ [term: string]: string }>;
   basename?: string;
   language?: string;
 }
@@ -62,7 +63,7 @@ function exportSRM<Props extends PropsApp>(
   path: string,
   srm: SRMFunction<Props>
 ) {
-  const out = path.split(".").reduce((obj, part) => {
+  const out = path.split('.').reduce((obj, part) => {
     if (!obj[part]) {
       obj[part] = {};
     }
@@ -75,9 +76,10 @@ function exportSRM<Props extends PropsApp>(
 
 export function SRM<Props extends PropsApp>(
   path: string,
-  render: RenderFunction<Props & { store: Store<ContextStoreModel, any> }>
-): SRMFunction<Props & { store: Store<ContextStoreModel, any> }> {
-  const srm: SRMFunction<Props & { store: Store<ContextStoreModel, any> }> = (props) => {
+  render: RenderFunction<Props & { store: Store<ContextStoreModel, any> }>,
+  loadMessages?: (lang: string) => Messages,
+): SRMFunction<Props & PropsSRM & { store: Store<ContextStoreModel, any> }> {
+  const srm: SRMFunction<Props & PropsSRM & { store: Store<ContextStoreModel, any> }> = (props) => {
     const {
       element,
       selector,
@@ -100,21 +102,30 @@ export function SRM<Props extends PropsApp>(
       if (language) {
         setLanguage(language);
       } else {
-        setLanguage("en");
+        setLanguage('en');
       }
 
-      overrideModel(store, "sendEvent", sendEvent);
-      overrideModel(store, "navigate", navigate);
+      if (sendEvent) {
+        overrideModel(store, 'sendEvent', sendEvent);
+      }
+
+      if (navigate) {
+        overrideModel(store, 'navigate', navigate);
+      }
+
+      if (props.loadMessages && loadMessages) {
+        overrideModel(store, 'loadMessages', props.loadMessages || loadMessages);
+      }
 
       ret = {
         setBasename,
         setLanguage,
       };
 
-      const { messages } = store.getState();
+      const { messages, language: locale } = store.getState();
       return (
-        <IntlProvider locale={language} messages={messages} defaultLocale="en">
-          { render({ ...props, store }) }
+        <IntlProvider locale={locale} messages={messages} defaultLocale="en">
+          { render(Object.assign({}, props, store)) }
         </IntlProvider>
       );
     });

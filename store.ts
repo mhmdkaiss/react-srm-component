@@ -1,5 +1,7 @@
 import { action, Action, createContextStore } from "easy-peasy";
 
+export type Messages = { [term: string]: string };
+
 export interface ContextStoreModel {
   sendEvent: (id: string, ...args: Array<any>) => Promise<any>;
   navigate: (
@@ -10,7 +12,8 @@ export interface ContextStoreModel {
   setBasename: Action<ContextStoreModel, string | undefined>;
   language: string;
   setLanguage: Action<ContextStoreModel, string | undefined>;
-  messages: any;
+  loadMessages: (lang: string) => Promise<Messages>;
+  messages: Messages;
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
@@ -26,10 +29,10 @@ const ContextStore = createContextStore<ContextStoreModel>(
       setLanguage: action<ContextStoreModel>((state, value) => {
         state.language = value || "en";
 
-        try {
-          state.messages = require(`../_translations/${state.language}.json`);
-        } catch {}
+        state.loadMessages?.(state.language)
+          .then(messages => state.messages = messages);
       }),
+      loadMessages: async () => ({}),
       messages: {},
     }
 );
