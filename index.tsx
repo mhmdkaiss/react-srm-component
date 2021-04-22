@@ -113,7 +113,7 @@ export function SRM<Props extends PropsApp>(
         overrideModel(store, 'navigate', navigate);
       }
 
-      if (props.loadMessages && loadMessages) {
+      if (props.loadMessages || loadMessages) {
         overrideModel(store, 'loadMessages', props.loadMessages || loadMessages);
       }
 
