@@ -10,6 +10,8 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
+    "@formatjs/intl-locale": "link:../node_modules/@formatjs/intl-locale",
+    "@formatjs/intl-relativetimeformat": "link:../node_modules/@formatjs/intl-relativetimeformat",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
@@ -20,7 +22,9 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",
+    "react-intl": "link:../node_modules/react-intl",
     "typescript": "link:../node_modules/typescript",
+    "typescript-react-intl": "link:../node_modules/typescript-react-intl",
     "@robingoupil/srm": "link:.."
   },
   "devDependencies": {

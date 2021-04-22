@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --format cjs",
-    "start": "microbundle-crl watch --no-compress --format cjs",
+    "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -24,20 +24,23 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-intl": "^5.0.0",
+    "react-router-dom": "^5.2.0",
+    "easy-peasy": "^3.3.0"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@formatjs/intl-locale": "^2.4.16",
+    "@formatjs/intl-relativetimeformat": "^8.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^25.1.4",
-    "@types/node": "^12.12.38",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.7",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
+    "easy-peasy": "^3.3.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -52,17 +55,21 @@
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "typescript-react-intl": "^0.4.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^12.12.38",
+    "@types/react": "^16.9.0",
+    "@types/react-router-dom": "^5.1.7",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "react-intl": "^5.12.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1"
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "@formatjs/intl-locale": "^2.4.22",
-    "@formatjs/intl-relativetimeformat": "^8.1.5",
-    "easy-peasy": "^3.3.1"
-  }
+  ]
 }

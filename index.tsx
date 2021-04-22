@@ -1,7 +1,8 @@
-import React, { ReactElement } from "react";
+import React, { memo, ReactElement } from "react";
+import ReactDOM from "react-dom";
 import * as packg from "./package.json";
 import { Store } from "easy-peasy";
-import ReactDOM from "react-dom";
+import { IntlProvider } from "react-intl";
 import _SRMStore, { ContextStoreModel } from "./store";
 
 import "@formatjs/intl-locale/polyfill";
@@ -72,7 +73,6 @@ function exportSRM<Props extends PropsApp>(
   Object.assign(out || {}, { render: srm });
 }
 
-
 export function SRM<Props extends PropsApp>(
   path: string,
   render: RenderFunction<Props & { store: Store<ContextStoreModel, any> }>
@@ -88,8 +88,8 @@ export function SRM<Props extends PropsApp>(
     } = props;
 
     let ret = {};
-    const Content = () => {
-      const store = _SRMStore.useStore();
+    const Content = memo(() => {
+      const store = SRMStore.useStore();
 
       const { setBasename } = store.getActions();
       if (basename) {
@@ -111,16 +111,21 @@ export function SRM<Props extends PropsApp>(
         setLanguage,
       };
 
-      return render({ ...props, store });
-    };
+      const { messages } = store.getState();
+      return (
+        <IntlProvider locale={language} messages={messages} defaultLocale="en">
+          { render({ ...props, store }) }
+        </IntlProvider>
+      );
+    });
 
     const el = element || document.querySelector(selector || "#srm");
     ReactDOM.render(
       <div className={`__${packg.name}`}>
         <React.StrictMode>
-          <_SRMStore.Provider>
+          <SRMStore.Provider>
             <Content />
-          </_SRMStore.Provider>
+          </SRMStore.Provider>
         </React.StrictMode>
       </div>,
       el
@@ -133,5 +138,3 @@ export function SRM<Props extends PropsApp>(
 
   return srm;
 }
-
-export default SRM;
