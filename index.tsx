@@ -93,6 +93,10 @@ export function SRM<Props extends PropsApp>(
     const Content = memo(() => {
       const store = SRMStore.useStore();
 
+      if (props.loadMessages || loadMessages) {
+        overrideModel(store, 'loadMessages', props.loadMessages || loadMessages);
+      }
+
       const { setBasename } = store.getActions();
       if (basename) {
         setBasename(basename);
@@ -111,10 +115,6 @@ export function SRM<Props extends PropsApp>(
 
       if (navigate) {
         overrideModel(store, 'navigate', navigate);
-      }
-
-      if (props.loadMessages || loadMessages) {
-        overrideModel(store, 'loadMessages', props.loadMessages || loadMessages);
       }
 
       ret = {
