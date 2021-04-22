@@ -29,7 +29,7 @@ interface PropsCommon {
     commands: string | Array<string>,
     options?: { queryParams?: any }
   ) => any;
-  loadMessages?: (lang: string) => Promise<{ [term: string]: string }>;
+  loadMessages?: LoadMessagesFunction;
   basename?: string;
   language?: string;
 }
