@@ -1,6 +1,6 @@
+import path from 'path';
 import React, { memo, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
-import * as packg from './package.json';
 import { Store } from 'easy-peasy';
 import { IntlProvider } from 'react-intl';
 import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
@@ -10,6 +10,8 @@ import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/locale-data/en';
 
 export const SRMStore = _SRMStore;
+
+const packg = require(`${path.dirname(require.main?.filename || '.')}/package.json`);
 
 interface PropsMountSelector {
   selector: string;
