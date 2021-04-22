@@ -2,6 +2,8 @@ import { action, Action, createContextStore } from "easy-peasy";
 
 export type Messages = { [term: string]: string };
 
+export type LoadMessagesFunction = (lang: string) => Promise<Messages>;
+
 export interface ContextStoreModel {
   sendEvent: (id: string, ...args: Array<any>) => Promise<any>;
   navigate: (
@@ -12,7 +14,7 @@ export interface ContextStoreModel {
   setBasename: Action<ContextStoreModel, string | undefined>;
   language: string;
   setLanguage: Action<ContextStoreModel, string | undefined>;
-  loadMessages: (lang: string) => Promise<Messages>;
+  loadMessages: LoadMessagesFunction;
   messages: Messages;
 }
 

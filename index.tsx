@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as packg from './package.json';
 import { Store } from 'easy-peasy';
 import { IntlProvider } from 'react-intl';
-import _SRMStore, { ContextStoreModel, Messages } from './store';
+import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
 
 import '@formatjs/intl-locale/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill';
@@ -77,7 +77,7 @@ function exportSRM<Props extends PropsApp>(
 export function SRM<Props extends PropsApp>(
   path: string,
   render: RenderFunction<Props & { store: Store<ContextStoreModel, any> }>,
-  loadMessages?: (lang: string) => Messages,
+  loadMessages?: LoadMessagesFunction,
 ): SRMFunction<Props & PropsSRM & { store: Store<ContextStoreModel, any> }> {
   const srm: SRMFunction<Props & PropsSRM & { store: Store<ContextStoreModel, any> }> = (props) => {
     const {
