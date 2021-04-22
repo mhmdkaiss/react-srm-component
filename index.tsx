@@ -1,4 +1,4 @@
-import path from 'path';
+import defaultPackg from './package.json';
 import React, { memo, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
@@ -11,8 +11,13 @@ import '@formatjs/intl-relativetimeformat/locale-data/en';
 
 export const SRMStore = _SRMStore;
 
-const packg = require(`${path.dirname(require.main?.filename || '.')}/package.json`);
-
+let packg: { name: string };
+try {
+  packg = require('webapp__package.json');
+} catch (e) {
+  console.log('e', e)
+  packg = defaultPackg;
+}
 interface PropsMountSelector {
   selector: string;
   element?: null;

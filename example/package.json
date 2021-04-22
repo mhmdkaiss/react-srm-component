@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "start": "node node_modules/react-app-rewired/bin/index.js start",
+    "build": "node node_modules/react-app-rewired/bin/index.js build",
+    "test": "node node_modules/react-app-rewired/bin/index.js test",
+    "eject": "node node_modules/react-app-rewired/bin/index.js eject"
   },
   "dependencies": {
     "@formatjs/intl-locale": "link:../node_modules/@formatjs/intl-locale",
     "@formatjs/intl-relativetimeformat": "link:../node_modules/@formatjs/intl-relativetimeformat",
+    "@robingoupil/srm": "link:..",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
@@ -19,16 +20,19 @@
     "@types/node": "link:../node_modules/@types/node",
     "@types/react": "link:../node_modules/@types/react",
     "@types/react-dom": "link:../node_modules/@types/react-dom",
+    "prefix-css-loader": "^1.0.0",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-scripts": "link:../node_modules/react-scripts",
     "react-intl": "link:../node_modules/react-intl",
+    "react-scripts": "link:../node_modules/react-scripts",
+    "string-replace-loader": "^3.0.1",
     "typescript": "link:../node_modules/typescript",
-    "typescript-react-intl": "link:../node_modules/typescript-react-intl",
-    "@robingoupil/srm": "link:.."
+    "typescript-react-intl": "link:../node_modules/typescript-react-intl"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.8"
   },
   "eslintConfig": {
     "extends": "react-app"
