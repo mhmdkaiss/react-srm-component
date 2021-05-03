@@ -15,7 +15,6 @@ let packg: { name: string };
 try {
   packg = require('webapp__package.json');
 } catch (e) {
-  console.log('e', e)
   packg = defaultPackg;
 }
 interface PropsMountSelector {
