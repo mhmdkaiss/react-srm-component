@@ -1,4 +1,3 @@
-import defaultPackg from './package.json';
 import React, { memo, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
@@ -15,7 +14,7 @@ let packg: { name: string };
 try {
   packg = require('webapp__package.json');
 } catch (e) {
-  packg = defaultPackg;
+  packg = { name: 'srm_testing' };
 }
 interface PropsMountSelector {
   selector: string;
