@@ -10,6 +10,7 @@ Core library for Standalone React Module
 
 - [How it works](#how-it-works)
 - [Getting started](#getting-started)
+- [Documentation](#documentation)
 - [Example](#example)
 - [License](#license)
 
@@ -153,7 +154,7 @@ export default render;
 <!-- TODO: split i18n into a dependency that need to be `yarn add`, it will expose the `language` and `loadMessages` props  -->
 
 The last parameter `loadMessages` of the `SRM()` function can be used to return different dictionary based on the language set through the SRM props.  
-It expects a function of the following signature: `(lang: string) => { [term: string]: string }` in order to fit your custom translation setup.
+It expects a function of the following signature: `(lang: string) => { [term: string]: string }` in order to fit your custom translation setup.  
 For example, when using a different json file for each language:
 
 ```ts
@@ -165,6 +166,10 @@ const render = SRM(
   (lang: string) => require(`./translations/${lang}.json`) // require the json file from the translation folder
 );
 ```
+
+## Documentation
+
+The documentation can be found at https://rgoupil.github.io/SRM.
 
 ## Example
 
