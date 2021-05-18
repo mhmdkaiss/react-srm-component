@@ -1,0 +1,4 @@
+{
+    "app.title": "SRM d'example",
+    "app.greeting": "Salut {name} !"
+}

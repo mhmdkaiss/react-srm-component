@@ -1,18 +1,19 @@
 import { createContextStore } from "easy-peasy";
 
 export interface ContextStoreModel {
-  getAccessToken: () => Promise<string | null>;
+  getUsername: () => string;
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
   (initialData) =>
     initialData || {
-      getAccessToken: async () => {
+      getUsername: () => {
+        let user: any;
         try {
-          return localStorage.getItem("accessToken");
-        } catch (e) {
-          return null;
-        }
+          user = JSON.parse(localStorage.getItem("user") || '{}');
+        } catch {}
+
+        return user?.name || 'Stranger';
       },
     }
 );

@@ -17,5 +17,10 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="testing-mount"></div>
   </body>
-  <script>window.testing.test.render({ selector: '#testing-mount' })</script>
+  <script>
+    window.testing.test.render({
+      selector: '#testing-mount',
+      language: new URLSearchParams(window.location.search).get('lang'),
+  })
+  </script>
 </html>

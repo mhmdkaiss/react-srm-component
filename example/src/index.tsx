@@ -5,23 +5,24 @@ import { SRM, overrideModel } from "@robingoupil/srm";
 import ContextStore from './store';
 import App from './App'
 
-declare global {
-  export interface Window {
-    nicecactus: { wallet: { render: typeof render } };
-  }
-}
+import '@formatjs/intl-locale/polyfill';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/locale-data/en';
+
+const orgName = 'testing';
+const appName = 'test';
 
 export interface Props {
-  getAccessToken(): Promise<string>,
+  getUsername(): string,
 }
 
 const render = SRM(
-  "testing.test",
-  ({ getAccessToken }: Props) => {
+  `${orgName}.${appName}`,
+  ({ getUsername }: Props) => {
     const Content = () => {
       const store = ContextStore.useStore();
 
-      overrideModel(store, "getAccessToken", getAccessToken);
+      overrideModel(store, "getUsername", getUsername);
 
       return (
         <>
@@ -35,7 +36,14 @@ const render = SRM(
         <Content />
       </ContextStore.Provider>
     );
-  }
+  },
+  (lang: string) => require(`./_translations/${lang}.json`)
 );
+
+declare global {
+  export interface Window {
+    [orgName]: { [appName]: { render: typeof render } };
+  }
+}
 
 export default render;

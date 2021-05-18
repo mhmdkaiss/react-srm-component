@@ -4,10 +4,6 @@ import { Store } from 'easy-peasy';
 import { IntlProvider } from 'react-intl';
 import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
 
-import '@formatjs/intl-locale/polyfill';
-import '@formatjs/intl-relativetimeformat/polyfill';
-import '@formatjs/intl-relativetimeformat/locale-data/en';
-
 export const SRMStore = _SRMStore;
 
 let packg: { name: string };
