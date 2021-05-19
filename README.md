@@ -10,7 +10,6 @@ Core library for Standalone React Module
 
 - [How it works](#how-it-works)
 - [Getting started](#getting-started)
-- [Documentation](#documentation)
 - [Example](#example)
 - [License](#license)
 
@@ -166,10 +165,6 @@ const render = SRM(
   (lang: string) => require(`./translations/${lang}.json`) // require the json file from the translation folder
 );
 ```
-
-## Documentation
-
-The documentation can be found at https://rgoupil.github.io/SRM.
 
 ## Example
 
