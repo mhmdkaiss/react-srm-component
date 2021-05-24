@@ -6,12 +6,15 @@ import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
 
 export const SRMStore = _SRMStore;
 
+declare var __webpack_public_path__: string;
+
 let packg: { name: string };
 try {
   packg = require('webapp__package.json');
 } catch (e) {
   packg = { name: 'srm_testing' };
 }
+
 interface PropsMountSelector {
   selector: string;
   element?: null;
@@ -32,6 +35,7 @@ interface PropsCommon {
   ) => any;
   loadMessages?: LoadMessagesFunction;
   basename?: string;
+  publicPath?: string;
   language?: string;
 }
 
@@ -74,6 +78,12 @@ function exportSRM<Props extends PropsApp>(
 
   Object.assign(out || {}, { render: srm });
 }
+
+/*
+ * TODO: add callback array/EventListener like SRM.onContentRendered
+ * to customize the rendering of the Content (e.g. add IntlProvider
+ * and modify returned values).
+*/
 
 export function SRM<Props extends PropsApp>(
   path: string,
@@ -150,3 +160,17 @@ export function SRM<Props extends PropsApp>(
 
   return srm;
 }
+
+function getPublicPath() {
+  let path = process.env.PUBLIC_URL;
+  if (!path) {
+    return '';
+  }
+
+  if (!path.endsWith('/')) {
+    path += '/';
+  }
+  return path;
+}
+
+__webpack_public_path__ = getPublicPath();

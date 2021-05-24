@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import ContextStore from './store'
+import logo from './logo.png';
 import './App.css'
 
 const App = () => {
@@ -8,7 +9,7 @@ const App = () => {
 
   return (
     <span className="app">
-      <img alt="logo" src={`${process.env.PUBLIC_URL}/logo192.png`} />
+      <img alt="logo" src={logo} />
       <h1 className="title">
         <FormattedMessage id="app.title" description="Title text" defaultMessage="SRM Example" />
         <span role="img" aria-label="trophee">🏆</span>
