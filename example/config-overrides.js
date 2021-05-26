@@ -14,7 +14,7 @@ module.exports = {
     }),
     adjustStyleLoaders(({ use }) => {
       // Add CSS prefix in SASS
-      const sassLoader = use.find(l => l.loader && l.loader.includes('/sass-loader/'));
+      const sassLoader = use.find(l => l.loader && l.loader.includes(path.join('', 'sass-loader', '')));
       if (sassLoader) {
         if (!sassLoader.options) {
           sassLoader.options = {};
@@ -23,7 +23,7 @@ module.exports = {
       }
 
       // Add prefix-css-loader and string-replace-loader
-      const cssLoaderIdx = use.findIndex(l => l.loader && l.loader.includes('/css-loader/'));
+      const cssLoaderIdx = use.findIndex(l => l.loader && l.loader.includes(path.join('', 'css-loader', '')));
       if (cssLoaderIdx !== -1) {
         use.splice(cssLoaderIdx + 1, 0, {
           loader: require.resolve('prefix-css-loader'),
