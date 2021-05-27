@@ -26,7 +26,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "target": "es5",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
