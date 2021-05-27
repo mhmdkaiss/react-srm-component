@@ -170,7 +170,3 @@ const render = SRM(
 
 An example SRM with a custom store and i18n can be found in the [example](example) folder.  
 Please see [example/README.md](example/README.md) for more details on how to run it.
-
-## License
-
-MIT © [rgoupil](https://github.com/rgoupil)
