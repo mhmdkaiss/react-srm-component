@@ -17,7 +17,7 @@ Building an SRM will produce several `.js` and `.css` files, all listed in the `
  The build folder content can then be served by a static server, keeping the folder structure and making sure all files are publicly accessible. A simple way to do so in production would be to use an [AWS S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html).
 
 The `build/asset-manifest.json` file describes the entry points and assets to be fetched in order to use your SRM.  
- A direct url to this file will be required to load and run the SRM, as can be seen in [@robingoupil/ng-srm-wrapper](https://github.com/rgoupil/ng-srm-wrapper) or [@robingoupil/react-srm-wrapper](https://github.com/rgoupil/react-srm-wrapper).
+ A direct url to this file will be required to load and run the SRM, as can be seen in [@nicecactus/ng-srm-wrapper](https://github.com/nicecactus/ng-srm-wrapper) or [@nicecactus/react-srm-wrapper](https://github.com/nicecactus/react-srm-wrapper).
 
 ## How it works
 
@@ -27,7 +27,7 @@ Building an SRM will produce several `.js` and `.css` files, all listed in the `
  The build folder content can then be served by a static server, keeping the folder structure and making sure all files are publicly accessible. A simple way to do so in production would be to use an [AWS S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html).
 
 The `build/asset-manifest.json` file describes the entry points and assets to be fetched in order to use your SRM.  
- A direct url to this file will be required to load and run the SRM, as can be seen in [@robingoupil/ng-srm-wrapper](https://github.com/rgoupil/ng-srm-wrapper) or [@robingoupil/react-srm-wrapper](https://github.com/rgoupil/react-srm-wrapper).
+ A direct url to this file will be required to load and run the SRM, as can be seen in [@nicecactus/ng-srm-wrapper](https://github.com/nicecactus/ng-srm-wrapper) or [@nicecactus/react-srm-wrapper](https://github.com/nicecactus/react-srm-wrapper).
 
 ##### Example for `https://your-domain.com`: <!-- omit in toc -->
 

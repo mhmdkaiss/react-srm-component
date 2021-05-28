@@ -1,10 +1,10 @@
 {
-  "name": "@robingoupil/srm",
+  "name": "@nicecactus/srm",
   "version": "0.1.1",
   "description": "Core library for Standalone React Module",
   "author": "rgoupil",
   "license": "MIT",
-  "repository": "rgoupil/srm",
+  "repository": "nicecactus/srm",
   "main": "dist/index.js",
   "source": "index.tsx",
   "engines": {

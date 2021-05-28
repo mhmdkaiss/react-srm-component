@@ -16,13 +16,13 @@ toc: true
 **yarn**
 
 ```bash
-yarn add @robingoupil/srm
+yarn add @nicecactus/srm
 ```
 
 **npm**
 
 ```bash
-npm install --save @robingoupil/srm
+npm install --save @nicecactus/srm
 ```
 
 #### 2. Project setup <!-- omit in toc -->
@@ -89,7 +89,7 @@ Copy the [config-overrides.js](example/config-overrides.js) to the root director
 ##### index.tsx <!-- omit in toc -->
 ```ts
 /* Import the library */
-import { SRM } from "@robingoupil/srm";
+import { SRM } from "@nicecactus/srm";
 
 /* Create the SRM */
 const orgName = 'myOrg';

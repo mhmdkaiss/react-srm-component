@@ -13,7 +13,7 @@
   "dependencies": {
     "@formatjs/intl-locale": "^2.4.16",
     "@formatjs/intl-relativetimeformat": "^8.0.6",
-    "@robingoupil/srm": "link:..",
+    "@nicecactus/srm": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-intl": "link:../node_modules/react-intl"

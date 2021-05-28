@@ -1,7 +1,7 @@
 import './index.css'
 
 import React from 'react';
-import { SRM, overrideModel } from "@robingoupil/srm";
+import { SRM, overrideModel } from "@nicecactus/srm";
 import ContextStore from './store';
 import App from './App'
 

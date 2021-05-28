@@ -6,12 +6,11 @@
 
 Core library for Standalone React Module
 
-[![NPM](https://img.shields.io/npm/v/@robingoupil/srm.svg)](https://www.npmjs.com/package/@robingoupil/srm)
+[![NPM](https://img.shields.io/npm/v/@nicecactus/srm.svg)](https://www.npmjs.com/package/@nicecactus/srm)
 
 - [How it works](#how-it-works)
 - [Getting started](#getting-started)
 - [Example](#example)
-- [License](#license)
 
 ## How it works
 
@@ -21,7 +20,7 @@ Building an SRM will produce several `.js` and `.css` files, all listed in the `
  The build folder content can then be served by a static server, keeping the folder structure and making sure all files are publicly accessible. A simple way to do so in production would be to use an [AWS S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html).
 
 The `build/asset-manifest.json` file describes the entry points and assets to be fetched in order to use your SRM.  
- A direct url to this file will be required to load and run the SRM, as can be seen in [@robingoupil/ng-srm-wrapper](https://github.com/rgoupil/ng-srm-wrapper) or [@robingoupil/react-srm-wrapper](https://github.com/rgoupil/react-srm-wrapper).
+ A direct url to this file will be required to load and run the SRM, as can be seen in [@nicecactus/ng-srm-wrapper](https://github.com/nicecactus/ng-srm-wrapper) or [nicecactus/react-srm-wrapper](https://github.com/nicecactus/react-srm-wrapper).
 
 ##### Example for `https://your-domain.com`: <!-- omit in toc -->
 
@@ -43,13 +42,13 @@ Asset manifest URL: `https://your-domain.com/your-project/asset-manifest.json`
 **yarn**
 
 ```bash
-yarn add @robingoupil/srm
+yarn add @nicecactus/srm
 ```
 
 **npm**
 
 ```bash
-npm install --save @robingoupil/srm
+npm install --save @nicecactus/srm
 ```
 
 #### 2. Project setup <!-- omit in toc -->
@@ -116,7 +115,7 @@ Copy the [config-overrides.js](example/config-overrides.js) to the root director
 ##### index.tsx <!-- omit in toc -->
 ```ts
 /* Import the library */
-import { SRM } from "@robingoupil/srm";
+import { SRM } from "@nicecactus/srm";
 
 /* Create the SRM */
 const orgName = 'myOrg';
