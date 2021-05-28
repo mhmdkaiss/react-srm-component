@@ -161,16 +161,13 @@ export function SRM<Props extends PropsApp>(
   return srm;
 }
 
-function getPublicPath() {
-  let path = process.env.PUBLIC_URL;
-  if (!path) {
-    return '';
-  }
-
-  if (!path.endsWith('/')) {
-    path += '/';
-  }
-  return path;
+let publicPath = process.env.PUBLIC_URL;
+if (!publicPath) {
+  publicPath = '';
 }
 
-__webpack_public_path__ = getPublicPath();
+if (!publicPath.endsWith('/')) {
+  publicPath += '/';
+}
+
+__webpack_public_path__ = publicPath;
