@@ -6,19 +6,19 @@ export interface IEvent {
 
 export type IEventCallback = (a: IEvent) => any
 
-export type IEventEmmiterStorage = {
+export type IEventEmiterStorage = {
     [l: string]: Array<IEventCallback>
 }
 
-export type IEventEmmiter = {
-    _events: IEventEmmiterStorage,
+export type IEventEmiter = {
+    _events: IEventEmiterStorage,
     dispatch: (eventType: string, data: IEvent) => void,
     subscribe: (eventType: string, data: IEvent) => number,
     unsubscribe: (eventType: string, idx: number) => void,
 }
 
 export default class EventEmitter extends React.Component {
-    private _events: IEventEmmiterStorage = {};
+    private _events: IEventEmiterStorage = {};
 
     constructor(props?: any) {
         super(props);

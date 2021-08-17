@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
 import { IntlProvider } from 'react-intl';
 import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
-import { IEventEmmiter } from './event';
+import { IEventEmiter } from './event';
 
 export const SRMStore = _SRMStore;
 
@@ -39,7 +39,7 @@ interface PropsCommon {
   publicPath?: string;
   language?: string;
   event?: any;
-  eventEmmiter?: IEventEmmiter,
+  eventEmiter?: IEventEmiter,
 }
 
 export type PropsSRM<T = void> = PropsMount & PropsCommon & T;
@@ -102,7 +102,7 @@ export function SRM<Props extends PropsApp>(
       event,
       sendEvent,
       navigate,
-      eventEmmiter,
+      eventEmiter,
     } = props;
 
     let ret;
@@ -133,8 +133,8 @@ export function SRM<Props extends PropsApp>(
         overrideModel(store, 'navigate', navigate);
       }
 
-      if (eventEmmiter) {
-        overrideModel(store, 'eventEmmiter', eventEmmiter);
+      if (eventEmiter) {
+        overrideModel(store, 'eventEmiter', eventEmiter);
       }
 
       const { setEvent } = store.getActions();
