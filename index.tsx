@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
 import { IntlProvider } from 'react-intl';
 import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
+import { IEventEmmiter } from './event';
 
 export const SRMStore = _SRMStore;
 
@@ -37,6 +38,8 @@ interface PropsCommon {
   basename?: string;
   publicPath?: string;
   language?: string;
+  event?: any;
+  eventEmmiter?: IEventEmmiter,
 }
 
 export type PropsSRM<T = void> = PropsMount & PropsCommon & T;
@@ -96,11 +99,13 @@ export function SRM<Props extends PropsApp>(
       selector,
       basename,
       language,
+      event,
       sendEvent,
       navigate,
+      eventEmmiter,
     } = props;
 
-    let ret = {};
+    let ret;
     const Content = memo(() => {
       const store = SRMStore.useStore();
 
@@ -128,9 +133,19 @@ export function SRM<Props extends PropsApp>(
         overrideModel(store, 'navigate', navigate);
       }
 
+      if (eventEmmiter) {
+        overrideModel(store, 'eventEmmiter', eventEmmiter);
+      }
+
+      const { setEvent } = store.getActions();
+      if (event) {
+        setEvent(event);
+      }
+
       ret = {
         setBasename,
         setLanguage,
+        setEvent,
       };
 
       const { messages, language: locale } = store.getState();

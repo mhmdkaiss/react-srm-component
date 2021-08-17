@@ -1,8 +1,14 @@
 import { action, Action, createContextStore } from "easy-peasy";
+import EventEmmiter, { IEventEmmiter } from "./event";
 
 export type Messages = { [term: string]: string };
 
 export type LoadMessagesFunction = (lang: string) => Messages;
+
+export type Events = { [value: string]: any };
+export type EventsSubscribe = { [value: string]: any };
+
+export type ListenEventFunction = (data: any) => Events;
 
 export interface ContextStoreModel {
   sendEvent: (id: string, ...args: Array<any>) => Promise<any>;
@@ -15,7 +21,10 @@ export interface ContextStoreModel {
   language: string;
   setLanguage: Action<ContextStoreModel, string | undefined>;
   loadMessages: LoadMessagesFunction;
+  eventEmmiter: IEventEmmiter;
   messages: Messages;
+  setEvent: Action<ContextStoreModel, any | undefined>;
+  event: any;
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
@@ -34,6 +43,12 @@ const ContextStore = createContextStore<ContextStoreModel>(
       }),
       loadMessages: () => ({}),
       messages: {},
+      event: {},
+      eventEmmiter: new EventEmmiter(),
+      setEvent: action<ContextStoreModel>((state, value) => {
+        state.event = value;
+        state.eventEmmiter.dispatch(state.event.type, state.event.data);
+      }),
     }
 );
 
