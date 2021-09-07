@@ -1,0 +1,193 @@
+$amaranth: #e6224e;
+$black: #000000;
+$blue: #007bff;
+$blue-cornflower: #5f82ff;
+$blue-lightest: #a5c8e5;
+$baltic-blue: #036e83;
+$cyan: #00ffd1;
+$mint-green: #a5ff85;
+$electric-lime: #b2f617;
+$green: #55c02b;
+$dim-green: #607d26;
+$grey: #88929b;
+$black-light: #101010;
+$grey1: #0c0c0c;
+$grey2: #1a1a1a;
+$grey3: #292d30;
+$grey4: #323639;
+$grey5: #888c88;
+$grey6: #d8d8d8;
+$light-grey: #868c88;
+$lightish-grey: #393e41;
+$midish-grey: #2e3336;
+$darkish-grey: #222222;
+$grey-transparent: unquote("#88929b40");
+$orange: #fd7e14;
+$vivid-orange: #ff8001;
+$orange-outrageous: #fe5c2b;
+$persimmon: #ff5b51;
+$red: #ff3f34;
+$red-lightest: #d3483a;
+$red-darker: #841e16;
+$coral-red: #ff3f45;
+$white: #ffffff;
+$yellow: #faff00;
+$yellow-school: #ffde00;
+
+$beginner: #1fdeb0;
+$novice: #fff600;
+$intermediate: #ff7e00;
+$advanced: #ff0048;
+$primary: #0f161d;
+
+$beginner: #1fdeb0;
+$novice: #fff600;
+$intermediate: #ff7e00;
+$advanced: #ff0048;
+
+$discord-background: #8c9eff;
+$discord-foreground: white;
+$twitter-background: #2daae1;
+$twitter-foreground: white;
+$facebook-background: #3c5b9b;
+$facebook-foreground: white;
+$instagram-background: radial-gradient(
+  circle at 30% 107%,
+  #fdf497 0%,
+  #fdf497 5%,
+  #fd5949 45%,
+  #d6249f 60%,
+  #285aeb 90%
+);
+$instagram-foreground: white;
+$google-background: #df4a32;
+$google-foreground: white;
+$twitch-background: #65469c;
+$twitch-foreground: white;
+
+
+/* GRADIENT */
+$blue-cornflower-gradient: linear-gradient(
+    90deg,
+    #94e5ff 0%,
+    $blue-cornflower 100%
+);
+$cyan-gradient: linear-gradient(90deg, $mint-green 0%, $cyan 100%);
+$electric-lime-gradient: linear-gradient(
+    270deg,
+    $electric-lime 0%,
+    #ebff00 100%
+);
+$orange-outrageous-yellow-school-gradient: linear-gradient(
+    0deg,
+    $orange-outrageous 0.03%,
+    $yellow-school 99.97%
+);
+$orange-outrageous-yellow-school-horizontal-gradient: linear-gradient(
+    270deg,
+    $orange-outrageous 0%,
+    $yellow-school 100%
+);
+$persimmon-gradient: linear-gradient(90deg, #ff9b52 0%, $persimmon 100%);
+$yellow-school-orange-outrageous-gradient: linear-gradient(
+    270deg,
+    $yellow-school 13.54%,
+    $orange-outrageous 100%
+);
+$yellow-school-gradient: linear-gradient(0deg, $yellow-school, $yellow-school);
+$yellow-gradient: linear-gradient(90deg, #fff963 0%, $yellow 100%);
+
+
+/* PRIMARY PALETTE */
+$primary-color: $electric-lime;
+$sponsoring: $yellow;
+$tournament: $persimmon;
+$tournament-gradient: $persimmon-gradient;
+$training: $cyan;
+$training-gradient: $cyan-gradient;
+$tracking: $blue-cornflower;
+$tracking-gradient: $blue-cornflower-gradient;
+$primary-dim-color: $dim-green;
+$administrator: $vivid-orange;
+
+$secondary-color-cool: $grey6;
+$secondary-color-light: $light-grey;
+$secondary-color-mid: $grey4;
+$secondary-color-dark: $grey2;
+$secondary-color-dim: $grey3;
+
+/* PREMIUM PALETTE */
+$premium-primary-color: $yellow;
+$premium-secondary-color: $orange;
+
+
+.primary-color { color: $primary-color }
+.primary-dim-color { color: $primary-dim-color }
+.yellow-color { color: $yellow }
+.red-color { color: $red }
+.orange-color { color: $orange }
+.vivid-orange { color: $vivid-orange }
+
+.secondary-color-cool { color: $secondary-color-cool }
+.secondary-color-light { color: $secondary-color-light }
+.secondary-color-mid { color: $secondary-color-mid }
+.secondary-color-dim { color: $secondary-color-dim }
+.secondary-color-dark { color: $secondary-color-dark }
+
+.premium-primary-color { color: $premium-primary-color }
+.premium-secondary-color { color: $premium-secondary-color }
+
+.white { color: $white }
+.red { color: $red }
+.black { color: $black }
+
+
+.nt-scheduled {
+    background-image: linear-gradient(90deg, #FF9B52 0%, #FF5B51 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.nt-generating {
+    background-image: linear-gradient(90deg, #94E5FF 0%, #5F82FF 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.nt-started {  
+    background-image: linear-gradient(270deg, #B2F617 0%, #EBFF00 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.nt-paused {
+    color: $grey6;
+}
+
+.nt-ended {
+    color: $light-grey;
+}
+
+.nt-cancelled {
+    color: $red;
+}
+
+.red-icon {
+    color: $red !important;
+
+    &:hover {
+        background-color: rgba(255, 0, 0, 0.08) !important;
+    }
+}

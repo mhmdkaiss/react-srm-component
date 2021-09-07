@@ -1,11 +1,13 @@
-import React, { memo, ReactElement } from 'react';
+import React, { ReactElement, memo } from 'react';
+import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
+
+import { IEventEmiter } from './event';
+import { IntlProvider } from 'react-intl';
 import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
-import { IntlProvider } from 'react-intl';
-import _SRMStore, { ContextStoreModel, LoadMessagesFunction } from './store';
-import { IEventEmiter } from './event';
 
 export const SRMStore = _SRMStore;
+export { default as Card } from './src';
 
 declare var __webpack_public_path__: string;
 
