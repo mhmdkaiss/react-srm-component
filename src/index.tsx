@@ -1,3 +1,4 @@
-import * as Card from "./components/Card/Card";
+import { Card } from "./components/Card/Card";
+import { TeamCard } from "./components/TeamCard/TeamCard";
 
-export default { Card };
+export { Card, TeamCard };
