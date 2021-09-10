@@ -24,10 +24,7 @@
     "build:css": "node-sass src/ -o dist/src",
     "watch:css": "yarn build:css && yarn build:css -w -r",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
-    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles",
-    "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
-    "css-minify-main": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\"",
-    "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\""
+    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles"
   },
   "peerDependencies": {
     "easy-peasy": "^3.3.0",

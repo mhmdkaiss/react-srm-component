@@ -21,10 +21,10 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
   },
   "include": [
-    "."
+    "*.tsx"
   ],
   "exclude": [
     "node_modules",

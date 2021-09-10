@@ -1,4 +1,4 @@
-import "../../styles/TeamCard.scss";
+import "./TeamCard.scss";
 
 import React from "react";
 import { Team } from "../../models/Team";
@@ -47,7 +47,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
             />
             <div className={`text-content my-auto ${props.xs ? 'team-card-xs' : ''}`}>
                 <div className="d-flex flex-column">
-                    <div className="tag">[{props.team.tag}]</div>
+                    <div className="tag primary-dim-color">[{props.team.tag}]</div>
                     {props.full && <React.Fragment>
                         <div className="name ellipsis">{props.team.name}</div>
                         {captainName && captainCode &&

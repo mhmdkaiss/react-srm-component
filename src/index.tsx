@@ -1,4 +1,4 @@
-import { Card } from "./components/Card/Card";
 import { TeamCard } from "./components/TeamCard/TeamCard";
+import { UserCard } from "./components/UserCard/UserCard";
 
-export { Card, TeamCard };
+export { TeamCard, UserCard };

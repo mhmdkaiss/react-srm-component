@@ -1,0 +1,103 @@
+@import "../../styles/variables";
+@import "../../styles/colors";
+
+.user-card {
+    min-width: 223px;
+    min-height: 56px;
+    width: 223px;
+    height: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
+    border-radius: 8px;
+
+    &.user-card-xs {
+        min-width: 142px;
+        width: 142px;
+    }
+
+    &.full {
+        min-height: 112px;
+        height: 112px;
+
+        &.user-card-xs {
+            min-height: 71px;
+            height: 71px;
+        }
+    }
+
+
+    .background-image {
+        filter: blur(4px);
+    }
+
+    .background-gradient {
+        background: linear-gradient(
+            rgba(26, 26, 26, 0.4),
+            rgba(41, 45, 48, 1)
+        );
+    }
+
+    .background-gradient,
+    .background-image {
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .text-content {
+        overflow: hidden;
+
+        >div {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .name {
+            font-size: $small-text;
+            line-height: 24px;
+            color: $white;
+            white-space: nowrap;
+
+            &.full {
+                font-size: $medium-text;
+                line-height: 24px;
+            }
+        }
+
+        .code {
+            font-size: $small-text;
+            line-height: 14px;
+            font-weight: bold;
+            color: $light-grey;
+        }
+
+        .game-account {
+            white-space: nowrap;
+            font-size: $small-text;
+            line-height: 20px;
+            color: $white;
+        }
+
+        &.user-card-xs {
+            .name {
+                font-size: 12px;
+                line-height: initial;
+            }
+
+            .code {
+                font-size: 11px;
+                line-height: initial;
+            }
+
+            .game-account {
+                font-size: $small-text;
+                line-height: 140%;
+            }
+        }
+    }
+
+    .ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
