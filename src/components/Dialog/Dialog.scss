@@ -1,0 +1,164 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  color: $grey;
+  background: rgba($color: $black, $alpha: 0.5);
+  z-index: 3;
+
+  &__content {
+    max-height: 97vh;
+    position: relative;
+    animation: show 0.5s ease normal;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 71px;
+    padding-bottom: 42px;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
+    border-radius: 8px;
+    backdrop-filter: blur(15px);
+
+    @media screen and (max-width: $sm) {
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 32px;
+      padding-bottom: 9px;
+    }
+
+    &--background {
+      position: absolute;
+      left: 0%;
+      right: 0%;
+      top: 0%;
+      bottom: 0%;
+      z-index: -1;
+      border-radius: 8px;
+      opacity: 0.2;
+      &--zone {
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        background: linear-gradient(
+          360deg,
+          rgba(26, 26, 26, 0.81) 0%,
+          rgba(0, 0, 0, 0.59) 100%
+        );
+        box-shadow: inset 0px 0px 0px 55px -8px #ffffff;
+        border-radius: 8px;
+      }
+      &--overlay {
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+
+        mix-blend-mode: screen;
+        opacity: 0.2;
+        background: url("../../styles/img/dialog-background.png");
+        border-radius: 8px;
+      }
+    }
+
+    &--close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      cursor: pointer;
+
+      @media screen and (max-width: $sm) {
+        top: 16px;
+        right: 16px;
+      }
+    }
+
+    &--header {
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      margin-bottom: 28px;
+      color: $grey;
+    }
+
+    &--bod {
+      @include nc-scrollbar(4px);
+      max-height: 80vh;
+      overflow-y: auto; 
+      overflow-x: hidden;
+      z-index: 1;
+      padding-right: 10px;
+      padding-left: 10px;
+      margin-bottom: 50px;
+      color: $grey;
+
+      @media screen and (max-width: $sm) {
+        margin-bottom: 16px;
+      }
+
+      &--preview {
+        height: 73px;
+        margin-bottom: 23px;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &--content {
+        height: 73px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 23px;
+        width: auto;
+        white-space: nowrap;
+        font-size: 22px;
+        line-height: 27, 94px;
+        color: $white;
+      }
+
+      &--container {
+        width: 100%;
+
+        label {
+          width: 100%;
+        }
+      }
+
+      input {
+        margin-bottom: 4px;
+        width: 100%;
+      }
+    }
+
+    &--footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

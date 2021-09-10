@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
 
 export const SRMStore = _SRMStore;
-export { TeamCard, UserCard } from './src';
+export { Dialog, TeamCard, UserCard } from './src';
 
 declare var __webpack_public_path__: string;
 

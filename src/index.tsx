@@ -1,4 +1,5 @@
+import { Dialog } from "./components/Dialog/Dialog";
 import { TeamCard } from "./components/TeamCard/TeamCard";
 import { UserCard } from "./components/UserCard/UserCard";
 
-export { TeamCard, UserCard };
+export { Dialog, TeamCard, UserCard };
