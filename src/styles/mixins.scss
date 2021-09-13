@@ -1,0 +1,33 @@
+@import "~bootstrap/scss/bootstrap-reboot";
+
+@mixin nc-scrollbar($size: 6px, $color: $light-grey) {
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+
+        @include media-breakpoint-down(sm) {
+            width: ceil($size / 3);
+            height: ceil($size / 3);
+        }
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color;
+        border-radius: 2px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2px;
+    }
+
+    & {
+        @if $size > 6 {
+            scrollbar-width: auto;
+        } @else {
+            scrollbar-width: thin;
+        }
+
+        @include media-breakpoint-down(sm) {
+            scrollbar-width: thin;
+        }
+    }
+}

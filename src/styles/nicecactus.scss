@@ -1,7 +1,9 @@
 // Design System
 @import 'colors';
 @import 'variables';
+@import 'mixins';
 
 // Components
 @import '../components/TeamCard/TeamCard.scss';
 @import '../components/UserCard/UserCard.scss';
+@import '../components/Dialog/Dialog.scss';

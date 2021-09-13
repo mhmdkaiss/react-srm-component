@@ -2,7 +2,7 @@
   "name": "@nicecactus/srm",
   "version": "0.1.2",
   "description": "Core library for Standalone React Module",
-  "author": "rgoupil",
+  "author": "nicecactus",
   "license": "MIT",
   "repository": "nicecactus/srm",
   "main": "dist/index.js",
@@ -24,7 +24,8 @@
     "build:css": "node-sass src/ -o dist/src",
     "watch:css": "yarn build:css && yarn build:css -w -r",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
-    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles"
+    "css-compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
+    "css-compile2": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles"
   },
   "peerDependencies": {
     "easy-peasy": "^3.3.0",
@@ -34,8 +35,10 @@
     "react-router-dom": "^5.2.0"
   },
   "dependencies": {
+    "bootstrap": "^5.1.1",
     "easy-peasy": "^3.3.1",
     "node-sass": "^6.0.1",
+    "react-bootstrap": "^1.6.3",
     "webpack": "^5.52.0"
   },
   "devDependencies": {
@@ -63,6 +66,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
     "microbundle-crl": "^0.13.10",
+    "node-sass-package-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1",
     "prettier": "^2.0.4",

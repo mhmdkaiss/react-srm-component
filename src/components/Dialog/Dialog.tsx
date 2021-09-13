@@ -17,7 +17,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = (props: DialogProps)
     };
 
     return (
-        <>
+        <div>
             {props.show === true && (
                 <div
                     className="dialog"
@@ -47,6 +47,6 @@ export const Dialog: React.FunctionComponent<DialogProps> = (props: DialogProps)
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
