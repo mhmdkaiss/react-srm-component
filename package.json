@@ -11,7 +11,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --format cjs",
+    "build": "microbundle-crl --no-compress --format cjs",
     "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -24,7 +24,7 @@
     "build:css": "node-sass src/ -o dist/src",
     "watch:css": "yarn build:css && yarn build:css -w -r",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
-    "css-compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
+    "css-compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
     "css-compile2": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles"
   },
   "peerDependencies": {
@@ -37,7 +37,6 @@
   "dependencies": {
     "bootstrap": "^5.1.1",
     "easy-peasy": "^3.3.1",
-    "node-sass": "^6.0.1",
     "react-bootstrap": "^1.6.3",
     "webpack": "^5.52.0"
   },
@@ -66,6 +65,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
     "microbundle-crl": "^0.13.10",
+    "node-sass": "^6.0.1",
     "node-sass-package-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1",
@@ -75,7 +75,9 @@
     "react-intl": "^5.12.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "rollup-plugin-smart-asset": "^2.1.2",
     "sass": "^1.39.0",
+    "sass-package-importer": "^1.0.0",
     "typescript": "^3.7.5",
     "typescript-react-intl": "^0.4.1"
   },
