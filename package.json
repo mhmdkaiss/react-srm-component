@@ -25,7 +25,9 @@
     "watch:css": "yarn build:css && yarn build:css -w -r",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
     "css-compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
-    "css-compile2": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles"
+    "css-compile2": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles",
+    "copy-styles": "cp src/styles/{colors,mixins,variables}.scss dist/src/styles/",
+    "copy-assets": "mkdir -p dist/src/styles/img &&  cp src/styles/img/* dist/src/styles/img"
   },
   "peerDependencies": {
     "easy-peasy": "^3.3.0",

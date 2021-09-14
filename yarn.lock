@@ -11645,7 +11645,7 @@ rollup-plugin-postcss@^2.4.1:
     safe-identifier "^0.4.1"
     style-inject "^0.3.0"
 
-rollup-plugin-smart-asset@^2.0.7:
+rollup-plugin-smart-asset@^2.0.7, rollup-plugin-smart-asset@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-smart-asset/-/rollup-plugin-smart-asset-2.1.2.tgz#08c171122395b848c0c342eb344d2ffcd87261bc"
   integrity sha512-Y/gD3abliw3F20uY6ILpmH6sokXKntuTFKvDdLEJxHFcyQRsTb12u2KbsapqPZDa4JN/Nxx7BslYlZ/KmYAtPg==
@@ -11794,6 +11794,11 @@ sass-loader@^10.0.5:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
     semver "^7.3.2"
+
+sass-package-importer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sass-package-importer/-/sass-package-importer-1.0.0.tgz#7437a8f1351807d790fcb0fc9e2125ff5dcff3a7"
+  integrity sha512-ibWzE3bftWaiXsL7ohWA/7S2kT4hSpXnoHiui4qqkCwCjtomg3gGZpvtP6pzhtA9vxOEBbmKodAAeyM2ItxTEw==
 
 sass@^1.39.0:
   version "1.39.0"
