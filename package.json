@@ -1,10 +1,10 @@
 {
-  "name": "@nicecactus/srm",
+  "name": "@cactus/srm-component",
   "version": "0.0.1",
   "description": "Core library for Standalone React Module",
   "author": "nicecactus",
   "license": "MIT",
-  "repository": "nicecactus/srm",
+  "repository": "cactus/srm",
   "main": "dist/index.js",
   "source": "index.tsx",
   "engines": {
