@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format cjs",
+    "build:all": "rm -rf dist && yarn build && yarn css-compile && yarn copy-styles && yarn copy-assets",
     "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -55,6 +56,7 @@
     "babel-eslint": "^10.0.3",
     "clean-css-cli": "^5.3.3",
     "cross-env": "^7.0.2",
+    "css-loader": "^6.2.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -77,8 +79,10 @@
     "react-intl": "^5.12.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "resolve-url-loader": "^4.0.0",
     "rollup-plugin-smart-asset": "^2.1.2",
     "sass": "^1.39.0",
+    "sass-loader": "^12.1.0",
     "sass-package-importer": "^1.0.0",
     "typescript": "^3.7.5",
     "typescript-react-intl": "^0.4.1"
