@@ -1,5 +1,27 @@
 @import "~bootstrap/scss/bootstrap-reboot";
 
+$desktop-max-width: 9999px;
+$tablet-max-width: 1299px;
+$mobile-max-width: 820px;
+$website-max-width: 1320px;
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        @media (max-width: $desktop-max-width) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media (max-width: $tablet-max-width) {
+            @content;
+        }
+    } @else if $point == mobile {
+        @media (max-width: $mobile-max-width) {
+            @content;
+        }
+    }
+}
+
+
 @mixin nc-scrollbar($size: 6px, $color: $light-grey) {
     &::-webkit-scrollbar {
         width: $size;

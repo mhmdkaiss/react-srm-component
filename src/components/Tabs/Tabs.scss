@@ -1,0 +1,92 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.tabs {
+    width: 100%;
+
+    .tabs-header {
+        display: flex;
+
+        .pagination-button {
+            min-width: 12px;
+            height: 12px;
+            background: $grey6;
+
+            &:not(.disabled) {
+                cursor: pointer;
+            }
+
+            &.disabled {
+                opacity: 0.3;
+            }
+
+            &.right {
+                transform: rotate(180deg);
+            }
+        }
+
+        .scrollable-container {
+            width: 100%;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+
+            .scrollable-items {
+                width: fit-content;
+
+                .tab-container {
+                    min-width: 105px;
+                    height: 40px;
+                    cursor: pointer;
+
+                    .tab-name {
+                        color: $grey6;
+                        font-weight: bold;
+                        font-size: 16px;
+                        letter-spacing: 0.06em;
+                        line-height: 100%;
+                        padding: 0px 4px 8px 4px;
+                    }
+
+                    &:hover, &.active {
+                        .tab-name {
+                            color: $primary-color;
+                        }
+                    }
+
+                    &.active {
+                        .tab-name {
+                            border-bottom: 2px solid $primary-color;
+                        }
+
+                    }
+                }
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
+                scrollbar-width: none;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+            }
+
+            scrollbar-width: none; // for firefox
+        }
+    }
+
+    .tabs-body {
+        width: 100%;
+        position: relative;
+    }
+
+    @include breakpoint(mobile) {
+        .pagination-button {
+            display: none;
+        }
+
+        .tab-container {
+            min-width: 78px;
+            .tab-name {
+                font-size: 14px;
+            }
+        }
+    }
+}
