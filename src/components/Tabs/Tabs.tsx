@@ -18,15 +18,21 @@ interface TabsProps {
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
-    const [ currentTab, setCurrentTab ] = useState<TabParameter>(props.tabs[0]);
+    const [currentTab, setCurrentTab] = useState<TabParameter>(props.tabs[0]);
+    const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
+    const [currentTabPos, setCurrentTabPos] = useState<number>(0);
+    const tabsRef = useRef<Array<HTMLDivElement | null>>([]);
     const headerRef = useRef<HTMLDivElement | null>(null);
     const scrollableContainer = useRef<HTMLDivElement | null>(null);
     const scrollableItems = useRef<HTMLDivElement | null>(null);
 
-    const [ arrowShowed, setArrowShowed ] = useState<boolean>(false);
-    const [ disableLeft, setDisableLeft ] = useState<boolean>(false);
-    const [ disableRight, setDisableRight ] = useState<boolean>(false);
+    const [arrowShowed, setArrowShowed] = useState<boolean>(false);
+    const [disableLeft, setDisableLeft] = useState<boolean>(false);
+    const [disableRight, setDisableRight] = useState<boolean>(false);
 
+    useEffect(() => {
+        tabsRef.current = tabsRef.current.slice(0, props.tabs.length);
+    }, []);
 
     useEffect(() => {
         setupArrows();
@@ -36,9 +42,19 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
         window.addEventListener("resize", setupArrows);
     }, []);
 
-    const onTabChange = (t: TabParameter) => {
-        setCurrentTab(t);
+    const onTabChange = (tab: TabParameter, index: number, pos: number | undefined) => {
+        setCurrentTab(tab);
+        setCurrentTabIndex(index)
+        if (pos) {
+            setCurrentTabPos(pos);
+        }
     };
+
+    const cleanTab = () => {
+        setCurrentTab(props.tabs[currentTabIndex]);
+        setCurrentTabIndex(0)
+        setCurrentTabPos(0);
+    }
 
     const setupArrows = () => {
         if(!scrollableItems.current || !headerRef.current) {
@@ -78,6 +94,18 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
             : null;
     };
 
+    const renderSubTabs = () => {
+        return (
+            <div className="sub-tabs position-absolute" style={{ left: currentTabPos }}>
+                {   props.tabs[currentTabIndex] && props.tabs[currentTabIndex].children && props.tabs[currentTabIndex].children?.map((tab, index) => {
+                    return (
+                        <div key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => {!tab.disabled ? cleanTab() : {}}}>{tab.name}</div>
+                    )})
+                }
+            </div>
+        )
+    }
+
     return (
         <div className="tabs w-100">
             <div ref={headerRef} className="tabs-header d-flex mt-3 mb-2">
@@ -89,21 +117,23 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                 >
                     <div ref={scrollableItems} className="scrollable-items d-flex">
                         {props.tabs.length > 0 &&
-                            props.tabs.map((t) => {
+                            props.tabs.map((tab, index) => {
                                 return (
                                     <div
-                                        key={t.name}
-                                        className={`tab-container d-flex justify-content-center align-items-center mx-3 ${
-                                            t.name === currentTab.name ? "active" : ""
+                                        key={tab.name}
+                                        ref={(element) => tabsRef.current[index] = element}
+                                        className={`tab-container d-flex justify-content-center align-items-center mx-3 position-relative ${
+                                            tab.name === currentTab.name ? "active" : ""
                                         }`}
                                         onClick={() => {
-                                            onTabChange(t);
+                                            onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
                                         }}
                                     >
-                                        <div className="tab-name text-uppercase">{t.name}</div>
+                                        <div className="tab-name text-uppercase">{tab.name}</div>
                                     </div>
                                 );
                             })}
+                        {renderSubTabs()}
                     </div>
                 </div>
                 {renderPaginationButton(disableRight, true)}

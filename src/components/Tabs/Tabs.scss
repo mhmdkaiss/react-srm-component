@@ -59,6 +59,36 @@
                         }
 
                     }
+
+                }
+
+                .sub-tabs {
+                    top: 49px;
+
+                    .sub-tab {
+                        min-width: 181px;
+                        min-height: 36px;
+                        color: $grey6;
+                        background-color: $grey2;
+                        padding: 8px;
+                        border-bottom: 1px solid $grey4;
+
+                        &:hover {
+                            color: $primary-color;
+                            background-color: $grey3;
+                            cursor: pointer;
+                        }
+
+                    }
+
+                    .disabled {
+                        color: $grey4 !important;
+
+                        &:hover {
+                            background-color: $grey2;
+                            cursor: default;
+                        }
+                    }
                 }
             }
 
