@@ -9,6 +9,7 @@ interface DialogProps {
     footerComponent?: React.ReactElement | React.FunctionComponent;
     show: boolean;
     setShow: (show: boolean) => void;
+    noPadding?: boolean;
 }
 
 export const Dialog: React.FunctionComponent<DialogProps> = (props: DialogProps) => {
@@ -24,7 +25,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = (props: DialogProps)
                     data-testid="dialog"
                     onClick={() => closeDialog()}
                 >
-                    <div className="dialog__content" onClick={(e) => e.stopPropagation()}>
+                    <div className={`dialog__content ${props.noPadding ? "no-padding" : ""}`} onClick={(e) => e.stopPropagation()}>
                         <div className="dialog__content--background">
                             <div className="dialog__content--background--zone" />
                             <div className="dialog__content--background--overlay" />

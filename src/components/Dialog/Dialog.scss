@@ -28,6 +28,12 @@
         border-radius: 8px;
         backdrop-filter: blur(15px);
 
+        &.no-padding {
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+        }
+
         @media screen and (max-width: $sm) {
             padding-left: 8px;
             padding-right: 8px;

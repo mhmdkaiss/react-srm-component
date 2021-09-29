@@ -13,6 +13,7 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format cjs",
     "build:all": "rm -rf dist && yarn build && yarn css-compile && yarn copy-styles && yarn copy-assets",
+    "build:only": "yarn build && yarn css-compile && yarn copy-styles && yarn copy-assets",
     "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
