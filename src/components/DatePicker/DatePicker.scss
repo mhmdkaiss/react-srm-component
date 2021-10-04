@@ -1,0 +1,37 @@
+@import "src/styles/colors";
+
+.datepicker-container {
+    .datepicker-input {
+        input {
+            background: $grey2;
+            color: $grey6;
+            padding-left: 8px;
+        }
+
+        input::-webkit-calendar-picker-indicator{
+            color: $grey6;
+            z-index: 2;
+            opacity: 0;
+        }
+    }
+
+    .icon {
+        z-index: 1;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        background: $grey6;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+    }
+
+    &:hover {
+        .icon {
+            background: $primary-color;
+        }
+    }
+}
