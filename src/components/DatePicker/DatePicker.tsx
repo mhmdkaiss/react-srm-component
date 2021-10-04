@@ -16,7 +16,6 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = ({initialDat
             <MuiThemeProvider theme={ThemePlatform}>
                 <div className="datepicker-container d-flex w-100 position-relative">
                     <TextField
-                        id="datetime-local"
                         type="datetime-local"
                         className="w-100 datepicker-input"
                         defaultValue={initialDate}
