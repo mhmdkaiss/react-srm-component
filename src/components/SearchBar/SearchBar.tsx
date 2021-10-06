@@ -8,7 +8,10 @@ interface SearchBarProps {
     searchResult?: { [key: string]: string };
     setSearchResult?: React.Dispatch<any>;
     searchFields: { [key: string]: SearchField };
+    hideStore?: boolean;
     actionHook?: (search?: { [key: string]: string }) => any;
+    typingHook?: (text: string) => any;
+    focusHook?: (isFocused: boolean) => any;
 }
 
 interface SearchField {
@@ -81,8 +84,17 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                         className="w-100 searchbar-input"
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setSearchText(event.currentTarget.value);
+                            if (props.typingHook) {
+                                props.typingHook(event.currentTarget.value);
+                            }
                         }}
                         onKeyDown={handleKeyDown}
+                        inputProps={{ autoComplete: 'off' }}
+                        onBlur={() => {
+                            if (props.focusHook) {
+                                props.focusHook(false);
+                            }
+                        }}
                     />
                     <div
                         className="search-button"
@@ -95,7 +107,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                 </div>
                 <div className="d-flex mt-2">
                     {
-                        Object.keys(searchStore).map((key: string, index: number) => {
+                        !props.hideStore && Object.keys(searchStore).map((key: string, index: number) => {
                             return (
                                 <Chip
                                     label={`${key}: ${searchStore[key]}`}
