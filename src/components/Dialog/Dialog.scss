@@ -2,6 +2,7 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
+
 .dialog {
     display: flex;
     justify-content: center;
@@ -50,6 +51,7 @@
             z-index: -1;
             border-radius: 8px;
             opacity: 0.2;
+
             &--zone {
                 position: absolute;
                 left: 0%;
@@ -66,14 +68,11 @@
             }
             &--overlay {
                 position: absolute;
-                left: 0%;
-                right: 0%;
-                top: 0%;
-                bottom: 0%;
-
-                mix-blend-mode: screen;
-                opacity: 0.2;
-                // background: url("./img/dialog-background.png");
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: url($s3-url + "/media/shared-library/background/dialog-background.png");
                 border-radius: 8px;
             }
         }

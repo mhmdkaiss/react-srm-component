@@ -12,8 +12,8 @@
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format cjs",
-    "build:all": "rm -rf dist && yarn build && yarn css-compile && yarn copy-styles && yarn copy-assets",
-    "build:only": "yarn build && yarn css-compile && yarn copy-styles && yarn copy-assets",
+    "build:all": "rm -rf dist && yarn build && yarn css-compile && yarn copy-styles",
+    "build:only": "yarn build && yarn css-compile && yarn copy-styles",
     "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -29,7 +29,7 @@
     "css-compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
     "css-compile2": "sass --style expanded --source-map --embed-sources --no-error-css src/styles/:dist/src/styles",
     "copy-styles": "cp src/styles/colors.scss src/styles/mixins.scss src/styles/variables.scss dist/src/styles/",
-    "copy-assets": "mkdir -p dist/src/styles/img &&  cp src/styles/img/* dist/src/styles/img"
+    "copy-assets": "echo no-script"
   },
   "peerDependencies": {
     "easy-peasy": "^3.3.0",
