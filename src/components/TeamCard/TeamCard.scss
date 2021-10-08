@@ -146,6 +146,10 @@
         }
     }
 
+    .text-content, .logo {
+        z-index: 1;
+    }
+
     .ellipsis {
         overflow: hidden;
         text-overflow: ellipsis;
