@@ -8,6 +8,7 @@ interface SearchBarProps {
     searchResult?: { [key: string]: string };
     setSearchResult?: React.Dispatch<any>;
     searchFields: { [key: string]: SearchField };
+    placeHolder?: string;
     hideStore?: boolean;
     actionHook?: (search?: { [key: string]: string }) => any;
     typingHook?: (text: string) => any;
@@ -79,7 +80,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                     }
                     <TextField
                         value={searchText}
-                        placeholder="Search team"
+                        placeholder={props.placeHolder || ''}
                         name="searchBar"
                         className="w-100 searchbar-input"
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
