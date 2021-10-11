@@ -5,11 +5,11 @@ import "./Messages.scss";
 
 export interface ChatProps {
     messages: Array<Event>;
-    currentUserName: string;
+    currentUserId?: string;
     fullScreen: boolean;
 }
 
-export const Messages: React.FunctionComponent<ChatProps> = ({ messages, currentUserName, fullScreen }) => {
+export const Messages: React.FunctionComponent<ChatProps> = ({ messages, currentUserId, fullScreen }) => {
     const intl = useIntl();
 
     return (
@@ -17,7 +17,7 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
             {messages.map((m) => {
 
                 const isReferee = m.senderName === 'ADMIN';
-                const isMe = m.senderName === currentUserName;
+                const isMe = currentUserId && m.sender === currentUserId;
                 let name: string;
                 let code: string | undefined;
 
@@ -28,7 +28,6 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
                     code = hashIndex !== -1 ? m.senderName.slice(hashIndex) : '';
                     name = hashIndex !== -1 ? m.senderName.slice(0, hashIndex) : m.senderName;
                 }
-
                 return <div className={`mt-4 ${isReferee ? 'referee' : ''} ${isMe ? 'me text-right' : ''}`} key={m.target}>
                     <div>
                         <span className="username">{name}</span>

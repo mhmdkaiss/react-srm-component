@@ -9,15 +9,14 @@ import { Messages } from "./Messages";
 
 export interface ChatProps {
     messages: Array<Event>;
-    userNickname?: string;
-    userCode?: number;
+    currentUserId?: string;
     isCaptain?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     sendMessage: (message: string) => void;
     fullScreen?: boolean
 }
 
-export const Chat: React.FunctionComponent<ChatProps> = ({ messages, userNickname, userCode, isCaptain, sendMessage, fullScreen }) => {
+export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUserId, isCaptain, sendMessage, fullScreen }) => {
     const localStorageKey = 'tournament-chat-position';
     const intl = useIntl();
     const [isChatOpen, setIsChatOpen] = useState<boolean>(true);
@@ -178,7 +177,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, userNicknam
                         </div>
                         <div className={`box ${isChatOpen ? '' : 'closed'} ${fullScreen ? 'fullscreen-chat w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
                             <div className={`chat-shadow position-absolute ${fullScreen ? 'w-100' : ''}`}></div>
-                            <Messages fullScreen={fullScreen || false} messages={messages} currentUserName={userNickname && userCode ? `${userNickname}#${userCode}` : ''} />
+                            <Messages fullScreen={fullScreen || false} messages={messages} currentUserId={currentUserId} />
                             <div className="footer mt-3">
                                 {isCaptain &&
                                     <React.Fragment>
