@@ -13,7 +13,7 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
     const intl = useIntl();
 
     return (
-        <div className={`messages-component messages d-flex flex-column flex-column-reverse ${fullScreen ? 'fullscreen-chat' : ''}`}>
+        <div className={`px-3 mt-2 messages-component messages d-flex flex-column flex-column-reverse ${fullScreen ? 'fullscreen-chat' : ''}`}>
             {messages.map((m) => {
 
                 const isReferee = m.senderName === 'ADMIN';

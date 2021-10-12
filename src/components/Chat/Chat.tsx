@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
+import React, { KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from "react";
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 import { FormattedMessage, useIntl } from "react-intl";
 import { Icon, IconType } from "../../atoms/Icon/Icon";
@@ -27,7 +27,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
     const [isMessageValid, setIsMessageValid] = useState<boolean>(false);
     const [boxPosition, setBoxPosition] = useState<{ x: number, y: number }>();
     const [boxPositionClass, setBoxPositionClass] = useState<string>('bottom-left');
-    const draggableNodeRef = React.useRef(null);
+    const draggableNodeRef = React.useRef<HTMLDivElement>(null);
     const messageInputRef = useRef<HTMLInputElement>(null);
 
 
@@ -70,14 +70,30 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         localStorage.setItem(localStorageKey, JSON.stringify({ x: data.x, y: data.y }));
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+        if (draggableNodeRef && draggableNodeRef.current && !draggableNodeRef.current.contains(e.target as Node)) {
+            setIsChatOpen(false);
+        }
+    };
+
+    const onGlobalKeyDown = (e: KeyboardEvent): any => {
+        if (e.ctrlKey && e.code === 'Space') {
+            toggleChat();
+        }
+    }
+
     const onMouseClick = () => {
         if (!dragged || fullScreen) {
-            if (unread && !isChatOpen) {
-                setUnread(false);
-            }
-            setIsChatOpen(!isChatOpen)
+            toggleChat();
         }
         setDragged(false)
+    }
+
+    const toggleChat = () => {
+        if (unread && !isChatOpen) {
+            setUnread(false);
+        }
+        setIsChatOpen(!isChatOpen)
     }
 
     const onMessageChanged = (message: string) => {
@@ -92,7 +108,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         }
     }
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyDown = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             onSendMessage();
         }
@@ -136,7 +152,19 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         } else {
             updateBoxPosition(window.innerWidth, window.innerHeight);
         }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
     }, [])
+
+    useEffect(() => {
+        window.addEventListener('keydown', onGlobalKeyDown);
+        return () => {
+            window.removeEventListener('keydown', onGlobalKeyDown);
+        }
+    }, [toggleChat])
 
     useEffect(() => {
         if (fullScreen) {
@@ -146,7 +174,9 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
 
     useEffect(() => {
         window.addEventListener('resize', onWindowResize);
-        return () => window.removeEventListener('resize', onWindowResize);
+        return () => {
+            window.removeEventListener('resize', onWindowResize);
+        }
     }, [boxPosition]);
 
     useEffect(() => {
@@ -176,9 +206,22 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                             />
                         </div>
                         <div className={`box ${isChatOpen ? '' : 'closed'} ${fullScreen ? 'fullscreen-chat w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
-                            <div className={`chat-shadow position-absolute ${fullScreen ? 'w-100' : ''}`}></div>
+                            <div className={'chat-shadow position-absolute w-100'}></div>
+                            <div className="align-items-center d-flex header justify-content-around p-2 position-absolute w-100">
+                                <span className="title"><FormattedMessage
+                                    id="chat.chatbox"
+                                    description="Chat - Chatbox"
+                                /></span>
+                                {!fullScreen && <span className="hint text-right">
+                                    <FormattedMessage
+                                        id="chat.shortcut"
+                                        description="Chat - Chatbox"
+                                        values={{ shortcutKey: 'ctrl+space' }}
+                                    />
+                                </span>}
+                            </div>
                             <Messages fullScreen={fullScreen || false} messages={messages} currentUserId={currentUserId} />
-                            <div className="footer mt-3">
+                            <div className="footer mt-3 px-3 pb-2">
                                 {isCaptain &&
                                     <React.Fragment>
                                         <span className="input-text">

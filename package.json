@@ -14,6 +14,7 @@
     "build": "microbundle-crl --no-compress --format cjs",
     "build:all": "rm -rf dist && yarn build && yarn css-compile && yarn copy-styles",
     "build:only": "yarn build && yarn css-compile && yarn copy-styles",
+    "build:watch": "nodemon -e scss,tsx,ts --watch src --exec yarn run build:only",
     "start": "microbundle-crl watch --m --no-compress --format cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -39,14 +40,14 @@
     "react-router-dom": "^5.2.0"
   },
   "dependencies": {
+    "@material-ui/core": "4.11.0",
     "bootstrap": "^5.1.1",
     "easy-peasy": "^3.3.1",
     "react-bootstrap": "^1.6.3",
-    "webpack": "^5.52.0",
-    "@material-ui/core": "4.11.0",
-    "react-draggable": "^4.4.4"
-},
-"devDependencies": {
+    "react-draggable": "^4.4.4",
+    "webpack": "^5.52.0"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -74,6 +75,7 @@
     "microbundle-crl": "^0.13.10",
     "node-sass": "^6.0.1",
     "node-sass-package-importer": "^5.3.2",
+    "nodemon": "^2.0.13",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1",
     "prettier": "^2.0.4",
