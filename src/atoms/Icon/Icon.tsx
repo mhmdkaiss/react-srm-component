@@ -3,6 +3,7 @@ import React from "react";
 export enum IconType {
     Comments = 'comments',
     Send = 'send',
+    Close = 'close',
 }
 
 export interface IconProps {

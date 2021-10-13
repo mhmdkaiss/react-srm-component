@@ -195,7 +195,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                             onTouchEnd={() => fullScreen ? null : onMouseClick()}
                             className={`icon-container  comments-icon d-flex align-items-center justify-content-center 
                                 ${unread ? 'unread' : ''} 
-                                ${fullScreen ? 'mt-1' : ''}`
+                                ${fullScreen ? 'my-1 mr-2' : ''}`
                             }>
                             {unread &&
                                 <div className="unread-icon"></div>
@@ -206,20 +206,23 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                             />
                         </div>
                         <div className={`box ${isChatOpen ? '' : 'closed'} ${fullScreen ? 'fullscreen-chat w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
-                            <div className={'chat-shadow position-absolute w-100'}></div>
-                            <div className="align-items-center d-flex header justify-content-around p-2 position-absolute w-100">
+                            <div className="d-flex flex-column justify-content-center header px-3 w-100">
                                 <span className="title"><FormattedMessage
                                     id="chat.chatbox"
                                     description="Chat - Chatbox"
                                 /></span>
-                                {!fullScreen && <span className="hint text-right">
+                                {!fullScreen && <span className="hint">
                                     <FormattedMessage
                                         id="chat.shortcut"
                                         description="Chat - Chatbox"
                                         values={{ shortcutKey: 'ctrl+space' }}
                                     />
                                 </span>}
+                                <span onClick={() => setIsChatOpen(false)} >
+                                    <Icon styleName={'position-absolute'} icon={IconType.Close} height={12} width={12} />
+                                </span>
                             </div>
+                            <div className={'chat-shadow position-absolute w-100'}></div>
                             <Messages fullScreen={fullScreen || false} messages={messages} currentUserId={currentUserId} />
                             <div className="footer mt-3 px-3 pb-2">
                                 {isCaptain &&
@@ -250,6 +253,6 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                     </div>
                 </Draggable>
             }
-        </React.Fragment>
+        </React.Fragment >
     )
 };

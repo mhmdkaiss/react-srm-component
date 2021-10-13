@@ -20,11 +20,11 @@
     position: relative;
 
     &.top-left {
-      @include chat-position(-443px, -380px, bottom right);
+      @include chat-position(-507px, -380px, bottom right);
     }
 
     &.top-right {
-      @include chat-position(-443px, 0, bottom left);
+      @include chat-position(-507px, 0, bottom left);
     }
 
     &.bottom-right {
@@ -51,8 +51,8 @@
     border-radius: 8px;
 
     .chat-shadow {
-      height: 88px;
-      top: 8px;
+      height: 39px;
+      top: 70px;
       background: linear-gradient(
         180deg,
         $grey2 42.19%,
@@ -61,15 +61,26 @@
     }
 
     .header {
+      min-height: 69px;
+      max-height: 69px;
+      border-bottom: 1px $grey4 solid;
+
       .title {
         font-size: 18px;
         font-weight: 700;
+        line-height: 22px;
         color: $grey6;
       }
 
       .hint {
         font-size: $smallest-text;
         color: $grey5;
+        line-height: 15px;
+      }
+
+      .icon-close {
+        top: 16px;
+        right: 16px;
       }
     }
 
