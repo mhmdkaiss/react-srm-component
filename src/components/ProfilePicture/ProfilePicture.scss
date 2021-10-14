@@ -4,26 +4,23 @@
   user-select: none;
   position: relative;
   border-radius: 100%;
-  flex-shrink: 0;
-  overflow: hidden;
 
   &.default {
     box-shadow: 0 0 1px 2px $primary-color;
   }
 
+  &.center {
+    left: 38%;
+  }
+  
   &.premium {
     box-shadow: none;
 
     &::after {
       content: "";
-      position: absolute;
       width: 100%;
       height: 100%;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: url("../../styles/svg/ProfileFrame.svg") no-repeat center;
+      // background: url("../../styles/svg/ProfileFrame.svg") no-repeat center;
     }
   }
 

@@ -13,7 +13,7 @@ export interface Team {
     fr: number;
     fullScore: number;
     pos: number;
-    rounds: { [key: string]: Round };
+    rounds?: { [key: string]: Round };
     slug: string;
 }
 export interface TeamBracket extends Team {

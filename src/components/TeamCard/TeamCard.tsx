@@ -8,6 +8,8 @@ interface TeamCardProps {
     team: Team;
     full: boolean;
     xs: boolean;
+    lg?: boolean;
+    hoverHook?: (hovered?: string) => void;
 }
 
 export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) => {
@@ -25,8 +27,11 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
         }
     });
 
-    return (
-        <div className={`d-flex team-card overflow-hidden position-relative ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full p-2' : ''}`}>
+    if (!props.lg) {
+        return(
+            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full p-2' : ''}`}
+        onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.name) : ''}
+        onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
             <div
                 className="background-image w-100 h-100 position-absolute">
                 <img className="h-100 w-100"
@@ -63,4 +68,42 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
             </div>
         </div>
     );
+        
+    }
+    else {
+        return (
+
+            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.lg ? 'team-card-lg' : ''} ${props.xs ? 'team-card-xs' : ''} ${props.full && !props.lg ? 'full p-2' : ''}`}
+            onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.slug) : ''}
+            onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
+                <div
+                    className="background-image w-100 h-100 position-absolute">
+                    <img className="h-100 w-100"
+                        src={`${String(process.env.REACT_APP_S3_URL)}/teams/${props.team.team}/medias/BannerImage?${Date.now()}`}
+                        onError={(e) =>
+                            (e.currentTarget.src = backgroundFallback)
+                        }
+                        alt=""
+                    />
+                </div>
+                <div className="background-gradient w-100 h-100 position-absolute"></div>
+    
+                    <div className="justify-content-center w-100">
+                        <img className={`logo w-100 mr-3 my-auto ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full' : ''}`}
+                            src={`${String(process.env.REACT_APP_S3_URL)}/teams/${props.team.team}/medias/ProfileImage?${Date.now()}`}
+                            onError={(e) =>
+                                (e.currentTarget.src = avatarFallback)
+                            }
+                            alt=""
+                        />
+                    </div>    
+                    <div className={`text-content my-auto w-100 ${props.xs ? 'team-card-xs' : ''} justify-content-center w-100`}>
+                        <div className="d-flex text-align-center d-inline">
+                            <div className="tag primary-dim-color">[{props.team.tag}]</div>
+                            <div className="name ellipsis">{props.team.name}</div>
+                        </div>²
+                    </div>
+                </div>
+        );
+    } 
 }
