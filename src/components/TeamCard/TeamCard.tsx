@@ -68,7 +68,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
             </div>
         </div>
     );
-        
+
     }
     else {
         return (
@@ -87,7 +87,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                     />
                 </div>
                 <div className="background-gradient w-100 h-100 position-absolute"></div>
-    
+
                     <div className="justify-content-center w-100">
                         <img className={`logo w-100 mr-3 my-auto ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full' : ''}`}
                             src={`${String(process.env.REACT_APP_S3_URL)}/teams/${props.team.team}/medias/ProfileImage?${Date.now()}`}
@@ -96,7 +96,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                             }
                             alt=""
                         />
-                    </div>    
+                    </div>
                     <div className={`text-content my-auto w-100 ${props.xs ? 'team-card-xs' : ''} justify-content-center w-100`}>
                         <div className="d-flex text-align-center d-inline">
                             <div className="tag primary-dim-color">[{props.team.tag}]</div>
@@ -105,5 +105,5 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                     </div>
                 </div>
         );
-    } 
+    }
 }

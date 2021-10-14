@@ -34,20 +34,6 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
             </div>
             <div className={`background-gradient w-100 h-100 position-absolute ${props.lg ? 'justify-content-center' : ''}`} ></div>
 
-                    
-            {/* <div className={`${props.lg ? 'mt-2 flex-column w-100' : ''}  `}>
-                <ProfilePicture size={props.full && !props.xs ? 60 : 40} playerId={props.playerId} player={props.player} />
-                <div className={`text-content mt-2 h-100 ${props.lg ? 'text-center': ''}`}>
-
-                    <div className={`${props.xs || props.lg ? '' : 'd-flex display-inline'} ${!props.xs && props.lg ? 'justify-content-center' : ''} ${props.full ? '' : 'h-100'}`}></div>
-                        <span className={`name  ${props.xs ? '' : 'ellipsis'} ${props.full ? 'full' : 'my-auto'}`}>{name}</span>
-                            {props.full &&
-                            <span className={`code ${props.xs ? 'ml-1' : ''}`}>{code}</span>
-                        }
-                    
-                </div>
-            </div> */}
-            
             <ProfilePicture size={props.full && !props.xs ? 80 : 40} playerId={props.playerId} player={props.player} />
             <div className={`text-content  ${props.lg ? 'mt-2' : 'ml-3 my-auto'} h-100 ${props.xs ? 'user-card-xs' : ''}`}>
 

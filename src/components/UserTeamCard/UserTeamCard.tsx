@@ -20,35 +20,35 @@ export const UserTeamCard: React.FunctionComponent<UserTeamCardProps> = (props: 
     if (props.team) {
       return (
         <div className="hovered-card text-center">
-            <div 
+            <div
                 onMouseEnter={() => {if (props.isSolo) {
                                         handlePropsHover(Object.keys(props.team.players)[0])
-                                    } 
+                                    }
                                     else {
                                         handlePropsHover(props.team.slug)
-                                    }   
+                                    }
             }}
                 onMouseLeave={() => handlePropsHover(undefined)}
-                
+
                 className="hovered-card text-center"
                 style={{
                     backgroundImage:
                     "url(" +
                     process.env.REACT_APP_S3_URL +
-                    (props.isSolo 
-                        ? "/user/" + Object.keys(props.team.players)[0] + "/medias/BannerImage" 
+                    (props.isSolo
+                        ? "/user/" + Object.keys(props.team.players)[0] + "/medias/BannerImage"
                         : `/teams/${props.team.slug}/medias/BannerImage`) +
                     "), url(" +
-                    process.env.REACT_APP_S3_URL +                    
-                    (props.isSolo 
-                        ? "/media/default/default-user-banner.jpg" 
+                    process.env.REACT_APP_S3_URL +
+                    (props.isSolo
+                        ? "/media/default/default-user-banner.jpg"
                         : "/media/default/default-team-banner.svg") +
                     ")",
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                 }}
             >
-            
+
                 <img
                     className={`avatar mx-auto mb-2 mt-4 ${props.isSolo ? "solo" : "team"}`}
                     src={
