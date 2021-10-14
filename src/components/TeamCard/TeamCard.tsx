@@ -4,11 +4,16 @@ import React from "react";
 import { Team } from "../../models/Team";
 import IconCrown from "../../styles/svg/IconCrown";
 
+export enum CardType{
+    xs = 'xs',
+    small = 'small',
+    lg = 'lg'
+
+}
 interface TeamCardProps {
     team: Team;
     full: boolean;
-    xs: boolean;
-    lg?: boolean;
+    size: CardType;
     hoverHook?: (hovered?: string) => void;
 }
 
@@ -27,9 +32,9 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
         }
     });
 
-    if (!props.lg) {
+    if (props.size === 'xs') {
         return(
-            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full p-2' : ''}`}
+            <div className={` mr-4 d-flex team-card overflow-hidden position-relative team-card-xs ${props.full ? 'full p-2' : ''}`}
         onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.slug) : ''}
         onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
             <div
@@ -43,14 +48,14 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                 />
             </div>
             <div className="background-gradient w-100 h-100 position-absolute"></div>
-            <img className={`logo mr-3 my-auto ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full' : ''}`}
+            <img className={`logo mr-3 my-auto team-card-xs ${props.full ? 'full' : ''}`}
                 src={`${String(process.env.REACT_APP_S3_URL)}/teams/${props.team.team}/medias/ProfileImage?${Date.now()}`}
                 onError={(e) =>
                     (e.currentTarget.src = avatarFallback)
                 }
                 alt=""
             />
-            <div className={`text-content my-auto ${props.xs ? 'team-card-xs' : ''}`}>
+            <div className={`text-content my-auto team-card-xs`}>
                 <div className="d-flex flex-column">
                     <div className="tag primary-dim-color">[{props.team.tag}]</div>
                     {props.full && <React.Fragment>
@@ -73,7 +78,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
     else {
         return (
 
-            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.lg ? 'team-card-lg' : ''} ${props.xs ? 'team-card-xs' : ''} ${props.full && !props.lg ? 'full p-2' : ''}`}
+            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.size === 'lg' ? 'team-card-lg' : ''} ${props.full ? 'full p-2' : ''}`}
             onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.slug) : ''}
             onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
                 <div
@@ -89,7 +94,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                 <div className="background-gradient w-100 h-100 position-absolute"></div>
 
                     <div className="justify-content-center w-100">
-                        <img className={`logo w-100 mr-3 my-auto ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full' : ''}`}
+                        <img className={`logo w-100 mr-3 my-auto ${props.full ? 'full' : ''}`}
                             src={`${String(process.env.REACT_APP_S3_URL)}/teams/${props.team.team}/medias/ProfileImage?${Date.now()}`}
                             onError={(e) =>
                                 (e.currentTarget.src = avatarFallback)
@@ -97,7 +102,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                             alt=""
                         />
                     </div>
-                    <div className={`text-content my-auto w-100 ${props.xs ? 'team-card-xs' : ''} justify-content-center w-100`}>
+                    <div className={`text-content my-auto w-100 justify-content-center w-100`}>
                         <div className="d-flex text-align-center d-inline">
                             <div className="tag primary-dim-color">[{props.team.tag}]</div>
                             <div className="name ellipsis">{props.team.name}</div>

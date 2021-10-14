@@ -1,7 +1,5 @@
 import React, { CSSProperties } from "react";
 import { Player } from "../../models/Player";
-// import { UserCard } from "../../components/UserCard/UserCard";
-
 import "./ProfilePicture.scss";
 
 export interface ProfilePictureProps {
