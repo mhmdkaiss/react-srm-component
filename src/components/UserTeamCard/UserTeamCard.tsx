@@ -81,7 +81,7 @@ export const UserTeamCard: React.FunctionComponent<UserTeamCardProps> = (props: 
                     </div>
                 ) : null}
 
-                {props.isSolo ? <div className="mt-2 mb-3">USER KPI</div> : null}
+                {props.isSolo ? <div className="mt-2 mb-3"></div> : null}
             </div>
             </div>
         )
