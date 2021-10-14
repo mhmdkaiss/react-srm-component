@@ -25,7 +25,15 @@
         }
     }
 
+    &.user-card-lg {
+        width: 380px;
+        height: 160px;
+    }
 
+    &.user-card-lg-content {
+        align-items: center;
+        padding-left: 8px;
+    }
     .background-image {
         filter: blur(4px);
     }
@@ -46,6 +54,7 @@
 
     .text-content {
         overflow: hidden;
+        position: relative;
 
         >div {
             overflow: hidden;

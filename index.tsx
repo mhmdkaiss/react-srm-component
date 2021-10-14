@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import { Store } from 'easy-peasy';
 
 export const SRMStore = _SRMStore;
-export { DatePicker, Dialog, SearchBar, Tabs, TeamCard, ThemePlatform, UserCard, Icon, IconType, Chat } from './src';
+export { DatePicker, Dialog, SearchBar, Tabs, TeamCard, ThemePlatform, UserCard, UserTeamCard, CardType, Icon, IconType, Chat } from './src';
 
 declare var __webpack_public_path__: string;
 
