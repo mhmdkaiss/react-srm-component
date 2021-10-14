@@ -18,10 +18,16 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
     const hashIndex = props.player.name.lastIndexOf('#');
     const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
     const name = hashIndex !== -1 ? props.player.name.slice(0, hashIndex) : props.player.name;
+    const handleHoverHook = (hovered?:string) => {
+        if(props.hoverHook) {
+            props.hoverHook(hovered)
+        }
+    }
+
     return (
         <div className={`d-flex user-card overflow-hidden position-relative ${props.xs ? 'user-card-xs' : ''} ${props.lg ? 'user-card-lg': '' } ${props.full ? 'full px-2 py-3' : 'p-2'}`}
-        onMouseEnter={() => props.hoverHook ? props.hoverHook (props.playerId) : ''}
-        onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
+            onMouseEnter={() => handleHoverHook(props.playerId)}
+            onMouseLeave={() => handleHoverHook(undefined)}>
             <div className="background-image w-100 h-100 position-absolute">
                 <img
                     className="h-100 w-100"

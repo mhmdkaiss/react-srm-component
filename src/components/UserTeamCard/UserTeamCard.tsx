@@ -19,15 +19,9 @@ export const UserTeamCard: React.FunctionComponent<UserTeamCardProps> = (props: 
 
     if (props.team) {
       return (
-        <div className="hovered-card text-center">
+        <div className="user-team-card-component hovered-card text-center">
             <div
-                onMouseEnter={() => {if (props.isSolo) {
-                                        handlePropsHover(Object.keys(props.team.players)[0])
-                                    }
-                                    else {
-                                        handlePropsHover(props.team.slug)
-                                    }
-            }}
+                onMouseEnter={() => handlePropsHover(props.isSolo ? Object.keys(props.team.players)[0] : props.team.slug)}
                 onMouseLeave={() => handlePropsHover(undefined)}
 
                 className="hovered-card text-center"
