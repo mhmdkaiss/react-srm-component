@@ -30,7 +30,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
     if (!props.lg) {
         return(
             <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.xs ? 'team-card-xs' : ''} ${props.full ? 'full p-2' : ''}`}
-        onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.name) : ''}
+        onMouseEnter={() => props.hoverHook ? props.hoverHook (props.team.slug) : ''}
         onMouseLeave={() => props.hoverHook ? props.hoverHook(undefined) : ''}>
             <div
                 className="background-image w-100 h-100 position-absolute">
