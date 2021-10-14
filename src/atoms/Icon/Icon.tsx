@@ -1,9 +1,29 @@
 import React from "react";
 
 export enum IconType {
-    Comments = 'comments',
-    Send = 'send',
+    AddUser = 'addUser',
+    Brackets = 'brackets',
+    Calendar = 'calendar',
     Close = 'close',
+    Crown = 'crown',
+    Comments = 'comments',
+    Eye = 'eye',
+    EyeCrossed = 'eyeCrossed',
+    Gift = 'gift',
+    GoToLink = 'goToLink',
+    GoToPreviousPage = 'goToPreviousPage',
+    Maximize = 'maximize',
+    Minimize = 'minimize',
+    Move = 'move',
+    People = 'people',
+    Prize = 'prize',
+    Search = 'search',
+    Send = 'send',
+    Settings = 'settings',
+    Trashcan = 'trashcan',
+    UploadCloud = 'uploadCloud',
+    User = 'user',
+    Warning = 'warning',
 }
 
 export interface IconProps {
