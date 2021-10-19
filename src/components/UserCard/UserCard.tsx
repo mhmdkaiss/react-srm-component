@@ -59,7 +59,10 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
     }
     else {
         return (
-            <div className={`d-flex user-card overflow-hidden position-relative ${props.size === UserCardType.xs ? 'user-card-xs' : ''} ${props.size === UserCardType.lg ? 'user-card-lg' : ''} ${props.full ? 'full px-2 py-3' : 'p-2'}`}
+            <div className={`d-flex user-card overflow-hidden position-relative ${props.size === UserCardType.xs ? 'user-card-xs' : ''}
+                ${props.size === UserCardType.lg ? 'user-card-lg' : ''}
+                ${props.full ? 'full px-2 py-3' : 'p-2'}`}
+
                 onMouseEnter={() => handleHoverHook(props.playerId)}
                 onMouseLeave={() => handleHoverHook(undefined)}>
                 <div className="background-image w-100 h-100 position-absolute">
@@ -72,18 +75,27 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                         alt=""
                     />
                 </div>
-                <div className={`background-gradient w-100 h-100 position-absolute ${props.size === UserCardType.lg ? 'justify-content-center' : ''}`} ></div>
+                <div className={`background-gradient w-100 h-100 position-absolute
+                    ${props.size === UserCardType.lg ? 'justify-content-center' : ''}`} >
+                </div>
 
                 <ProfilePicture size={props.full && props.size === UserCardType.lg ? 80 : 40} playerId={props.playerId} player={props.player} />
-                <div className={`text-content  ${props.size === UserCardType.lg ? 'mt-2' : 'ml-3 my-auto'} h-100 ${props.size === UserCardType.xs ? 'user-card-xs' : ''}`}>
+                <div className={`text-content  ${props.size === UserCardType.lg ? 'mt-2' : 'ml-3 my-auto'} h-100
+                                               ${props.size === UserCardType.xs ? 'user-card-xs' : ''}`}>
 
-                    <div className={`${props.size === UserCardType.xs || props.size === UserCardType.lg ? '' : 'd-flex flex-column'} ${props.size === UserCardType.lg ? 'justify-content-center' : ''} ${props.full ? '' : 'h-100'}`}>
-                        <span className={`name  ${props.size === UserCardType.xs ? '' : 'ellipsis'} ${props.full ? 'full' : 'my-auto'}`}>{name}</span>
+                    <div className={`${props.size === UserCardType.xs || props.size === UserCardType.lg ? '' : 'd-flex flex-column'}
+                        ${props.size === UserCardType.lg ? 'justify-content-center' : ''}
+                        ${props.full ? '' : 'h-100'}`}>
+
+                        <span className={`name  ${props.size === UserCardType.xs ? '' : 'ellipsis'}
+                            ${props.full ? 'full' : 'my-auto'}`}>{name}
+                        </span>
                         {props.full &&
                             <span className={`code ${props.size === UserCardType.xs ? 'ml-1' : ''}`}>{code}</span>
                         }
                     </div>
-                    <span className={`d-block game-account ellipsis ${props.size === UserCardType.lg ? 'text-align-center' : ''} ${props.size === UserCardType.xs ? '' : 'mt-2'} `}>{props.player.account}</span>
+                    <span className={`d-block game-account ellipsis ${props.size === UserCardType.lg ? 'text-align-center' : ''}
+                                    ${props.size === UserCardType.xs ? '' : 'mt-2'} `}>{props.player.account}</span>
                 </div>
             </div>
         );
