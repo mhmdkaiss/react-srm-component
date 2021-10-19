@@ -38,7 +38,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
         }
     });
 
-    if (props.size === 'xs') {
+    if (props.size === CardType.xs) {
         return (
             <div className={` mr-4 d-flex team-card overflow-hidden position-relative team-card-xs ${props.full ? 'full p-2' : ''}`}
                 onMouseEnter={() => handleHoverHook(props.team.slug)}
@@ -84,7 +84,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
     else {
         return (
 
-            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.size === 'small' ? 'team-card-small' : ''} ${props.size === 'lg' ? 'team-card-lg' : ''} ${props.full ? 'full p-2' : ''}`}
+            <div className={` mr-4 d-flex team-card overflow-hidden position-relative ${props.size === CardType.small ? 'team-card-small' : ''} ${props.size === CardType.lg ? 'team-card-lg' : ''} ${props.full ? 'full p-2' : ''}`}
                 onMouseEnter={() => handleHoverHook(props.team.slug)}
                 onMouseLeave={() => handleHoverHook(undefined)}>
                 <div
