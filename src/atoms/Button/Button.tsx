@@ -4,18 +4,30 @@ import { Icon, IconType } from "../Icon/Icon";
 import "./Button.scss";
 
 export enum ButtonTheme {
-  PRIMARY = "primary",
-  TRAINING = "training",
+  CLASSIC = "classic",
   TOURNAMENT = "tournament",
+  TRAINING = "training",
+  TRACKING = "tracking",
   PREMIUM = "premium",
-  OUTLINED = "outlined",
   RED = "red",
-  OUTLINED_RED = "outlined-red",
+}
+
+export enum ButtonType {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+}
+
+export enum ButtonSize {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  BIG = 'big'
 }
 
 export interface ButtonProps {
   label: string | ReactElement;
-  theme: ButtonTheme;
+  theme?: ButtonTheme;
+  type?: ButtonType;
+  size?: ButtonSize;
   disabled?: boolean;
   setClick?: (event: MouseEvent) => void;
   styleClass?: string;
@@ -24,7 +36,9 @@ export interface ButtonProps {
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
   label,
-  theme,
+  theme = ButtonTheme.CLASSIC,
+  type = ButtonType.PRIMARY,
+  size = ButtonSize.MEDIUM,
   disabled = false,
   setClick,
   styleClass,
@@ -38,7 +52,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 
   return (
     <button
-      className={`button d-flex align-items-center ${theme} ${styleClass}`}
+      className={`button d-flex align-items-center ${theme} ${type} ${size} ${styleClass}`}
       disabled={disabled}
       onClick={onClick}
     >

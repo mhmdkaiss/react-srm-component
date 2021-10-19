@@ -8,6 +8,23 @@ import { DatePicker } from "./components/DatePicker/DatePicker";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { UserTeamCard } from "./components/UserTeamCard/UserTeamCard";
 import { Icon, IconType } from "./atoms/Icon/Icon";
-import { Button, ButtonTheme } from "./atoms/Button/Button";
+import { Button, ButtonTheme, ButtonType, ButtonSize } from "./atoms/Button/Button";
 
-export { DatePicker, Dialog, SearchBar, Tabs, TeamCard, ThemePlatform, UserCard, UserTeamCard, CardType, Icon, IconType, Chat, Button, ButtonTheme };
+export {
+    DatePicker,
+    Dialog,
+    SearchBar,
+    Tabs,
+    TeamCard,
+    ThemePlatform,
+    UserCard,
+    UserTeamCard,
+    CardType,
+    Icon,
+    IconType,
+    Chat,
+    Button,
+    ButtonTheme,
+    ButtonType,
+    ButtonSize,
+};

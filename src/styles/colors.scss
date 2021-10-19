@@ -117,6 +117,12 @@ $secondary-color-dim: $grey3;
 /* ASSIGNED */
 $premium-gradient: $orange-outrageous-yellow-school-gradient;
 $premium-hover-gradient: $yellow-school-orange-outrageous-gradient;
+$premium-horizontal-gradient: linear-gradient(270deg, #fe5c2b 0%, #ffde00 100%);
+$premium-hover-horizontal-gradient: linear-gradient(
+  270deg,
+  #ffde00 13.54%,
+  #fe5c2b 100%
+);
 
 /* PREMIUM PALETTE */
 $premium-primary-color: $yellow;

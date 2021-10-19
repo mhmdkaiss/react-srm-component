@@ -1,4 +1,24 @@
 @import '../../styles/colors';
+@import '../../styles/variables';
+
+@mixin text-color($color) {
+  color: $color;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  .mask-icon {
+    background: unset;
+    background-color: $color;
+  }
+}
+
+@mixin text-color-gradient($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  .mask-icon {
+    background: $gradient;
+  }
+}
 
 .button {
   display: inline-block;
@@ -7,181 +27,343 @@
   vertical-align: baseline;
   position: relative;
   text-align: center;
-  padding: 0px 25px;
-  height: 35px;
   border: none;
   margin: 0;
-  min-width: 64px;
-  line-height: 36px;
   cursor: pointer;
-  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.button.primary {
-  background: $primary-color;
+  min-width: 150px;
   border-radius: 4px;
-  color: $black;
+  border: solid 1px transparent;
+
   .mask-icon {
-    background-color: $black;
+    margin-right: 12px;
   }
 
-  &:hover {
-    background: transparent;
-    border: 1px solid $primary-color;
-    color: $white;
-    .mask-icon {
-      background-color: $white;
+  /* Size */
+  &.big {
+    font-size: $big-text;
+    line-height: $big-text;
+    height: 48px;
+    padding: 13px 25px;
+  }
+
+  &.medium {
+    font-size: $medium-text;
+    line-height: $medium-text;
+    height: 40px;
+    padding: 12px 25px;
+  }
+
+  &.small {
+    font-size: $small-text;
+    line-height: $small-text;
+    height: 32px;
+    padding: 9px 25px;
+  }
+
+  /* Colors */
+  &.classic {
+    &.primary {
+      background: $primary-color;
+      @include text-color($black);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $primary-color;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $primary-color;
+        @include text-color($primary-color);
+      }
+
+      &:disabled {
+        background: $grey4;
+        @include text-color($grey5);
+        border: none;
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $grey5;
+      @include text-color($primary-color);
+
+      &:hover {
+        border: 1px solid $primary-color;
+        @include text-color($white);
+      }
+
+      &:active {
+        border: 1px solid $primary-color;
+        @include text-color($primary-color);
+      }
+
+      &:disabled {
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
     }
   }
 
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
+  &.tournament {
+    &.primary {
+      background: $tournament-gradient;
+      @include text-color($black);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $tournament;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $tournament;
+        @include text-color-gradient($tournament-gradient);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: none;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $light-grey;
+      @include text-color-gradient($tournament-gradient);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $tournament;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $tournament;
+        @include text-color-gradient($tournament-gradient);
+      }
+
+      &:disabled {
+        background: transparent;
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+  }
+
+  &.training {
+    &.primary {
+      background: $training-gradient;
+      @include text-color($black);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $training;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $training;
+        @include text-color-gradient($training-gradient);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: none;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $light-grey;
+      @include text-color-gradient($training-gradient);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $training;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $training;
+        @include text-color-gradient($training-gradient);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+  }
+
+  &.tracking {
+    &.primary {
+      background: $tracking-gradient;
+      @include text-color($black);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $tracking;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $tracking;
+        @include text-color-gradient($tracking-gradient);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: none;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $light-grey;
+      @include text-color-gradient($tracking-gradient);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $tracking;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $tracking;
+        @include text-color-gradient($tracking-gradient);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+  }
+
+  &.premium {
+    &.primary {
+      background: $premium-horizontal-gradient;
+      border: unset;
+      @include text-color($black);
+
+      &:hover {
+        background: $premium-hover-horizontal-gradient;
+        @include text-color($black);
+      }
+
+      &:active {
+        background: $yellow-school;
+        @include text-color($black);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: none;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $premium-secondary-color;
+      @include text-color-gradient($premium-horizontal-gradient);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $premium-secondary-color;
+        @include text-color-gradient($premium-hover-horizontal-gradient);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $yellow-school;
+        @include text-color($yellow-school);
+      }
+
+      &:disabled {
+        background: $grey4;
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
+    }
+  }
+
+  &.red {
+    &.primary {
+      background: $red;
+      @include text-color($black);
+
+      &:hover {
+        background: transparent;
+        border: 1px solid $red;
+        @include text-color($white);
+      }
+
+      &:active {
+        background: transparent;
+        border: 1px solid $red;
+        @include text-color($red);
+      }
+
+      &:disabled {
+        background: $grey4;
+        @include text-color($grey5);
+        border: none;
+        cursor: unset;
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      border: 1px solid $red;
+      @include text-color($red);
+
+      &:hover {
+        border: 1px solid $red;
+        @include text-color($white);
+      }
+
+      &:active {
+        border: 1px solid $red;
+        @include text-color($red);
+      }
+
+      &:disabled {
+        border: 1px solid $grey5;
+        @include text-color($grey5);
+        cursor: unset;
+      }
     }
   }
 }
 
-.button.red {
-  background: $red;
-  border-radius: 4px;
-  color: $white;
-  .mask-icon {
-    background-color: $white;
-  }
-
-  &:hover {
-    background: transparent;
-    border: 1px solid $red;
-    color: $white;
-    .mask-icon {
-      background-color: $white;
-    }
-  }
-
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
-    }
-  }
-}
-
-.button.outlined {
-  background: transparent;
-  border: 1px solid $primary-color;
-  border-radius: 4px;
-  color: $white;
-  .mask-icon {
-    background-color: $white;
-  }
-
-  &:hover {
-    background: $primary-color;
-    color: $black;
-    .mask-icon {
-      background-color: $black;
-    }
-  }
-
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
-    }
-  }
-}
-
-.button.outlined-red {
-  background: transparent;
-  border: 1px solid $red;
-  border-radius: 4px;
-  color: $red;
-  .mask-icon {
-    background-color: $red;
-  }
-
-  &:hover {
-    background: $red;
-    color: $white;
-    .mask-icon {
-      background-color: $white;
-    }
-  }
-
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
-    }
-  }
-}
-
-.button.training {
-  background: $training-gradient;
-  color: $black;
-  border-radius: 4px;
-  .mask-icon {
-    background-color: $black;
-  }
-
-  &:hover {
-    background: transparent;
-    border: 1px solid $training;
-    color: $white;
-    .mask-icon {
-      background-color: $white;
-    }
-  }
-
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
-    }
-  }
-}
-
-.button.tournament {
-  background: $tournament-gradient;
-  color: $white;
-  border-radius: 4px;
-  .mask-icon {
-    background-color: $white;
-  }
-
-  &:hover {
-    background: transparent;
-    border: 1px solid $tournament;
-    color: $white;
-    .mask-icon {
-      background-color: $white;
-    }
-  }
-
-  &:disabled {
-    background: $grey1;
-    color: $grey2;
-    border: none;
-    .mask-icon {
-      background-color: $grey2;
-    }
-  }
-}
-
-.button.premium {
+.button.premiums {
   background: $premium-gradient;
   color: $black;
   border-radius: 4px;
