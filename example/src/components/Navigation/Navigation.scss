@@ -1,0 +1,15 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+
+.navigation-component {
+  width: 200px;
+  height: calc(100vh - 56px);
+
+  color: $grey5;
+
+  .mask-icon {
+    &.icon-minimize,
+    &.icon-maximize {
+      background-color: $grey5;
+    }
+  }
+}

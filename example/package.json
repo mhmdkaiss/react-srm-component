@@ -8,35 +8,71 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "serve": "serve -c build",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "lint": "eslint src/**/*.ts*"
   },
   "dependencies": {
+    "@cactus/srm-component": "link:..",
     "@formatjs/intl-locale": "^2.4.16",
     "@formatjs/intl-relativetimeformat": "^8.0.6",
-    "@nicecactus/srm": "link:..",
+    "@nicecactus/srm": "0.1.x",
+    "bootstrap": "link:../node_modules/bootstrap",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-intl": "link:../node_modules/react-intl"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
-    "@testing-library/react": "link:../node_modules/@testing-library/react",
-    "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
     "@types/jest": "link:../node_modules/@types/jest",
+    "@types/mousetrap": "^1.6.3",
     "@types/node": "link:../node_modules/@types/node",
     "@types/react": "link:../node_modules/@types/react",
     "@types/react-dom": "link:../node_modules/@types/react-dom",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "babel-jest": "^24.9.0",
+    "css-loader": "^5.0.2",
     "customize-cra": "^1.0.0",
+    "eslint": "^6.6.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-react": "^7.23.2",
+    "husky": "^4.2.5",
+    "jest-environment-jsdom": "^26.6.2",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "jest-sonar-reporter": "^2.0.0",
+    "lint-staged": "^10.2.11",
+    "node-sass": "^4.14.1",
+    "npm-watch": "^0.9.0",
     "prefix-css-loader": "^1.0.0",
     "react-app-rewired": "^2.1.8",
-    "react-scripts": "link:../node_modules/react-scripts",
+    "react-classname-prefix-loader-with-lookup": "^1.0.5",
+    "react-scripts": "3.4.0",
     "string-replace-loader": "^3.0.1",
     "typescript": "link:../node_modules/typescript",
-    "typescript-react-intl": "link:../node_modules/typescript-react-intl"
+    "typescript-react-intl": "link:../node_modules/typescript-react-intl",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-manifest-plugin": "^3.0.0",
+    "sass-loader": "8.0.2"
+  },
+  "watch": {
+    "build:dev-nc": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,jsx,ts,tsx,json,scss"
+    }
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": [
+        "off"
+      ]
+    }
   },
   "browserslist": {
     "production": [

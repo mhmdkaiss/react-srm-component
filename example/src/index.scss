@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/bootstrap-reboot';
+@import 'bootstrap/dist/css/bootstrap';
+@import '@cactus/srm-component/dist/src/styles/nicecactus';
+@import '@cactus/srm-component/dist/src/styles/colors';
+
+body {
+  min-height: 100%;
+  background-color: $grey3;
+}

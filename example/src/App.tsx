@@ -1,24 +1,58 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import ContextStore from './store'
-import logo from './logo.png';
-import './App.css'
+import AppBar from '@material-ui/core/AppBar';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import './App.scss'
+import { Navigation } from './components/Navigation/Navigation';
+import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
+
+const routes = [
+  {
+    path: "/atoms/button",
+    component: ButtonsDemoPage,
+  }
+];
 
 const App = () => {
-  const { getUsername } = ContextStore.useStoreState(s => s);
-
   return (
-    <span className="app">
-      <img alt="logo" src={logo} />
-      <h1 className="title">
-        <FormattedMessage id="app.title" description="Title text" defaultMessage="SRM Example" />
-        <span role="img" aria-label="trophee">🏆</span>
-      </h1>
-      <h2 className="greeting">
-        <FormattedMessage id="app.greeting" description="Greeting text" defaultMessage="Hi {name}!" values={{ name: getUsername() }} />
-      </h2>
-    </span>
+
+    <div className='app'>
+      <Router basename={"/"}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" className='title'>
+              NC Shared library
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className="content d-flex flex-row w-100 h-100">
+          <div className='navigation'>
+            <Navigation></Navigation>
+          </div>
+          <div className='content p-5'>
+            <Switch>
+              {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route} />
+              ))}
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    </div>
   )
+}
+
+function RouteWithSubRoutes(route: any) {
+  return (
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
 }
 
 export default App

@@ -1,0 +1,204 @@
+@import '../../styles/colors';
+
+.button {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  position: relative;
+  text-align: center;
+  padding: 0px 25px;
+  height: 35px;
+  border: none;
+  margin: 0;
+  min-width: 64px;
+  line-height: 36px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button.primary {
+  background: $primary-color;
+  border-radius: 4px;
+  color: $black;
+  .mask-icon {
+    background-color: $black;
+  }
+
+  &:hover {
+    background: transparent;
+    border: 1px solid $primary-color;
+    color: $white;
+    .mask-icon {
+      background-color: $white;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.red {
+  background: $red;
+  border-radius: 4px;
+  color: $white;
+  .mask-icon {
+    background-color: $white;
+  }
+
+  &:hover {
+    background: transparent;
+    border: 1px solid $red;
+    color: $white;
+    .mask-icon {
+      background-color: $white;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.outlined {
+  background: transparent;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  color: $white;
+  .mask-icon {
+    background-color: $white;
+  }
+
+  &:hover {
+    background: $primary-color;
+    color: $black;
+    .mask-icon {
+      background-color: $black;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.outlined-red {
+  background: transparent;
+  border: 1px solid $red;
+  border-radius: 4px;
+  color: $red;
+  .mask-icon {
+    background-color: $red;
+  }
+
+  &:hover {
+    background: $red;
+    color: $white;
+    .mask-icon {
+      background-color: $white;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.training {
+  background: $training-gradient;
+  color: $black;
+  border-radius: 4px;
+  .mask-icon {
+    background-color: $black;
+  }
+
+  &:hover {
+    background: transparent;
+    border: 1px solid $training;
+    color: $white;
+    .mask-icon {
+      background-color: $white;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.tournament {
+  background: $tournament-gradient;
+  color: $white;
+  border-radius: 4px;
+  .mask-icon {
+    background-color: $white;
+  }
+
+  &:hover {
+    background: transparent;
+    border: 1px solid $tournament;
+    color: $white;
+    .mask-icon {
+      background-color: $white;
+    }
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
+
+.button.premium {
+  background: $premium-gradient;
+  color: $black;
+  border-radius: 4px;
+  .mask-icon {
+    background-color: $black;
+  }
+
+  &:hover {
+    background: $premium-hover-gradient;
+  }
+
+  &:disabled {
+    background: $grey1;
+    color: $grey2;
+    border: none;
+    .mask-icon {
+      background-color: $grey2;
+    }
+  }
+}
