@@ -16,6 +16,7 @@ export enum IconType {
     Minimize = 'minimize',
     Move = 'move',
     People = 'people',
+    Plus = 'plus',
     Prize = 'prize',
     Search = 'search',
     Send = 'send',
@@ -45,6 +46,12 @@ export const Icon: React.FunctionComponent<IconProps> = ({
             style={{
                 maskImage: `url("${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg")`,
                 WebkitMaskImage: `url("${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg")`,
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center',
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
                 width: width,
                 height: height,
             }}
