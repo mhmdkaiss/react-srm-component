@@ -65,7 +65,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                 <div className="background-image w-100 h-100 position-absolute">
                     <img
                         className="h-100 w-100"
-                        src={`${String(process.env.REACT_APP_S3_URL)}/user/${props.playerId}/medias/BannerImage`}
+                        src={`${(process.env.REACT_APP_S3_URL)}/user/${props.playerId}/medias/BannerImage`}
                         onError={(e) =>
                             (e.currentTarget.src = backgroundFallback)
                         }
