@@ -27,7 +27,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
             props.hoverHook(hovered)
         }
     }
-    if (props.size === 'small') {
+    if (props.size === UserCardType.small) {
         return (
             <div className={`d-flex align-items-center user-card overflow-hidden position-relative ${props.full ? 'px-2' : 'p-2'} user-card-small`}
                 onMouseEnter={() => handleHoverHook(props.playerId)}
@@ -35,7 +35,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                 <div className="background-image w-100 h-100 position-absolute">
                     <img
                         className="h-100 w-100"
-                        src={`${String(process.env.REACT_APP_S3_URL)}/user/${props.playerId}/medias/BannerImage`}
+                        src={`${process.env.REACT_APP_S3_URL}/user/${props.playerId}/medias/BannerImage`}
                         onError={(e) =>
                             (e.currentTarget.src = backgroundFallback)
                         }
@@ -59,7 +59,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
     }
     else {
         return (
-            <div className={`d-flex user-card overflow-hidden position-relative ${props.size === 'xs' ? 'user-card-xs' : ''} ${props.size === 'lg' ? 'user-card-lg' : ''} ${props.full ? 'full px-2 py-3' : 'p-2'}`}
+            <div className={`d-flex user-card overflow-hidden position-relative ${props.size === UserCardType.xs ? 'user-card-xs' : ''} ${props.size === UserCardType.lg ? 'user-card-lg' : ''} ${props.full ? 'full px-2 py-3' : 'p-2'}`}
                 onMouseEnter={() => handleHoverHook(props.playerId)}
                 onMouseLeave={() => handleHoverHook(undefined)}>
                 <div className="background-image w-100 h-100 position-absolute">
@@ -72,18 +72,18 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                         alt=""
                     />
                 </div>
-                <div className={`background-gradient w-100 h-100 position-absolute ${props.size === 'lg' ? 'justify-content-center' : ''}`} ></div>
+                <div className={`background-gradient w-100 h-100 position-absolute ${props.size === UserCardType.lg ? 'justify-content-center' : ''}`} ></div>
 
-                <ProfilePicture size={props.full && props.size === 'lg' ? 80 : 40} playerId={props.playerId} player={props.player} />
-                <div className={`text-content  ${props.size === 'lg' ? 'mt-2' : 'ml-3 my-auto'} h-100 ${props.size === 'xs' ? 'user-card-xs' : ''}`}>
+                <ProfilePicture size={props.full && props.size === UserCardType.lg ? 80 : 40} playerId={props.playerId} player={props.player} />
+                <div className={`text-content  ${props.size === UserCardType.lg ? 'mt-2' : 'ml-3 my-auto'} h-100 ${props.size === UserCardType.xs ? 'user-card-xs' : ''}`}>
 
-                    <div className={`${props.size === 'xs' || props.size === 'lg' ? '' : 'd-flex flex-column'} ${props.size === 'lg' ? 'justify-content-center' : ''} ${props.full ? '' : 'h-100'}`}>
-                        <span className={`name  ${props.size === 'xs' ? '' : 'ellipsis'} ${props.full ? 'full' : 'my-auto'}`}>{name}</span>
+                    <div className={`${props.size === UserCardType.xs || props.size === UserCardType.lg ? '' : 'd-flex flex-column'} ${props.size === UserCardType.lg ? 'justify-content-center' : ''} ${props.full ? '' : 'h-100'}`}>
+                        <span className={`name  ${props.size === UserCardType.xs ? '' : 'ellipsis'} ${props.full ? 'full' : 'my-auto'}`}>{name}</span>
                         {props.full &&
-                            <span className={`code ${props.size === 'xs' ? 'ml-1' : ''}`}>{code}</span>
+                            <span className={`code ${props.size === UserCardType.xs ? 'ml-1' : ''}`}>{code}</span>
                         }
                     </div>
-                    <span className={`d-block game-account ellipsis ${props.size === 'lg' ? 'text-align-center' : ''} ${props.size === 'xs' ? '' : 'mt-2'} `}>{props.player.account}</span>
+                    <span className={`d-block game-account ellipsis ${props.size === UserCardType.lg ? 'text-align-center' : ''} ${props.size === UserCardType.xs ? '' : 'mt-2'} `}>{props.player.account}</span>
                 </div>
             </div>
         );
