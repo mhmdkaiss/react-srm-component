@@ -52,11 +52,11 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 
   return (
     <button
-      className={`button d-flex align-items-center ${theme} ${type} ${size} ${styleClass}`}
+      className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${styleClass}`}
       disabled={disabled}
       onClick={onClick}
     >
-      {icon && <Icon styleName="mr-1" icon={icon.type} width={icon.width} height={icon.height} />}
+      {icon && <Icon styleName="mr-2" icon={icon.type} width={icon.width} height={icon.height} />}
       {label}
     </button>
   );
