@@ -8,6 +8,7 @@ export {
     UserCard,
     UserTeamCard,
     CardType,
+    UserCardType,
     Icon,
     IconType,
     Chat,

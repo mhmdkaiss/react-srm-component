@@ -15,6 +15,13 @@
         width: 142px;
     }
 
+    &.team-card-small {
+        min-width: 209px;
+        width: 209px;
+        min-height: 49px;
+        height: 49px;
+    }
+
     &.team-card-lg {
         min-width: 380px;
         width: 380px;
