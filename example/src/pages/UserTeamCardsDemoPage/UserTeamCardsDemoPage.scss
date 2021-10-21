@@ -1,0 +1,11 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+
+.user-team-cards-demo-page {
+    color: $grey5;
+    font-size: $big-text;
+
+    .component-title {
+        font-size: $bigger-text;
+    }
+}

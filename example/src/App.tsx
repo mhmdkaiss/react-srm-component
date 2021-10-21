@@ -1,37 +1,41 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 import './App.scss'
-import { Navigation } from './components/Navigation/Navigation';
-import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
-import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
+import { Navigation } from './components/Navigation/Navigation'
+import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
+import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 
 const routes = [
   {
-    path: "/atoms/button",
-    component: ButtonsDemoPage,
+    path: '/atoms/button',
+    component: ButtonsDemoPage
   },
   {
-    path: "/component/inputs",
-    component: InputDemoPage,
+    path: '/component/inputs',
+    component: InputDemoPage
+  },
+  {
+    path: '/component/user-team-cards',
+    component: UserTeamCardsDemoPage
   }
-];
+]
 
 const App = () => {
   return (
-
     <div className='app'>
-      <Router basename={"/"}>
-        <AppBar position="static">
+      <Router basename={'/'}>
+        <AppBar position='static'>
           <Toolbar>
-            <Typography variant="h6" className='title'>
+            <Typography variant='h6' className='title'>
               NC Shared library
             </Typography>
           </Toolbar>
         </AppBar>
-        <div className="content d-flex flex-row w-100 h-100">
+        <div className='content d-flex flex-row w-100 h-100'>
           <div className='navigation'>
             <Navigation></Navigation>
           </div>
@@ -57,7 +61,7 @@ function RouteWithSubRoutes(route: any) {
         <route.component {...props} routes={route.routes} />
       )}
     />
-  );
+  )
 }
 
 export default App

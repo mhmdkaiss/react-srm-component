@@ -17,12 +17,14 @@
     "@formatjs/intl-relativetimeformat": "^8.0.6",
     "@nicecactus/srm": "0.1.x",
     "bootstrap": "link:../node_modules/bootstrap",
+    "faker": "^5.5.3",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-intl": "link:../node_modules/react-intl"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@types/faker": "^5.5.9",
     "@types/jest": "link:../node_modules/@types/jest",
     "@types/mousetrap": "^1.6.3",
     "@types/node": "link:../node_modules/@types/node",
@@ -49,13 +51,13 @@
     "react-app-rewired": "^2.1.8",
     "react-classname-prefix-loader-with-lookup": "^1.0.5",
     "react-scripts": "3.4.0",
+    "sass-loader": "8.0.2",
     "string-replace-loader": "^3.0.1",
     "typescript": "link:../node_modules/typescript",
     "typescript-react-intl": "link:../node_modules/typescript-react-intl",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-cli": "^4.5.0",
-    "webpack-manifest-plugin": "^3.0.0",
-    "sass-loader": "8.0.2"
+    "webpack-manifest-plugin": "^3.0.0"
   },
   "watch": {
     "build:dev-nc": {

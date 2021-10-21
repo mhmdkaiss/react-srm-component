@@ -4,6 +4,9 @@
 @import '@cactus/srm-component/dist/src/styles/colors';
 
 body {
-  min-height: 100%;
-  background-color: $grey3;
+    min-height: 100%;
+    background-color: $grey3;
+    font-family: 'mollenregular', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
