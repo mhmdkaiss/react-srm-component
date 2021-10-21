@@ -9,4 +9,28 @@
 @import '../components/UserTeamCard/UserTeamCard.scss';
 @import '../components/Chat/Chat.scss';
 @import '../components/Chat/Messages.scss';
+@import '../components/NCSwitch/NCSwitch.scss';
+@import '../components/NCChip/NCChip.scss';
+
+// Atoms
 @import '../atoms/Button/Button.scss';
+
+
+// CSS
+.nicecactus-input {
+    label {
+        color: $grey5;
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    input {
+        background: $grey2;
+        color: $grey6;
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-top: 2px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

@@ -9,6 +9,9 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 import { UserTeamCard } from "./components/UserTeamCard/UserTeamCard";
 import { Icon, IconType } from "./atoms/Icon/Icon";
 import { Button, ButtonTheme, ButtonType, ButtonSize } from "./atoms/Button/Button";
+import { NCInput } from "./components/NCInput/NCInput";
+import { NCSwitch } from "./components/NCSwitch/NCSwitch";
+import { NCChip } from "./components/NCChip/NCChip";
 
 export {
     DatePicker,
@@ -28,4 +31,7 @@ export {
     ButtonTheme,
     ButtonType,
     ButtonSize,
+    NCInput,
+    NCSwitch,
+    NCChip,
 };

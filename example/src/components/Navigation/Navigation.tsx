@@ -35,6 +35,9 @@ export const Navigation: React.FunctionComponent = () => {
             </ListItem>
             <Collapse in={componentsOpen} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
+                    <ListItem button component={Link} to='/component/inputs'>
+                        <ListItemText primary="Inputs" />
+                    </ListItem>
                 </List>
             </Collapse>
         </List>

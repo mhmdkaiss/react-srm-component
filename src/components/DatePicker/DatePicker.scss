@@ -2,12 +2,6 @@
 
 .datepicker-container {
     .datepicker-input {
-        input {
-            background: $grey2;
-            color: $grey6;
-            padding-left: 8px;
-        }
-
         input::-webkit-calendar-picker-indicator{
             color: $grey6;
             z-index: 2;

@@ -6,11 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import './App.scss'
 import { Navigation } from './components/Navigation/Navigation';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
+import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
 
 const routes = [
   {
     path: "/atoms/button",
     component: ButtonsDemoPage,
+  },
+  {
+    path: "/component/inputs",
+    component: InputDemoPage,
   }
 ];
 

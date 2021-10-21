@@ -15,5 +15,8 @@ export {
     Button,
     ButtonTheme,
     ButtonType,
-    ButtonSize
+    ButtonSize,
+    NCInput,
+    NCSwitch,
+    NCChip,
 } from './src';

@@ -11,14 +11,16 @@ export interface DatePickerProps {
 }
 
 export const DatePicker: React.FunctionComponent<DatePickerProps> = ({initialDate, label, dateChanged}: DatePickerProps) => {
+    const defaultVal = initialDate ?
+        new Date(initialDate || '').getTime() ? new Date(initialDate).toISOString().slice(0, 16) : initialDate : undefined;
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
                 <div className="datepicker-container d-flex w-100 position-relative">
                     <TextField
                         type="datetime-local"
-                        className="w-100 datepicker-input"
-                        defaultValue={initialDate}
+                        className="w-100 datepicker-input nicecactus-input"
+                        defaultValue={defaultVal}
                         label={label}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => { dateChanged(event.target.value) }}
                         InputLabelProps={{ shrink: true }}
