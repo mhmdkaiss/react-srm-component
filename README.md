@@ -1,19 +1,30 @@
+## How to develop new component in this project ##
+
+1. Clone project
+2. In project directory run 
+```
+yarn
+yarn build:watch
+```
+3. In new terminal go to example folder and run
+```
+yarn
+yarn start
+```
+4. If it doesn't exist inside example folder add new demo page for your component
+
 ## How to use local version of this project in another project ##
 
 1. Clone project
 2. In project directory run 
 ```
-yarn build:all
+yarn build:watch
 yarn link
 ```
 3. Go to another project and run
 ```
 yarn link "@cactus/srm-component"
 yarn start
-```
-4. After making changes in shared project run
-```
-yarn build:only
 ```
 
 ### Potential issues ###
