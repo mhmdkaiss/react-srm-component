@@ -12,6 +12,7 @@ import { Button, ButtonTheme, ButtonType, ButtonSize } from "./atoms/Button/Butt
 import { NCInput } from "./components/NCInput/NCInput";
 import { NCSwitch } from "./components/NCSwitch/NCSwitch";
 import { NCChip } from "./components/NCChip/NCChip";
+import { NCMediaUpload } from "./components/NCMediaUpload/NCMediaUpload";
 
 export {
     DatePicker,
@@ -34,4 +35,5 @@ export {
     NCInput,
     NCSwitch,
     NCChip,
+    NCMediaUpload,
 };

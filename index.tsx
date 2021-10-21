@@ -19,4 +19,5 @@ export {
     NCInput,
     NCSwitch,
     NCChip,
+  NCMediaUpload,
 } from './src';

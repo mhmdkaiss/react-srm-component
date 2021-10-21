@@ -8,6 +8,7 @@ export enum IconType {
     Copy = 'copy',
     Crown = 'crown',
     Comments = 'comments',
+    Cloud = 'cloud',
     Error = 'error',
     Eye = 'eye',
     EyeCrossed = 'eyeCrossed',
