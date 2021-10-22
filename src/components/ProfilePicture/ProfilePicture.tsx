@@ -1,6 +1,6 @@
-import React, { CSSProperties } from "react";
-import { Player } from "../../models/Player";
-import "./ProfilePicture.scss";
+import React, { CSSProperties } from 'react';
+import { Player } from '../../models/Player';
+import './ProfilePicture.scss';
 
 export interface ProfilePictureProps {
     playerId: string;
@@ -8,8 +8,11 @@ export interface ProfilePictureProps {
     size?: number;
 }
 
-export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (props) => {
-    const defaultProfileImage = process.env.REACT_APP_S3_URL + "/media/default/default-user-avatar.svg";
+export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (
+    props
+) => {
+    const defaultProfileImage =
+        process.env.REACT_APP_S3_URL + '/media/default/default-user-avatar.svg';
     let style: CSSProperties | undefined;
 
     if (props.size) {
@@ -18,24 +21,24 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (pro
             minHeight: size,
             minWidth: size,
             maxHeight: size,
-            maxWidth: size
-        }
+            maxWidth: size,
+        };
     }
 
     return (
         <div
-            className={`user-avatar default ${props.player.premium ? "premium" : ""
-                }`}
+            className={`user-avatar default ${
+                props.player.premium ? 'premium' : ''
+            }`}
             style={style}
         >
             <img
-                src={`${process.env.REACT_APP_S3_PUBLIC_URL}/user/${props.playerId
-                    }/medias/ProfileImage?cache=${Date.now()}`}
+                src={`${process.env.REACT_APP_S3_URL}/user/${
+                    props.playerId
+                }/medias/ProfileImage?cache=${Date.now()}`}
                 defaultValue={defaultProfileImage}
-                onError={(e) =>
-                    (e.currentTarget.src = defaultProfileImage)
-                }
-                alt=""
+                onError={(e) => (e.currentTarget.src = defaultProfileImage)}
+                alt=''
             />
         </div>
     );
