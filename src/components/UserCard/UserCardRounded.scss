@@ -1,0 +1,80 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+
+.user-card-rounded-component {
+    border: 1px solid transparent;
+    background-color: $grey2;
+    box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+        inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+
+    &.selectable {
+        &:hover {
+            border: 1px solid $white;
+            overflow: hidden;
+            background-color: transparent;
+        }
+    }
+
+    &.selected {
+        background-color: $red;
+
+        &:hover {
+            background-color: $red;
+        }
+
+        .details {
+            color: $grey1;
+
+            .elo {
+                color: $grey4;
+            }
+        }
+
+        .icon-close {
+            background-color: $grey2;
+        }
+    }
+
+    .details {
+        font-size: $smallest-text;
+        color: $white;
+        line-height: 15px;
+        overflow: hidden;
+
+        .name-wrapper {
+            margin: 3px 0;
+
+            .name {
+                margin-top: 2px;
+            }
+
+            .icon-premium {
+                background: $premium-gradient;
+                min-width: 16px;
+                min-height: 16px;
+            }
+        }
+
+        .elo {
+            font-size: 11px;
+            line-height: 14px;
+            color: $grey5;
+        }
+    }
+
+    .icon-close {
+        background-color: $red;
+        min-width: 13px;
+        min-height: 13px;
+    }
+
+    &.size-xs {
+        width: 193px;
+        border-radius: 16px;
+    }
+
+    &.size-small {
+        width: 206px;
+        border-radius: 39px;
+    }
+}

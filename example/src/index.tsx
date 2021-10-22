@@ -2,8 +2,8 @@ import './index.scss';
 
 import React from 'react';
 import ContextStore from './store';
-import App from './App'
-import { SRM } from "@nicecactus/srm";
+import App from './App';
+import { SRM } from '@nicecactus/srm';
 
 import '@formatjs/intl-locale/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill';
@@ -13,30 +13,29 @@ const orgName = 'testing';
 const appName = 'test';
 
 const render = SRM(
-  `${orgName}.${appName}`,
-  () => {
-    const Content = () => {
+    `${orgName}.${appName}`,
+    () => {
+        const Content = () => {
+            return (
+                <>
+                    <App />
+                </>
+            );
+        };
 
-      return (
-        <>
-          <App />
-        </>
-      );
-    };
-
-    return (
-      <ContextStore.Provider>
-        <Content />
-      </ContextStore.Provider>
-    );
-  },
-  (lang: string) => require(`./_translations/${lang}.json`)
+        return (
+            <ContextStore.Provider>
+                <Content />
+            </ContextStore.Provider>
+        );
+    },
+    (lang: string) => require(`./_translations/${lang}.json`)
 );
 
 declare global {
-  export interface Window {
-    [orgName]: { [appName]: { render: typeof render } };
-  }
+    export interface Window {
+        [orgName]: { [appName]: { render: typeof render } };
+    }
 }
 
 export default render;

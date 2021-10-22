@@ -40,3 +40,5 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (pro
         </div>
     );
 };
+
+export const MemoizedProfilePicture = React.memo(ProfilePicture);

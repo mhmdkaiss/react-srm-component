@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export enum IconType {
     AddUser = 'addUser',
@@ -20,6 +20,7 @@ export enum IconType {
     Move = 'move',
     People = 'people',
     Plus = 'plus',
+    Premium = 'premium',
     Prize = 'prize',
     Search = 'search',
     Send = 'send',
@@ -41,7 +42,7 @@ export const Icon: React.FunctionComponent<IconProps> = ({
     width,
     height,
     icon,
-    styleName
+    styleName,
 }) => {
     return (
         <div

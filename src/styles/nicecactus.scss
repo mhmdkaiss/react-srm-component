@@ -5,6 +5,7 @@
 @import '../components/Tabs/Tabs.scss';
 @import '../components/TeamCard/TeamCard.scss';
 @import '../components/UserCard/UserCard.scss';
+@import '../components/UserCard/UserCardRounded.scss';
 @import '../components/ProfilePicture/ProfilePicture.scss';
 @import '../components/UserTeamCard/UserTeamCard.scss';
 @import '../components/Chat/Chat.scss';
@@ -15,7 +16,6 @@
 
 // Atoms
 @import '../atoms/Button/Button.scss';
-
 
 // CSS
 .nicecactus-input {
@@ -34,4 +34,14 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
+}
+
+/* utils */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-elipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

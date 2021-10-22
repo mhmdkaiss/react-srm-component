@@ -3,4 +3,5 @@ export interface Player {
     captain: boolean;
     premium: string;
     account: string;
+    elo: number;
 }
