@@ -49,10 +49,8 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = ({
                         />
                     )}
                 </div>
-                {size === UserCardRoundedSize.small && (
-                    <span className='elo'>
-                        ELO:{player.elo ? player.elo : ''}
-                    </span>
+                {size === UserCardRoundedSize.small && player.elo != null && (
+                    <span className='elo'>ELO:{player.elo}</span>
                 )}
             </div>
             {selectable && (

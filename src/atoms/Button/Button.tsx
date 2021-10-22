@@ -57,7 +57,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       onClick={onClick}
     >
       {icon && <Icon styleName="mr-2" icon={icon.type} width={icon.width} height={icon.height} />}
-      {label}
+      <span className='h-100'>{label}</span>
     </button>
   );
 };
