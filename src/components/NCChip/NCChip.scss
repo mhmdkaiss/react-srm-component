@@ -11,14 +11,23 @@
     -webkit-transition: .4s;
     transition: .4s;
     border: 1px solid transparent;
+    font-size: 14px;
 
-    &:after {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        margin: 8px;
-        background: $grey5;
+    &:not(.deletion) {
+        &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin: 8px;
+            background: $grey5;
+        }
+    }
+
+    .icon-close {
+        background: $white;
+        margin: 6px;
+        margin-left: 10px;
     }
 
     &.active {

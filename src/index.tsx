@@ -21,6 +21,9 @@ import {
 import { NCInput } from './components/NCInput/NCInput';
 import { NCSwitch } from './components/NCSwitch/NCSwitch';
 import { NCChip } from './components/NCChip/NCChip';
+import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
+import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
+import { NCCheckbox } from './components/NCCheckbox/NCCheckbox';
 import { NCMediaUpload } from './components/NCMediaUpload/NCMediaUpload';
 
 export {
@@ -45,4 +48,7 @@ export {
     NCSwitch,
     NCChip,
     NCMediaUpload,
+    NCPreviewSearch,
+    NCMultiSearch,
+    NCCheckbox,
 };

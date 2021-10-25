@@ -20,4 +20,7 @@ export {
     NCSwitch,
     NCChip,
     NCMediaUpload,
+    NCPreviewSearch,
+    NCMultiSearch,
+    NCCheckbox,
 } from './src';

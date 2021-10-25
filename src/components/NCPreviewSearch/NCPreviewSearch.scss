@@ -1,0 +1,21 @@
+@import "src/styles/colors";
+
+.nc-preview-search {
+    .preview-list {
+        z-index: 2;
+
+        .preview-item {
+            padding-left: 8px;
+            background: $grey2;
+            color: $white;
+
+            &:hover {
+                background: $grey3;
+            }
+
+            &:active {
+                color: $primary-color;
+            }
+        }
+    }
+}

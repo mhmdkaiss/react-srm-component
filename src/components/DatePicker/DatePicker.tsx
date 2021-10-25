@@ -6,7 +6,7 @@ import './DatePicker.scss';
 
 export interface DatePickerProps {
     label: string;
-    initialDate?: string;
+    initialDate?: string | number;
     dateChanged: (date?: string) => any;
 }
 

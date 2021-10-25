@@ -7,6 +7,7 @@ export enum IconType {
     Discord = 'discord',
     Close = 'close',
     Copy = 'copy',
+    Cross = 'cross',
     Crown = 'crown',
     Comments = 'comments',
     Cloud = 'cloud',

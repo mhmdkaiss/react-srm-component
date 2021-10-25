@@ -1,15 +1,16 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, useEffect } from 'react';
 import { Chip, MenuItem, MuiThemeProvider, Select, TextField } from '@material-ui/core';
 import { ThemePlatform } from '../../styles/Themes';
 import './SearchBar.scss';
 
 
-interface SearchBarProps {
+export interface SearchBarProps {
     searchResult?: { [key: string]: string };
     setSearchResult?: React.Dispatch<any>;
     searchFields: { [key: string]: SearchField };
     placeHolder?: string;
     hideStore?: boolean;
+    value?: string;
     actionHook?: (search?: { [key: string]: string }) => any;
     typingHook?: (text: string) => any;
     focusHook?: (isFocused: boolean) => any;
@@ -20,9 +21,15 @@ interface SearchField {
 }
 
 export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: SearchBarProps) => {
-    const [searchText, setSearchText] = useState<string>('');
+    const [searchText, setSearchText] = useState<string>(props.value || '');
     const [searchField, setSearchField] = useState<string>(Object.keys(props.searchFields)[0]);
     const [searchStore, setSearchStore] = useState<{ [key: string]: string }>(props.searchResult || {});
+
+    useEffect(() => {
+        if (props.value) {
+            setSearchText(props.value);
+        }
+    }, [props.value])
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'Enter') {
@@ -61,6 +68,23 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
+                { !props.hideStore && Object.keys(searchStore).length > 0 &&
+                    <div className="d-flex mt-2">
+                        {
+                            Object.keys(searchStore).map((key: string, index: number) => {
+                                return (
+                                    <Chip
+                                        label={`${key}: ${searchStore[key]}`}
+                                        key={index}
+                                        onDelete={() => removeItemFromStore(key)}
+                                        color="primary"
+                                        className="ml-2"
+                                    />
+                                );
+                            })
+                        }
+                    </div>
+                }
                 <div className="d-flex w-100 position-relative searchbar-container">
                     {
                         Object.keys(props.searchFields).length > 1 &&
@@ -80,7 +104,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                     }
                     <TextField
                         value={searchText}
-                        placeholder={props.placeHolder || ''}
+                        placeholder={props.placeHolder}
                         name="searchBar"
                         className="w-100 searchbar-input"
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +115,11 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                         }}
                         onKeyDown={handleKeyDown}
                         inputProps={{ autoComplete: 'off' }}
+                        onFocus={() => {
+                            if (props.focusHook) {
+                                props.focusHook(true);
+                            }
+                        }}
                         onBlur={() => {
                             if (props.focusHook) {
                                 props.focusHook(false);
@@ -105,21 +134,6 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                         }}
                         onClick={doSearch}
                     ></div>
-                </div>
-                <div className="d-flex mt-2">
-                    {
-                        !props.hideStore && Object.keys(searchStore).map((key: string, index: number) => {
-                            return (
-                                <Chip
-                                    label={`${key}: ${searchStore[key]}`}
-                                    key={index}
-                                    onDelete={() => removeItemFromStore(key)}
-                                    color="primary"
-                                    className="ml-2"
-                                />
-                            );
-                        })
-                    }
                 </div>
             </MuiThemeProvider>
         </React.Fragment>
