@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import './UserTeamCardsDemoPage.scss';
 import {
-    CardType,
     TeamCard,
     UserCard,
-    UserCardType,
     UserCardRounded,
     UserCardRoundedSize,
 } from '@cactus/srm-component';
@@ -15,6 +13,7 @@ import {
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
     const [userCardSelected, setUserCardSelected] = useState<boolean>(false);
+    const [teamCardSelected, setTeamCardSelected] = useState<boolean>(false);
 
     return (
         <div className='d-flex flex-column user-team-cards-demo-page'>
@@ -29,24 +28,16 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                         <div className='mr-3'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
-                                full={true}
-                                size={UserCardType.lg}
-                                player={PLAYER_MOCK.player}
-                            />
-                        </div>
-                        <div className='mx-3'>
-                            <UserCard
-                                playerId={PLAYER_MOCK.id}
-                                full={true}
-                                size={UserCardType.small}
+                                full={false}
+                                xs={false}
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
                         <div className='ml-3'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
-                                full={true}
-                                size={UserCardType.xs}
+                                full={false}
+                                xs={true}
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
@@ -58,24 +49,16 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                         <div className='mr-3'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
-                                full={false}
-                                size={UserCardType.lg}
-                                player={PLAYER_MOCK.player}
-                            />
-                        </div>
-                        <div className='mx-3'>
-                            <UserCard
-                                playerId={PLAYER_MOCK.id}
-                                full={false}
-                                size={UserCardType.small}
+                                full={true}
+                                xs={false}
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
                         <div className='ml-3'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
-                                full={false}
-                                size={UserCardType.xs}
+                                full={true}
+                                xs={true}
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
@@ -139,22 +122,25 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <TeamCard
-                                full={true}
-                                size={CardType.lg}
-                                team={TEAM_MOCK}
-                            />
-                        </div>
-                        <div className='mx-3'>
-                            <TeamCard
-                                full={true}
-                                size={CardType.small}
+                                full={false}
+                                xs={false}
                                 team={TEAM_MOCK}
                             />
                         </div>
                         <div className='ml-3'>
+                            <TeamCard full={false} xs={true} team={TEAM_MOCK} />
+                        </div>
+                        <div
+                            className='ml-3'
+                            onClick={() =>
+                                setTeamCardSelected(!teamCardSelected)
+                            }
+                        >
                             <TeamCard
-                                full={true}
-                                size={CardType.xs}
+                                full={false}
+                                xs={true}
+                                selectable={true}
+                                selected={teamCardSelected}
                                 team={TEAM_MOCK}
                             />
                         </div>
@@ -164,23 +150,22 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     <span>Full details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
-                            <TeamCard
-                                full={false}
-                                size={CardType.lg}
-                                team={TEAM_MOCK}
-                            />
-                        </div>
-                        <div className='mx-3'>
-                            <TeamCard
-                                full={false}
-                                size={CardType.small}
-                                team={TEAM_MOCK}
-                            />
+                            <TeamCard full={true} xs={false} team={TEAM_MOCK} />
                         </div>
                         <div className='ml-3'>
+                            <TeamCard full={true} xs={true} team={TEAM_MOCK} />
+                        </div>
+                        <div
+                            className='ml-3'
+                            onClick={() =>
+                                setTeamCardSelected(!teamCardSelected)
+                            }
+                        >
                             <TeamCard
-                                full={false}
-                                size={CardType.xs}
+                                full={true}
+                                xs={true}
+                                selectable={true}
+                                selected={teamCardSelected}
                                 team={TEAM_MOCK}
                             />
                         </div>

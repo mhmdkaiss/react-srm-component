@@ -8,8 +8,6 @@ export {
     UserCard,
     UserCardRounded,
     UserTeamCard,
-    CardType,
-    UserCardType,
     UserCardRoundedSize,
     Icon,
     IconType,
@@ -21,5 +19,5 @@ export {
     NCInput,
     NCSwitch,
     NCChip,
-  NCMediaUpload,
+    NCMediaUpload,
 } from './src';

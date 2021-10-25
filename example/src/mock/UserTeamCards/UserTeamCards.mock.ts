@@ -28,7 +28,10 @@ export const TEAM_MOCK = {
     p: true,
     players: {
         '5f1e9d975a8f255635322add': {
-            name: 'captain#4764',
+            name: `${faker.internet.userName()}#${faker.datatype.number({
+                min: 1000,
+                max: 9999,
+            })}`,
             captain: true,
             account: faker.internet.userName(),
             elo: 0,

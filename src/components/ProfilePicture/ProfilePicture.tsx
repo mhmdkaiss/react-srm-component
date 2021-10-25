@@ -27,12 +27,15 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (
 
     return (
         <div
-            className={`user-avatar default ${
+            className={`user-avatar position-relative default ${
                 props.player.premium ? 'premium' : ''
             }`}
             style={style}
         >
             <img
+                className={`position-absolute sm ${
+                    (props.size || 40) < 30 ? 'small-border' : 'big-border'
+                }`}
                 src={`${process.env.REACT_APP_S3_URL}/user/${
                     props.playerId
                 }/medias/ProfileImage?cache=${Date.now()}`}

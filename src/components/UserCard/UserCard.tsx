@@ -1,103 +1,110 @@
-import "./UserCard.scss";
+import './UserCard.scss';
 
-import React from "react";
-import { Player } from "../../models/Player";
-import { ProfilePicture } from "../ProfilePicture/ProfilePicture";
+import React from 'react';
+import { Player } from '../../models/Player';
+import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
+import { Icon, IconType } from '../..';
 
-export enum UserCardType {
-    xs = 'xs',
-    small = 'small',
-    lg = 'lg'
-}
 export interface UserCardProps {
     playerId: string;
     player: Player;
     full: boolean;
-    size: UserCardType;
+    xs: boolean;
     hoverHook?: (hovered?: string) => void;
 }
 
-export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCardProps) => {
-    const backgroundFallback = process.env.REACT_APP_S3_URL + "/media/default/default-user-banner.jpg";
-    const hashIndex = props.player.name.lastIndexOf('#');
-    const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
-    const name = hashIndex !== -1 ? props.player.name.slice(0, hashIndex) : props.player.name;
+export const UserCard: React.FunctionComponent<UserCardProps> = ({
+    playerId,
+    player,
+    full,
+    xs,
+    hoverHook,
+}) => {
+    const backgroundFallback =
+        process.env.REACT_APP_S3_URL + '/media/default/default-user-banner.jpg';
+    const hashIndex = player.name.lastIndexOf('#');
+    const code = hashIndex !== -1 ? player.name.slice(hashIndex) : '';
+    const name =
+        hashIndex !== -1 ? player.name.slice(0, hashIndex) : player.name;
     const handleHoverHook = (hovered?: string) => {
-        if (props.hoverHook) {
-            props.hoverHook(hovered)
+        if (hoverHook) {
+            hoverHook(hovered);
         }
-    }
-    if (props.size === UserCardType.small) {
-        return (
-            <div className={`d-flex align-items-center user-card overflow-hidden position-relative ${props.full ? 'px-2' : 'p-2'} user-card-small`}
-                onMouseEnter={() => handleHoverHook(props.playerId)}
-                onMouseLeave={() => handleHoverHook(undefined)}>
-                <div className="background-image w-100 h-100 position-absolute">
-                    <img
-                        className="h-100 w-100"
-                        src={`${process.env.REACT_APP_S3_URL}/user/${props.playerId}/medias/BannerImage`}
-                        onError={(e) =>
-                            (e.currentTarget.src = backgroundFallback)
-                        }
-                        alt=""
-                    />
-                </div>
-                <div className={`background-gradient w-100 h-100 position-absolute`} ></div>
+    };
 
-                <ProfilePicture size={40} playerId={props.playerId} player={props.player} />
-                <div className={`text-content align-middle ml-2`}>
-                    <div className={`${props.full ? '' : 'h-100'}`}>
-                        <span className={`name ${props.full ? 'full' : 'my-auto'}`}>{name}</span>
-                        {props.full &&
-                            <span className={`ml-1 code`}>{code}</span>
-                        }
-                    </div>
-                </div>
+    let profilePictureSize;
+    if (full) {
+        profilePictureSize = xs ? 40 : 80;
+    } else {
+        profilePictureSize = xs ? 20 : 40;
+    }
+
+    return (
+        <div
+            className={`d-flex nc-user-card align-items-center pl-2 pr-3
+                ${xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
+                ${full ? 'full' : ''}
+                ${player.premium === 'PREMIUM' ? 'premium' : ''}`}
+            onMouseEnter={() => handleHoverHook(playerId)}
+            onMouseLeave={() => handleHoverHook(undefined)}
+        >
+            <div className='background-image w-100 h-100 position-absolute'>
+                <img
+                    className='h-100 w-100'
+                    src={`${process.env.REACT_APP_S3_URL}/user/${playerId}/medias/BannerImage`}
+                    onError={(e) => (e.currentTarget.src = backgroundFallback)}
+                    alt=''
+                />
             </div>
-        );
-
-    }
-    else {
-        return (
-            <div className={`d-flex user-card overflow-hidden position-relative ${props.size === UserCardType.xs ? 'user-card-xs' : ''}
-                ${props.size === UserCardType.lg ? 'user-card-lg' : ''}
-                ${props.full ? 'full px-2 py-3' : 'p-2'}`}
-
-                onMouseEnter={() => handleHoverHook(props.playerId)}
-                onMouseLeave={() => handleHoverHook(undefined)}>
-                <div className="background-image w-100 h-100 position-absolute">
-                    <img
-                        className="h-100 w-100"
-                        src={`${(process.env.REACT_APP_S3_URL)}/user/${props.playerId}/medias/BannerImage`}
-                        onError={(e) =>
-                            (e.currentTarget.src = backgroundFallback)
-                        }
-                        alt=""
-                    />
-                </div>
-                <div className={`background-gradient w-100 h-100 position-absolute
-                    ${props.size === UserCardType.lg ? 'justify-content-center' : ''}`} >
-                </div>
-
-                <ProfilePicture size={props.full && props.size === UserCardType.lg ? 80 : 40} playerId={props.playerId} player={props.player} />
-                <div className={`text-content  ${props.size === UserCardType.lg ? 'mt-2' : 'ml-3 my-auto'} h-100
-                                               ${props.size === UserCardType.xs ? 'user-card-xs' : ''}`}>
-
-                    <div className={`${props.size === UserCardType.xs || props.size === UserCardType.lg ? '' : 'd-flex flex-column'}
-                        ${props.size === UserCardType.lg ? 'justify-content-center' : ''}
-                        ${props.full ? '' : 'h-100'}`}>
-
-                        <span className={`name  ${props.size === UserCardType.xs ? '' : 'ellipsis'}
-                            ${props.full ? 'full' : 'my-auto'}`}>{name}
+            <div className='background-gradient w-100 h-100 position-absolute'></div>
+            <MemoizedProfilePicture
+                size={profilePictureSize}
+                playerId={playerId}
+                player={player}
+            />
+            {full && (
+                <React.Fragment>
+                    <div
+                        className={`d-flex flex-column details ${
+                            xs ? 'details-xs ml-2' : 'ml-3'
+                        }`}
+                    >
+                        <span className='name text-elipsis'>{name}</span>
+                        <span className='code'>{code}</span>
+                        <span className='account text-elipsis'>
+                            {player.account}
                         </span>
-                        {props.full &&
-                            <span className={`code ${props.size === UserCardType.xs ? 'ml-1' : ''}`}>{code}</span>
-                        }
                     </div>
-                    <span className={`d-block game-account ellipsis ${props.size === UserCardType.lg ? 'text-align-center' : ''}
-                                    ${props.size === UserCardType.xs ? '' : 'mt-2'} `}>{props.player.account}</span>
+                    {player.premium === 'PREMIUM' && (
+                        <Icon
+                            styleName={'position-absolute fixed-premium'}
+                            icon={IconType.Premium}
+                            width={14}
+                            height={14}
+                        />
+                    )}
+                </React.Fragment>
+            )}
+            {!full && (
+                <div
+                    className={`d-flex flex-row align-items-center details ${
+                        xs ? 'details-xs ml-2' : 'ml-3'
+                    } `}
+                >
+                    <div className='text-elipsis'>
+                        <span className='name'>{name}</span>
+                        <span className='ml-2 code'>{code}</span>
+                    </div>
+                    {player.premium === 'PREMIUM' && (
+                        <Icon
+                            styleName={'ml-2'}
+                            icon={IconType.Premium}
+                            width={14}
+                            height={14}
+                        />
+                    )}
                 </div>
-            </div>
-        );
-    }
-}
+            )}
+        </div>
+    );
+};

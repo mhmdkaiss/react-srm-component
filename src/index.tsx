@@ -1,9 +1,9 @@
 import { Chat } from './components/Chat/Chat';
 import { Dialog } from './components/Dialog/Dialog';
 import { Tabs } from './components/Tabs/Tabs';
-import { TeamCard, CardType } from './components/TeamCard/TeamCard';
+import { TeamCard } from './components/TeamCard/TeamCard';
 import { ThemePlatform } from './styles/Themes';
-import { UserCard, UserCardType } from './components/UserCard/UserCard';
+import { UserCard } from './components/UserCard/UserCard';
 import {
     UserCardRounded,
     UserCardRoundedSize,
@@ -32,10 +32,8 @@ export {
     ThemePlatform,
     UserCard,
     UserTeamCard,
-    CardType,
     Icon,
     IconType,
-    UserCardType,
     UserCardRounded,
     UserCardRoundedSize,
     Chat,

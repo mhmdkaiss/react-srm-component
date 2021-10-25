@@ -1,55 +1,64 @@
-@import "../../styles/variables";
-@import "../../styles/colors";
+@import '../../styles/variables';
+@import '../../styles/colors';
 
-.user-card {
-    min-width: 223px;
-    min-height: 56px;
+.nc-user-card {
     width: 223px;
     height: 56px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
     border-radius: 8px;
+    overflow: hidden;
 
-    &.user-card-xs {
-        min-width: 142px;
-        width: 142px;
+    &.premium {
+        border: 1px solid #c9ad05;
     }
 
-    user-card-small{
-        min-width: 209px;
-        width: 209px;
-        min-height: 49px;
-        height: 49px;
+    &.nc-user-card-xs {
+        width: 142px;
+        height: 26px;
+
+        .icon-premium {
+            &.fixed-premium {
+                bottom: 5px;
+                left: 5px;
+                min-width: 14px;
+                min-height: 14px;
+            }
+        }
     }
 
     &.full {
-        min-height: 112px;
         height: 112px;
 
-        &.user-card-xs {
-            min-height: 71px;
+        &.nc-user-card-xs {
             height: 71px;
         }
     }
 
-    &.user-card-lg {
-        width: 380px;
-        height: 160px;
-    }
-
-    &.user-card-lg-content {
-        align-items: center;
-        padding-left: 8px;
-    }
     .background-image {
         filter: blur(4px);
     }
 
     .background-gradient {
-        background: linear-gradient(
-            rgba(26, 26, 26, 0.4),
-            rgba(41, 45, 48, 1)
-        );
+        background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(41, 45, 48, 1));
+    }
+
+    &:hover {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+
+        &.premium {
+            border: 1px solid #c9ad05;
+        }
+
+        .background-gradient {
+            background: linear-gradient(
+                360deg,
+                rgba(97, 87, 87, 0.89) 0%,
+                rgba(4, 0, 0, 0.57) 100%,
+                rgba(12, 12, 12, 0.73) 100%,
+                rgba(92, 87, 87, 0.73) 100%
+            );
+        }
     }
 
     .background-gradient,
@@ -59,61 +68,64 @@
         z-index: -1;
     }
 
-    .text-content {
-        overflow: hidden;
-        position: relative;
+    .icon-premium {
+        background: $premium-gradient;
+        min-width: 14px;
+        min-height: 14px;
 
-        >div {
-            overflow: hidden;
-            text-overflow: ellipsis;
+        &.fixed-premium {
+            bottom: 5px;
+            left: 5px;
+            min-width: 21px;
+            min-height: 21px;
         }
+    }
+
+    .details {
+        overflow: hidden;
 
         .name {
-            font-size: $small-text;
+            font-size: $medium-text;
             line-height: 24px;
+            font-weight: 400;
             color: $white;
-            white-space: nowrap;
-
-            &.full {
-                font-size: $medium-text;
-                line-height: 24px;
-            }
         }
 
         .code {
             font-size: $small-text;
             line-height: 14px;
-            font-weight: bold;
-            color: $light-grey;
+            font-weight: 700;
+            color: $grey5;
         }
 
-        .game-account {
-            white-space: nowrap;
+        .account {
             font-size: $small-text;
             line-height: 20px;
+            font-weight: 400;
             color: $white;
         }
 
-        &.user-card-xs {
+        &.details-xs {
             .name {
                 font-size: 12px;
-                line-height: initial;
+                line-height: 15px;
             }
 
             .code {
                 font-size: 11px;
-                line-height: initial;
+                line-height: 11px;
             }
 
-            .game-account {
-                font-size: $small-text;
-                line-height: 140%;
+            .account {
+                font-size: 11px;
+                line-height: 14px;
+            }
+
+            .icon-premium {
+                background: $premium-gradient;
+                min-width: 14px;
+                min-height: 14px;
             }
         }
-    }
-
-    .ellipsis {
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 }
