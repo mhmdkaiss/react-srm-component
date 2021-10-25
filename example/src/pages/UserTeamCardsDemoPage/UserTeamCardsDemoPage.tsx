@@ -33,7 +33,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
-                        <div className='ml-3'>
+                        <div className='ml-3 text-center'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
                                 full={false}
@@ -54,7 +54,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
-                        <div className='ml-3'>
+                        <div className='ml-3 text-center'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
                                 full={true}
