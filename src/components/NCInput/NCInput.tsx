@@ -1,6 +1,6 @@
-import React, { ChangeEvent } from 'react';
-import { MuiThemeProvider, TextField } from '@material-ui/core';
-import { ThemePlatform } from '../../styles/Themes';
+import React, {ChangeEvent} from 'react';
+import {MuiThemeProvider, TextField} from '@material-ui/core';
+import {ThemePlatform} from '../../styles/Themes';
 
 export interface NCInputProps {
     label: string;
