@@ -5,7 +5,7 @@ import {Icon, IconType} from "../../atoms/Icon/Icon";
 export interface NCMediaUploadProps {
   currentImage: string | File;
   defaultImg: string;
-  actionHook: (image: File) => void;
+  actionHook: (image: string) => void;
 }
 
 export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({currentImage, defaultImg, actionHook}) => {
