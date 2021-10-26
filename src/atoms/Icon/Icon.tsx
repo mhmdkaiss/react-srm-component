@@ -1,8 +1,10 @@
 import React from 'react';
+import { IconMask } from './IconMask'
 
 export enum IconType {
     AddUser = 'addUser',
     Brackets = 'brackets',
+    BurgerMenu = 'burgerMenu',
     Calendar = 'calendar',
     Discord = 'discord',
     Close = 'close',
@@ -33,12 +35,13 @@ export enum IconType {
     Twitter = 'twitter',
     UploadCloud = 'uploadCloud',
     User = 'user',
+    WaffleMenu = 'waffleMenu',
     Warning = 'warning',
 }
 
 export interface IconProps {
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     icon: IconType;
     styleName?: string;
 }
@@ -50,20 +53,6 @@ export const Icon: React.FunctionComponent<IconProps> = ({
     styleName,
 }) => {
     return (
-        <div
-            className={`mask-icon icon-${icon} ${styleName ? styleName : ''}`}
-            style={{
-                maskImage: `url("${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg")`,
-                WebkitMaskImage: `url("${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg")`,
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-                maskPosition: 'center',
-                WebkitMaskPosition: 'center',
-                maskSize: 'contain',
-                WebkitMaskSize: 'contain',
-                width: width,
-                height: height,
-            }}
-        ></div>
+        <IconMask icon={`${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg`} name={icon} width={width} height={height} styleName={styleName}/>
     );
 };

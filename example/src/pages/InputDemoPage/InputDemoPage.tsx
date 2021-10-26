@@ -29,10 +29,10 @@ export const InputDemoPage: React.FunctionComponent = () => {
     const [searchSelected, setSearchSelected] = useState<Array<string>>([]);
 
     //Media uploader
-    const [bannerImage, setBannerImage] = useState<File | null>(null);
-    const [updatedMedia, setUpdatedMedia] = useState<{ [key: string]: { previous?: File, value: File } }>({});
+    const [bannerImage, setBannerImage] = useState<string | null>(null);
+    const [updatedMedia, setUpdatedMedia] = useState<{ [key: string]: { previous?: string, value: string } }>({});
 
-    const handleMediaChange = (key: string, value: File) => {
+    const handleMediaChange = (key: string, value: string) => {
         if (updatedMedia[key]) {
             updatedMedia[key].value = value;
         } else {
@@ -271,7 +271,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     <NCMediaUpload
                         currentImage={bannerImage || `${process.env.REACT_APP_S3_URL}/teams/medias/BannerImage`}
                         defaultImg={`${process.env.REACT_APP_S3_URL}/media/default/default-team-banner.svg`}
-                        actionHook={(image: File) => {
+                        actionHook={(image: string) => {
                             setBannerImage(image);
                             handleMediaChange('BannerImage', image);
                         }}

@@ -1,0 +1,14 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+
+.list-demo-page{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    color: $grey5;
+    gap: 64px;
+
+    .theme-title {
+        font-size: $bigger-text;
+    }
+}

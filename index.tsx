@@ -13,6 +13,7 @@ export {
     IconType,
     Chat,
     Button,
+    ButtonIcon,
     ButtonTheme,
     ButtonType,
     ButtonSize,
@@ -27,4 +28,7 @@ export {
     NCPreviewSearch,
     NCMultiSearch,
     NCCheckbox,
+    GameList,
+    DisplayList,
+    DisplaySelector,
 } from './src';

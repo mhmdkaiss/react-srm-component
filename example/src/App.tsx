@@ -8,6 +8,7 @@ import { Navigation } from './components/Navigation/Navigation'
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
 import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
+import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
 
 const routes = [
   {
@@ -20,7 +21,11 @@ const routes = [
   },
   {
     path: '/component/user-team-cards',
-    component: UserTeamCardsDemoPage
+    component: UserTeamCardsDemoPage,
+  },
+  {
+    path: "/component/lists",
+    component: ListDemoPage,
   }
 ]
 

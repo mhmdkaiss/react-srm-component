@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonTheme, ButtonType, ButtonSize, IconType } from "@cactus/srm-component"
+import { Button, ButtonTheme, ButtonType, ButtonSize, IconType, ButtonIcon } from "@cactus/srm-component"
 import "./ButtonsDemoPage.scss";
 
 export const ButtonsDemoPage: React.FunctionComponent = () => {
@@ -14,6 +14,33 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
             </table>
         </div>
     }
+
+    const renderButtonIcon = (icon: string) => {
+        return <div className="d-flex flex-column my-5">
+            <span className="theme-title">Button Icon</span>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ButtonIcon icon={icon} name="test1" size={ButtonSize.BIG}/>
+                        </td>
+                        <td>
+                            <ButtonIcon icon={icon} name="test2" size={ButtonSize.BIG} active/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ButtonIcon icon={icon} name="test3" size={ButtonSize.BIG} fancy/>
+                        </td>
+                        <td>
+                            <ButtonIcon icon={icon} name="test4" size={ButtonSize.BIG} fancy active/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
 
 
     const renderAllSizes = (theme: ButtonTheme, type: ButtonType) => {
@@ -33,13 +60,13 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
                 <Button label="Button Text" theme={theme} type={type} size={size} />
             </td>
             <td>
-                <Button label="Button Text" theme={theme} type={type} size={size} disabled={true} />
+                <Button label="Button Text" theme={theme} type={type} size={size} disabled />
             </td>
             <td>
                 <Button label="Button Text" theme={theme} type={type} size={size} icon={{ type: IconType.People, width: 24, height: 24 }} />
             </td>
             <td>
-                <Button label="Button Text" theme={theme} type={type} size={size} disabled={true} icon={{ type: IconType.People, width: 24, height: 24 }} />
+                <Button label="Button Text" theme={theme} type={type} size={size} disabled icon={{ type: IconType.People, width: 24, height: 24 }} />
             </td>
         </tr>
     }
@@ -63,6 +90,8 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
 
             {renderButton(ButtonTheme.RED, ButtonType.PRIMARY, "Red- Primary")}
             {renderButton(ButtonTheme.RED, ButtonType.SECONDARY, "Red- Secondary")}
+
+            {renderButtonIcon("https://esm-prod-public.s3.eu-west-1.amazonaws.com/game/5c36302a0842120a74d1afdc/medias/IconImage")}
         </div>
     )
 };

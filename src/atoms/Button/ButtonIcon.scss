@@ -1,0 +1,91 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+@mixin icon-color($color) {
+    -webkit-background-clip: unset;
+    .mask-icon {
+        background: unset;
+        background-color: $color;
+    }
+}
+
+@mixin icon-color-unset() {
+    -webkit-background-clip: unset;
+    .mask-icon {
+        background: unset;
+        background-color: unset;
+    }
+}
+
+.buttonicon {
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    border: unset;
+
+    &.big {
+        height: 48px;
+        width: 48px;
+    }
+    
+    &.medium {
+        height: 40px;
+        width: 40px;
+    }
+    
+    &.small {
+        height: 32px;
+        width: 32px;
+    }
+
+    .mask-icon {
+        width: 48px;
+        height: 48px;
+        background-color: $grey6;
+    }
+
+    &.fancy {
+        background: $grey2;
+        border-radius: 20px;
+        flex-grow: 0;
+        border: solid 1px transparent;
+
+        &:active {
+            background: $grey4;
+            border: 1px solid $primary-color;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
+            border-radius: 18px;
+            @include icon-color($primary-color);
+        }
+
+        &.active {
+            background: $grey4;
+            border: 1px solid $primary-color;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
+            border-radius: 18px;
+            @include icon-color($primary-color);
+    
+            &:active{
+                background: $grey2;
+                border: solid 1px transparent;
+                box-shadow: unset;
+                border-radius: 20px;
+                @include icon-color($grey6);
+            }
+        }
+    }
+
+    &.active {
+        @include icon-color($primary-color);
+
+        &:active{
+            @include icon-color($grey6);
+        }
+    }
+
+    &:active {
+        @include icon-color($primary-color);
+    }
+}
