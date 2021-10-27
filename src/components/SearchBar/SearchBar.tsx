@@ -21,14 +21,12 @@ interface SearchField {
 }
 
 export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: SearchBarProps) => {
-    const [searchText, setSearchText] = useState<string>(props.value || '');
+    const [searchText, setSearchText] = useState<string>();
     const [searchField, setSearchField] = useState<string>(Object.keys(props.searchFields)[0]);
     const [searchStore, setSearchStore] = useState<{ [key: string]: string }>(props.searchResult || {});
 
     useEffect(() => {
-        if (props.value) {
-            setSearchText(props.value);
-        }
+        setSearchText(props.value);
     }, [props.value])
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -38,6 +36,10 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
     };
 
     const doSearch = () => {
+        if (!searchText) {
+            return;
+        }
+
         const textTrimed = searchText.trim();
         searchStore[searchField] = textTrimed;
         setSearchStore({...searchStore});

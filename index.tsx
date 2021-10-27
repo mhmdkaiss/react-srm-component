@@ -17,6 +17,9 @@ export {
     ButtonTheme,
     ButtonType,
     ButtonSize,
+    DisplayList,
+    DisplaySelector,
+    GameList,
     NCInput,
     NCSwitch,
     NCChip,
@@ -28,7 +31,5 @@ export {
     NCPreviewSearch,
     NCMultiSearch,
     NCCheckbox,
-    GameList,
-    DisplayList,
-    DisplaySelector,
+    ProfilePicture,
 } from './src';

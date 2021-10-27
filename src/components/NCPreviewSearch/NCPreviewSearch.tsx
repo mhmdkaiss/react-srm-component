@@ -8,6 +8,7 @@ import './NCPreviewSearch.scss';
 export interface NCPreviewSearchProps extends SearchBarProps {
     list: Array<{[key: string]: any}>;
     displayParam: string;
+    selected?: any,
     onSelection: (clicked: any) => void;
 }
 
@@ -43,7 +44,7 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                                     return (
                                         <div
                                             key={index}
-                                            className="preview-item py-1"
+                                            className={`preview-item py-1 ${JSON.stringify(props.selected) === JSON.stringify(item) ? 'selected' : ''}`}
                                             onClick={() => {props.onSelection(item)}}
                                         >
                                             {item[props.displayParam]}

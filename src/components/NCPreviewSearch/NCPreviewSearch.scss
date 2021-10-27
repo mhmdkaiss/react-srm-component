@@ -16,6 +16,10 @@
             &:active {
                 color: $primary-color;
             }
+
+            &.selected {
+                background: $grey4;
+            }
         }
     }
 }

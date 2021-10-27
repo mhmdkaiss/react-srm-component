@@ -30,6 +30,7 @@ import { UserTeamCard } from "./components/UserTeamCard/UserTeamCard";
 import { Icon, IconType } from "./atoms/Icon/Icon";
 import { ButtonIcon } from "./atoms/Button/ButtonIcon";
 import { GameList } from "./components/GameList/GameList";
+import { ProfilePicture } from "./components/ProfilePicture/ProfilePicture";
 import { DisplayList, DisplaySelector } from './components/DisplaySelector/DisplaySelector';
 
 export {
@@ -51,6 +52,9 @@ export {
     ButtonTheme,
     ButtonType,
     ButtonSize,
+    DisplaySelector,
+    DisplayList,
+    GameList,
     NCInput,
     NCSwitch,
     NCChip,
@@ -62,7 +66,5 @@ export {
     NCMultiSearch,
     NCCheckbox,
     NcRadioGroupFields,
-    GameList,
-    DisplaySelector,
-    DisplayList,
+    ProfilePicture,
 };
