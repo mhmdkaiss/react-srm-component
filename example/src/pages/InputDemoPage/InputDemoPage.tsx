@@ -1,19 +1,20 @@
-import React, {useState} from "react";
 import {
-    NCInput,
     DatePicker,
-    SearchBar,
-    NCSwitch,
-    NCChip,
-    NCMediaUpload,
-    NCSelect,
-    NCTextArea,
-    NCRadioGroup,
-    NCPreviewSearch,
-    NCMultiSearch,
     NCCheckbox,
+    NCChip,
+    NCInput,
+    NCMediaUpload,
+    NCMultiSearch,
+    NCPreviewSearch,
+    NCRadioGroup,
+    NCSelect,
+    NCStepper,
+    NCSwitch,
+    NCTextArea,
     NcRadioGroupFields,
+    SearchBar,
 } from "@cactus/srm-component";
+import React, { useState } from "react";
 
 export const InputDemoPage: React.FunctionComponent = () => {
     // Toogles
@@ -22,7 +23,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
     const [chipDeleted, setChipDeleted] = useState<boolean>();
 
     //Search Bars
-    const searchList = [{name: 'Item 1'}, {name: 'Item 2'}];
+    const searchList = [{ name: 'Item 1' }, { name: 'Item 2' }];
     const searchFiled = 'name';
     const [selectedItem, setSelectedItem] = useState<{ name: string }>(searchList[0]);
     const [selectedItem2, setSelectedItem2] = useState<{ name: string }>();
@@ -36,16 +37,62 @@ export const InputDemoPage: React.FunctionComponent = () => {
         if (updatedMedia[key]) {
             updatedMedia[key].value = value;
         } else {
-            updatedMedia[key] = {value};
+            updatedMedia[key] = { value };
         }
         setUpdatedMedia(JSON.parse(JSON.stringify(updatedMedia)));
     }
 
+    const steps = ['Select team', 'Select players', 'Select captain'];
+    const steps2 = steps.concat(['Select boss', 'Select legend']);
+    const steps3 = steps2.concat(['Select demon', 'Select god']);
+
+    const renderNcStepper = () => {
+        return (
+            <div className="my-3">
+                <h6 className="secondary-color-cool">NC Stepper</h6>
+                <div>
+                    <div className="my-4">
+                        <NCStepper
+                            steps={2}
+                            stepsLabel={steps}
+                            activeStep={1}
+                            error={false}
+                        />
+                    </div>
+                    <div className="my-4">
+                        <NCStepper
+                            steps={4}
+                            stepsLabel={steps}
+                            activeStep={2}
+                            error={true}
+                        />
+                    </div>
+                    <div className="my-4">
+                        <NCStepper
+                            steps={6}
+                            stepsLabel={steps2}
+                            activeStep={4}
+                            error={false}
+                        />
+                    </div>
+                    <div className="my-4">
+                        <NCStepper
+                            steps={8}
+                            stepsLabel={steps3}
+                            activeStep={8}
+                            error={false}
+                        />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     // NCSelect
     const ncSelectValues = [
-        {key: "key1", value: "value1"},
-        {key: "key2", value: "value2"},
-        {key: "key3", value: "value3"},
+        { key: "key1", value: "value1" },
+        { key: "key2", value: "value2" },
+        { key: "key3", value: "value3" },
     ]
     const [ruleGame, setRuleGame] = useState<string>(ncSelectValues[0].value)
     const renderNcSelect = () => {
@@ -70,7 +117,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
             <div className="my-3">
                 <h6 className="secondary-color-cool">NC TextArea</h6>
                 <p className="secondary-color-cool">Selected item: {ncAreaValue}</p>
-                <NCTextArea value={ncAreaValue} actionHook={setNcAreaValue} placeHolder="Write something..." minRows={3} maxRows={5}/>
+                <NCTextArea value={ncAreaValue} actionHook={setNcAreaValue} placeHolder="Write something..." minRows={3} maxRows={5} />
             </div>
         )
     }
@@ -79,9 +126,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
     // NC RadioGroup
 
     const ncRadioValues: Array<NcRadioGroupFields> = [
-        {key: "key1", value: "value1", disabled: false},
-        {key: "key2", value: "value2", disabled: false},
-        {key: "key3", value: "value3", disabled: true},
+        { key: "key1", value: "value1", disabled: false },
+        { key: "key2", value: "value2", disabled: false },
+        { key: "key3", value: "value3", disabled: true },
     ];
     const [ncRadioGroupValue, setNcRadioGroupValue] = useState<string>(ncRadioValues[0].value);
     const renderNCRadioGroup = () => {
@@ -89,7 +136,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
             <div className="my-3">
                 <h6 className="secondary-color-cool">NC RadioGroup</h6>
                 <p className="secondary-color-cool">Selected item: {ncRadioGroupValue}</p>
-                <NCRadioGroup value={ncRadioGroupValue} actionHook={setNcRadioGroupValue} fields={ncRadioValues}/>
+                <NCRadioGroup value={ncRadioGroupValue} actionHook={setNcRadioGroupValue} fields={ncRadioValues} />
             </div>
         )
     }
@@ -99,10 +146,11 @@ export const InputDemoPage: React.FunctionComponent = () => {
             <div>
                 <h4>Text input</h4>
                 <NCInput label="Label" value="Value" onChange={() => {
-                }}/>
+                }} />
 
                 {renderNCTextArea()}
                 {renderNcSelect()}
+                {renderNcStepper()}
 
             </div>
             <div className="my-5">
@@ -119,7 +167,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <div>
                     <h6>Basic</h6>
                     <SearchBar
-                        searchFields={{search: {label: ""}}}
+                        searchFields={{ search: { label: "" } }}
                         placeHolder="Place holder"
                         actionHook={() => {
                         }}
@@ -130,9 +178,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     <h6>Multi parameters (TO IMPROVE)</h6>
                     <SearchBar
                         searchFields={{
-                            field1: {label: 'Label1'},
-                            field2: {label: 'Label2'},
-                            field3: {label: 'Label3'},
+                            field1: { label: 'Label1' },
+                            field2: { label: 'Label2' },
+                            field3: { label: 'Label3' },
                         }}
                         placeHolder="Place holder"
                         actionHook={() => {
@@ -146,12 +194,12 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         <div className="mb-1">Place holder</div>
                         <NCPreviewSearch
                             searchFields={{
-                                search: {label: 'Label1'},
+                                search: { label: 'Label1' },
                             }}
                             placeHolder="Place holder"
                             actionHook={() => {
                             }}
-                            list={[{name: 'item1'}, {name: 'Item 2'}]}
+                            list={[{ name: 'item1' }, { name: 'Item 2' }]}
                             displayParam="name"
                             onSelection={(e: any) => {
                                 console.log(e);
@@ -164,7 +212,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         <div className="mt-2 mb-1">Default value</div>
                         <NCPreviewSearch
                             searchFields={{
-                                search: {label: 'Label1'},
+                                search: { label: 'Label1' },
                             }}
                             actionHook={(e) => {
                                 console.log(e)
@@ -185,7 +233,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     <h6>Mutliple Preview Search</h6>
                     <NCMultiSearch
                         searchFields={{
-                            search: {label: 'Label1'},
+                            search: { label: 'Label1' },
                         }}
                         placeHolder="Place holder"
                         actionHook={() => {

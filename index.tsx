@@ -25,6 +25,7 @@ export {
     NCChip,
     NCMediaUpload,
     NCSelect,
+    NCStepper,
     NCTextArea,
     NCRadioGroup,
     NcRadioGroupFields,
@@ -32,4 +33,5 @@ export {
     NCMultiSearch,
     NCCheckbox,
     ProfilePicture,
+    SelectionType,
 } from './src';

@@ -1,22 +1,26 @@
 import './TeamCard.scss';
 
+import { Icon, IconType } from '../../atoms/Icon/Icon';
+
+import IconCrown from '../../styles/svg/IconCrown';
 import React from 'react';
 import { Team } from '../../models/Team';
-import IconCrown from '../../styles/svg/IconCrown';
-import { Icon, IconType } from '../../atoms/Icon/Icon';
+
+export enum SelectionType {
+    Close = 'close',
+    Selected = 'selected',
+}
 
 interface TeamCardProps {
     team: Team;
     full: boolean;
     xs: boolean;
-    hoverHook?: (hovered?: string) => void;
-    selectable?: boolean;
+    selectable?: SelectionType;
     selected?: boolean;
+    hoverHook?: (hovered?: string) => void;
 }
 
-export const TeamCard: React.FunctionComponent<TeamCardProps> = (
-    props: TeamCardProps
-) => {
+export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) => {
     const handleHoverHook = (hovered?: string) => {
         if (props.hoverHook) {
             props.hoverHook(hovered);
@@ -40,7 +44,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (
                 ${props.xs ? 'nc-team-card-xs' : 'nc-team-card-lg'} 
                 ${props.full ? 'full p-2' : ''}
                 ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
-                ${props.selected ? 'card-selected' : ''}
+                ${props.selected ? `card-selected-${props.selectable}` : ''}
             }`}
             onMouseEnter={() => handleHoverHook(props.team.slug)}
             onMouseLeave={() => handleHoverHook(undefined)}
@@ -65,7 +69,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (
                     </div>
                 )}
             </div>
-            {props.selectable && (
+            {props.selectable && props.selectable === SelectionType.Close && (
                 <div className='ml-auto mt-2 d-flex align-self-start'>
                     <Icon
                         styleName={`ml-2 ${props.selected ? 'selected' : ''}`}

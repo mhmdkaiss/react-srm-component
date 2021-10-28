@@ -21,7 +21,7 @@
         }
     }
 
-    &.card-selected {
+    &.card-selected-close {
         filter: none;
         border: 1px solid $red;
         .background-image {
@@ -47,6 +47,14 @@
                     rgba(104, 106, 108, 0.4) 100%
                 );
             }
+        }
+    }
+
+    &.card-selected-selected {
+        border: 1px solid $white;
+
+        &:hover {
+            border: 1px solid $white;
         }
     }
 

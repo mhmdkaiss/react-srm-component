@@ -1,57 +1,56 @@
 import './UserCard.scss';
 
-import React from 'react';
-import { Player } from '../../models/Player';
-import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import { Icon, IconType } from '../..';
+
+import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
+import { Player } from '../../models/Player';
+import React from 'react';
 
 export interface UserCardProps {
     playerId: string;
     player: Player;
     full: boolean;
     xs: boolean;
+    selectable?: boolean;
+    selected?: boolean;
     hoverHook?: (hovered?: string) => void;
 }
 
-export const UserCard: React.FunctionComponent<UserCardProps> = ({
-    playerId,
-    player,
-    full,
-    xs,
-    hoverHook,
-}) => {
+export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCardProps) => {
     const backgroundFallback =
         process.env.REACT_APP_S3_URL + '/media/default/default-user-banner.jpg';
-    const hashIndex = player.name.lastIndexOf('#');
-    const code = hashIndex !== -1 ? player.name.slice(hashIndex) : '';
+    const hashIndex = props.player.name.lastIndexOf('#');
+    const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
     const name =
-        hashIndex !== -1 ? player.name.slice(0, hashIndex) : player.name;
+        hashIndex !== -1 ? props.player.name.slice(0, hashIndex) : props.player.name;
     const handleHoverHook = (hovered?: string) => {
-        if (hoverHook) {
-            hoverHook(hovered);
+        if (props.hoverHook) {
+            props.hoverHook(hovered);
         }
     };
 
     let profilePictureSize;
-    if (full) {
-        profilePictureSize = xs ? 40 : 80;
+    if (props.full) {
+        profilePictureSize = props.xs ? 40 : 80;
     } else {
-        profilePictureSize = xs ? 20 : 40;
+        profilePictureSize = props.xs ? 20 : 40;
     }
 
     return (
         <div
             className={`d-flex nc-user-card align-items-center pl-2 pr-3
-                ${xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
-                ${full ? 'full' : ''}
-                ${player.premium === 'PREMIUM' ? 'premium' : ''}`}
-            onMouseEnter={() => handleHoverHook(playerId)}
+                ${props.xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
+                ${props.full ? 'full' : ''}
+                ${props.player.premium === 'PREMIUM' ? 'premium' : ''}
+                ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
+                ${props.selected ? 'user-card-selected' : ''}`}
+            onMouseEnter={() => handleHoverHook(props.playerId)}
             onMouseLeave={() => handleHoverHook(undefined)}
         >
             <div className='background-image w-100 h-100 position-absolute'>
                 <img
                     className='h-100 w-100'
-                    src={`${process.env.REACT_APP_S3_URL}/user/${playerId}/medias/BannerImage`}
+                    src={`${process.env.REACT_APP_S3_URL}/user/${props.playerId}/medias/BannerImage`}
                     onError={(e) => (e.currentTarget.src = backgroundFallback)}
                     alt=''
                 />
@@ -59,23 +58,23 @@ export const UserCard: React.FunctionComponent<UserCardProps> = ({
             <div className='background-gradient w-100 h-100 position-absolute'></div>
             <MemoizedProfilePicture
                 size={profilePictureSize}
-                playerId={playerId}
-                player={player}
+                playerId={props.playerId}
+                player={props.player}
             />
-            {full && (
+            {props.full && (
                 <React.Fragment>
                     <div
                         className={`d-flex flex-column details ${
-                            xs ? 'details-xs ml-2' : 'ml-3'
+                            props.xs ? 'details-xs ml-2' : 'ml-3'
                         }`}
                     >
                         <span className='name text-elipsis'>{name}</span>
                         <span className='code'>{code}</span>
                         <span className='account text-elipsis'>
-                            {player.account}
+                            {props.player.account}
                         </span>
                     </div>
-                    {player.premium === 'PREMIUM' && (
+                    {props.player.premium === 'PREMIUM' && (
                         <Icon
                             styleName={'position-absolute fixed-premium'}
                             icon={IconType.Premium}
@@ -85,17 +84,17 @@ export const UserCard: React.FunctionComponent<UserCardProps> = ({
                     )}
                 </React.Fragment>
             )}
-            {!full && (
+            {!props.full && (
                 <div
                     className={`d-flex flex-row align-items-center details ${
-                        xs ? 'details-xs ml-2' : 'ml-3'
+                        props.xs ? 'details-xs ml-2' : 'ml-3'
                     } `}
                 >
                     <div className='text-elipsis'>
                         <span className='name'>{name}</span>
                         <span className='ml-2 code'>{code}</span>
                     </div>
-                    {player.premium === 'PREMIUM' && (
+                    {props.player.premium === 'PREMIUM' && (
                         <Icon
                             styleName={'ml-2'}
                             icon={IconType.Premium}

@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
 import './UserTeamCardsDemoPage.scss';
+
 import {
+    PLAYER_MOCK,
+    TEAM_MOCK,
+} from '../../mock/UserTeamCards/UserTeamCards.mock';
+import React, { useState } from 'react';
+import {
+    SelectionType,
     TeamCard,
     UserCard,
     UserCardRounded,
     UserCardRoundedSize,
 } from '@cactus/srm-component';
-import {
-    PLAYER_MOCK,
-    TEAM_MOCK,
-} from '../../mock/UserTeamCards/UserTeamCards.mock';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
     const [userCardSelected, setUserCardSelected] = useState<boolean>(false);
@@ -33,6 +35,19 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
+                        <div className='ml-3 text-center'
+                            onClick={() =>
+                                setUserCardSelected(!userCardSelected)
+                            }>
+                            <UserCard
+                                playerId={PLAYER_MOCK.id}
+                                full={false}
+                                xs={false}
+                                player={PLAYER_MOCK.player}
+                                selectable={true}
+                                selected={userCardSelected}
+                            />
+                        </div>
                         <div className='ml-3 text-center'>
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
@@ -52,6 +67,20 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 full={true}
                                 xs={false}
                                 player={PLAYER_MOCK.player}
+                            />
+                        </div>
+                        <div
+                            className='ml-3 text-center'
+                            onClick={() =>
+                                setUserCardSelected(!userCardSelected)
+                            }>
+                            <UserCard
+                                playerId={PLAYER_MOCK.id}
+                                full={true}
+                                xs={false}
+                                player={PLAYER_MOCK.player}
+                                selectable={true}
+                                selected={userCardSelected}
                             />
                         </div>
                         <div className='ml-3 text-center'>
@@ -139,7 +168,21 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                             <TeamCard
                                 full={false}
                                 xs={true}
-                                selectable={true}
+                                selectable={SelectionType.Close}
+                                selected={teamCardSelected}
+                                team={TEAM_MOCK}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                            onClick={() =>
+                                setTeamCardSelected(!teamCardSelected)
+                            }
+                        >
+                            <TeamCard
+                                full={false}
+                                xs={true}
+                                selectable={SelectionType.Selected}
                                 selected={teamCardSelected}
                                 team={TEAM_MOCK}
                             />
@@ -164,7 +207,21 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                             <TeamCard
                                 full={true}
                                 xs={true}
-                                selectable={true}
+                                selectable={SelectionType.Close}
+                                selected={teamCardSelected}
+                                team={TEAM_MOCK}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                            onClick={() =>
+                                setTeamCardSelected(!teamCardSelected)
+                            }
+                        >
+                            <TeamCard
+                                full={true}
+                                xs={true}
+                                selectable={SelectionType.Selected}
                                 selected={teamCardSelected}
                                 team={TEAM_MOCK}
                             />

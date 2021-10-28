@@ -31,6 +31,7 @@ export enum IconType {
     Search = 'search',
     Send = 'send',
     Settings = 'settings',
+    Success = 'success',
     Trashcan = 'trashcan',
     Twitter = 'twitter',
     UploadCloud = 'uploadCloud',
