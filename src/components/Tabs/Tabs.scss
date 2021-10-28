@@ -64,6 +64,8 @@
 
                 .sub-tabs {
                     top: 49px;
+                    flex-direction: column;
+                    display: flex;
 
                     .sub-tab {
                         min-width: 181px;

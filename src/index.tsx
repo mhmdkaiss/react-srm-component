@@ -34,6 +34,9 @@ import { ThemePlatform } from './styles/Themes';
 import { UserCard } from './components/UserCard/UserCard';
 import { UserTeamCard } from "./components/UserTeamCard/UserTeamCard";
 import { ProfilePicture } from "./components/ProfilePicture/ProfilePicture";
+import { NCDefault } from "./components/NCDefault/NCDefault";
+import { NCFlagSelector } from "./components/NCFlagSelector/NCFlagSelector";
+import { NCTinyMce } from "./components/NCTinyMce/NCTinyMce";
 
 export {
     DatePicker,
@@ -71,4 +74,7 @@ export {
     NcRadioGroupFields,
     ProfilePicture,
     SelectionType,
+    NCDefault,
+    NCFlagSelector,
+    NCTinyMce,
 };

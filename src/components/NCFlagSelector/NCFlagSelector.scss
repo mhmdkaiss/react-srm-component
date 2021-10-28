@@ -1,0 +1,12 @@
+.lang-list {
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 24px;
+
+    span {
+        img {
+            width: 32px;
+        }
+    }
+}

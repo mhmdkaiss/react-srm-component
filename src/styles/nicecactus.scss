@@ -19,6 +19,7 @@
 @import '../components/GameList/GameList.scss';
 @import '../components/DisplaySelector/DisplaySelector.scss';
 @import '../components/ProfilePicture/ProfilePicture.scss';
+@import '../components/NCFlagSelector/NCFlagSelector.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -79,3 +80,4 @@
   overflow: hidden;
   white-space: nowrap;
 }
+

@@ -1,12 +1,24 @@
 import "./Tabs.scss";
 
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export interface TabParameter {
+    basePath?: string;
+
     name: string;
     body?: any;
-    disabled?: boolean;
+
+    path: string;
+    redirect?: string;
+    internalLink?: string;
+
+    component?: any;
+
     children?: Array<TabParameter>;
+
+    disabled?: boolean;
+    hide?: boolean;
 }
 
 export interface TabSettings {
@@ -14,7 +26,10 @@ export interface TabSettings {
 }
 
 interface TabsProps {
+    basename: string;
     tabs: Array<TabParameter>;
+
+    NcRouterLink: typeof Link;
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
@@ -48,6 +63,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
         if (pos) {
             setCurrentTabPos(pos);
         }
+        return (<props.NcRouterLink to={tab.path}>Root</props.NcRouterLink>)
     };
 
     const cleanTab = () => {
@@ -57,7 +73,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     }
 
     const setupArrows = () => {
-        if(!scrollableItems.current || !headerRef.current) {
+        if (!scrollableItems.current || !headerRef.current) {
             return;
         }
         setArrowShowed(scrollableItems.current.offsetWidth > headerRef.current.offsetWidth);
@@ -84,7 +100,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     const renderPaginationButton = (disabled: boolean, right: boolean = false) => {
         return arrowShowed ?
             <div
-                className={`mask-icon pagination-button mt-2 ${right ? 'right ml-2' : 'mr-2'} ${disabled? 'disabled' : ''}`}
+                className={`mask-icon pagination-button mt-2 ${right ? 'right ml-2' : 'mr-2'} ${disabled ? 'disabled' : ''}`}
                 style={{
                     maskImage: `url(${process.env.REACT_APP_S3_PUBLIC_URL}/media/icons/goToPreviousPage.svg`,
                     WebkitMaskImage: `url(${process.env.REACT_APP_S3_PUBLIC_URL}/media/icons/goToPreviousPage.svg`,
@@ -97,48 +113,59 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     const renderSubTabs = () => {
         return (
             <div className="sub-tabs position-absolute" style={{ left: currentTabPos }}>
-                {   props.tabs[currentTabIndex] && props.tabs[currentTabIndex].children && props.tabs[currentTabIndex].children?.map((tab, index) => {
-                    return (
-                        <div key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => {!tab.disabled ? cleanTab() : {}}}>{tab.name}</div>
-                    )})
+                {props.tabs[currentTabIndex] && props.tabs[currentTabIndex].children && props.tabs[currentTabIndex].children?.map((tab, index) => {
+                    return !tab.hide && (
+                        <props.NcRouterLink key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => { !tab.disabled ? cleanTab() : {} }} to={tab.disabled ? "#" : (props.tabs[currentTabIndex].path + tab.path)}>{tab.name}</props.NcRouterLink>
+                    )
+                })
                 }
             </div>
         )
     }
 
     return (
-        <div className="tabs w-100">
-            <div ref={headerRef} className="tabs-header d-flex mt-3 mb-2">
-                {renderPaginationButton(disableLeft)}
-                <div
-                    ref={scrollableContainer}
-                    className="scrollable-container"
-                    onScroll={() => updateArrows()}
-                >
-                    <div ref={scrollableItems} className="scrollable-items d-flex">
-                        {props.tabs.length > 0 &&
-                            props.tabs.map((tab, index) => {
-                                return (
-                                    <div
-                                        key={tab.name}
-                                        ref={(element) => tabsRef.current[index] = element}
-                                        className={`tab-container d-flex justify-content-center align-items-center mx-3 position-relative ${
-                                            tab.name === currentTab.name ? "active" : ""
-                                        }`}
-                                        onClick={() => {
-                                            onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
-                                        }}
-                                    >
-                                        <div className="tab-name text-uppercase">{tab.name}</div>
-                                    </div>
-                                );
-                            })}
-                        {renderSubTabs()}
+        <div className="tabs">
+            <div className="tabs-body w-100">
+                <div ref={headerRef} className="tabs-header d-flex mt-3 mb-2">
+                    {renderPaginationButton(disableLeft)}
+                    <div
+                        ref={scrollableContainer}
+                        className="scrollable-container"
+                        onScroll={() => updateArrows()}
+                    >
+                        <div ref={scrollableItems} className="scrollable-items d-flex">
+                            {props.tabs.length > 0 &&
+                                props.tabs.map((tab, index) => {
+                                    if (tab.hide) {
+                                        return;
+                                    }
+                                    return (
+                                        <div
+                                            key={tab.name}
+                                            ref={(element) => tabsRef.current[index] = element}
+                                            className={`tab-container d-flex justify-content-center align-items-center position-relative ${tab.name === currentTab.name ? "active" : ""
+                                                }`}
+                                            onClick={() => {
+                                                onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
+                                            }}
+                                        >
+                                        {(!tab.children && 
+                                            <props.NcRouterLink to={tab.path}>
+                                                <div className="tab-name text-uppercase">{tab.name}</div>
+                                            </props.NcRouterLink>
+                                        )}
+                                        {(tab.children && 
+                                            <div className="tab-name text-uppercase">{tab.name}</div>
+                                        )}
+                                        </div>
+                                    );
+                                })}
+                            {renderSubTabs()}
+                        </div>
                     </div>
+                    {renderPaginationButton(disableRight, true)}
                 </div>
-                {renderPaginationButton(disableRight, true)}
             </div>
-            <div className="tabs-body">{currentTab.body}</div>
         </div>
     );
 };

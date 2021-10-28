@@ -34,4 +34,7 @@ export {
     NCCheckbox,
     ProfilePicture,
     SelectionType,
+    NCDefault,
+    NCFlagSelector,
+    NCTinyMce,
 } from './src';
