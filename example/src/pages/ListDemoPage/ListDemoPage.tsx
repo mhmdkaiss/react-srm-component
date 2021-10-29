@@ -2,148 +2,105 @@ import React from "react";
 import { DisplaySelector, GameList } from "@cactus/srm-component"
 import "./ListDemoPage.scss";
 
-const games = [
-    {
-      "id": "autochess",
-      "route": "games",
-      "title": "Autochess",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "overwatch",
-      "route": "games",
-      "title": "Overwatch",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "rocket-league",
-      "route": "games",
-      "title": "Rocket League",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "nba-2k21",
-      "route": "games",
-      "title": "NBA 2K21",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "fifa-21",
-      "route": "games",
-      "title": "FIFA 21",
-      "icon": "https://public.nicecact.us/game/5f7f0e4b481ed14c964e3417/medias/IconImage",
-      "active": 0
-    },
-    {
-      "id": "forza-7",
-      "route": "games",
-      "title": "Forza 7",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "pokemon-unite",
-      "route": "games",
-      "title": "Pokemon unite",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "mariokart-tour",
-      "route": "games",
-      "title": "Mario kart tour",
-      "icon": "https://public.nicecact.us/game/5e83080c537278233bfac7f2/medias/IconImage",
-      "active": 1
-    },
-    {
-      "id": "dirt-rally",
-      "route": "games",
-      "title": "Dirt Rally",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "valorant",
-      "route": "games",
-      "title": "VALORANT",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "tom-clancy-s-rainbow-six-siege",
-      "route": "games",
-      "title": "Tom Clancy's Rainbow Six Siege",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "league-of-legends",
-      "route": "games",
-      "title": "League Of Legends",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "clash-royale",
-      "route": "games",
-      "title": "Clash Royale",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "8-ball-pool",
-      "route": "games",
-      "title": "8 Ball Pool",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "fortnite",
-      "route": "games",
-      "title": "Fortnite",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "teamfight-tactics",
-      "route": "games",
-      "title": "Teamfight Tactics",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "dragon-ball-fighterz",
-      "route": "games",
-      "title": "Dragon Ball FighterZ",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "super-smash-bros-ultimate",
-      "route": "games",
-      "title": "Super Smash Bros Ultimate",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "mario-kart-8-deluxe",
-      "route": "games",
-      "title": "Mario kart 8 deluxe",
-      "icon": "",
-      "active": 1
-    },
-    {
-      "id": "playerunknows-battleground",
-      "route": "games",
-      "title": "Playerunknow's battleground",
-      "icon": "",
-      "active": 1
-    }
-];
+const games = [{
+  "id": "teamfight-tactics",
+  "route": "games",
+  "title": "TFT",
+  "slug": "teamfight-tactics",
+  "icon": "https://public.nicecact.us/game/teamfight-tactics/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "super-smash-bros-ultimate",
+  "route": "games",
+  "title": "Super Smash Bros. Ultimate",
+  "slug": "super-smash-bros-ultimate",
+  "icon": "https://public.nicecact.us/game/super-smash-bros-ultimate/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "fortnite",
+  "route": "games",
+  "title": "Fortnite",
+  "slug": "fortnite",
+  "icon": "https://public.nicecact.us/game/fortnite/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "legends-of-runeterra",
+  "route": "games",
+  "title": "Legends of Runeterra",
+  "slug": "legends-of-runeterra",
+  "icon": "https://public.nicecact.us/game/legends-of-runeterra/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "tom-clancy-s-rainbow-six-siege",
+  "route": "games",
+  "title": "Tom Clancy's Rainbow Six: Siege",
+  "slug": "tom-clancy-s-rainbow-six-siege",
+  "icon": "https://public.nicecact.us/game/tom-clancy-s-rainbow-six-siege/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "call-of-duty-modern-warfare",
+  "route": "games",
+  "title": "Call of duty Modern warfare",
+  "slug": "call-of-duty-modern-warfare",
+  "icon": "https://public.nicecact.us/game/call-of-duty-modern-warfare/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "valorant",
+  "route": "games",
+  "title": "Valorant",
+  "slug": "valorant",
+  "icon": "https://public.nicecact.us/game/valorant/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "fifa-21",
+  "route": "games",
+  "title": "FIFA 21",
+  "slug": "fifa-21",
+  "icon": "https://public.nicecact.us/game/fifa-21/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "nba-2k21",
+  "route": "games",
+  "title": "NBA 2K21",
+  "slug": "nba-2k21",
+  "icon": "https://public.nicecact.us/game/nba-2k21/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "call-of-duty-cold-war",
+  "route": "games",
+  "title": "Call Of Duty Cold War",
+  "slug": "call-of-duty-cold-war",
+  "icon": "https://public.nicecact.us/game/call-of-duty-cold-war/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "wild-rift",
+  "route": "games",
+  "title": "Wild Rift",
+  "slug": "wild-rift",
+  "icon": "https://public.nicecact.us/game/wild-rift/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "trackmania",
+  "route": "games",
+  "title": "Trackmania",
+  "slug": "trackmania",
+  "icon": "https://public.nicecact.us/game/trackmania/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "mario-kart-8-deluxe",
+  "route": "games",
+  "title": "Mario kart 8 deluxe",
+  "slug": "mario-kart-8-deluxe",
+  "icon": "https://public.nicecact.us/game/mario-kart-8-deluxe/medias/LogoImage",
+  "active": 1,
+}, {
+  "id": "call-of-duty-warzone",
+  "route": "games",
+  "title": "Call of Duty Warzone",
+  "slug": "call-of-duty-warzone",
+  "icon": "https://public.nicecact.us/game/call-of-duty-warzone/medias/LogoImage",
+  "active": 1,
+}];
 
 export const ListDemoPage: React.FunctionComponent = () => {
     return (
