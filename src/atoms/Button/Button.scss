@@ -32,12 +32,15 @@
   cursor: pointer;
   font-weight: 700;
   text-transform: uppercase;
-  min-width: 150px;
   border-radius: 4px;
   border: solid 1px transparent;
 
   .mask-icon {
     margin-right: 12px;
+  }
+
+  &.limited {
+      min-width: 150px;
   }
 
   /* Size */

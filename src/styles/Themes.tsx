@@ -10,4 +10,7 @@ export const ThemePlatform = createMuiTheme({
 		},
 		type: 'dark'
 	},
+    typography: {
+        fontFamily: 'mollenregular',
+    },
 });

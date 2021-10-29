@@ -29,8 +29,8 @@
 .nicecactus-input {
   label {
     color: $grey5;
-    font-size: 11px;
-    line-height: 14px;
+    font-size: $medium-text;
+    line-height: $medium-text;
   }
 
   select, input, textarea {
