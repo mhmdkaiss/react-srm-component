@@ -1,14 +1,17 @@
-import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import './App.scss'
-import { Navigation } from './components/Navigation/Navigation'
+
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+
+import AppBar from '@material-ui/core/AppBar'
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
 import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
-import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
+import { Navigation } from './components/Navigation/Navigation'
+import React from 'react'
+import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 
 const routes = [
   {
@@ -18,6 +21,10 @@ const routes = [
   {
     path: '/component/inputs',
     component: InputDemoPage
+  },
+  {
+    path: '/component/stepper',
+    component: StepperDemoPage
   },
   {
     path: '/component/user-team-cards',

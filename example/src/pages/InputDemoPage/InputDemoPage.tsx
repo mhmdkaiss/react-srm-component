@@ -8,7 +8,6 @@ import {
     NCPreviewSearch,
     NCRadioGroup,
     NCSelect,
-    NCStepper,
     NCSwitch,
     NCTextArea,
     NcRadioGroupFields,
@@ -40,52 +39,6 @@ export const InputDemoPage: React.FunctionComponent = () => {
             updatedMedia[key] = { value };
         }
         setUpdatedMedia(JSON.parse(JSON.stringify(updatedMedia)));
-    }
-
-    const steps = ['Select team', 'Select players', 'Select captain'];
-    const steps2 = steps.concat(['Select boss', 'Select legend']);
-    const steps3 = steps2.concat(['Select demon', 'Select god']);
-
-    const renderNcStepper = () => {
-        return (
-            <div className="my-3">
-                <h6 className="secondary-color-cool">NC Stepper</h6>
-                <div>
-                    <div className="my-4">
-                        <NCStepper
-                            steps={2}
-                            stepsLabel={steps}
-                            activeStep={1}
-                            error={false}
-                        />
-                    </div>
-                    <div className="my-4">
-                        <NCStepper
-                            steps={4}
-                            stepsLabel={steps}
-                            activeStep={2}
-                            error={true}
-                        />
-                    </div>
-                    <div className="my-4">
-                        <NCStepper
-                            steps={6}
-                            stepsLabel={steps2}
-                            activeStep={4}
-                            error={false}
-                        />
-                    </div>
-                    <div className="my-4">
-                        <NCStepper
-                            steps={8}
-                            stepsLabel={steps3}
-                            activeStep={8}
-                            error={false}
-                        />
-                    </div>
-                </div>
-            </div>
-        )
     }
 
     // NCSelect
@@ -150,7 +103,6 @@ export const InputDemoPage: React.FunctionComponent = () => {
 
                 {renderNCTextArea()}
                 {renderNcSelect()}
-                {renderNcStepper()}
 
             </div>
             <div className="my-5">
