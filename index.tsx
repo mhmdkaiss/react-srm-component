@@ -30,6 +30,7 @@ export {
     NCRadioGroup,
     NcRadioGroupFields,
     NCPreviewSearch,
+    NCPreviewSearchAsync,
     NCMultiSearch,
     NCCheckbox,
     ProfilePicture,

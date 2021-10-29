@@ -3,7 +3,7 @@ import './UserCard.scss';
 import { Icon, IconType } from '../..';
 
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
-import { Player } from '../../models/Player';
+import { Player, PremiumStatus } from '../../models/Player';
 import React from 'react';
 
 export interface UserCardProps {
@@ -41,7 +41,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
             className={`d-flex nc-user-card align-items-center pl-2 pr-3
                 ${props.xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
                 ${props.full ? 'full' : ''}
-                ${props.player.premium === 'PREMIUM' ? 'premium' : ''}
+                ${props.player.premium.status === PremiumStatus.PREMIUM ? 'premium' : ''}
                 ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
                 ${props.selected ? 'user-card-selected' : ''}`}
             onMouseEnter={() => handleHoverHook(props.playerId)}
@@ -74,7 +74,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                             {props.player.account}
                         </span>
                     </div>
-                    {props.player.premium === 'PREMIUM' && (
+                    {props.player.premium.status === PremiumStatus.PREMIUM && (
                         <Icon
                             styleName={'position-absolute fixed-premium'}
                             icon={IconType.Premium}
@@ -94,7 +94,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                         <span className='name'>{name}</span>
                         <span className='ml-2 code'>{code}</span>
                     </div>
-                    {props.player.premium === 'PREMIUM' && (
+                    {props.player.premium.status === PremiumStatus.PREMIUM && (
                         <Icon
                             styleName={'ml-2'}
                             icon={IconType.Premium}

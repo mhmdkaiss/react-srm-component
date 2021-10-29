@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { Player } from '../../models/Player';
+import { Player, PremiumStatus } from '../../models/Player';
 import './ProfilePicture.scss';
 
 export interface ProfilePictureProps {
@@ -28,7 +28,9 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (
     return (
         <div
             className={`user-avatar position-relative default ${
-                props.player.premium ? 'premium' : ''
+                props.player.premium.status === PremiumStatus.PREMIUM
+                    ? 'premium'
+                    : ''
             }`}
             style={style}
         >

@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserCardRounded.scss';
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
-import { Player } from '../../models/Player';
+import { Player, PremiumStatus } from '../../models/Player';
 import { Icon, IconType } from '../..';
 
 export enum UserCardRoundedSize {
@@ -40,7 +40,7 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = ({
             <div className='d-flex flex-column ml-2 details'>
                 <div className='name-wrapper d-flex'>
                     <span className='name text-elipsis'>{player.name}</span>
-                    {player.premium === 'PREMIUM' && (
+                    {player.premium.status === PremiumStatus.PREMIUM && (
                         <Icon
                             styleName={'ml-2'}
                             icon={IconType.Premium}

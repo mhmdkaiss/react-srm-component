@@ -24,6 +24,7 @@ import { NCInput } from './components/NCInput/NCInput';
 import { NCMediaUpload } from './components/NCMediaUpload/NCMediaUpload';
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
+import { NCPreviewSearchAsync } from './components/NCPreviewSearchAsync/NCPreviewSearchAsync';
 import { NCSelect } from './components/NCSelect/NCSelect';
 import { NCStepper } from './components/NCStepper/NCStepper';
 import { NCSwitch } from './components/NCSwitch/NCSwitch';
@@ -69,6 +70,7 @@ export {
     NCTextArea,
     NCRadioGroup,
     NCPreviewSearch,
+    NCPreviewSearchAsync,
     NCMultiSearch,
     NCCheckbox,
     NcRadioGroupFields,

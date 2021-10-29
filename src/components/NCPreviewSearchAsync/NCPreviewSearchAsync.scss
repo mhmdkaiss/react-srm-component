@@ -1,0 +1,23 @@
+@import 'src/styles/colors';
+
+.nc-preview-search-async {
+    .preview-list {
+        z-index: 1;
+        max-height: 100px;
+        overflow-y: scroll;
+
+        .preview-item {
+            padding-left: 8px;
+            background: $grey2;
+            color: $white;
+
+            &.selected {
+                background: $grey3;
+            }
+
+            &:active {
+                color: $primary-color;
+            }
+        }
+    }
+}

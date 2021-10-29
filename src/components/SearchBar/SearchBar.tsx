@@ -1,8 +1,13 @@
-import React, {ChangeEvent, useState, useEffect } from 'react';
-import { Chip, MenuItem, MuiThemeProvider, Select, TextField } from '@material-ui/core';
+import React, { ChangeEvent, useState, useEffect } from 'react';
+import {
+    Chip,
+    MenuItem,
+    MuiThemeProvider,
+    Select,
+    TextField,
+} from '@material-ui/core';
 import { ThemePlatform } from '../../styles/Themes';
 import './SearchBar.scss';
-
 
 export interface SearchBarProps {
     searchResult?: { [key: string]: string };
@@ -14,23 +19,34 @@ export interface SearchBarProps {
     actionHook?: (search?: { [key: string]: string }) => any;
     typingHook?: (text: string) => any;
     focusHook?: (isFocused: boolean) => any;
+    setOnKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => any;
+    overrideKeyDown?: boolean;
 }
 
 interface SearchField {
-    label: string
+    label: string;
 }
 
-export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: SearchBarProps) => {
+export const SearchBar: React.FunctionComponent<SearchBarProps> = (
+    props: SearchBarProps
+) => {
     const [searchText, setSearchText] = useState<string>('');
-    const [searchField, setSearchField] = useState<string>(Object.keys(props.searchFields)[0]);
-    const [searchStore, setSearchStore] = useState<{ [key: string]: string }>(props.searchResult || {});
+    const [searchField, setSearchField] = useState<string>(
+        Object.keys(props.searchFields)[0]
+    );
+    const [searchStore, setSearchStore] = useState<{ [key: string]: string }>(
+        props.searchResult || {}
+    );
 
     useEffect(() => {
         setSearchText(props.value || '');
-    }, [props.value])
+    }, [props.value]);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key === 'Enter') {
+        if (props.setOnKeyDown) {
+            props.setOnKeyDown(e);
+        }
+        if (!props.overrideKeyDown && e.key === 'Enter') {
             doSearch();
         }
     };
@@ -42,7 +58,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
 
         const textTrimed = searchText.trim();
         searchStore[searchField] = textTrimed;
-        setSearchStore({...searchStore});
+        setSearchStore({ ...searchStore });
         if (props.setSearchResult) {
             props.setSearchResult(searchStore);
         }
@@ -50,11 +66,11 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
             props.actionHook(searchStore);
         }
         setSearchText('');
-    }
+    };
 
     const removeItemFromStore = (key: string) => {
         delete searchStore[key];
-        setSearchStore({...searchStore});
+        setSearchStore({ ...searchStore });
         if (props.setSearchResult) {
             props.setSearchResult(searchStore);
         }
@@ -65,50 +81,60 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
             }
             props.actionHook();
         }
-    }
+    };
 
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
-                { !props.hideStore && Object.keys(searchStore).length > 0 &&
-                    <div className="d-flex mt-2">
-                        {
-                            Object.keys(searchStore).map((key: string, index: number) => {
+                {!props.hideStore && Object.keys(searchStore).length > 0 && (
+                    <div className='d-flex mt-2'>
+                        {Object.keys(searchStore).map(
+                            (key: string, index: number) => {
                                 return (
                                     <Chip
                                         label={`${key}: ${searchStore[key]}`}
                                         key={index}
-                                        onDelete={() => removeItemFromStore(key)}
-                                        color="primary"
-                                        className="ml-2"
+                                        onDelete={() =>
+                                            removeItemFromStore(key)
+                                        }
+                                        color='primary'
+                                        className='ml-2'
                                     />
                                 );
-                            })
-                        }
+                            }
+                        )}
                     </div>
-                }
-                <div className="d-flex w-100 position-relative searchbar-container">
-                    {
-                        Object.keys(props.searchFields).length > 1 &&
+                )}
+                <div className='d-flex w-100 position-relative searchbar-container'>
+                    {Object.keys(props.searchFields).length > 1 && (
                         <Select
                             value={searchField}
-                            className="mx-3"
-                            onChange={(event: ChangeEvent<{ name?: string | undefined, value: unknown}>) => {
-                                setSearchField(event.target.value as string)
+                            className='mx-3'
+                            onChange={(
+                                event: ChangeEvent<{
+                                    name?: string | undefined;
+                                    value: unknown;
+                                }>
+                            ) => {
+                                setSearchField(event.target.value as string);
                             }}
                         >
-                            {
-                                Object.keys(props.searchFields).map((key: string, index: number) => {
-                                    return <MenuItem key={index} value={key}>{props.searchFields[key].label}</MenuItem>
-                                })
-                            }
+                            {Object.keys(props.searchFields).map(
+                                (key: string, index: number) => {
+                                    return (
+                                        <MenuItem key={index} value={key}>
+                                            {props.searchFields[key].label}
+                                        </MenuItem>
+                                    );
+                                }
+                            )}
                         </Select>
-                    }
+                    )}
                     <TextField
                         value={searchText}
                         placeholder={props.placeHolder}
-                        name="searchBar"
-                        className="w-100 searchbar-input"
+                        name='searchBar'
+                        className='w-100 searchbar-input'
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setSearchText(event.currentTarget.value || '');
                             if (props.typingHook) {
@@ -129,16 +155,15 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                         }}
                     />
                     <div
-                        className="search-button"
+                        className='search-button'
                         style={{
                             maskImage: `url(${process.env.REACT_APP_S3_URL}/media/icons/search.svg)`,
-                            WebkitMaskImage:`url(${process.env.REACT_APP_S3_URL}/media/icons/search.svg)`
+                            WebkitMaskImage: `url(${process.env.REACT_APP_S3_URL}/media/icons/search.svg)`,
                         }}
                         onClick={doSearch}
                     ></div>
                 </div>
             </MuiThemeProvider>
         </React.Fragment>
-
     );
-}
+};
