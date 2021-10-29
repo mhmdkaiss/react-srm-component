@@ -1,7 +1,7 @@
 export interface Player {
     name: string;
     captain: boolean;
-    premium: Premium;
+    premium: boolean | Premium;
     account: string;
     elo: number;
 }

@@ -8,7 +8,7 @@ export const PLAYER_MOCK = {
             max: 9999,
         })}`,
         captain: faker.datatype.boolean(),
-        premium: faker.datatype.boolean() ? 'PREMIUM' : '',
+        premium: faker.datatype.boolean(),
         account: faker.internet.userName(),
         elo: faker.datatype.number({ min: 0, max: 20000 }),
     },

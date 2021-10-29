@@ -26,9 +26,18 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = ({
 }) => {
     const pictureSize = size === UserCardRoundedSize.xs ? 24 : 40;
 
+    let isPremium: boolean;
+    if (!player.premium) {
+        isPremium = false;
+    } else if (typeof player.premium === 'boolean') {
+        isPremium = player.premium;
+    } else {
+        isPremium = player.premium.status === PremiumStatus.PREMIUM;
+    }
+
     return (
         <div
-            className={`user-card-rounded-component d-flex align-items-center my-3 pr-3 ${
+            className={`user-card-rounded-component d-flex align-items-center pr-3 ${
                 selectable ? 'cursor-pointer selectable' : ''
             } ${selected ? 'selected' : ''} size-${size}`}
         >
@@ -40,7 +49,7 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = ({
             <div className='d-flex flex-column ml-2 details'>
                 <div className='name-wrapper d-flex'>
                     <span className='name text-elipsis'>{player.name}</span>
-                    {player.premium.status === PremiumStatus.PREMIUM && (
+                    {isPremium && (
                         <Icon
                             styleName={'ml-2'}
                             icon={IconType.Premium}

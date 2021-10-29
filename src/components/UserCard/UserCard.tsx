@@ -16,13 +16,17 @@ export interface UserCardProps {
     hoverHook?: (hovered?: string) => void;
 }
 
-export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCardProps) => {
+export const UserCard: React.FunctionComponent<UserCardProps> = (
+    props: UserCardProps
+) => {
     const backgroundFallback =
         process.env.REACT_APP_S3_URL + '/media/default/default-user-banner.jpg';
     const hashIndex = props.player.name.lastIndexOf('#');
     const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
     const name =
-        hashIndex !== -1 ? props.player.name.slice(0, hashIndex) : props.player.name;
+        hashIndex !== -1
+            ? props.player.name.slice(0, hashIndex)
+            : props.player.name;
     const handleHoverHook = (hovered?: string) => {
         if (props.hoverHook) {
             props.hoverHook(hovered);
@@ -36,12 +40,21 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
         profilePictureSize = props.xs ? 20 : 40;
     }
 
+    let isPremium: boolean;
+    if (!props.player.premium) {
+        isPremium = false;
+    } else if (typeof props.player.premium === 'boolean') {
+        isPremium = props.player.premium;
+    } else {
+        isPremium = props.player.premium.status === PremiumStatus.PREMIUM;
+    }
+
     return (
         <div
             className={`d-flex nc-user-card align-items-center pl-2 pr-3
                 ${props.xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
                 ${props.full ? 'full' : ''}
-                ${props.player.premium.status === PremiumStatus.PREMIUM ? 'premium' : ''}
+                ${isPremium ? 'premium' : ''}
                 ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
                 ${props.selected ? 'user-card-selected' : ''}`}
             onMouseEnter={() => handleHoverHook(props.playerId)}
@@ -74,7 +87,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                             {props.player.account}
                         </span>
                     </div>
-                    {props.player.premium.status === PremiumStatus.PREMIUM && (
+                    {isPremium && (
                         <Icon
                             styleName={'position-absolute fixed-premium'}
                             icon={IconType.Premium}
@@ -94,7 +107,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (props: UserCard
                         <span className='name'>{name}</span>
                         <span className='ml-2 code'>{code}</span>
                     </div>
-                    {props.player.premium.status === PremiumStatus.PREMIUM && (
+                    {isPremium && (
                         <Icon
                             styleName={'ml-2'}
                             icon={IconType.Premium}

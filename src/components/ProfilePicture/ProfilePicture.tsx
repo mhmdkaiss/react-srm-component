@@ -25,12 +25,19 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (
         };
     }
 
+    let isPremium: boolean;
+    if (!props.player.premium) {
+        isPremium = false;
+    } else if (typeof props.player.premium === 'boolean') {
+        isPremium = props.player.premium;
+    } else {
+        isPremium = props.player.premium.status === PremiumStatus.PREMIUM;
+    }
+
     return (
         <div
             className={`user-avatar position-relative default ${
-                props.player.premium.status === PremiumStatus.PREMIUM
-                    ? 'premium'
-                    : ''
+                isPremium ? 'premium' : ''
             }`}
             style={style}
         >

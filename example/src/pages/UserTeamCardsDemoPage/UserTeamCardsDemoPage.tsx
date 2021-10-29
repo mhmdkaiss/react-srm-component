@@ -21,7 +21,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
         <div className='d-flex flex-column user-team-cards-demo-page'>
             <div>
                 <span className='component-title'>
-                    User card {PLAYER_MOCK.player.premium}{' '}
+                    User card {PLAYER_MOCK.player.premium ? 'PREMIUM' : ''}{' '}
                     {PLAYER_MOCK.player.captain ? ' CAPTAIN' : ''}
                 </span>
                 <div className='my-4 d-flex flex-column'>
@@ -35,10 +35,12 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 player={PLAYER_MOCK.player}
                             />
                         </div>
-                        <div className='ml-3 text-center'
+                        <div
+                            className='ml-3 text-center'
                             onClick={() =>
                                 setUserCardSelected(!userCardSelected)
-                            }>
+                            }
+                        >
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
                                 full={false}
@@ -73,7 +75,8 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                             className='ml-3 text-center'
                             onClick={() =>
                                 setUserCardSelected(!userCardSelected)
-                            }>
+                            }
+                        >
                             <UserCard
                                 playerId={PLAYER_MOCK.id}
                                 full={true}
