@@ -38,4 +38,5 @@ export {
     NCDefault,
     NCFlagSelector,
     NCTinyMce,
+    NCTheme,
 } from './src';

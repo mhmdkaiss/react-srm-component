@@ -1,18 +1,40 @@
 @import 'src/styles/colors';
+@import 'src/styles/variables';
 
 .nc-preview-search-async {
+    .nc-async-search-input {
+        div {
+            padding-left: 8px;
+            background-color: $grey2;
+        }
+
+        label {
+            cursor: text;
+            z-index: 1;
+            &:not(.MuiFormLabel-filled):not(.Mui-focused) {
+                padding-left: 8px;
+            }
+        }
+    }
     .preview-list {
         z-index: 1;
         max-height: 100px;
-        overflow-y: scroll;
+        overflow-y: auto;
 
         .preview-item {
+            display: flex;
+            align-items: center;
             padding-left: 8px;
             background: $grey2;
-            color: $white;
+            color: $grey6;
+            font-size: $small-text;
+            line-height: 30px;
+            height: 36px;
+            border-bottom: 1px solid $grey4;
 
             &.selected {
                 background: $grey3;
+                color: $white;
             }
 
             &:active {

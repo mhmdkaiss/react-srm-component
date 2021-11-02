@@ -14,6 +14,7 @@ export interface UserCardProps {
     selectable?: boolean;
     selected?: boolean;
     hoverHook?: (hovered?: string) => void;
+    disabled?: boolean;
 }
 
 export const UserCard: React.FunctionComponent<UserCardProps> = (
@@ -56,7 +57,8 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                 ${props.full ? 'full' : ''}
                 ${isPremium ? 'premium' : ''}
                 ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
-                ${props.selected ? 'user-card-selected' : ''}`}
+                ${props.selected ? 'user-card-selected' : ''}
+                ${props.disabled ? 'disabled' : ''}`}
             onMouseEnter={() => handleHoverHook(props.playerId)}
             onMouseLeave={() => handleHoverHook(undefined)}
         >

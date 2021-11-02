@@ -228,6 +228,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             }}
                             loading={searchListLoading}
                             onType={fakeAsyncCall}
+                            noResultMessage='No results, try another name'
                         />
 
                         <div className='mt-2 mb-1'>Default value</div>

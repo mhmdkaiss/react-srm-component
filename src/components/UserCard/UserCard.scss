@@ -43,6 +43,15 @@
         }
     }
 
+    &.disabled {
+        opacity: 0.2;
+        .background-image {
+            img {
+                display: none;
+            }
+        }
+    }
+
     .background-image {
         filter: blur(4px);
     }
@@ -51,7 +60,7 @@
         background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(41, 45, 48, 1));
     }
 
-    &:hover {
+    &:not(.disabled):hover {
         border: 1px solid rgba(255, 255, 255, 0.5);
 
         &.premium {

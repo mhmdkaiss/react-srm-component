@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { ThemePlatform } from '../../styles/Themes';
-import { SearchBar } from '../SearchBar/SearchBar';
+import { MuiThemeProvider, TextField } from '@material-ui/core';
+import { getTheme, NCTheme } from '../../styles/Themes';
 import './NCPreviewSearchAsync.scss';
 
 export interface NCPreviewSearchAsyncProps {
     list: Array<{ [key: string]: any }>;
     displayParam: string;
-    placeHolder: string;
+    label: string;
     onSelection: (clicked: any) => void;
     onType: (text: string) => void;
     debounceOnType?: number;
     loading: boolean;
+    noResultMessage: string;
+    loadingMessage?: string;
+    theme?: NCTheme;
 }
 
 export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncProps> =
@@ -20,6 +22,8 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
         const [search, setSearch] = useState<string>('');
         const [callOnType, setCallOnType] = useState<number>();
         const [selected, setSelected] = useState<number>(0);
+        const [focus, setFocus] = useState<boolean>(false);
+        const inputRef = useRef<HTMLInputElement>(null);
         const listRef = useRef<HTMLDivElement>(null);
         const itemsRef = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -93,20 +97,28 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
 
         return (
             <React.Fragment>
-                <MuiThemeProvider theme={ThemePlatform}>
-                    <div className='nc-preview-search-async position-relative'>
-                        <SearchBar
-                            searchFields={{ no: { label: '' } }}
-                            placeHolder={props.placeHolder}
-                            hideStore={true}
-                            typingHook={(text) => {
-                                handleOnType(text);
-                                setSearch(text);
+                <MuiThemeProvider
+                    theme={getTheme(props.theme || NCTheme.Platform)}
+                >
+                    <div
+                        onBlur={() => setFocus(false)}
+                        className='nc-preview-search-async w-100 position-relative'
+                    >
+                        <TextField
+                            inputRef={inputRef}
+                            className='w-100 nc-async-search-input'
+                            label={props.label}
+                            onClick={() => inputRef.current?.focus()}
+                            onChange={(event) => {
+                                handleOnType(event.currentTarget.value);
+                                setSearch(event.currentTarget.value);
                             }}
                             value={search}
-                            setOnKeyDown={onKeyDown}
+                            onKeyDown={onKeyDown}
+                            onFocus={() => setFocus(true)}
+                            onBlur={(e) => e.stopPropagation()}
                         />
-                        {search.trim() && (
+                        {focus && search.trim() && (
                             <div
                                 ref={listRef}
                                 className='preview-list position-absolute w-100'
@@ -129,9 +141,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                                                         ? 'selected'
                                                         : ''
                                                 }`}
-                                                onClick={() => {
-                                                    handleSelected();
-                                                }}
+                                                onClick={() => handleSelected()}
                                             >
                                                 {item[props.displayParam]}
                                             </div>
@@ -139,7 +149,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                                     })}
                                 {(waiting || props.loading) && (
                                     <div className='preview-item py-1'>
-                                        Loading
+                                        {props.loadingMessage || 'Loading'}
                                     </div>
                                 )}
                                 {!waiting &&
@@ -147,7 +157,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                                     search &&
                                     props.list.length === 0 && (
                                         <div className='preview-item py-1'>
-                                            No results, try another name
+                                            {props.noResultMessage}
                                         </div>
                                     )}
                             </div>

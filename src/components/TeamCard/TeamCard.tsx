@@ -29,14 +29,16 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
 
     let captainName: string | undefined;
     let captainCode: string | undefined;
-    Object.keys(props.team.players).forEach((playerId) => {
-        if (props.team.players[playerId].captain) {
-            const captain = props.team.players[playerId];
-            captainCode = captain.name.slice(-4);
-            captainName = captain.name.slice(0, -5);
-            return;
-        }
-    });
+    if(props.team.players) {
+        Object.keys(props.team.players).forEach((playerId) => {
+            if (props.team.players[playerId].captain) {
+                const captain = props.team.players[playerId];
+                captainCode = captain.name.slice(-4);
+                captainName = captain.name.slice(0, -5);
+                return;
+            }
+        });
+    }
 
     return (
         <div
