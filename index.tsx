@@ -10,6 +10,7 @@ export {
     UserTeamCard,
     UserCardRoundedSize,
     Icon,
+    IconMask,
     IconType,
     Chat,
     Button,

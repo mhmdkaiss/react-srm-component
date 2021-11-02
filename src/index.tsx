@@ -4,15 +4,10 @@ import {
     ButtonTheme,
     ButtonType,
 } from './atoms/Button/Button';
-import {
-    DisplayList,
-    DisplaySelector,
-} from './components/DisplaySelector/DisplaySelector';
-import { Icon, IconType } from './atoms/Icon/Icon';
-import {
-    NCRadioGroup,
-    NcRadioGroupFields,
-} from './components/NCRadioGroup/NCRadioGroup';
+import { DisplayList, DisplaySelector } from './components/DisplaySelector/DisplaySelector';
+import { Icon, IconType } from "./atoms/Icon/Icon";
+import { IconMask } from "./atoms/Icon/IconMask";
+import { NCRadioGroup, NcRadioGroupFields } from './components/NCRadioGroup/NCRadioGroup';
 import { SelectionType, TeamCard } from './components/TeamCard/TeamCard';
 import {
     UserCardRounded,
@@ -55,6 +50,7 @@ export {
     UserCard,
     UserTeamCard,
     Icon,
+    IconMask,
     IconType,
     UserCardRounded,
     UserCardRoundedSize,

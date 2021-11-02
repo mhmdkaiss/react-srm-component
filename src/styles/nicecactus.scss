@@ -35,13 +35,17 @@
   }
 
   select, input, textarea {
-    background: $grey2;
+    background: $grey2 !important;
     color: $grey6;
     padding-left: 8px;
     padding-right: 8px;
     margin-top: 2px;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  input {
+      height: 100%;
   }
 
   select > option {
