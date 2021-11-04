@@ -219,7 +219,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     <div>
                         <div className='mb-1'>Place holder</div>
                         <NCPreviewSearchAsync
-                            placeHolder='Place holder'
+                            label='Place holder'
                             list={asyncSearchList}
                             displayParam='name'
                             onSelection={(e: any) => {
