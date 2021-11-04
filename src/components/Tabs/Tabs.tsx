@@ -33,7 +33,7 @@ interface TabsProps {
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
-    const [currentTab, setCurrentTab] = useState<TabParameter>(props.tabs[0]);
+    const [currentTab, setCurrentTab] = useState<TabParameter>();
     const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
     const [currentTabPos, setCurrentTabPos] = useState<number>(0);
     const tabsRef = useRef<Array<HTMLDivElement | null>>([]);
@@ -143,7 +143,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                         <div
                                             key={tab.name}
                                             ref={(element) => tabsRef.current[index] = element}
-                                            className={`tab-container d-flex justify-content-center align-items-center position-relative ${tab.name === currentTab.name ? "active" : ""
+                                            className={`tab-container d-flex justify-content-center align-items-center position-relative ${currentTab && tab.name === currentTab.name ? "active" : ""
                                                 }`}
                                             onClick={() => {
                                                 onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);

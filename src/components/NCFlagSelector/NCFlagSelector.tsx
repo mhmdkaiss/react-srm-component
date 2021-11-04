@@ -22,9 +22,9 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({ l
             <MuiThemeProvider theme={ThemePlatform}>
                 <div className="lang-list">
                     {(
-                        languages.map((l: Lang, idx: number) => {
+                        languages.map((l: Lang) => {
                             return (
-                                <span key={"flag-selector-" + idx} onClick={() => actionHook(l.code)}><img src={`${publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} /></span>
+                                <span key={"flag-selector-" + l.code} onClick={() => actionHook(l.code)}><img src={`${publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} /></span>
                             )
                         })
                     )}

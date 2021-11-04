@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { ButtonSize } from '../../atoms/Button/Button';
 import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import './DisplaySelector.scss';
-import { ButtonSize } from '../..';
 
 export enum DisplayList {
     List=0,

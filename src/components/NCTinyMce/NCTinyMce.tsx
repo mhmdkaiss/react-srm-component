@@ -8,6 +8,7 @@ export declare type TinyMceConfig = RawEditorSettings & {
 };
 
 export declare type NCTinyMceProps = {
+    id?: string;
     onChange: (value: string) => void;
     value: string;
     disabled?: boolean;
@@ -17,7 +18,7 @@ export declare type NCTinyMceProps = {
 
 // TODO: Create custom skin to replace 'oxide-dark', see https://www.tiny.cloud/docs/advanced/creating-a-skin/
 
-export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ apiKey, onChange, editorConfig, value, disabled }: NCTinyMceProps) => {
+export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey, onChange, editorConfig, value, disabled }: NCTinyMceProps) => {
     const config: TinyMceConfig = {
         height: 500,
         menubar: false,
@@ -40,6 +41,7 @@ export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ apiKey, onC
     return (
         <React.Fragment>
             <Editor
+                id={id}
                 apiKey={apiKey}
                 init={config}
                 value={value}

@@ -2,7 +2,7 @@ import React from 'react';
 import './UserCardRounded.scss';
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import { Player, PremiumStatus } from '../../models/Player';
-import { Icon, IconType } from '../..';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
 
 export enum UserCardRoundedSize {
     xs = 'xs',

@@ -1,10 +1,10 @@
 import './UserCard.scss';
 
-import { Icon, IconType } from '../..';
 
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import { Player, PremiumStatus } from '../../models/Player';
 import React from 'react';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
 
 export interface UserCardProps {
     playerId: string;

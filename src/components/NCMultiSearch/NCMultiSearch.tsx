@@ -2,7 +2,7 @@ import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core';
 import { ThemePlatform } from '../../styles/Themes';
 import { NCPreviewSearch, NCPreviewSearchProps } from '../NCPreviewSearch/NCPreviewSearch';
-import { NCChip } from '../..';
+import { NCChip } from '../NCChip/NCChip';
 
 export interface NCMultiSearchProps extends NCPreviewSearchProps {
     selected: Array<string>;

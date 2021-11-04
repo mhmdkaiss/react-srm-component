@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Game } from '../../models/Game';
 import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import './GameList.scss';
-import { ButtonSize } from '../..';
+import { ButtonSize } from '../../atoms/Button/Button';
 
 export interface GameListProps {
     games: Array<Game>;
