@@ -40,4 +40,6 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
+    NCAccordion,
+    NCAccordionData,
 } from './src';

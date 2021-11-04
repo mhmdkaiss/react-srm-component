@@ -39,6 +39,7 @@ import { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 import { NCDefault } from './components/NCDefault/NCDefault';
 import { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
 import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
+import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
 
 export {
     DatePicker,
@@ -82,4 +83,6 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
+    NCAccordion,
+    NCAccordionData,
 };
