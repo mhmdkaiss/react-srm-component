@@ -9,7 +9,9 @@
     "test": "react-app-rewired test",
     "serve": "serve -c build",
     "eject": "react-app-rewired eject",
-    "lint": "eslint src/**/*.ts*"
+    "lint": "eslint src/**/*.ts*",
+    "translations:pull": "node scripts/translations/poeditor.js --action=pull",
+    "translations:push": "node scripts/translations/poeditor.js --action=push"
   },
   "dependencies": {
     "@cactus/srm-component": "link:..",

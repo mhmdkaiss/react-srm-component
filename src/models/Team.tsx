@@ -15,6 +15,7 @@ export interface Team {
     pos: number;
     rounds?: { [key: string]: Round };
     slug: string;
+    route: string;
 }
 export interface TeamBracket extends Team {
     pending?: boolean;
@@ -31,4 +32,8 @@ export interface TeamRanking {
     fullDiff: number;
     fullResult: number;
     captainUserId?: string;
+}
+
+export interface TeamLeaderboard extends Team {
+    score?: string,
 }

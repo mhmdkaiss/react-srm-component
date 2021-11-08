@@ -1,5 +1,5 @@
 import React from "react";
-import { DisplaySelector, GameList } from "@cactus/srm-component"
+import { DisplaySelector, GameList, NCParticipantList } from "@cactus/srm-component"
 import "./ListDemoPage.scss";
 
 const games = [{
@@ -102,6 +102,62 @@ const games = [{
   "active": 1,
 }];
 
+
+const teams = [
+    {
+        name: "Team 1",
+        slug: 'teamcurry',
+        route: 'route1',
+        players: {
+            '5e6f53cadcfc00132e1c73b1': {
+                name: 'Player 1',
+                captain: false,
+                premium: false,
+                account: '',
+                elo: 0,
+            },
+            '5e6f53cadcfc00132e1c73b2': {
+                name: 'Player 2',
+                captain: false,
+                premium: false,
+                account: '',
+                elo: 0,
+            }
+        },
+        score: 10
+    },
+    {
+        name: "Team 2",
+        id: '5e6f53cadcfc00132e1c7354',
+        slug: '',
+        route: 'route2',
+        players: {
+            '5e6f53cadcfc00132e1c73b1': {
+                name: 'Player 1',
+                captain: false,
+                premium: false,
+                account: '',
+                elo: 0,
+            },
+            '5e6f53cadcfc00132e1c73b2': {
+                name: 'Player 2',
+                captain: false,
+                premium: false,
+                account: '',
+                elo: 0,
+            }
+        },
+        score: 5
+    }
+];
+
+const players = teams.map(t => {
+    const team = JSON.parse(JSON.stringify(t));
+    delete team.players[Object.keys(t.players)[1]];
+    return team;
+})
+
+
 export const ListDemoPage: React.FunctionComponent = () => {
     return (
         <div className="list-demo-page">
@@ -111,6 +167,23 @@ export const ListDemoPage: React.FunctionComponent = () => {
             <GameList games={games} onChange={()=>{}}/>
             <span className="theme-title">Display List</span>
             <DisplaySelector onChange={()=>{}}/>
+            <span className="theme-title">Participant List</span>
+            <div className="d-flex row">
+                <div className="col-6">
+                    <NCParticipantList list={teams} winners={[teams[0].route]} selected={teams[0].route} />
+                </div>
+                <div className="col-6">
+                    <NCParticipantList list={players} winners={[players[0].route]} selected={players[0].route} />
+                </div>
+            </div>
+            <div className="d-flex row">
+                <div className="col-6">
+                    <NCParticipantList list={teams} winners={[teams[0].route]} selected={teams[0].route} isLeaderboard={true} />
+                </div>
+                <div className="col-6">
+                    <NCParticipantList list={players} winners={[players[0].route]} selected={players[0].route} isLeaderboard={true}/>
+                </div>
+            </div>
         </div>
     )
 };

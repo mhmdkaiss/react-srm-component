@@ -42,13 +42,17 @@ import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
 import { NCToast } from "./components/NCToast/NCToast";
 import { NCToastType, ToastModel, ToastPosition } from "./models/NCToastModel"
 import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
+import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
+import { TeamPicture } from './components/TeamPicture/TeamPicture';
 
 export {
     DatePicker,
     Dialog,
+    NCParticipantList,
     SearchBar,
     Tabs,
     TeamCard,
+    TeamPicture,
     ThemePlatform,
     UserCard,
     UserTeamCard,

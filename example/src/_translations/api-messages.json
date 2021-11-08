@@ -1,0 +1,62 @@
+[
+    {
+        "term": "round.final",
+        "comment": "Round - Final"
+    },
+    {
+        "term": "round.1_2",
+        "comment": "Round - Semifinal"
+    },
+    {
+        "term": "round.1_4",
+        "comment": "Round - Quarterfinal"
+    },
+    {
+        "term": "round.others",
+        "comment": "Round - 1/{index} final"
+    },
+    {
+        "term": "round.match_name",
+        "comment": "Match {name}"
+    },
+    {
+        "term": "bracket.group",
+        "comment": "Group"
+    },
+    {
+        "term": "bracket.groups",
+        "comment": "Groups"
+    },
+    {
+        "term": "bracket.view_details",
+        "comment": "View Details"
+    },
+    {
+        "term": "bracket.round_robin.title",
+        "comment": "Round Robin"
+    },
+    {
+        "term": "bracket.round_robin.upcoming",
+        "comment": "Upcoming"
+    },
+    {
+        "term": "bracket.round_robin.now",
+        "comment": "Now"
+    },
+    {
+        "term": "bracket.round_robin.me",
+        "comment": "me"
+    },
+    {
+        "term": "final",
+        "comment": "Final"
+    },
+    {
+        "term": "game_account.modal.title",
+        "comment": "Add game account"
+    },
+    {
+        "term": "game_account.modal.description",
+        "comment": "Seems like you didn’t provide an account for this game. We need this information to validate results."
+    }
+]
