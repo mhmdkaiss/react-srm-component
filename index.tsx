@@ -40,6 +40,10 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
+    NCToast,
+    NCToastType,
+    ToastModel,
+    ToastPosition,
     NCAccordion,
     NCAccordionData,
 } from './src';

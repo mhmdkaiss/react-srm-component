@@ -39,6 +39,8 @@ import { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 import { NCDefault } from './components/NCDefault/NCDefault';
 import { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
 import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
+import { NCToast } from "./components/NCToast/NCToast";
+import { NCToastType, ToastModel, ToastPosition } from "./models/NCToastModel"
 import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
 
 export {
@@ -83,6 +85,10 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
+    NCToast,
+    NCToastType,
+    ToastModel,
+    ToastPosition,
     NCAccordion,
     NCAccordionData,
 };

@@ -19,6 +19,8 @@
 @import '../components/NCCheckbox/NCCheckbox.scss';
 @import '../components/GameList/GameList.scss';
 @import '../components/DisplaySelector/DisplaySelector.scss';
+@import '../components/NCToast/NCToast.scss';
+
 @import '../components/ProfilePicture/ProfilePicture.scss';
 @import '../components/NCFlagSelector/NCFlagSelector.scss';
 @import '../components/NCAccordion/NCAccordion.scss';
@@ -82,4 +84,3 @@
   overflow: hidden;
   white-space: nowrap;
 }
-
