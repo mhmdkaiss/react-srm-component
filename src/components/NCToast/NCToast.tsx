@@ -7,9 +7,10 @@ export interface NCToastProps {
     toastList: Array<ToastModel>;
     position?: ToastPosition;
     duration?: number;
+    onDeleteToast?: (toastId: number) => void;
 }
 
-export const NCToast: React.FunctionComponent<NCToastProps> = ({toastList, position, duration }) => {
+export const NCToast: React.FunctionComponent<NCToastProps> = ({toastList, position, duration, onDeleteToast }) => {
     const [list, setList] = useState<Array<ToastModel>>(toastList);
 
     useEffect(() => {
@@ -31,11 +32,15 @@ export const NCToast: React.FunctionComponent<NCToastProps> = ({toastList, posit
     }, [toastList, list]);
 
     const deleteToast = (id: number) => {
-        const listItemIndex = list.findIndex(e => e.id === id);
-        const toastListItem = toastList.findIndex(e => e.id === id);
-        list.splice(listItemIndex, 1);
-        toastList.splice(toastListItem, 1);
-        setList([...list]);
+        if(onDeleteToast) {
+            onDeleteToast(id);
+        } else {
+            const listItemIndex = list.findIndex(e => e.id === id);
+            const toastListItem = toastList.findIndex(e => e.id === id);
+            list.splice(listItemIndex, 1);
+            toastList.splice(toastListItem, 1);
+            setList([...list]);
+        }
     }
 
     return (
