@@ -32,7 +32,6 @@
         "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
         "test:watch": "react-scripts test --env=jsdom",
         "watch:css": "yarn build:css && yarn build:css -w -r",
-        "postinstall": "husky install",
         "pre-commit": "lint-staged"
     },
     "peerDependencies": {
