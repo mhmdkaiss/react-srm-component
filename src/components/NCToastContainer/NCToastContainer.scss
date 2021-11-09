@@ -1,0 +1,27 @@
+@import 'src/styles/colors';
+
+.nc-toast-container-component {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 999999;
+    
+    &.top-right {
+        top: 12px;
+        right: 12px;
+    }
+
+    &.bottom-right {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    &.top-left {
+        top: 12px;
+        left: 12px;
+    }
+
+    &.bottom-left {
+        bottom: 12px;
+        left: 12px;
+    }
+}

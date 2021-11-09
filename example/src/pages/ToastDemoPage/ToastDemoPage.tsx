@@ -8,9 +8,10 @@ import {
     ToastModel,
     ToastPosition,
     NCSelect,
-    NCToast,
+    NCToastContainer,
     NCInput,
 } from "@cactus/srm-component";
+import ContextStore from "../../store";
 
 const positionsFields = [
     {key: "Top Right", value: ToastPosition.TOP_RIGHT},
@@ -35,9 +36,12 @@ const ButtonsList = [
 ];
 
 export const ToastDemoPage: React.FunctionComponent = () => {
-    const [list, setList] = useState<Array<ToastModel>>([]);
+    const toastsList = ContextStore.useStoreState((s) => s.toast.list);
+    const pushToast = ContextStore.useStoreActions((a) => a.toast.pushToast);
+    const deleteToast = ContextStore.useStoreActions((a) => a.toast.deleteToast);
+    const setToasts = ContextStore.useStoreActions((a) => a.toast.setToasts);
     const [position, setPosition] = useState<ToastPosition>(ToastPosition.TOP_RIGHT);
-    const [duration, setDuration] = useState<string>("7");
+    const [duration, setDuration] = useState<string>("2");
 
     let toastProperties: ToastModel;
 
@@ -45,7 +49,7 @@ export const ToastDemoPage: React.FunctionComponent = () => {
         positionsFields.map((field) => {
             return (field.key === e ? setPosition(field.value) : null)
         })
-        setList([]);
+        setToasts([]);
     }
 
     const showToast = (type: NCToastType) => {
@@ -65,9 +69,9 @@ export const ToastDemoPage: React.FunctionComponent = () => {
                 );
                 break;
             default:
-                setList([]);
+                setToasts([]);
         }
-        setList([...list, toastProperties]);
+        pushToast(toastProperties);
     }
 
     const onDurationChange = (event: string) => {
@@ -78,8 +82,8 @@ export const ToastDemoPage: React.FunctionComponent = () => {
         <React.Fragment>
             <div className="d-flex flex-row m-5">
                 {
-                    ButtonsList.map(button =>
-                        <div className="mx-2">
+                    ButtonsList.map((button, index) =>
+                        <div key={index} className="mx-2">
                             <Button
                                 label={button.label}
                                 theme={button.theme}
@@ -107,7 +111,7 @@ export const ToastDemoPage: React.FunctionComponent = () => {
                 <NCInput value={duration} onChange={(event: string) => onDurationChange(event)}/>
             </div>
 
-            <NCToast toastList={list} position={position} duration={Number(duration) * 1000}/>
+            <NCToastContainer toastList={toastsList} position={position} onDeleteToast={deleteToast} duration={Number(duration) * 1000}/>
         </React.Fragment>
     );
 

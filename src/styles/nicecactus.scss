@@ -19,7 +19,7 @@
 @import '../components/NCCheckbox/NCCheckbox.scss';
 @import '../components/GameList/GameList.scss';
 @import '../components/DisplaySelector/DisplaySelector.scss';
-@import '../components/NCToast/NCToast.scss';
+@import '../components/NCToastContainer/NCToastContainer.scss';
 
 @import '../components/ProfilePicture/ProfilePicture.scss';
 @import '../components/NCFlagSelector/NCFlagSelector.scss';
@@ -30,6 +30,7 @@
 // Atoms
 @import '../atoms/Button/Button.scss';
 @import '../atoms/Button/ButtonIcon.scss';
+@import '../atoms/NCToast/NCToast.scss';
 
 // CSS
 .nicecactus-input {

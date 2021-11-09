@@ -39,7 +39,7 @@ import { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 import { NCDefault } from './components/NCDefault/NCDefault';
 import { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
 import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
-import { NCToast } from "./components/NCToast/NCToast";
+import { NCToastContainer } from "./components/NCToastContainer/NCToastContainer";
 import { NCToastType, ToastModel, ToastPosition } from "./models/NCToastModel"
 import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
 import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
@@ -89,7 +89,7 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
-    NCToast,
+    NCToastContainer,
     NCToastType,
     ToastModel,
     ToastPosition,

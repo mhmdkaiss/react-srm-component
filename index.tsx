@@ -42,7 +42,7 @@ export {
     NCFlagSelector,
     NCTinyMce,
     NCTheme,
-    NCToast,
+    NCToastContainer,
     NCToastType,
     ToastModel,
     ToastPosition,

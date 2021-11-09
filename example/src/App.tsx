@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import ContextStore from "./store";
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -42,27 +43,29 @@ const routes = [
 const App = () => {
     return (
         <div className='app'>
-            <Router basename={'/'}>
-                <AppBar position='static'>
-                    <Toolbar>
-                        <Typography variant='h6' className='title'>
-                            NC Shared library
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <div className='content d-flex flex-row w-100 h-100'>
-                    <div className='navigation'>
-                        <Navigation></Navigation>
+            <ContextStore.Provider>
+                <Router basename={'/'}>
+                    <AppBar position='static'>
+                        <Toolbar>
+                            <Typography variant='h6' className='title'>
+                                NC Shared library
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <div className='content d-flex flex-row w-100 h-100'>
+                        <div className='navigation'>
+                            <Navigation></Navigation>
+                        </div>
+                        <div className='content p-5'>
+                            <Switch>
+                                {routes.map((route, i) => (
+                                    <RouteWithSubRoutes key={i} {...route} />
+                                ))}
+                            </Switch>
+                        </div>
                     </div>
-                    <div className='content p-5'>
-                        <Switch>
-                            {routes.map((route, i) => (
-                                <RouteWithSubRoutes key={i} {...route} />
-                            ))}
-                        </Switch>
-                    </div>
-                </div>
-            </Router>
+                </Router>
+            </ContextStore.Provider>
         </div>
     )
 }

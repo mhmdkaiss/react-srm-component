@@ -1,12 +1,13 @@
 import { createContextStore } from "easy-peasy";
+import { toastInitState, ToastStore } from "./store/ToastStore";
 
 export interface ContextStoreModel {
   getUsername: () => string;
+  toast: ToastStore;
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
-  (initialData) =>
-    initialData || {
+  {
       getUsername: () => {
         let user: any;
         try {
@@ -15,7 +16,10 @@ const ContextStore = createContextStore<ContextStoreModel>(
 
         return user?.name || 'Stranger';
       },
-    }
+      toast: toastInitState
+  }, {
+    name: "ds-example"
+  }
 );
 
 export default ContextStore;
