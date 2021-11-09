@@ -1,7 +1,7 @@
 import { MuiThemeProvider } from "@material-ui/core";
 import Select from "@material-ui/core/Select";
 import React, { ChangeEvent, useState } from "react";
-import { ThemePlatform } from '../../styles/Themes';
+import { ThemePlatform } from "../../styles/Themes";
 
 export interface SelectProps {
   id?: string;

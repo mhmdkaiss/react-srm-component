@@ -17,9 +17,9 @@ export interface NCAccordionProps {
 export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }: NCAccordionProps) => {
     const createMarkup = (content: string) => {
         return {
-           __html: content
+            __html: content
         };
-     };
+    };
 
     const renderAccordion = (index: number, title: string, content: string) => {
         const ref = React.createRef();
@@ -38,12 +38,12 @@ export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }:
                     <div className="content" dangerouslySetInnerHTML={createMarkup(content)}></div>
                 </AccordionDetails>
             </Accordion>
-            );
-    }
+        );
+    };
 
     return (
         <React.Fragment >
-            <div className={"nc-accordion"}>
+            <div className={'nc-accordion'}>
                 <MuiThemeProvider theme={ThemePlatform}>
                     {data.map((d, idx) => {
                         return renderAccordion(idx, d.title, d.content);
@@ -52,4 +52,4 @@ export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }:
             </div>
         </React.Fragment>
     );
-}
+};

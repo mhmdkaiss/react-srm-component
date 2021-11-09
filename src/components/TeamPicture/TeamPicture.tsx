@@ -21,14 +21,14 @@ export const TeamPicture: React.FunctionComponent<ProfilePictureProps> = ({slug,
     }
 
     return (
-            <img
-                className="team-picture"
-                style={style}
-                src={`${process.env.REACT_APP_S3_URL}/teams/${slug}/medias/ProfileImage?cache=${Date.now()}`}
-                defaultValue={defaultImage}
-                onError={(e) => (e.currentTarget.src = defaultImage)}
-                alt=''
-            />
+        <img
+            className="team-picture"
+            style={style}
+            src={`${process.env.REACT_APP_S3_URL}/teams/${slug}/medias/ProfileImage?cache=${Date.now()}`}
+            defaultValue={defaultImage}
+            onError={(e) => (e.currentTarget.src = defaultImage)}
+            alt=''
+        />
     );
 };
 

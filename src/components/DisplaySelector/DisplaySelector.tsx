@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { ButtonSize } from '../../atoms/Button/Button';
-import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import './DisplaySelector.scss';
+
+import React, { useState } from 'react';
+
+import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
+import { ButtonSize } from '../../atoms/Button/Button';
 
 export enum DisplayList {
     List=0,
@@ -9,7 +11,7 @@ export enum DisplayList {
 }
 
 export interface DisplaySelectorProps {
-    onChange: (type: DisplayList) => void;
+  onChange: (type: DisplayList) => void
 }
 
 export const DisplaySelector: React.FunctionComponent<DisplaySelectorProps> = ({ onChange }: DisplaySelectorProps) => {

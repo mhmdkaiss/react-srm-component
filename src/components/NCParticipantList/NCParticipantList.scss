@@ -1,5 +1,5 @@
-@import "src/styles/colors";
-@import "src/styles/variables";
+@import 'src/styles/colors';
+@import 'src/styles/variables';
 
 .nc-tournament-list {
     thead tr {
@@ -12,7 +12,8 @@
         color: $white;
     }
 
-    th, td {
+    th,
+    td {
         font-weight: 400 !important;
         border: 0 !important;
     }

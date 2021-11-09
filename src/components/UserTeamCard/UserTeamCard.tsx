@@ -1,8 +1,8 @@
 import "./UserTeamCard.scss"
 
-import React from "react";
+import React from 'react';
 
-import { Team } from "../../models/Team";
+import { Team } from '../../models/Team';
 
 interface UserTeamCardProps {
     team: Team;

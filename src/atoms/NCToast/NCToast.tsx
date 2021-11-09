@@ -13,15 +13,14 @@ export interface NCToastContainerProps {
 export const NCToast: React.FunctionComponent<NCToastContainerProps> = (
     props
 ) => {
-
     useEffect(() => {
         const interval = setInterval(() => {
             props.onDeleteToast(props.toast.id);
-        }, props.duration);   
+        }, props.duration);
 
         return () => {
-            clearInterval(interval)
-        }
+            clearInterval(interval);
+        };
     }, []);
 
     return (

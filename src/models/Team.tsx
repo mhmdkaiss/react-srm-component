@@ -1,5 +1,5 @@
-import { Player } from "./Player";
-import { Round } from "./Round";
+import { Player } from './Player';
+import { Round } from './Round';
 
 export interface Team {
     team: string;
