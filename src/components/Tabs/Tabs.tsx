@@ -143,20 +143,26 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                         <div
                                             key={tab.name}
                                             ref={(element) => tabsRef.current[index] = element}
-                                            className={`tab-container d-flex justify-content-center align-items-center position-relative ${currentTab && tab.name === currentTab.name ? "active" : ""
-                                                }`}
+                                            className={
+                                                `tab-container d-flex justify-content-center align-items-center position-relative
+                                                ${currentTab && tab.name === currentTab.name ? "active" : ""}
+                                                ${tab.disabled? 'disabled' : ''}`
+                                            }
                                             onClick={() => {
-                                                onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
+                                                if (!tab.disabled) {
+                                                    onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
+                                                }
                                             }}
                                         >
-                                        {(!tab.children && 
-                                            <props.NcRouterLink to={tab.path}>
-                                                <div className="tab-name text-uppercase">{tab.name}</div>
-                                            </props.NcRouterLink>
-                                        )}
-                                        {(tab.children && 
-                                            <div className="tab-name text-uppercase">{tab.name}</div>
-                                        )}
+                                        {
+                                            tab.children || tab.disabled ?
+                                                <div className="h-100 w-100">
+                                                    <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                </div> :
+                                                <props.NcRouterLink to={tab.path} className="h-100 w-100">
+                                                    <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                </props.NcRouterLink>
+                                        }
                                         </div>
                                     );
                                 })}

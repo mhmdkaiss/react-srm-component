@@ -44,6 +44,7 @@
                     }
 
                     .tab-name {
+                        width: fit-content;
                         color: $grey6;
                         font-weight: bold;
                         font-size: 16px;
@@ -62,6 +63,14 @@
                     &.active {
                         .tab-name {
                             border-bottom: 2px solid $primary-color;
+                        }
+                    }
+
+                    &.disabled {
+                        cursor: default;
+
+                        .tab-name {
+                            color: $grey5 !important;
                         }
                     }
                 }
