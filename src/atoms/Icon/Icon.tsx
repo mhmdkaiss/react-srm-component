@@ -38,6 +38,8 @@ export enum IconType {
     User = 'user',
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
+    Lock = 'lock',
+    Clock = 'clock'
 }
 
 export interface IconProps {
