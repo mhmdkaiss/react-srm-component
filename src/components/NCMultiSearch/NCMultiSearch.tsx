@@ -20,14 +20,14 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
                         {
                             props.list.filter(item => props.selected.includes(item[props.displayParam])).map((item, index) => {
                                 return (
-                                    <div key={index} className={index > 0 ? 'mx-3' : ''}>
+                                    <div key={index} className={index > 0 ? 'mx-3' : 'mr-3'}>
                                         <NCChip
                                             label={item[props.displayParam]}
                                             onChange={() => props.onDelete(item)}
                                             deletion={true}
                                         />
                                     </div>
-                                )
+                                );
                             })
                         }
                     </div>
@@ -43,7 +43,7 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
                         list={props.list}
                         displayParam={props.displayParam}
                         onSelection={(item: any) => {
-                            if(!props.selected.includes(item[props.compareParam])) {
+                            if (!props.selected.includes(item[props.compareParam])) {
                                 props.onSelection(item);
                             }
                         }}
@@ -53,4 +53,4 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
             </MuiThemeProvider>
         </React.Fragment>
     );
-}
+};

@@ -1,7 +1,7 @@
-import "./Tabs.scss";
+import './Tabs.scss';
 
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export interface TabParameter {
     basePath?: string;
@@ -54,23 +54,23 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     }, [scrollableItems, headerRef]);
 
     useEffect(() => {
-        window.addEventListener("resize", setupArrows);
+        window.addEventListener('resize', setupArrows);
     }, []);
 
     const onTabChange = (tab: TabParameter, index: number, pos: number | undefined) => {
         setCurrentTab(tab);
-        setCurrentTabIndex(index)
+        setCurrentTabIndex(index);
         if (pos) {
             setCurrentTabPos(pos);
         }
-        return (<props.NcRouterLink to={tab.path}>Root</props.NcRouterLink>)
+        return (<props.NcRouterLink to={tab.path}>Root</props.NcRouterLink>);
     };
 
     const cleanTab = () => {
         setCurrentTab(props.tabs[currentTabIndex]);
-        setCurrentTabIndex(0)
+        setCurrentTabIndex(0);
         setCurrentTabPos(0);
-    }
+    };
 
     const setupArrows = () => {
         if (!scrollableItems.current || !headerRef.current) {
@@ -78,7 +78,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
         }
         setArrowShowed(scrollableItems.current.offsetWidth > headerRef.current.offsetWidth);
         updateArrows();
-    }
+    };
 
     const updateArrows = () => {
         if (!scrollableContainer.current || !scrollableItems.current || !headerRef.current) {
@@ -86,18 +86,18 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
         }
 
         setDisableLeft(scrollableContainer.current.scrollLeft === 0 ? true : false);
-        setDisableRight(scrollableItems.current.clientWidth - scrollableContainer.current.scrollLeft < headerRef.current?.clientWidth)
-    }
+        setDisableRight(scrollableItems.current.clientWidth - scrollableContainer.current.scrollLeft < headerRef.current?.clientWidth);
+    };
 
     const scrollContainer = (right: boolean) => {
         if (!scrollableContainer.current || !headerRef.current) {
             return;
         }
-        scrollableContainer.current.scrollBy(right ? headerRef.current.clientWidth : -headerRef.current.clientWidth || 0, 0)
+        scrollableContainer.current.scrollBy(right ? headerRef.current.clientWidth : -headerRef.current.clientWidth || 0, 0);
         updateArrows();
-    }
+    };
 
-    const renderPaginationButton = (disabled: boolean, right: boolean = false) => {
+    const renderPaginationButton = (disabled: boolean, right = false) => {
         return arrowShowed ?
             <div
                 className={`mask-icon pagination-button mt-2 ${right ? 'right ml-2' : 'mr-2'} ${disabled ? 'disabled' : ''}`}
@@ -115,13 +115,13 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
             <div className="sub-tabs position-absolute" style={{ left: currentTabPos }}>
                 {props.tabs[currentTabIndex] && props.tabs[currentTabIndex].children && props.tabs[currentTabIndex].children?.map((tab, index) => {
                     return !tab.hide && (
-                        <props.NcRouterLink key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => { !tab.disabled ? cleanTab() : {} }} to={tab.disabled ? "#" : (props.tabs[currentTabIndex].path + tab.path)}>{tab.name}</props.NcRouterLink>
-                    )
+                        <props.NcRouterLink key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => { !tab.disabled ? cleanTab() : {}; }} to={tab.disabled ? '#' : (props.tabs[currentTabIndex].path + tab.path)}>{tab.name}</props.NcRouterLink>
+                    );
                 })
                 }
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <div className="tabs">
@@ -145,7 +145,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                             ref={(element) => tabsRef.current[index] = element}
                                             className={
                                                 `tab-container d-flex justify-content-center align-items-center position-relative
-                                                ${currentTab && tab.name === currentTab.name ? "active" : ""}
+                                                ${currentTab && tab.name === currentTab.name ? 'active' : ''}
                                                 ${tab.disabled? 'disabled' : ''}`
                                             }
                                             onClick={() => {
@@ -154,15 +154,15 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                                 }
                                             }}
                                         >
-                                        {
-                                            tab.children || tab.disabled ?
-                                                <div className="h-100 w-100">
-                                                    <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
-                                                </div> :
-                                                <props.NcRouterLink to={tab.path} className="h-100 w-100">
-                                                    <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
-                                                </props.NcRouterLink>
-                                        }
+                                            {
+                                                tab.children || tab.disabled ?
+                                                    <div className="h-100 w-100">
+                                                        <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                    </div> :
+                                                    <props.NcRouterLink to={tab.path} className="h-100 w-100">
+                                                        <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                    </props.NcRouterLink>
+                                            }
                                         </div>
                                     );
                                 })}

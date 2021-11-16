@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconMask } from './IconMask'
+import { IconMask } from './IconMask';
 
 export enum IconType {
     AddUser = 'addUser',
