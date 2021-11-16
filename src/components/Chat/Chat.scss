@@ -9,9 +9,30 @@
 
 .chat {
   z-index: 10000;
+  transition-property: width;
+  transition-duration: 0.5s;
 
   &.fullscreen-chat {
     height: calc(100% - 48px);
+    bottom: 0;
+    right: 0;
+
+    .box {
+        transform-origin: bottom right;
+    }
+  }
+
+  &.closed {
+      width: 0px !important;
+
+      .box {
+        transform: scaleY(0) scaleX(0);
+      }
+
+
+      .icon-container:not(.unread) .icon-comments {
+        background: $grey6 !important;
+      }
   }
 
   .box {
@@ -33,14 +54,6 @@
 
     &.bottom-left {
       @include chat-position(0, -380px, top right);
-    }
-
-    &.fullscreen-chat {
-      transform-origin: bottom right;
-    }
-
-    &.closed {
-      transform: scaleY(0) scaleX(0);
     }
 
     width: 317px;
@@ -151,6 +164,7 @@
       margin: 0px 8px;
       width: 48px;
       height: 48px;
+      min-width: 48px;
 
       .unread-icon {
         position: absolute;
@@ -162,12 +176,8 @@
         background: linear-gradient(90deg, #ff9b52 0%, #ff5b51 100%);
       }
 
-      .chat-open {
+      .icon-comments {
         background: $primary-color;
-      }
-
-      .chat-closed {
-        background: $grey6;
       }
     }
   }

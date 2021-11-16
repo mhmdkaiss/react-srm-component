@@ -144,14 +144,16 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
 
     useEffect(() => {
         const storedPosition = localStorage.getItem(localStorageKey);
+        let posX = window.innerWidth;
+        let posY = window.innerHeight;
         if (storedPosition) {
             const parsedStoredPosition = JSON.parse(storedPosition);
-            if (parsedStoredPosition.x && parsedStoredPosition.y) {
-                updateBoxPosition(parsedStoredPosition.x, parsedStoredPosition.y);
+            if ((parsedStoredPosition.x || parsedStoredPosition.x === 0) && (parsedStoredPosition.y || parsedStoredPosition.y === 0)) {
+                posX = parsedStoredPosition.x;
+                posY = parsedStoredPosition.y;
             }
-        } else {
-            updateBoxPosition(window.innerWidth, window.innerHeight);
         }
+        updateBoxPosition(posX, posY);
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
@@ -189,23 +191,22 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         <React.Fragment>
             {boxPosition &&
                 <Draggable nodeRef={draggableNodeRef} disabled={fullScreen} handle=".comments-icon" position={boxPosition} onDrag={onDrag} onStop={onDragStop}>
-                    <div ref={draggableNodeRef} className={`chat position-fixed d-flex ${fullScreen ? 'fullscreen-chat flex-column-reverse align-items-end w-100' : ''}`} >
+                    <div ref={draggableNodeRef} className={`chat position-fixed d-flex ${fullScreen ? 'fullscreen-chat flex-column-reverse align-items-end w-100' : ''} ${isChatOpen ? '' : 'closed'}`} >
                         <div
                             onClick={() => onMouseClick()}
                             onTouchEnd={() => fullScreen ? null : onMouseClick()}
-                            className={`icon-container  comments-icon d-flex align-items-center justify-content-center 
-                                ${unread ? 'unread' : ''} 
+                            className={`icon-container  comments-icon d-flex align-items-center justify-content-center
+                                ${unread ? 'unread' : ''}
                                 ${fullScreen ? 'my-1 mr-2' : ''}`
                             }>
                             {unread &&
                                 <div className="unread-icon"></div>
                             }
                             <Icon
-                                styleName={`${isChatOpen || unread ? 'chat-open' : 'chat-closed'}`}
                                 icon={IconType.Comments} width={unread ? 27 : 20} height={unread ? 28 : 21}
                             />
                         </div>
-                        <div className={`box ${isChatOpen ? '' : 'closed'} ${fullScreen ? 'fullscreen-chat w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
+                        <div className={`box ${fullScreen ? 'w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
                             <div className="d-flex flex-column justify-content-center header px-3 w-100">
                                 <span className="title"><FormattedMessage
                                     id="chat.chatbox"
