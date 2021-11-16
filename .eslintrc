@@ -21,7 +21,9 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "array-bracket-spacing": [ "warn", "always", { "singleValue": false, "objectsInArrays": false, "arraysInArrays": false }],
         "arrow-spacing": [ "warn", { "before": true, "after": true }],
+        "brace-style": [ "warn", "1tbs", { "allowSingleLine": true }],
         "comma-spacing": [ "warn", { "before": false, "after": true }],
         "curly": [ "warn" ],
         "eol-last": [ "warn", "always"],
@@ -40,6 +42,7 @@
         "no-empty-function": [ "warn", { "allow": [ "functions", "arrowFunctions", "methods" ]}],
         "no-extra-semi": [ "warn" ],
         "no-floating-decimal": [ "warn" ],
+        "no-implicit-coercion": [ "warn", { "boolean": false }],
         "no-lone-blocks": [ "warn" ],
         "no-multi-assign": [ "warn" ],
         "no-multi-spaces": [ "warn", { "ignoreEOLComments": false }],
@@ -49,12 +52,13 @@
         "no-trailing-spaces": [ "warn", { "skipBlankLines": false, "ignoreComments": true }],
         "no-unreachable": [ "warn" ],
         "no-var": [ "warn" ],
+        "object-curly-spacing": [ "warn", "always" ],
         "padded-blocks": [ "warn", "never" ],
         "prefer-const": [ "warn", { "destructuring": "any", "ignoreReadBeforeAssign": true }],
         "quotes": [ "warn", "single" ],
         "semi": [ "warn", "always" ],
         "yoda": [ "warn", "never" ],
         "react/prop-types": [ "warn" ],
-        "@typescript-eslint/no-inferrable-types": [ "warn"]
+        "@typescript-eslint/no-inferrable-types": [ "off" ]
     }
 }
