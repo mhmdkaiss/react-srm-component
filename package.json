@@ -18,7 +18,7 @@
         "build:watch": "nodemon -e scss,tsx,ts --watch src --exec yarn run build:only",
         "copy:all": "yarn copy:assets && yarn copy:styles && yarn copy:config",
         "copy:assets": "echo no-script",
-        "copy:config": "mkdir -p dist/config && cp install-config.sh dist/config && cp .eslintrc dist/config && cp .eslintignore dist/config && cp .prettierrc dist/config && cp .stylelintrc dist/config",
+        "copy:config": "mkdir -p dist/config && cp install-config.sh dist/config && cp .eslintrc dist/config && cp .eslintignore dist/config && cp .prettierrc dist/config && cp .stylelintrc dist/config && cp .eslintrc-error dist/config",
         "copy:styles": "cp src/styles/colors.scss src/styles/mixins.scss src/styles/variables.scss dist/src/styles/",
         "css": "npm-run-all css:compile css-prefix css-rtl css-minify",
         "css:compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
