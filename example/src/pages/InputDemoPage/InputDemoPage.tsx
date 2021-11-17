@@ -14,6 +14,7 @@ import {
     NcRadioGroupFields,
     SearchBar,
     NCPreviewSearchAsync,
+    NCColorPicker,
 } from '@cactus/srm-component';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
@@ -86,6 +87,42 @@ export const InputDemoPage: React.FunctionComponent = () => {
         );
     };
 
+    // NC ColorPicker
+    const [ncColorPickerValue, setNcColorPickerValue] = useState<string>('#b2f617')
+    const renterNCColorPicker = () => {
+        return (
+            <div className='my-3'>
+                <h6 className='secondary-color-cool'>NC Color Picker</h6>
+                <p className='secondary-color-cool'>
+                    Color value : {ncColorPickerValue}
+                </p>
+                <div className="d-flex flex-row my-2">
+                    <NCColorPicker
+                        color={ncColorPickerValue}
+                        actionHook={setNcColorPickerValue}
+                    />
+                </div>
+                <div className="d-flex flex-row align-items-center my-2">
+                    Hidden input :
+                    <NCColorPicker
+                        hideInput={true}
+                        color={ncColorPickerValue}
+                        actionHook={setNcColorPickerValue}
+                    />
+                </div>
+                <div className="d-flex flex-row align-items-center my-2">
+                    Disable transparency :
+                    <NCColorPicker
+                        color={ncColorPickerValue}
+                        actionHook={setNcColorPickerValue}
+                        disableAlpha={true}
+                    />
+                </div>
+            </div>
+        );
+    };
+
+
     // NC TextArea
     const [ncAreaValue, setNcAreaValue] = useState<string>('Bonsoir ! ');
     const renderNCTextArea = () => {
@@ -137,10 +174,15 @@ export const InputDemoPage: React.FunctionComponent = () => {
             <div>
                 <h4>Text input</h4>
                 <NCInput label='Label' value='Value' onChange={() => {}} />
-
                 {renderNCTextArea()}
                 {renderNcSelect()}
             </div>
+
+            <div className='my-5'>
+                <h4>Color Picker</h4>
+                {renterNCColorPicker()}
+            </div>
+
             <div className='my-5'>
                 <h4>Date picker</h4>
                 <DatePicker

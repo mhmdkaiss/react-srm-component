@@ -48,4 +48,5 @@ export {
     ToastPosition,
     NCAccordion,
     NCAccordionData,
+    NCColorPicker,
 } from './src';

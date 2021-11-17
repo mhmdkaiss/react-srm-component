@@ -44,6 +44,7 @@ import { Tabs } from './components/Tabs/Tabs';
 import { TeamPicture } from './components/TeamPicture/TeamPicture';
 import { UserCard } from './components/UserCard/UserCard';
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
+import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 
 export {
     DatePicker,
@@ -95,4 +96,5 @@ export {
     ToastPosition,
     NCAccordion,
     NCAccordionData,
+    NCColorPicker,
 };
