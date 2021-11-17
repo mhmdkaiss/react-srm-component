@@ -30,7 +30,7 @@
         "eqeqeq": [ "warn", "always" ],
         "func-call-spacing": [ "warn", "never" ],
         "func-style": [ "warn", "declaration", { "allowArrowFunctions": true }],
-        "indent": [ "warn", 4 ],
+        "indent": [ "warn", 4, { "SwitchCase": 1 }],
         "key-spacing": [ "warn", { "beforeColon": false, "afterColon": true }],
         "keyword-spacing": [ "warn", { "before": true, "after": true }],
         "linebreak-style": [ "warn", "unix" ],
