@@ -6,6 +6,7 @@ export {
     TeamCard,
     TeamPicture,
     ThemePlatform,
+    ByeCard,
     UserCard,
     UserCardRounded,
     UserTeamCard,

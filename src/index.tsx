@@ -45,6 +45,7 @@ import { TeamPicture } from './components/TeamPicture/TeamPicture';
 import { UserCard } from './components/UserCard/UserCard';
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
+import { ByeCard } from './components/ByeCard/ByeCard';
 
 export {
     DatePicker,
@@ -55,6 +56,7 @@ export {
     TeamCard,
     TeamPicture,
     ThemePlatform,
+    ByeCard,
     UserCard,
     UserTeamCard,
     Icon,

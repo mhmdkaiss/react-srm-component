@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+
+.nc-bye-card {
+    .avatar-container {
+        background: $grey3;
+        border: 2px solid $grey5;
+
+        &.solo {
+            border-radius: 50%;
+        }
+    }
+
+    background: $grey2;
+    border: 2px dashed $grey5 !important;
+}

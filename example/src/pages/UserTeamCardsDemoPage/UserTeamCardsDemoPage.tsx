@@ -11,6 +11,7 @@ import {
     UserCard,
     UserCardRounded,
     UserCardRoundedSize,
+    ByeCard,
 } from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
@@ -227,6 +228,86 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 selectable={SelectionType.Selected}
                                 selected={teamCardSelected}
                                 team={TEAM_MOCK}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span className='component-title'>
+                    Bye card
+                </span>
+                <div className='my-4 d-flex flex-column'>
+                    <span>Users</span>
+                    <div className='d-flex'>
+                        <div className='mr-3'>
+                            <ByeCard
+                                full={true}
+                                xs={false}
+                                isSolo={true}
+                            />
+                        </div>
+                        <div className='ml-3'>
+                            <ByeCard
+                                full={true}
+                                xs={true}
+                                isSolo={true}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                        >
+                            <ByeCard
+                                full={false}
+                                xs={false}
+                                isSolo={true}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                        >
+                            <ByeCard
+                                full={false}
+                                xs={true}
+                                isSolo={true}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='my-4 d-flex flex-column'>
+                    <span>Teams</span>
+                    <div className='d-flex'>
+                        <div className='mr-3'>
+                            <ByeCard
+                                full={true}
+                                xs={false}
+                                isSolo={false}
+                            />
+                        </div>
+                        <div className='ml-3'>
+                            <ByeCard
+                                full={true}
+                                xs={true}
+                                isSolo={false}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                        >
+                            <ByeCard
+                                full={false}
+                                xs={false}
+                                isSolo={false}
+                            />
+                        </div>
+                        <div
+                            className='ml-3'
+                        >
+                            <ByeCard
+                                full={false}
+                                xs={true}
+                                isSolo={false}
                             />
                         </div>
                     </div>
