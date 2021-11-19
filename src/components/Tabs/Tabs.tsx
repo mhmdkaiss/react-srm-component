@@ -28,22 +28,23 @@ export interface TabSettings {
 interface TabsProps {
     basename: string;
     tabs: Array<TabParameter>;
+    color?: string;
 
     NcRouterLink: typeof Link;
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
-    const [currentTab, setCurrentTab] = useState<TabParameter>();
-    const [currentTabIndex, setCurrentTabIndex] = useState<number>(0);
-    const [currentTabPos, setCurrentTabPos] = useState<number>(0);
+    const [ currentTab, setCurrentTab ] = useState<TabParameter>();
+    const [ currentTabIndex, setCurrentTabIndex ] = useState<number>(0);
+    const [ currentTabPos, setCurrentTabPos ] = useState<number>(0);
     const tabsRef = useRef<Array<HTMLDivElement | null>>([]);
     const headerRef = useRef<HTMLDivElement | null>(null);
     const scrollableContainer = useRef<HTMLDivElement | null>(null);
     const scrollableItems = useRef<HTMLDivElement | null>(null);
 
-    const [arrowShowed, setArrowShowed] = useState<boolean>(false);
-    const [disableLeft, setDisableLeft] = useState<boolean>(false);
-    const [disableRight, setDisableRight] = useState<boolean>(false);
+    const [ arrowShowed, setArrowShowed ] = useState<boolean>(false);
+    const [ disableLeft, setDisableLeft ] = useState<boolean>(false);
+    const [ disableRight, setDisableRight ] = useState<boolean>(false);
 
     useEffect(() => {
         tabsRef.current = tabsRef.current.slice(0, props.tabs.length);
@@ -51,7 +52,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
 
     useEffect(() => {
         setupArrows();
-    }, [scrollableItems, headerRef]);
+    }, [ scrollableItems, headerRef ]);
 
     useEffect(() => {
         window.addEventListener('resize', setupArrows);
@@ -153,14 +154,15 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                                     onTabChange(tab, index, tabsRef.current[index]?.offsetLeft);
                                                 }
                                             }}
+                                            style={{ color: props.color, borderColor: props.color }}
                                         >
                                             {
                                                 tab.children || tab.disabled ?
                                                     <div className="h-100 w-100">
-                                                        <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                        <div className="tab-name text-uppercase  mx-auto mt-2">{tab.name}</div>
                                                     </div> :
                                                     <props.NcRouterLink to={tab.path} className="h-100 w-100">
-                                                        <div className="tab-name text-uppercase  mx-auto mt-2 ">{tab.name}</div>
+                                                        <div className="tab-name text-uppercase  mx-auto mt-2">{tab.name}</div>
                                                     </props.NcRouterLink>
                                             }
                                         </div>

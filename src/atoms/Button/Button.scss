@@ -322,6 +322,17 @@
             }
         }
     }
+
+    &.custom-hover:hover {
+        border-color: inherit !important;
+
+        &:not(:active) {
+            span {
+                color: $white !important;
+                -webkit-text-fill-color: unset !important;
+            }
+        }
+    }
 }
 
 .button.premiums {

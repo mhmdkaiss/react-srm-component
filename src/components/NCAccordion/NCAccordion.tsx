@@ -12,9 +12,10 @@ export interface NCAccordionData {
 
 export interface NCAccordionProps {
     data: Array<NCAccordionData>;
+    color?: string;
 }
 
-export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }: NCAccordionProps) => {
+export const NCAccordion: React.FunctionComponent<NCAccordionProps> = (props: NCAccordionProps) => {
     const createMarkup = (content: string) => {
         return {
             __html: content
@@ -31,8 +32,9 @@ export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }:
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     classes={ { content: 'nc-accordion-summary' } }
+                    style={{ color: props.color }}
                 >
-                    <span className="title">{title}</span>
+                    <span className="title" style={{ color: props.color }}>{title}</span>
                 </AccordionSummary>
                 <AccordionDetails classes={ { root: 'nc-accordion-details' } }>
                     <div className="content" dangerouslySetInnerHTML={createMarkup(content)}></div>
@@ -45,7 +47,7 @@ export const NCAccordion: React.FunctionComponent<NCAccordionProps> = ({ data }:
         <React.Fragment >
             <div className={'nc-accordion'}>
                 <MuiThemeProvider theme={ThemePlatform}>
-                    {data.map((d, idx) => {
+                    {props.data.map((d, idx) => {
                         return renderAccordion(idx, d.title, d.content);
                     })}
                 </MuiThemeProvider>

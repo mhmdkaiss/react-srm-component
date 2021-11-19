@@ -13,7 +13,7 @@
         }
     }
     .nc-accordion-summary {
-        color: $primary-color !important;
+        color: $primary-color;
         margin: 0 !important;
         line-height: 0;
 
@@ -24,9 +24,12 @@
         }
     }
 
-    .MuiIconButton-label {
-        // svg arrow
-        color: $primary-color !important;
+    .MuiAccordionSummary-expandIcon {
+        color: inherit;
+
+        .MuiIconButton-label {
+            color: inherit !important;
+        }
     }
 
     .nc-accordion-details {

@@ -37,10 +37,17 @@
                     min-width: 105px;
                     height: 40px;
                     cursor: pointer;
+                    color: $primary-color;
+                    border-color: $primary-color;
 
-                    a:hover {
+                    a {
                         color: inherit;
-                        text-decoration: none;
+                        border-color: inherit;
+
+                        &:hover {
+                            color: inherit;
+                            text-decoration: none;
+                        }
                     }
 
                     .tab-name {
@@ -56,13 +63,14 @@
                     &:hover,
                     &.active {
                         .tab-name {
-                            color: $primary-color;
+                            color: inherit;
                         }
                     }
 
                     &.active {
                         .tab-name {
-                            border-bottom: 2px solid $primary-color;
+                            border-bottom: 2px solid transparent;
+                            border-color: inherit;
                         }
                     }
 

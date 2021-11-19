@@ -32,32 +32,39 @@ export interface ButtonProps {
     setClick?: (event: MouseEvent) => void;
     styleClass?: string;
     icon?: { type: IconType, width: number, height: number };
+    color?: string;
 }
 
-export const Button: React.FunctionComponent<ButtonProps> = ({
-    label,
-    theme = ButtonTheme.CLASSIC,
-    type = ButtonType.PRIMARY,
-    size = ButtonSize.MEDIUM,
-    disabled = false,
-    setClick,
-    styleClass,
-    icon
-}) => {
+export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps) => {
+    const theme = props.theme || ButtonTheme.CLASSIC;
+    const type = props.type || ButtonType.PRIMARY;
+    const size = props.size || ButtonSize.MEDIUM;
+
     const onClick = (event: MouseEvent) => {
-        if (setClick) {
-            setClick(event);
+        if (props.setClick) {
+            props.setClick(event);
         }
     };
 
     return (
-        <button
-            className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${styleClass}`}
-            disabled={disabled}
-            onClick={onClick}
-        >
-            {icon && <Icon styleName="mr-2" icon={icon.type} width={icon.width} height={icon.height} />}
-            <span className={`h-100 ${disabled ? 'disabled' : [ ButtonTheme.TOURNAMENT, ButtonTheme.TRACKING, ButtonTheme.TRAINING ].includes(theme) && type === ButtonType.SECONDARY ? `${theme} ${type}` : ''}`}>{label}</span>
-        </button>
+        <div className="button-container" style={{ borderColor: props.color }}>
+            <button
+                className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${props.styleClass} ${props.color ? 'custom-hover' : ''}`}
+                disabled={props.disabled}
+                onClick={onClick}
+                style={{ background: [ButtonType.SECONDARY].includes(type) ? undefined : props.color }}
+            >
+                {props.icon && <Icon styleName="mr-2" icon={props.icon.type} width={props.icon.width} height={props.icon.height} />}
+                <span
+                    className={`h-100 ${props.disabled ? 'disabled' : [ ButtonTheme.TOURNAMENT, ButtonTheme.TRACKING, ButtonTheme.TRAINING ].includes(theme) && type === ButtonType.SECONDARY ? `${theme} ${type}` : ''}`}
+                    style={{
+                        color: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        WebkitTextFillColor: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                    }}
+                >
+                    {props.label}
+                </span>
+            </button>
+        </div>
     );
 };
