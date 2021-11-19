@@ -1,4 +1,5 @@
 @import 'src/styles/colors';
+@import 'src/styles/variables';
 
 .nc-toast-container-component {
     box-sizing: border-box;
@@ -23,5 +24,20 @@
     &.bottom-left {
         bottom: 12px;
         left: 12px;
+    }
+
+    @media screen and (max-width: $xs) {
+        width: 100%;
+        padding: 0 16px;
+
+        &.top-right,
+        &.bottom-right {
+            right: 0px;
+        }
+
+        &.top-left,
+        &.bottom-left {
+            left: 0px;
+        }
     }
 }
