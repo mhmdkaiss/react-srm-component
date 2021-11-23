@@ -1,0 +1,111 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $grey;
+    background: rgba($color: $black, $alpha: 0.5);
+    z-index: 3;
+
+    & > .dialog-content {
+        max-width: 75vw;
+        max-height: 75vh;
+
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        animation: show 0.5s ease normal;
+        padding: 2rem;
+        box-sizing: border-box;
+        filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
+        border-radius: 1rem;
+
+        &.no-padding {
+            padding: 0;
+        }
+
+        @media screen and (max-width: $sm) {
+            padding: 1rem;
+        }
+
+        & > .dialog-background {
+            z-index: -1;
+            overflow: hidden;
+
+            &,
+            & > .dialog-zone,
+            & > .dialog-overlay {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                border-radius: 1rem;
+            }
+
+            & > .dialog-zone {
+                background: linear-gradient(
+                    360deg,
+                    rgba(26, 26, 26, 0.81) 0%,
+                    rgba(0, 0, 0, 0.59) 100%
+                );
+                box-shadow: inset 0px 0px 0px 55px -8px #ffffff;
+                filter: blur(15px);
+            }
+            & > .dialog-overlay {
+                background: url($s3-url + '/media/shared-library/background/dialog-background.png');
+                opacity: 0.2;
+            }
+        }
+
+        & > .dialog-header {
+            z-index: 1;
+            margin-bottom: 2.5rem;
+            color: $grey;
+
+            display: grid;
+            grid-template-columns: 1fr repeat(1, auto) 1fr;
+            grid-column-gap: 0.5rem;
+            justify-content: center;
+
+            & > .dialog-title {
+                grid-column-start: 2;
+            }
+
+            & > .dialog-close {
+                cursor: pointer;
+                margin-left: auto;
+            }
+        }
+
+        & > .dialog-body {
+            width: 100%;
+            z-index: 1;
+            color: $grey;
+
+            @media screen and (max-width: $sm) {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+@keyframes show {
+    from {
+        transform: translateY(-110%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}

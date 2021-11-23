@@ -381,7 +381,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <h4>Media uploader</h4>
                 <div className='my-4'>
                     <NCMediaUpload
-                        currentImage={
+                        currentImg={
                             bannerImage ||
                             `${process.env.REACT_APP_S3_URL}/teams/medias/BannerImage`
                         }

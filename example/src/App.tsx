@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.scss';
-import ContextStore from "./store";
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
-import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
-import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
-import {ToastDemoPage} from './pages/ToastDemoPage/ToastDemoPage';
-import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
-import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
+import React from 'react'
+import './App.scss'
+import ContextStore from "./store"
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
+import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
+import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
+import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
+import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import { Navigation } from './components/Navigation/Navigation'
+import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage'
 
 const routes = [
     {
@@ -19,15 +20,19 @@ const routes = [
         component: ButtonsDemoPage
     },
     {
-        path: '/component/inputs',
+        path: '/atoms/inputs',
         component: InputDemoPage
+    },
+    {
+        path: '/atoms/dialog',
+        component: DialogDemoPage
     },
     {
         path: '/component/stepper',
         component: StepperDemoPage
-  },
-  {
-    path: '/component/user-team-cards',
+    },
+    {
+        path: '/component/user-team-cards',
         component: UserTeamCardsDemoPage,
     },
     {
@@ -76,7 +81,7 @@ function RouteWithSubRoutes(route: any) {
             path={route.path}
             render={(props) => (
                 // pass the sub-routes down to keep nesting
-                <route.component {...props} routes={route.routes}/>
+                <route.component {...props} routes={route.routes} />
             )}
         />
     )

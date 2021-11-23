@@ -15,6 +15,7 @@
 @import '../components/NCStepper/NCStepper.scss';
 @import '../components/NCChip/NCChip.scss';
 @import '../components/NCMediaUpload/NCMediaUpload.scss';
+@import '../components/NCMultiMediaUpload/NCMultiMediaUpload.scss';
 @import '../components/NCPreviewSearch/NCPreviewSearch.scss';
 @import '../components/NCPreviewSearchAsync/NCPreviewSearchAsync.scss';
 @import '../components/NCCheckbox/NCCheckbox.scss';
@@ -31,7 +32,12 @@
 // Atoms
 @import '../atoms/Button/Button.scss';
 @import '../atoms/Button/ButtonIcon.scss';
-@import '../atoms/NCToast/NCToast.scss';
+@import '../atoms/NCList/NCList.scss';
+@import '../atoms/NCDialog/NCDialog.scss';
+
+// Molecules
+@import '../molecules/NCActions/NCActions.scss';
+@import '../molecules/NCMediaLibrary/NCMediaLibrary.scss';
 
 // CSS
 .nicecactus-input {
@@ -39,6 +45,14 @@
         color: $grey5;
         font-size: $medium-text;
         line-height: $medium-text;
+        z-index: 1;
+        padding-left: 0.5rem;
+
+        &.Mui-focused,
+        &.MuiFormLabel-filled {
+            padding-left: 0;
+            margin-bottom: 2px;
+        }
     }
 
     select,
@@ -46,9 +60,8 @@
     textarea {
         background: $grey2 !important;
         color: $grey6;
-        padding-left: 8px;
-        padding-right: 8px;
-        margin-top: 2px;
+        padding-left: 1rem;
+        padding-right: 1rem;
         white-space: nowrap;
         text-overflow: ellipsis;
     }

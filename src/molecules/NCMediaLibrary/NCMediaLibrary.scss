@@ -1,0 +1,15 @@
+@import '../../styles/colors';
+
+.nc-medialibrary {
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.5rem;
+
+        .icon-back {
+            background: $black;
+            margin: 2px;
+            display: none;
+        }
+    }
+}

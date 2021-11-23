@@ -1,12 +1,34 @@
-.lang-list {
-    display: flex;
-    width: 100%;
-    position: relative;
-    gap: 24px;
+@import '../../styles/colors';
+@import '../../styles/mixins';
 
-    span {
-        img {
-            width: 32px;
+.flag-selector {
+    label {
+        margin-top: 1rem;
+    }
+
+    .lang-list {
+        display: flex;
+        width: 100%;
+        position: relative;
+        gap: 3rem;
+        height: 3rem;
+        @include nc-scrollbar(4px);
+        overflow-x: scroll;
+        overflow-y: hidden;
+
+        .flag {
+            align-self: end;
+            opacity: 0.5;
+
+            img {
+                width: 32px;
+            }
+        }
+
+        .flag-active {
+            align-self: start;
+            opacity: 1;
+            filter: drop-shadow(0px 0.5rem 1rem $black-light);
         }
     }
 }

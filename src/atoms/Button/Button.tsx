@@ -15,6 +15,7 @@ export enum ButtonTheme {
 export enum ButtonType {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
+    TEXT = 'text',
 }
 
 export enum ButtonSize {

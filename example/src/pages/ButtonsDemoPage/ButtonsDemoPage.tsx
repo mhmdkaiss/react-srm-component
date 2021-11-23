@@ -75,6 +75,7 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
         <div className='buttons-demo-page'>
             {renderButton(ButtonTheme.CLASSIC, ButtonType.PRIMARY, "Classic - Primary")}
             {renderButton(ButtonTheme.CLASSIC, ButtonType.SECONDARY, "Classic - Secondary")}
+            {renderButton(ButtonTheme.CLASSIC, ButtonType.TEXT, "Classic - Texte")}
 
             {renderButton(ButtonTheme.TOURNAMENT, ButtonType.PRIMARY, "Tournament - Primary")}
             {renderButton(ButtonTheme.TOURNAMENT, ButtonType.SECONDARY, "Tournament - Secondary")}

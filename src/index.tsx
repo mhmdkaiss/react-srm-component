@@ -17,6 +17,7 @@ import {
 } from './components/UserCard/UserCardRounded';
 
 import { ButtonIcon } from './atoms/Button/ButtonIcon';
+import { NCDialog } from './atoms/NCDialog/NCDialog';
 import { Chat } from './components/Chat/Chat';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dialog } from './components/Dialog/Dialog';
@@ -28,6 +29,7 @@ import { NCDefault } from './components/NCDefault/NCDefault';
 import { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
 import { NCInput } from './components/NCInput/NCInput';
 import { NCMediaUpload } from './components/NCMediaUpload/NCMediaUpload';
+import { NCMultiMediaUpload } from './components/NCMultiMediaUpload/NCMultiMediaUpload';
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
 import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
@@ -77,6 +79,7 @@ export {
     NCSwitch,
     NCChip,
     NCMediaUpload,
+    NCMultiMediaUpload,
     NCSelect,
     NCStepper,
     NCTextArea,
@@ -99,4 +102,5 @@ export {
     NCAccordion,
     NCAccordionData,
     NCColorPicker,
+    NCDialog,
 };

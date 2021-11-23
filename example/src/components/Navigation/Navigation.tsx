@@ -30,8 +30,11 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/atoms/button'>
                         <ListItemText primary='Buttons'/>
                     </ListItem>
-                    <ListItem button component={Link} to='/component/inputs'>
+                    <ListItem button component={Link} to='/atoms/inputs'>
                         <ListItemText primary='Inputs'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/atoms/dialog'>
+                        <ListItemText primary='Dialog'/>
                     </ListItem>
                     <ListItem button component={Link} to='/component/stepper'>
                         <ListItemText primary='Steppers' />

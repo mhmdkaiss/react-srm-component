@@ -39,7 +39,8 @@ export enum IconType {
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
     Lock = 'lock',
-    Clock = 'clock'
+    Clock = 'clock',
+    Back = 'back'
 }
 
 export interface IconProps {

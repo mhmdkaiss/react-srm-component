@@ -1,0 +1,40 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+
+.nc-tournament-list {
+    &.thead-sticky {
+        thead {
+            position: sticky;
+            top: 0;
+        }
+    }
+
+    thead tr {
+        color: $grey6;
+        font-size: $smallest-text;
+        border-bottom: 1px solid $grey5;
+    }
+
+    tbody {
+        color: $white;
+    }
+
+    th,
+    td {
+        font-weight: 400 !important;
+        border: 0 !important;
+    }
+
+    .icon-prize {
+        background: $white;
+        margin-bottom: 4px;
+    }
+
+    .selected {
+        color: $primary-color;
+
+        .icon-prize {
+            background: $primary-color;
+        }
+    }
+}
