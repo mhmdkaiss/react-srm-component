@@ -4,11 +4,12 @@
 .nc-team-card {
     width: 209px;
     height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-sizing: border-box;
-    filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
     border-radius: 8px;
     overflow: hidden;
+    background: linear-gradient(360deg, $grey3 0%, #474e49 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
 
     &.full {
         width: 312px;
@@ -21,98 +22,73 @@
         }
     }
 
+    .background-image,
+    .background-texture {
+        left: 0;
+        right: 0;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .background-image {
+        filter: blur(16px);
+        mix-blend-mode: overlay;
+        box-shadow: inset 0px -16px 0px #ffffff;
+    }
+
+    .background-texture {
+        mix-blend-mode: overlay;
+        opacity: 0.2;
+    }
+
     &.card-selected-close {
         filter: none;
         border: 1px solid $red;
-        .background-image {
-            filter: none;
-            background-color: $red;
-            img {
-                display: none;
-            }
+        box-shadow: none;
+
+        .details {
+            color: $black;
         }
 
-        .background-gradient {
-            display: none;
+        .background-image {
+            filter: none;
+            mix-blend-mode: normal;
+            background: $red !important;
+            box-shadow: none;
         }
 
         &:hover {
             border: 1px solid $red;
 
-            .background-gradient {
-                display: block;
-                background: linear-gradient(
-                    360deg,
-                    #646a6f 0%,
-                    rgba(104, 106, 108, 0.4) 100%
-                );
+            .details {
+                color: $white;
             }
+
+            .icon-crown,
+            .icon-close {
+                background: $white;
+            }
+        }
+
+        .icon-crown,
+        .icon-close {
+            background: $black;
         }
     }
 
     &.card-selected-selected {
         border: 1px solid $white;
-
-        &:hover {
-            border: 1px solid $white;
-        }
     }
 
-    .background-image {
-        filter: blur(4px);
-        img {
-            object-fit: cover;
-        }
+    &:hover:not(.card-selected-close) {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0px -24px 27px -19px rgba(255, 255, 255, 0.4);
+        transition: box-shadow 2s;
     }
 
-    .background-gradient {
-        background: linear-gradient(
-            360deg,
-            #292d30 0%,
-            rgba(26, 26, 26, 0.4) 100%
-        );
-    }
-
-    .background-gradient,
-    .background-image {
-        top: 0;
-        left: 0;
-    }
-
-    &:hover {
+    .team-picture {
         border: 1px solid rgba(255, 255, 255, 0.2);
-
-        .background-gradient {
-            background: linear-gradient(
-                360deg,
-                #646a6f 0%,
-                rgba(104, 106, 108, 0.4) 100%
-            );
-        }
-    }
-
-    .logo {
-        min-height: 48px;
-        min-width: 48px;
-        max-height: 48px;
-        max-width: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
-        border-radius: 8px;
-
-        &.full {
-            min-height: 80px;
-            min-width: 80px;
-            max-height: 80px;
-            max-width: 80px;
-        }
-
-        &.team-card-xs {
-            min-height: 40px;
-            min-width: 40px;
-            max-height: 40px;
-            max-width: 40px;
-        }
+        z-index: 0;
     }
 
     .icon-close {
@@ -123,22 +99,28 @@
         }
     }
 
+    .icon-crown {
+        background: $white;
+        min-width: 12px;
+    }
+
     .details {
         z-index: 1;
         overflow: hidden;
+        color: $white;
 
         .tag {
             font-size: $small-text;
             line-height: 14px;
             font-weight: 700;
-            color: $white;
+            color: inherit;
             margin-bottom: 1px;
         }
 
         .name {
             font-size: $small-text;
             line-height: 20px;
-            color: $white;
+            color: inherit;
         }
 
         &.full {
@@ -157,14 +139,12 @@
                 font-size: $smallest-text;
                 line-height: 15px;
 
-                .crown {
-                    width: 12px;
-                    height: 12px;
+                .icon-crown {
                     margin-bottom: 4px;
                 }
 
                 .name {
-                    color: $white;
+                    color: inherit;
                 }
 
                 .code {

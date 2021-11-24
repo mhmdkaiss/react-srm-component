@@ -35,12 +35,8 @@ export const NCDialog: React.FunctionComponent<DialogProps> = ({
             <div
                 className={`dialog-content ${noPadding ? 'no-padding' : ''}`}
                 onClick={(e) => e.stopPropagation()}
+                style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
             >
-                <div className="dialog-background">
-                    <div className="dialog-zone" />
-                    <div className="dialog-overlay" />
-                </div>
-
                 <div className="dialog-header">
                     <div className="dialog-title">{title}</div>
                     <div

@@ -1,6 +1,5 @@
 import './UserCard.scss';
 
-
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import { Player, PremiumStatus } from '../../models/Player';
 import React from 'react';
@@ -20,8 +19,6 @@ export interface UserCardProps {
 export const UserCard: React.FunctionComponent<UserCardProps> = (
     props: UserCardProps
 ) => {
-    const backgroundFallback =
-        process.env.REACT_APP_S3_URL + '/media/default/default-user-banner.jpg';
     const hashIndex = props.player.name.lastIndexOf('#');
     const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
     const name =
@@ -52,7 +49,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
 
     return (
         <div
-            className={`d-flex nc-user-card align-items-center pl-2 pr-3
+            className={`d-flex nc-user-card position-relative align-items-center pl-2 pr-3
                 ${props.xs ? 'nc-user-card-xs' : 'nc-user-card-lg'}
                 ${props.full ? 'full' : ''}
                 ${isPremium ? 'premium' : ''}
@@ -62,20 +59,17 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
             onMouseEnter={() => handleHoverHook(props.playerId)}
             onMouseLeave={() => handleHoverHook(undefined)}
         >
-            <div className='background-image w-100 h-100 position-absolute'>
-                <img
-                    className='h-100 w-100'
-                    src={`${process.env.REACT_APP_S3_URL}/user/${props.playerId}/medias/BannerImage`}
-                    onError={(e) => (e.currentTarget.src = backgroundFallback)}
-                    alt=''
-                />
+            <div
+                className='background-texture w-100 h-100 position-absolute'
+                style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
+            >
             </div>
-            <div className='background-gradient w-100 h-100 position-absolute'></div>
             <MemoizedProfilePicture
                 size={profilePictureSize}
                 playerId={props.playerId}
                 player={props.player}
             />
+            <MemoBackgroundImg playerId={props.playerId} />
             {props.full && (
                 <React.Fragment>
                     <div
@@ -122,3 +116,17 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
         </div>
     );
 };
+
+const MemoBackgroundImg = React.memo<{ playerId: string }>(({ playerId }) => {
+    const defaultBackground = `${process.env.REACT_APP_S3_URL}/media/default/default-user-banner.jpg`;
+    const currentBackground = `${process.env.REACT_APP_S3_URL}/user/${playerId}/medias/BannerImage`;
+
+    return (
+        <div
+            className='background-image w-100 h-100 position-absolute'
+            style={{ backgroundImage: `url(${currentBackground}?${Date.now()}), url(${defaultBackground})` }}
+        ></div>
+    );
+});
+
+MemoBackgroundImg.displayName = 'user-brackground-image';

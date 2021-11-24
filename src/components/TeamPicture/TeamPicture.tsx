@@ -6,7 +6,7 @@ export interface ProfilePictureProps {
     size?: number;
 }
 
-export const TeamPicture: React.FunctionComponent<ProfilePictureProps> = ({slug, size = 32}: ProfilePictureProps) => {
+export const TeamPicture: React.FunctionComponent<ProfilePictureProps> = ({ slug, size = 32 }: ProfilePictureProps) => {
     const defaultImage = process.env.REACT_APP_S3_URL + '/media/default/default-team-avatar.png';
     let style: CSSProperties | undefined;
 
@@ -32,4 +32,4 @@ export const TeamPicture: React.FunctionComponent<ProfilePictureProps> = ({slug,
     );
 };
 
-export const MemoizedProfilePicture = React.memo(TeamPicture);
+export const MemoizedTeamPicture = React.memo(TeamPicture);

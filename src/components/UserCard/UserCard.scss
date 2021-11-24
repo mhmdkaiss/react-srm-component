@@ -4,10 +4,31 @@
 .nc-user-card {
     width: 223px;
     height: 56px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.5));
-    border-radius: 8px;
     overflow: hidden;
+    background: linear-gradient(360deg, $grey3 0%, #474e49 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+
+    .background-image,
+    .background-texture {
+        left: 0;
+        right: 0;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .background-image {
+        filter: blur(16px);
+        mix-blend-mode: overlay;
+        box-shadow: inset 0px -16px 0px #ffffff;
+    }
+
+    .background-texture {
+        mix-blend-mode: overlay;
+        opacity: 0.2;
+    }
 
     &.premium {
         border: 1px solid #c9ad05;
@@ -52,37 +73,14 @@
         }
     }
 
-    .background-image {
-        filter: blur(4px);
-    }
-
-    .background-gradient {
-        background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(41, 45, 48, 1));
-    }
-
     &:not(.disabled):hover {
         border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0px -24px 27px -19px rgba(255, 255, 255, 0.4);
+        transition: box-shadow 2s;
 
         &.premium {
             border: 1px solid #c9ad05;
         }
-
-        .background-gradient {
-            background: linear-gradient(
-                360deg,
-                rgba(97, 87, 87, 0.89) 0%,
-                rgba(4, 0, 0, 0.57) 100%,
-                rgba(12, 12, 12, 0.73) 100%,
-                rgba(92, 87, 87, 0.73) 100%
-            );
-        }
-    }
-
-    .background-gradient,
-    .background-image {
-        top: 0;
-        left: 0;
-        z-index: -1;
     }
 
     .icon-premium {
@@ -100,6 +98,7 @@
 
     .details {
         overflow: hidden;
+        z-index: 0;
 
         .name {
             font-size: $medium-text;
