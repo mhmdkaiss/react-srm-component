@@ -21,11 +21,10 @@ export declare type NCTinyMceProps = {
 export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey, onChange, editorConfig, value, disabled }: NCTinyMceProps) => {
     const config: TinyMceConfig = {
         height: 500,
-        menubar: false,
         plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table code help wordcount powerpaste'
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table code help wordcount powerpaste'
         ],
         toolbar: 'undo redo | formatselect | ' +
         'bold italic backcolor | alignleft aligncenter ' +
@@ -45,9 +44,9 @@ export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey,
                 apiKey={apiKey}
                 init={config}
                 value={value}
-                onEditorChange={(_, editor: TinyMCEEditor) => onChange(editor.getContent({format: outputFormat }))}
+                onEditorChange={(_, editor: TinyMCEEditor) => onChange(editor.getContent({ format: outputFormat }))}
                 disabled={disabled || false}
             />
         </React.Fragment>
     );
-}
+};

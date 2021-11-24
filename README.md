@@ -30,16 +30,7 @@ yarn start
 ### Potential issues ###
 
 #### Error: [React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. ####
-In index.tsx of another project wrap  <Content /> with 
-```
-
-import messages_en from '../src/_translations/en.json';
-import { IntlProvider } from "react-intl";
-    ...
-<IntlProvider locale={"en"} messages={messages_en} defaultLocale={"en"}>
-  <Content />
-</IntlProvider>
-```
+npm link ../webapp-tournament/node_modules/react-intl
 
 #### Error: Invalid hook call. Hooks can only be called inside of the body... ####
 In shared project run

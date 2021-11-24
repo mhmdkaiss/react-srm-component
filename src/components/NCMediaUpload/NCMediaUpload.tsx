@@ -6,32 +6,31 @@ import { useDropzone } from 'react-dropzone';
 import { Media } from '../../services/media-library.service';
 import { NCDialog } from '../..';
 import { NCMediaLibrary } from '../../molecules';
+import { useIntl } from 'react-intl';
 
 export type ctxType = 'url' | 'blob'
 export interface NCMediaUploadProps {
-  labelImg?: string;
-
-  // @deprecated
-  currentImage?: string;
-
-  currentImg?: string;
-  defaultImg?: string;
-
-  zoneSize?: 'small' | 'medium' | 'large';
-
-  accept?: string | string[];
-  minSize?: number;
-  maxSize?: number;
-  maxFiles?: number;
-  noClick?: boolean;
-  noDrag?: boolean;
-  disabled?: boolean;
-  actionHook: (ctx: ctxType, file: string) => void;
-  mediaLibrary?: boolean;
+    labelImg?: string;
+    infoMsg?: string;
+    // @deprecated
+    currentImage?: string;
+    currentImg?: string;
+    defaultImg?: string;
+    zoneSize?: 'small' | 'medium' | 'large';
+    accept?: string | string[];
+    minSize?: number;
+    maxSize?: number;
+    maxFiles?: number;
+    noClick?: boolean;
+    noDrag?: boolean;
+    disabled?: boolean;
+    actionHook: (ctx: ctxType, file: string) => void;
+    mediaLibrary?: boolean;
 }
 
 export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
     labelImg,
+    infoMsg,
     currentImg,
     currentImage,
     defaultImg,
@@ -45,6 +44,7 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
     zoneSize,
     mediaLibrary,
 }) => {
+    const intl = useIntl();
     const [ previewImg, setPreviewImg ] = useState<string>();
     const [ errorMesg, setErrorMesg ] = useState<string>();
 
@@ -143,7 +143,9 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
                         className="image-zone"
                         style={{ backgroundImage: style.image }}
                     >
-                        <span className="">drag and drop an image or click</span>
+                        <span className="">{infoMsg || intl.formatMessage({
+                            id: 'media-upload.info.message',
+                        })}</span>
                         <Icon icon={IconType.Cloud} height={64} width={64} />
                         <span className="error-msg">{errorMesg}</span>
                     </div>

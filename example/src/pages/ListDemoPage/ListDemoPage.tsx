@@ -1,5 +1,5 @@
 import React from "react";
-import { DisplaySelector, GameList, NCParticipantList } from "@cactus/srm-component"
+import { DisplaySelector, GameList, NCFlagSelector, NCParticipantList } from "@cactus/srm-component"
 import "./ListDemoPage.scss";
 
 const games = [{
@@ -151,6 +151,49 @@ const teams = [
     }
 ];
 
+const langs = [
+  {
+      _id: "5c5c34c2c14265e8e8469d18",
+      code: "en",
+      name: "English",
+  },
+  {
+      _id: "5c5c35fbc14265e8e846ba66",
+      code: "fr",
+      name: "Français",
+  },
+  {
+      _id: "5c5c35fbc14265e8e846ba69",
+      code: "pt",
+      name: "Português",
+  },
+  {
+      _id: "5c8a175421696d127d06cf95",
+      code: "es",
+      name: "Español",
+  },
+  {
+      _id: "5db0212a76d2aa4497629045",
+      code: "de",
+      name: "Deutsch",
+  },
+  {
+      _id: "5ed1c988ce60233529e0d05f",
+      code: "ar",
+      name: "العربية",
+  },
+  {
+      _id: "614300ae73295b4d3057f005",
+      code: "it",
+      name: "Italiano",
+  },
+  {
+      _id: "6143011873295b4d3057f006",
+      code: "ja",
+      name: "Japanese",
+  }
+];
+
 const players = teams.map(t => {
     const team = JSON.parse(JSON.stringify(t));
     delete team.players[Object.keys(t.players)[1]];
@@ -183,6 +226,16 @@ export const ListDemoPage: React.FunctionComponent = () => {
                 <div className="col-6">
                     <NCParticipantList list={players} winners={[players[0].route]} selected={players[0].route} isLeaderboard={true}/>
                 </div>
+            </div>
+            <div className="d-flex row">
+                <NCFlagSelector
+                  key={'rule-lang'}
+                  languages={langs}
+                  actionHook={(code: string) => {
+                    console.log('NCFlagSelector:actionHook', code);
+                  }}
+                  publicUrl="https://esm-dev-public.s3.amazonaws.com"
+                ></NCFlagSelector>
             </div>
         </div>
     )

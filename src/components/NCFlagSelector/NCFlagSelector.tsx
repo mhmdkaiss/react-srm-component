@@ -1,12 +1,13 @@
-import './NCFlagSelector.scss';
 import { MuiThemeProvider } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { ThemePlatform } from '../../styles/Themes';
+import { useIntl } from 'react-intl';
+import { ThemePlatform } from '../..';
+import './NCFlagSelector.scss';
+
 interface Lang {
     _id: string;
     name: string;
     code: string;
-    iso2: string;
 }
 
 export interface NCFlagSelectorProps {
@@ -14,6 +15,7 @@ export interface NCFlagSelectorProps {
     actionHook: (search: string) => any;
     publicUrl: string;
     label?: string;
+    selectedFlag?: string;
 }
 
 export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
@@ -21,11 +23,13 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
     actionHook,
     publicUrl,
     label,
+    selectedFlag,
 }: NCFlagSelectorProps) => {
-    const _label = label ? label : 'English is the default language when no other language is filled.';
+    const intl = useIntl();
 
-    const [ selectedLang, setSelectedLang ] = useState<string>('en');
+    const [ selectedLang, setSelectedLang ] = useState<string>(selectedFlag || 'en');
     const [ languagesOrdered, setLanguagesOrdered ] = useState<Array<Lang>>([]);
+    const [ initialized, setInitialized ] = useState<boolean>(false);
 
     const prioritizeSort = (a: string, b: string, code: string) => {
         if (a === code) {
@@ -37,6 +41,10 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
     };
 
     useEffect(() => {
+        if (initialized || (!languages.length && !languagesOrdered.length)) {
+            return;
+        }
+
         const l = languages.sort((a: Lang, b: Lang) => {
             let tester = 0;
             if ((tester = prioritizeSort(a.code, b.code, 'en')) !== 0) {
@@ -48,6 +56,7 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
             return a.code.localeCompare(b.code, 'en', { numeric: true });
         });
         setLanguagesOrdered(l);
+        setInitialized(true);
     }, [languages]);
 
     const handleSelectClick = (code: string) => {
@@ -74,7 +83,9 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
                             })
                         )}
                     </div>
-                    <label>{_label}</label>
+                    <label>{label || intl.formatMessage({
+                        id: 'flag-selector.info.message',
+                    })}</label>
                 </div>
             </MuiThemeProvider>
         </React.Fragment>
