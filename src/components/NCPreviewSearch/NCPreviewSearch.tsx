@@ -4,7 +4,6 @@ import { ThemePlatform } from '../../styles/Themes';
 import { SearchBar, SearchBarProps } from '../SearchBar/SearchBar';
 import './NCPreviewSearch.scss';
 
-
 export interface NCPreviewSearchProps extends SearchBarProps {
     list: Array<{[key: string]: any}>;
     displayParam: string;
@@ -13,8 +12,8 @@ export interface NCPreviewSearchProps extends SearchBarProps {
 }
 
 export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (props: NCPreviewSearchProps) => {
-    const [showList, setShowList] = useState<boolean>(false);
-    const [search, setSearch] = useState<string>('');
+    const [ showList, setShowList ] = useState<boolean>(false);
+    const [ search, setSearch ] = useState<string>('');
 
     return (
         <React.Fragment>
@@ -25,7 +24,7 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                         placeHolder={props.placeHolder}
                         hideStore={props.hideStore}
                         focusHook={(focused) => {
-                            setTimeout(() => setShowList(focused), focused ? 0 : 100);
+                            setTimeout(() => setShowList(focused), focused ? 0 : 200);
                             if (props.focusHook) {
                                 props.focusHook(focused);
                             }
@@ -37,25 +36,25 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                     {
                         showList &&
                         <div className="preview-list position-absolute w-100">
-                        {
-                            props.list
-                                .filter(item => item[props.displayParam].toLowerCase().indexOf(search.toLowerCase()) >= 0)
-                                .map((item, index) => {
-                                    return (
-                                        <div
-                                            key={index}
-                                            className={`preview-item py-1 ${JSON.stringify(props.selected) === JSON.stringify(item) ? 'selected' : ''}`}
-                                            onClick={() => {props.onSelection(item)}}
-                                        >
-                                            {item[props.displayParam]}
-                                        </div>
-                                    )
-                                })
-                        }
+                            {
+                                props.list
+                                    .filter(item => item[props.displayParam].toLowerCase().indexOf(search.toLowerCase()) >= 0)
+                                    .map((item, index) => {
+                                        return (
+                                            <div
+                                                key={index}
+                                                className={`preview-item py-1 ${JSON.stringify(props.selected) === JSON.stringify(item) ? 'selected' : ''}`}
+                                                onClick={() => {props.onSelection(item);}}
+                                            >
+                                                {item[props.displayParam]}
+                                            </div>
+                                        );
+                                    })
+                            }
                         </div>
                     }
                 </div>
             </MuiThemeProvider>
         </React.Fragment>
     );
-}
+};
