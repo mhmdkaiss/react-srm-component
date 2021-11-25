@@ -26,11 +26,9 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
         }
     };
 
-    let profilePictureSize;
+    let profilePictureSize = 48;
     if (props.full) {
         profilePictureSize = props.xs ? 80 : 112;
-    } else {
-        profilePictureSize = props.xs ? 40 : 80;
     }
 
     let captainName: string | undefined;
@@ -62,8 +60,8 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                 style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
             >
             </div>
-            <MemoBackgroundImg team={props.team.team} />
-            <MemoizedTeamPicture slug={props.team.team} size={profilePictureSize} />
+            <MemoBackgroundImg team={props.team.slug} />
+            <MemoizedTeamPicture slug={props.team.slug} size={profilePictureSize} />
             <div
                 className={`d-flex flex-column details mt-1 ${
                     props.full ? 'full ml-3' : 'ml-2'

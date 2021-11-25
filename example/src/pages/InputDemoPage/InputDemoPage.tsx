@@ -81,7 +81,11 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     selectFields={ncSelectValues}
                     fieldValue={'value'}
                     fieldName={'key'}
-                    actionHook={setRuleGame}
+                    actionHook={(event) => {
+                        if (event) {
+                            setRuleGame(event);
+                        }
+                    }}
                 />
             </div>
         );
