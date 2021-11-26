@@ -39,7 +39,7 @@
         "no-console": [ "warn", { "allow": ["log", "warn", "error"]}],
         "no-const-assign": [ "warn" ],
         "no-empty": [ "warn", { "allowEmptyCatch": true }],
-        "no-empty-function": [ "warn", { "allow": [ "functions", "arrowFunctions", "methods" ]}],
+        "no-empty-function": [ "warn", { "allow": [ "arrowFunctions", "constructors", "functions", "methods" ]}],
         "no-extra-semi": [ "warn" ],
         "no-floating-decimal": [ "warn" ],
         "no-implicit-coercion": [ "warn", { "boolean": false }],
