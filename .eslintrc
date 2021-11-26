@@ -58,7 +58,7 @@
         "quotes": [ "warn", "single" ],
         "semi": [ "warn", "always" ],
         "yoda": [ "warn", "never" ],
-        "react/prop-types": [ "warn" ],
+        "react/prop-types": [ "warn", { "skipUndeclared" : true }],
         "@typescript-eslint/no-inferrable-types": [ "off" ]
     }
 }

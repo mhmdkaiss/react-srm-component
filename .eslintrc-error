@@ -58,7 +58,7 @@
         "quotes": [ "error", "single" ],
         "semi": [ "error", "always" ],
         "yoda": [ "error", "never" ],
-        "react/prop-types": [ "error" ],
+        "react/prop-types": [ "error", { "skipUndeclared" : true }],
         "@typescript-eslint/no-inferrable-types": [ "off" ]
     }
 }
