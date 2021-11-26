@@ -46,6 +46,7 @@ import { Tabs } from './components/Tabs/Tabs';
 import { TeamPicture } from './components/TeamPicture/TeamPicture';
 import { UserCard } from './components/UserCard/UserCard';
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
+import { NCSelector } from './components/NCSelector/NCSelector';
 import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 import { ByeCard } from './components/ByeCard/ByeCard';
 
@@ -101,6 +102,7 @@ export {
     ToastPosition,
     NCAccordion,
     NCAccordionData,
+    NCSelector,
     NCColorPicker,
     NCDialog,
 };

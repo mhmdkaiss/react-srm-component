@@ -14,6 +14,7 @@ import {
     NcRadioGroupFields,
     SearchBar,
     NCPreviewSearchAsync,
+    NCSelector,
     NCColorPicker,
 } from '@cactus/srm-component';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
@@ -91,6 +92,34 @@ export const InputDemoPage: React.FunctionComponent = () => {
         );
     };
 
+    // NC Selector
+    const ncSelectorValues = [
+        { key: 'key1', value: 'value1', image: 'media/default/default-team-avatar.png' },
+        { key: 'key2', value: 'value2', image: 'assets/nc-logo-small.png' },
+        { key: 'key3', value: 'value3' },
+    ];
+    const [selectorRuleGame, setSelectorRuleGame] = useState<string>(ncSelectorValues[0].value);
+    const renderNCSelector = () => {
+        return (
+            <div className='my-3'>
+                <h6 className='secondary-color-cool'>NC Selector</h6>
+                <p className='secondary-color-cool'>
+                    Selected item: {selectorRuleGame}
+                </p>
+                <NCSelector
+                    defaultOptionLabel={'Settings'}
+                    selectFields={ncSelectorValues}
+                    selectedField={'value1'}
+                    fieldValue={'value'}
+                    fieldName={'key'}
+                    fieldImage={'image'}
+                    actionHook={setSelectorRuleGame}
+                    disabled={false}
+                />
+            </div>
+            )
+    }
+
     // NC ColorPicker
     const [ncColorPickerValue, setNcColorPickerValue] = useState<string>('#b2f617')
     const renterNCColorPicker = () => {
@@ -125,7 +154,6 @@ export const InputDemoPage: React.FunctionComponent = () => {
             </div>
         );
     };
-
 
     // NC TextArea
     const [ncAreaValue, setNcAreaValue] = useState<string>('Bonsoir ! ');
@@ -180,6 +208,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <NCInput label='Label' value='Value' onChange={() => {}} />
                 {renderNCTextArea()}
                 {renderNcSelect()}
+                {renderNCSelector()}
             </div>
 
             <div className='my-5'>
@@ -385,7 +414,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <h4>Media uploader</h4>
                 <div className='my-4'>
                     <NCMediaUpload
-                        currentImg={
+                        currentImage={
                             bannerImage ||
                             `${process.env.REACT_APP_S3_URL}/teams/medias/BannerImage`
                         }

@@ -1,0 +1,18 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+
+.nicecactus-selector {
+    :hover {
+        color: $primary-color !important;
+    }
+
+    .logo {
+        height: 24px;
+        width: 24px;
+    }
+
+    .MuiInput-underline:hover:not(.Mui-disabled):before {
+        border-bottom: 2px solid $primary-color !important;
+        color: $primary-color;
+    }
+}

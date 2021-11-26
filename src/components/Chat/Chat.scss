@@ -2,183 +2,182 @@
 @import 'src/styles/variables';
 
 @mixin chat-position($top, $left, $transformation-origin) {
-  top: $top;
-  left: $left;
-  transform-origin: $transformation-origin;
+    top: $top;
+    left: $left;
+    transform-origin: $transformation-origin;
 }
 
 .chat {
-  z-index: 10000;
-  transition-property: width;
-  transition-duration: 0.5s;
+    z-index: 10000;
+    transition-property: width;
+    transition-duration: 0.5s;
 
-  &.fullscreen-chat {
-    height: calc(100% - 48px);
-    bottom: 0;
-    right: 0;
+    &.fullscreen-chat {
+        height: calc(100% - 48px);
+        bottom: 0;
+        right: 0;
+
+        .box {
+            transform-origin: bottom right;
+        }
+    }
+
+    &.closed {
+        width: 0px !important;
+
+        .box {
+            transform: scaleY(0) scaleX(0);
+        }
+
+        .icon-container:not(.unread) .icon-comments {
+            background: $grey6 !important;
+        }
+    }
 
     .box {
-        transform-origin: bottom right;
-    }
-  }
+        transition-duration: 0.4s;
+        transition-property: transform;
+        position: relative;
 
-  &.closed {
-      width: 0px !important;
-
-      .box {
-        transform: scaleY(0) scaleX(0);
-      }
-
-
-      .icon-container:not(.unread) .icon-comments {
-        background: $grey6 !important;
-      }
-  }
-
-  .box {
-    transition-duration: 0.4s;
-    transition-property: transform;
-    position: relative;
-
-    &.top-left {
-      @include chat-position(-507px, -380px, bottom right);
-    }
-
-    &.top-right {
-      @include chat-position(-507px, 0, bottom left);
-    }
-
-    &.bottom-right {
-      @include chat-position(0, 0, top left);
-    }
-
-    &.bottom-left {
-      @include chat-position(0, -380px, top right);
-    }
-
-    width: 317px;
-    max-height: 100%;
-    background: $grey2;
-    box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
-      inset 0px 2px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
-
-    .chat-shadow {
-      height: 39px;
-      top: 70px;
-      background: linear-gradient(
-        180deg,
-        $grey2 42.19%,
-        rgba(26, 26, 26, 0) 100%
-      );
-    }
-
-    .header {
-      min-height: 69px;
-      max-height: 69px;
-      border-bottom: 1px $grey4 solid;
-
-      .title {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 22px;
-        color: $grey6;
-      }
-
-      .hint {
-        font-size: $smallest-text;
-        color: $grey5;
-        line-height: 15px;
-      }
-
-      .icon-close {
-        top: 16px;
-        right: 16px;
-      }
-    }
-
-    .footer {
-      .input-text {
-        color: $light-grey;
-        font-size: 11px;
-      }
-      input {
-        color: $grey6;
-        background-color: $grey3;
-        margin-top: 2px;
-        border: 0;
-        border-bottom: 1px solid $light-grey;
-        height: 32px;
-
-        &.valid {
-          border-bottom: 1px solid $primary-color;
+        &.top-left {
+            @include chat-position(-507px, -380px, bottom right);
         }
 
+        &.top-right {
+            @include chat-position(-507px, 0, bottom left);
+        }
+
+        &.bottom-right {
+            @include chat-position(0, 0, top left);
+        }
+
+        &.bottom-left {
+            @include chat-position(0, -380px, top right);
+        }
+
+        width: 317px;
+        max-height: 100%;
+        background: $grey2;
+        box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+            inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
+
+        .chat-shadow {
+            height: 39px;
+            top: 70px;
+            background: linear-gradient(
+                180deg,
+                $grey2 42.19%,
+                rgba(26, 26, 26, 0) 100%
+            );
+        }
+
+        .header {
+            min-height: 69px;
+            max-height: 69px;
+            border-bottom: 1px $grey4 solid;
+
+            .title {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 22px;
+                color: $grey6;
+            }
+
+            .hint {
+                font-size: $smallest-text;
+                color: $grey5;
+                line-height: 15px;
+            }
+
+            .icon-close {
+                top: 16px;
+                right: 16px;
+            }
+        }
+
+        .footer {
+            .input-text {
+                color: $light-grey;
+                font-size: 11px;
+            }
+            input {
+                color: $grey6;
+                background-color: $grey3;
+                margin-top: 2px;
+                border: 0;
+                border-bottom: 1px solid $light-grey;
+                height: 32px;
+
+                &.valid {
+                    border-bottom: 1px solid $primary-color;
+                }
+
+                &:hover {
+                    border-bottom: 2px solid $light-grey;
+                }
+
+                &:focus {
+                    border-bottom: 2px solid $electric-lime;
+                }
+
+                &::placeholder {
+                    color: $grey6;
+                }
+            }
+
+            .icon-send {
+                cursor: pointer;
+                background: $grey6;
+
+                &.valid {
+                    background: $electric-lime;
+                }
+            }
+        }
+    }
+
+    .icon-container {
+        transition: all 0.2s ease-out;
+        transform-origin: center center;
         &:hover {
-          border-bottom: 2px solid $light-grey;
+            transform: scale(1.12);
+            &.unread {
+                transform: scale(1.12);
+            }
+            &.comments-icon {
+                background-color: $grey1;
+            }
         }
 
-        &:focus {
-          border-bottom: 2px solid $electric-lime;
+        &.unread {
+            transform: scale(1.06);
         }
 
-        &::placeholder {
-          color: $grey6;
+        &.comments-icon {
+            padding: 12px;
+            background: $grey2;
+            box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+                inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+            border-radius: 42px;
+            margin: 0px 8px;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+
+            .unread-icon {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: 35px;
+                top: 0px;
+                border-radius: 50%;
+                background: linear-gradient(90deg, #ff9b52 0%, #ff5b51 100%);
+            }
+
+            .icon-comments {
+                background: $primary-color;
+            }
         }
-      }
-
-      .icon-send {
-        cursor: pointer;
-        background: $grey6;
-
-        &.valid {
-          background: $electric-lime;
-        }
-      }
     }
-  }
-
-  .icon-container {
-    transition: all 0.2s ease-out;
-    transform-origin: center center;
-    &:hover {
-      transform: scale(1.12);
-      &.unread {
-        transform: scale(1.12);
-      }
-      &.comments-icon {
-        background-color: $grey1;
-      }
-    }
-
-    &.unread {
-      transform: scale(1.06);
-    }
-
-    &.comments-icon {
-      padding: 12px;
-      background: $grey2;
-      box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
-        inset 0px 2px 8px rgba(0, 0, 0, 0.25);
-      border-radius: 42px;
-      margin: 0px 8px;
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-
-      .unread-icon {
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        left: 35px;
-        top: 0px;
-        border-radius: 50%;
-        background: linear-gradient(90deg, #ff9b52 0%, #ff5b51 100%);
-      }
-
-      .icon-comments {
-        background: $primary-color;
-      }
-    }
-  }
 }

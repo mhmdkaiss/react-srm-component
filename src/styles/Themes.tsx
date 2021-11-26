@@ -5,14 +5,14 @@ export enum NCTheme {
     Grey,
 }
 
-export const getTheme = (theme: NCTheme) => {
+export const getTheme = (theme?: NCTheme) => {
     switch (theme) {
-        case NCTheme.Platform:
-            return ThemePlatform;
-        case NCTheme.Grey:
-            return ThemeGrey;
-        default:
-            return ThemePlatform;
+    case NCTheme.Platform:
+        return ThemePlatform;
+    case NCTheme.Grey:
+        return ThemeGrey;
+    default:
+        return ThemePlatform;
     }
 };
 
@@ -29,6 +29,20 @@ export const ThemePlatform = createMuiTheme({
     typography: {
         fontFamily: 'mollenregular',
     },
+    overrides: {
+        MuiPaper: {
+            root: {
+                backgroundColor: '#1a1a1a'
+            },
+        },
+        MuiListItem: {
+            root: {
+                '&.Mui-selected': {
+                    backgroundColor: '#1a1a1a'
+                }
+            }
+        }
+    },
 });
 
 export const ThemeGrey = createMuiTheme({
@@ -43,5 +57,19 @@ export const ThemeGrey = createMuiTheme({
     },
     typography: {
         fontFamily: 'mollenregular',
+    },
+    overrides: {
+        MuiPaper: {
+            root: {
+                backgroundColor: '#1a1a1a'
+            },
+        },
+        MuiListItem: {
+            root: {
+                '&.Mui-selected': {
+                    backgroundColor: '#1a1a1a'
+                }
+            }
+        }
     },
 });

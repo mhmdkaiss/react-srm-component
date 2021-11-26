@@ -1,66 +1,79 @@
-@import "src/styles/colors";
-@import "src/styles/animations";
+@import 'src/styles/colors';
+@import 'src/styles/animations';
 
 .media-upload-container {
-  width: 100%;
-
-  &.small {
-    max-width: calc(20*0.5rem);
-  }
-
-  &.medium {
-    max-width: calc(40*0.5rem);
-  }
-
-  &.large {
-    max-width: calc(60*0.5rem);
-  }
-
-  &>.drop-zone {
-    border: 4px dashed $white;
     width: 100%;
-  
-    &.dragable {
-      background: repeating-linear-gradient(-45deg, transparent, transparent 45px, $grey5 45px, $grey5 75px);
-      background-repeat: repeat-x;
-      background-size: 410% 100%;
-      animation: Dragagle 21s linear infinite;
-    }
-    &.disabled {
-      background: repeating-linear-gradient(-45deg, transparent, transparent 45px, $red 45px, $red 75px);
-      background-repeat: repeat-x;
-      background-size: 410% 100%;
+
+    &.small {
+        max-width: calc(20 * 0.5rem);
     }
 
-    &,.image-zone {
-      border-radius: 16px;
+    &.medium {
+        max-width: calc(40 * 0.5rem);
     }
-  
-    .image-zone {
-      height: calc(20*0.5rem);
 
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      padding: 1rem;
-
-      text-align: center;
-      color: $grey6;
-  
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    
-      .mask-icon {
-        background: $white;
-      }
-    
-      .error-msg {
-        color: $red;
-      }
+    &.large {
+        max-width: calc(60 * 0.5rem);
     }
-  }
+
+    & > .drop-zone {
+        border: 4px dashed $white;
+        width: 100%;
+
+        &.dragable {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 45px,
+                $grey5 45px,
+                $grey5 75px
+            );
+            background-repeat: repeat-x;
+            background-size: 410% 100%;
+            animation: Dragagle 21s linear infinite;
+        }
+        &.disabled {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 45px,
+                $red 45px,
+                $red 75px
+            );
+            background-repeat: repeat-x;
+            background-size: 410% 100%;
+        }
+
+        &,
+        .image-zone {
+            border-radius: 16px;
+        }
+
+        .image-zone {
+            height: calc(20 * 0.5rem);
+
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem;
+
+            text-align: center;
+            color: $grey6;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            .mask-icon {
+                background: $white;
+            }
+
+            .error-msg {
+                color: $red;
+            }
+        }
+    }
 }

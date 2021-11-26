@@ -1,11 +1,10 @@
-import React, { KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from "react";
+import React, { KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from 'react';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
-import { FormattedMessage, useIntl } from "react-intl";
-import { Icon, IconType } from "../../atoms/Icon/Icon";
-import { Event } from "../../models/RTEvent";
-import "./Chat.scss";
-import { Messages } from "./Messages";
-
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
+import { Event } from '../../models/RTEvent';
+import './Chat.scss';
+import { Messages } from './Messages';
 
 export interface ChatProps {
     messages: Array<Event>;
@@ -19,17 +18,16 @@ export interface ChatProps {
 export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUserId, isCaptain, sendMessage, fullScreen }) => {
     const localStorageKey = 'tournament-chat-position';
     const intl = useIntl();
-    const [isChatOpen, setIsChatOpen] = useState<boolean>(true);
-    const [chatWasOpen, setChatWasOpen] = useState<boolean>(true);
-    const [unread, setUnread] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>('');
-    const [dragged, setDragged] = useState<boolean>();
-    const [isMessageValid, setIsMessageValid] = useState<boolean>(false);
-    const [boxPosition, setBoxPosition] = useState<{ x: number, y: number }>();
-    const [boxPositionClass, setBoxPositionClass] = useState<string>('bottom-left');
+    const [ isChatOpen, setIsChatOpen ] = useState<boolean>(true);
+    const [ chatWasOpen, setChatWasOpen ] = useState<boolean>(true);
+    const [ unread, setUnread ] = useState<boolean>(false);
+    const [ message, setMessage ] = useState<string>('');
+    const [ dragged, setDragged ] = useState<boolean>();
+    const [ isMessageValid, setIsMessageValid ] = useState<boolean>(false);
+    const [ boxPosition, setBoxPosition ] = useState<{ x: number, y: number }>();
+    const [ boxPositionClass, setBoxPositionClass ] = useState<string>('bottom-left');
     const draggableNodeRef = React.useRef<HTMLDivElement>(null);
     const messageInputRef = useRef<HTMLInputElement>(null);
-
 
     const putInWindow = (x: number, y: number) => {
         const maxCoef = 125;
@@ -51,7 +49,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         }
 
         return { x: x, y: y };
-    }
+    };
 
     const onDrag = () => {
         if (!dragged) {
@@ -59,7 +57,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
             setChatWasOpen(isChatOpen);
             setIsChatOpen(false);
         }
-    }
+    };
 
     const onDragStop = (_: DraggableEvent, data: DraggableData) => {
         if (dragged) {
@@ -80,39 +78,39 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         if (e.ctrlKey && e.code === 'Space') {
             toggleChat();
         }
-    }
+    };
 
     const onMouseClick = () => {
         if (!dragged || fullScreen) {
             toggleChat();
         }
-        setDragged(false)
-    }
+        setDragged(false);
+    };
 
     const toggleChat = () => {
         if (unread && !isChatOpen) {
             setUnread(false);
         }
-        setIsChatOpen(!isChatOpen)
-    }
+        setIsChatOpen(!isChatOpen);
+    };
 
     const onMessageChanged = (message: string) => {
         setMessage(message);
         setIsMessageValid(message.trim().length > 0);
-    }
+    };
 
     const onSendMessage = () => {
         if (isMessageValid) {
             sendMessage(message);
             onMessageChanged('');
         }
-    }
+    };
 
     const handleKeyDown = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             onSendMessage();
         }
-    }
+    };
 
     const updateBoxPosition = (pX: number, pY: number) => {
         const { x, y } = putInWindow(pX, pY);
@@ -128,19 +126,19 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
             setBoxPositionClass('bottom-right');
         }
         setBoxPosition({ x: x, y: y });
-    }
+    };
 
     const onWindowResize = () => {
         if (boxPosition) {
-            updateBoxPosition(boxPosition.x, boxPosition.y)
+            updateBoxPosition(boxPosition.x, boxPosition.y);
         }
-    }
+    };
 
     useEffect(() => {
         if (isChatOpen && messageInputRef.current) {
             messageInputRef.current.focus();
         }
-    }, [isChatOpen])
+    }, [isChatOpen]);
 
     useEffect(() => {
         const storedPosition = localStorage.getItem(localStorageKey);
@@ -155,18 +153,18 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         }
         updateBoxPosition(posX, posY);
 
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [])
+    }, []);
 
     useEffect(() => {
         window.addEventListener('keydown', onGlobalKeyDown);
         return () => {
             window.removeEventListener('keydown', onGlobalKeyDown);
-        }
-    }, [toggleChat])
+        };
+    }, [toggleChat]);
 
     useEffect(() => {
         if (fullScreen) {
@@ -178,14 +176,14 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         window.addEventListener('resize', onWindowResize);
         return () => {
             window.removeEventListener('resize', onWindowResize);
-        }
+        };
     }, [boxPosition]);
 
     useEffect(() => {
         if (!isChatOpen) {
             setUnread(true);
         }
-    }, [messages])
+    }, [messages]);
 
     return (
         <React.Fragment>
@@ -194,7 +192,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                     <div ref={draggableNodeRef} className={`chat position-fixed d-flex ${fullScreen ? 'fullscreen-chat flex-column-reverse align-items-end w-100' : ''} ${isChatOpen ? '' : 'closed'}`} >
                         <div
                             onClick={() => onMouseClick()}
-                            onTouchEnd={() => fullScreen ? null : onMouseClick()}
+                            onTouchEnd={() => (fullScreen ? null : onMouseClick())}
                             className={`icon-container  comments-icon d-flex align-items-center justify-content-center
                                 ${unread ? 'unread' : ''}
                                 ${fullScreen ? 'my-1 mr-2' : ''}`
@@ -237,7 +235,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                                         <div className="d-flex align-items-center">
                                             <input
                                                 onKeyDown={handleKeyDown}
-                                                placeholder={intl.formatMessage({ id: "chat.write_message" })}
+                                                placeholder={intl.formatMessage({ id: 'chat.write_message' })}
                                                 value={message}
                                                 onChange={(e) => onMessageChanged(e.target.value)}
                                                 type='text'
@@ -255,5 +253,5 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                 </Draggable>
             }
         </React.Fragment >
-    )
+    );
 };
