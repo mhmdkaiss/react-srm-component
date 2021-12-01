@@ -1,7 +1,7 @@
-import React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { Event } from "../../models/RTEvent";
-import "./Messages.scss";
+import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Event } from '../../models/RTEvent';
+import './Messages.scss';
 
 export interface ChatProps {
     messages: Array<Event>;
@@ -15,7 +15,6 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
     return (
         <div className={`px-3 mt-2 messages-component messages d-flex flex-column flex-column-reverse ${fullScreen ? 'fullscreen-chat' : ''}`}>
             {messages.map((m) => {
-
                 const isReferee = m.senderName === 'ADMIN';
                 const isMe = currentUserId && m.sender === currentUserId;
                 let name: string;
@@ -44,8 +43,8 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
                         }
                     </div>
                     <div className="message mt-2">{m.content.message}</div>
-                </div>
+                </div>;
             })}
         </div>
-    )
+    );
 };

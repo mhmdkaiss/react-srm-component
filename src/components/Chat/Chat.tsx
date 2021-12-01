@@ -1,9 +1,11 @@
-import React, { KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from 'react';
+import './Chat.scss';
+
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
+import React, { KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from 'react';
+
 import { Event } from '../../models/RTEvent';
-import './Chat.scss';
 import { Messages } from './Messages';
 
 export interface ChatProps {
@@ -15,7 +17,7 @@ export interface ChatProps {
     fullScreen?: boolean
 }
 
-export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUserId, isCaptain, sendMessage, fullScreen }) => {
+export const Chat: React.FunctionComponent<ChatProps> = (props: ChatProps) => {
     const localStorageKey = 'tournament-chat-position';
     const intl = useIntl();
     const [ isChatOpen, setIsChatOpen ] = useState<boolean>(true);
@@ -32,23 +34,25 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
     const putInWindow = (x: number, y: number) => {
         const maxCoef = 125;
         const minCoef = -50;
-        if (x > window.innerWidth - maxCoef) {
-            x = window.innerWidth - maxCoef;
+        let _x = x;
+        let _y = y;
+        if (_x > window.innerWidth - maxCoef) {
+            _x = window.innerWidth - maxCoef;
         }
 
-        if (x < minCoef) {
-            x = minCoef;
+        if (_x < minCoef) {
+            _x = minCoef;
         }
 
-        if (y > window.innerHeight - maxCoef) {
-            y = window.innerHeight - maxCoef;
+        if (_y > window.innerHeight - maxCoef) {
+            _y = window.innerHeight - maxCoef;
         }
 
-        if (y < minCoef) {
-            y = minCoef;
+        if (_y < minCoef) {
+            _y = minCoef;
         }
 
-        return { x: x, y: y };
+        return { x: _x, y: _y };
     };
 
     const onDrag = () => {
@@ -74,14 +78,14 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         }
     };
 
-    const onGlobalKeyDown = (e: KeyboardEvent): any => {
+    const onGlobalKeyDown = (e: KeyboardEvent): void => {
         if (e.ctrlKey && e.code === 'Space') {
             toggleChat();
         }
     };
 
     const onMouseClick = () => {
-        if (!dragged || fullScreen) {
+        if (!dragged || props.fullScreen) {
             toggleChat();
         }
         setDragged(false);
@@ -101,7 +105,7 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
 
     const onSendMessage = () => {
         if (isMessageValid) {
-            sendMessage(message);
+            props.sendMessage(message);
             onMessageChanged('');
         }
     };
@@ -167,10 +171,10 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
     }, [toggleChat]);
 
     useEffect(() => {
-        if (fullScreen) {
+        if (props.fullScreen) {
             setBoxPosition({ x: 0, y: 0 });
         }
-    }, [fullScreen]);
+    }, [props.fullScreen]);
 
     useEffect(() => {
         window.addEventListener('resize', onWindowResize);
@@ -183,19 +187,19 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
         if (!isChatOpen) {
             setUnread(true);
         }
-    }, [messages]);
+    }, [props.messages]);
 
     return (
         <React.Fragment>
             {boxPosition &&
-                <Draggable nodeRef={draggableNodeRef} disabled={fullScreen} handle=".comments-icon" position={boxPosition} onDrag={onDrag} onStop={onDragStop}>
-                    <div ref={draggableNodeRef} className={`chat position-fixed d-flex ${fullScreen ? 'fullscreen-chat flex-column-reverse align-items-end w-100' : ''} ${isChatOpen ? '' : 'closed'}`} >
+                <Draggable nodeRef={draggableNodeRef} disabled={props.fullScreen} handle=".comments-icon" position={boxPosition} onDrag={onDrag} onStop={onDragStop}>
+                    <div ref={draggableNodeRef} className={`chat position-fixed d-flex ${props.fullScreen ? 'fullscreen-chat flex-column-reverse align-items-end w-100' : ''} ${isChatOpen ? '' : 'closed'}`} >
                         <div
                             onClick={() => onMouseClick()}
-                            onTouchEnd={() => (fullScreen ? null : onMouseClick())}
+                            onTouchEnd={() => (props.fullScreen ? null : onMouseClick())}
                             className={`icon-container  comments-icon d-flex align-items-center justify-content-center
                                 ${unread ? 'unread' : ''}
-                                ${fullScreen ? 'my-1 mr-2' : ''}`
+                                ${props.fullScreen ? 'my-1 mr-2' : ''}`
                             }>
                             {unread &&
                                 <div className="unread-icon"></div>
@@ -204,13 +208,13 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                                 icon={IconType.Comments} width={unread ? 27 : 20} height={unread ? 28 : 21}
                             />
                         </div>
-                        <div className={`box ${fullScreen ? 'w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
+                        <div className={`box ${props.fullScreen ? 'w-100 d-flex flex-column flex-fill' : boxPositionClass}`}>
                             <div className="d-flex flex-column justify-content-center header px-3 w-100">
                                 <span className="title"><FormattedMessage
                                     id="chat.chatbox"
                                     description="Chat - Chatbox"
                                 /></span>
-                                {!fullScreen && <span className="hint">
+                                {!props.fullScreen && <span className="hint">
                                     <FormattedMessage
                                         id="chat.shortcut"
                                         description="Chat - Chatbox"
@@ -222,9 +226,9 @@ export const Chat: React.FunctionComponent<ChatProps> = ({ messages, currentUser
                                 </span>
                             </div>
                             <div className={'chat-shadow position-absolute w-100'}></div>
-                            <Messages fullScreen={fullScreen || false} messages={messages} currentUserId={currentUserId} />
+                            <Messages fullScreen={props.fullScreen || false} messages={props.messages} currentUserId={props.currentUserId} />
                             <div className="footer mt-3 px-3 pb-2">
-                                {isCaptain &&
+                                {props.isCaptain &&
                                     <React.Fragment>
                                         <span className="input-text">
                                             <FormattedMessage

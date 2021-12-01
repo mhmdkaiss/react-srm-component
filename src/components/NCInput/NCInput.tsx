@@ -1,6 +1,6 @@
-import React, {ChangeEvent} from 'react';
-import {MuiThemeProvider, TextField} from '@material-ui/core';
-import {ThemePlatform} from '../../styles/Themes';
+import React, { ChangeEvent } from 'react';
+import { MuiThemeProvider, TextField } from '@material-ui/core';
+import { ThemePlatform } from '../../styles/Themes';
 
 export interface NCInputProps {
     id?: string;
@@ -12,7 +12,7 @@ export interface NCInputProps {
     disabled?: boolean;
 }
 
-export const NCInput: React.FunctionComponent<NCInputProps> = ({id, label, value, placeHolder, type, disabled, onChange}: NCInputProps) => {
+export const NCInput: React.FunctionComponent<NCInputProps> = ({ id, label, value, placeHolder, type, disabled, onChange }: NCInputProps) => {
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
@@ -33,4 +33,4 @@ export const NCInput: React.FunctionComponent<NCInputProps> = ({id, label, value
             </MuiThemeProvider>
         </React.Fragment>
     );
-}
+};

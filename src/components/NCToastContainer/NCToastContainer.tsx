@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './NCToastContainer.scss';
-import {ToastModel, ToastPosition} from '../../models/NCToastModel';
-import {NCToast} from '../../atoms/NCToast/NCToast';
+import { ToastModel, ToastPosition } from '../../models/NCToastModel';
+import { NCToast } from '../../atoms/NCToast/NCToast';
 
 export interface NCToastContainerProps {
     toastList: Array<ToastModel>;
@@ -10,8 +10,8 @@ export interface NCToastContainerProps {
     onDeleteToast: (toastId: number) => void;
 }
 
-export const NCToastContainer: React.FunctionComponent<NCToastContainerProps> = ({toastList, position, duration, onDeleteToast }) => {
-    const [list, setList] = useState<Array<ToastModel>>(toastList);
+export const NCToastContainer: React.FunctionComponent<NCToastContainerProps> = ({ toastList, position, duration, onDeleteToast }) => {
+    const [ list, setList ] = useState<Array<ToastModel>>(toastList);
 
     useEffect(() => {
         setList([...toastList]);

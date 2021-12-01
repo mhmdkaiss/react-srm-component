@@ -1,8 +1,10 @@
-import { MuiThemeProvider } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
-import { useIntl } from 'react-intl';
-import { ThemePlatform } from '../..';
 import './NCFlagSelector.scss';
+
+import React, { useEffect, useState } from 'react';
+
+import { MuiThemeProvider } from '@material-ui/core';
+import { ThemePlatform } from '../..';
+import { useIntl } from 'react-intl';
 
 interface Lang {
     _id: string;
@@ -12,22 +14,17 @@ interface Lang {
 
 export interface NCFlagSelectorProps {
     languages: Array<Lang>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     actionHook: (search: string) => any;
     publicUrl: string;
     label?: string;
     selectedFlag?: string;
 }
 
-export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
-    languages,
-    actionHook,
-    publicUrl,
-    label,
-    selectedFlag,
-}: NCFlagSelectorProps) => {
+export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = (props: NCFlagSelectorProps) => {
     const intl = useIntl();
 
-    const [ selectedLang, setSelectedLang ] = useState<string>(selectedFlag || 'en');
+    const [ selectedLang, setSelectedLang ] = useState<string>(props.selectedFlag || 'en');
     const [ languagesOrdered, setLanguagesOrdered ] = useState<Array<Lang>>([]);
     const [ initialized, setInitialized ] = useState<boolean>(false);
 
@@ -41,11 +38,11 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
     };
 
     useEffect(() => {
-        if (initialized || (!languages.length && !languagesOrdered.length)) {
+        if (initialized || (!props.languages.length && !languagesOrdered.length)) {
             return;
         }
 
-        const l = languages.sort((a: Lang, b: Lang) => {
+        const l = props.languages.sort((a: Lang, b: Lang) => {
             let tester = 0;
             if ((tester = prioritizeSort(a.code, b.code, 'en')) !== 0) {
                 return tester;
@@ -57,11 +54,11 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
         });
         setLanguagesOrdered(l);
         setInitialized(true);
-    }, [languages]);
+    }, [props.languages]);
 
     const handleSelectClick = (code: string) => {
         setSelectedLang(code);
-        actionHook(code);
+        props.actionHook(code);
     };
 
     return (
@@ -77,13 +74,13 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = ({
                                         className={`flag ${l.code === selectedLang ? 'flag-active' : ''}`}
                                         onClick={() => handleSelectClick(l.code)
                                         }>
-                                        <img src={`${publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} />
+                                        <img src={`${props.publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} />
                                     </span>
                                 );
                             })
                         )}
                     </div>
-                    <label>{label || intl.formatMessage({
+                    <label>{props.label || intl.formatMessage({
                         id: 'flag-selector.info.message',
                     })}</label>
                 </div>

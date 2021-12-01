@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
+import './SearchBar.scss';
+
 import {
     Chip,
     MenuItem,
@@ -6,35 +7,36 @@ import {
     Select,
     TextField,
 } from '@material-ui/core';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+
 import { ThemePlatform } from '../../styles/Themes';
-import './SearchBar.scss';
 
 export interface SearchBarProps {
     searchResult?: { [key: string]: string };
-    setSearchResult?: React.Dispatch<any>;
     searchFields: { [key: string]: SearchField };
     placeHolder?: string;
     hideStore?: boolean;
     value?: string;
+    overrideKeyDown?: boolean;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    setSearchResult?: React.Dispatch<any>;
     actionHook?: (search?: { [key: string]: string }) => any;
     typingHook?: (text: string) => any;
     focusHook?: (isFocused: boolean) => any;
     setOnKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => any;
-    overrideKeyDown?: boolean;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
 interface SearchField {
     label: string;
 }
 
-export const SearchBar: React.FunctionComponent<SearchBarProps> = (
-    props: SearchBarProps
-) => {
-    const [searchText, setSearchText] = useState<string>('');
-    const [searchField, setSearchField] = useState<string>(
+export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: SearchBarProps) => {
+    const [ searchText, setSearchText ] = useState<string>('');
+    const [ searchField, setSearchField ] = useState<string>(
         Object.keys(props.searchFields)[0]
     );
-    const [searchStore, setSearchStore] = useState<{ [key: string]: string }>(
+    const [ searchStore, setSearchStore ] = useState<{ [key: string]: string }>(
         props.searchResult || {}
     );
 

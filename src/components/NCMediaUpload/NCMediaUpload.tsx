@@ -1,11 +1,12 @@
 import './NCMediaUpload.scss';
 
-import React, { useCallback, useEffect, useState } from 'react';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
-import { useDropzone } from 'react-dropzone';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { Media } from '../../services/media-library.service';
 import { NCDialog } from '../..';
 import { NCMediaLibrary } from '../../molecules';
+import { useDropzone } from 'react-dropzone';
 import { useIntl } from 'react-intl';
 
 export type ctxType = 'url' | 'blob'
@@ -28,22 +29,7 @@ export interface NCMediaUploadProps {
     mediaLibrary?: boolean;
 }
 
-export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
-    labelImg,
-    infoMsg,
-    currentImg,
-    currentImage,
-    defaultImg,
-    actionHook,
-    accept,
-    minSize,
-    maxSize,
-    noClick,
-    noDrag,
-    disabled,
-    zoneSize,
-    mediaLibrary,
-}) => {
+export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props: NCMediaUploadProps) => {
     const intl = useIntl();
     const [ previewImg, setPreviewImg ] = useState<string>();
     const [ errorMesg, setErrorMesg ] = useState<string>();
@@ -53,12 +39,13 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
         reader.onload = () => {
             const binaryStr = reader.result;
             if (binaryStr) {
-                actionHook('blob', binaryStr.toString());
+                props.actionHook('blob', binaryStr.toString());
             }
         };
         reader.readAsDataURL(file);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onDrop = useCallback((files: any) => {
         files.forEach((file: Blob) => {
             loadFile(file);
@@ -67,17 +54,18 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
 
     const _dropzone = {
         onDrop,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onDropRejected: useCallback((e: any) => {
             const err = e[0].errors[0].message;
             setErrorMesg(`${err}`);
         }, []),
-        accept,
-        minSize,
-        maxSize,
+        accept: props.accept,
+        minSize: props.minSize,
+        maxSize: props.maxSize,
         maxFiles: 1,
-        noClick,
-        noDrag,
-        disabled,
+        noClick: props.noClick,
+        noDrag: props.noDrag,
+        disabled: props.disabled,
     };
 
     const {
@@ -91,19 +79,19 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
         console.log('errorMesg>', errorMesg);
     }, [errorMesg]);
 
-    const previewBackground = `linear-gradient(rgb(36 36 36 / 70%), rgb(36 36 36 / 70%)), url("${previewImg}"), url("${currentImg}"), url("${currentImage}"), url("${defaultImg}")`;
+    const previewBackground = `linear-gradient(rgb(36 36 36 / 70%), rgb(36 36 36 / 70%)), url("${previewImg}"), url("${props.currentImg}"), url("${props.currentImage}"), url("${props.defaultImg}")`;
     const style = {
         container: 'media-upload-container',
         zone: 'drop-zone',
         image: '',
     };
-    if (zoneSize) {
-        style.container += ` ${zoneSize}`;
+    if (props.zoneSize) {
+        style.container += ` ${props.zoneSize}`;
     }
     if (isDragActive) {
         style.zone += ' dragable';
     }
-    if (disabled) {
+    if (props.disabled) {
         style.zone += ' disabled';
     }
     if (!isDragActive) {
@@ -114,12 +102,12 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
     const [ MLOpen, setMLOpen ] = React.useState(false);
 
     const mediaSelected = (v: Media) => {
-        actionHook('url', v.publicUrl);
+        props.actionHook('url', v.publicUrl);
         setPreviewImg(v.publicUrl);
         setMLOpen(false);
     };
     const getLibraryProps = () => {
-        if (!mediaLibrary) {
+        if (!props.mediaLibrary) {
             return {};
         }
         return {
@@ -132,7 +120,7 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
     return (
         <React.Fragment>
             <div className={style.container}>
-                {labelImg && (<label>{labelImg}</label>)}
+                {props.labelImg && (<label>{props.labelImg}</label>)}
                 <div
                     className={style.zone}
                     {...getRootProps()}
@@ -143,7 +131,7 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = ({
                         className="image-zone"
                         style={{ backgroundImage: style.image }}
                     >
-                        <span className="">{infoMsg || intl.formatMessage({
+                        <span className="">{props.infoMsg || intl.formatMessage({
                             id: 'media-upload.info.message',
                         })}</span>
                         <Icon icon={IconType.Cloud} height={64} width={64} />

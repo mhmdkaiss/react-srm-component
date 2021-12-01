@@ -1,22 +1,24 @@
+import React, { ChangeEvent, useState } from 'react';
+
 import { MuiThemeProvider } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
-import React, { ChangeEvent, useState } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 
 export interface SelectProps {
-  id?: string;
-  select?: { [key: string]: string };
-  selectedField?: string | undefined;
-  selectFields: Array<any>;
-  orderSelectFields?: (a: any, b: any) => number
-  fieldValue: string;
-  fieldName: string;
-  actionHook: (search: string | undefined) => any;
-  defaultOptionLabel?: string;
-  defaultOption?: {
-    label: string,
-    value?: any,
-  };
+	/* eslint-disable @typescript-eslint/no-explicit-any */
+	id?: string;
+	select?: { [key: string]: string };
+	selectedField?: string | undefined;
+	selectFields: Array<any>;
+	fieldValue: string;
+	fieldName: string;
+	orderSelectFields?: (a: any, b: any) => number
+	actionHook: (search: string | undefined) => any;
+	defaultOptionLabel?: string;
+	defaultOption?: {
+		label: string,
+		value?: any,
+	};
 }
 
 export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProps) => {

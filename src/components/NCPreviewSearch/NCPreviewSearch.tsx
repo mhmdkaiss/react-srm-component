@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { ThemePlatform } from '../../styles/Themes';
-import { SearchBar, SearchBarProps } from '../SearchBar/SearchBar';
 import './NCPreviewSearch.scss';
 
+import React, { useState } from 'react';
+import { SearchBar, SearchBarProps } from '../SearchBar/SearchBar';
+
+import { MuiThemeProvider } from '@material-ui/core';
+import { ThemePlatform } from '../../styles/Themes';
+
 export interface NCPreviewSearchProps extends SearchBarProps {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     list: Array<{[key: string]: any}>;
     displayParam: string;
     selected?: any,
     onSelection: (clicked: any) => void;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
 export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (props: NCPreviewSearchProps) => {

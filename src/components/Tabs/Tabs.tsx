@@ -1,24 +1,22 @@
 import './Tabs.scss';
 
 import React, { useEffect, useRef, useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 export interface TabParameter {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     basePath?: string;
-
     name: string;
     body?: any;
-
     path: string;
     redirect?: string;
     internalLink?: string;
-
     component?: any;
-
     children?: Array<TabParameter>;
-
     disabled?: boolean;
     hide?: boolean;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
 export interface TabSettings {

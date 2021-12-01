@@ -1,12 +1,14 @@
-import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core';
-import { ThemePlatform } from '../../styles/Themes';
 import { NCPreviewSearch, NCPreviewSearchProps } from '../NCPreviewSearch/NCPreviewSearch';
+
+import { MuiThemeProvider } from '@material-ui/core';
 import { NCChip } from '../NCChip/NCChip';
+import React from 'react';
+import { ThemePlatform } from '../../styles/Themes';
 
 export interface NCMultiSearchProps extends NCPreviewSearchProps {
     selected: Array<string>;
     compareParam: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onDelete: (deleted: any) => void;
     hideSelected?: boolean
 }
@@ -45,6 +47,7 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
                             : props.list
                         }
                         displayParam={props.displayParam}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onSelection={(item: any) => {
                             if (!props.selected.includes(item[props.compareParam])) {
                                 props.onSelection(item);

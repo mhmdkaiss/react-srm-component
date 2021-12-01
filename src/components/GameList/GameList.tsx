@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Game } from '../../models/Game';
-import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import './GameList.scss';
+
+import React, { useState } from 'react';
+
+import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import { ButtonSize } from '../../atoms/Button/Button';
+import { Game } from '../../models/Game';
 
 export interface GameListProps {
     games: Array<Game>;
@@ -10,21 +12,21 @@ export interface GameListProps {
     onChange: (game: Game) => void;
 }
 
-export const GameList: React.FunctionComponent<GameListProps> = ({ games, fancy, onChange }: GameListProps) => {
-    const [selected, setSelected] = useState<number>(0);
+export const GameList: React.FunctionComponent<GameListProps> = (props: GameListProps) => {
+    const [ selected, setSelected ] = useState<number>(0);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setSelected(parseInt(event.currentTarget.value));
-        onChange(games[selected]);
-    }
+        props.onChange(props.games[selected]);
+    };
 
     return (
         <div className='gamelist'>
             {
-                games.map((game: Game, index: number) => {
-                    return <ButtonIcon value={index.toString()} size={ButtonSize.BIG} icon={game.icon} name={game.id} active={selected == index} onClick={(e) => handleClick(e)} key={index} fancy={fancy}/>
+                props.games.map((game: Game, index: number) => {
+                    return <ButtonIcon value={index.toString()} size={ButtonSize.BIG} icon={game.icon} name={game.id} active={selected === index} onClick={(e) => handleClick(e)} key={index} fancy={props.fancy}/>;
                 })
             }
         </div>
     );
-}
+};

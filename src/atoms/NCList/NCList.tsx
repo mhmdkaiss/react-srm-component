@@ -1,5 +1,6 @@
-import React from 'react';
 import './NCList.scss';
+
+import React from 'react';
 
 declare type NCListVariant = 'nc-tournament-list';
 declare type NCListVariantion = 'thead-sticky';
@@ -11,12 +12,13 @@ export interface NCListHeader {
 }
 
 export interface NCListCel {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     trClassName?: string,
     trData?: any,
     actionHook?: (p?: any) => any,
-
     tdClassName?: string,
     tdContent?: React.ReactChild,
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
 export interface NCListProps {
@@ -30,18 +32,18 @@ export interface NCListRows {
     [thId: string]: NCListCel,
 }
 
-export const NCList: React.FunctionComponent<NCListProps> = ({ variant, type, header, data }: NCListProps) => {
+export const NCList: React.FunctionComponent<NCListProps> = (props: NCListProps) => {
     let tableVariant: string = '';
 
-    tableVariant = variant ? ` ${variant}` : '';
-    tableVariant += type ? ` ${type}` : '';
+    tableVariant = props.variant ? ` ${props.variant}` : '';
+    tableVariant += props.type ? ` ${props.type}` : '';
 
     return (
         <table className={'table color-white' + tableVariant}>
             <thead>
                 <tr>
                     {
-                        header.filter(h => h).map((h, index: number) => {
+                        props.header.filter(h => h).map((h, index: number) => {
                             return (
                                 <th key={index} scope="col" className={h.thClassName}>{h.thContent}</th>
                             );
@@ -51,13 +53,13 @@ export const NCList: React.FunctionComponent<NCListProps> = ({ variant, type, he
             </thead>
             <tbody>
                 {
-                    data.filter(d => d).map((dataRow, dIndex: number) => {
+                    props.data.filter(d => d).map((dataRow, dIndex: number) => {
                         return (
                             <tr key={dIndex} className={dataRow?.tr?.trClassName} onClick={() => {
                                 if (dataRow?.tr?.actionHook) { dataRow?.tr?.actionHook(dataRow?.tr?.trData); }
                             }}>
                                 {
-                                    header.filter(h => h).map((h, hIndex: number) => {
+                                    props.header.filter(h => h).map((h, hIndex: number) => {
                                         return (
                                             <td key={hIndex} className={dataRow[h.thId].tdClassName} onClick={dataRow[h.thId].actionHook}>{dataRow[h.thId].tdContent}</td>
                                         );

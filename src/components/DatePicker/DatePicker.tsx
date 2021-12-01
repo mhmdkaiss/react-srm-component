@@ -1,18 +1,20 @@
-import React, {ChangeEvent} from 'react';
-import { MuiThemeProvider, TextField } from '@material-ui/core';
-import { ThemePlatform } from '../../styles/Themes';
 import './DatePicker.scss';
 
+import { MuiThemeProvider, TextField } from '@material-ui/core';
+import React, { ChangeEvent } from 'react';
+
+import { ThemePlatform } from '../../styles/Themes';
 
 export interface DatePickerProps {
     label: string;
     initialDate?: string | number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dateChanged: (date?: string) => any;
 }
 
-export const DatePicker: React.FunctionComponent<DatePickerProps> = ({initialDate, label, dateChanged}: DatePickerProps) => {
-    const defaultVal = initialDate ?
-        new Date(initialDate || '').getTime() ? new Date(initialDate).toISOString().slice(0, 16) : initialDate : undefined;
+export const DatePicker: React.FunctionComponent<DatePickerProps> = (props: DatePickerProps) => {
+    const defaultVal = props.initialDate ?
+        new Date(props.initialDate || '').getTime() ? new Date(props.initialDate).toISOString().slice(0, 16) : props.initialDate : undefined;
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
@@ -21,8 +23,8 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = ({initialDat
                         type="datetime-local"
                         className="w-100 datepicker-input nicecactus-input"
                         defaultValue={defaultVal}
-                        label={label}
-                        onChange={(event: ChangeEvent<HTMLInputElement>) => { dateChanged(event.target.value) }}
+                        label={props.label}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => { props.dateChanged(event.target.value); }}
                         InputLabelProps={{ shrink: true }}
                     />
                     <div
@@ -36,4 +38,4 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = ({initialDat
             </MuiThemeProvider>
         </React.Fragment>
     );
-}
+};

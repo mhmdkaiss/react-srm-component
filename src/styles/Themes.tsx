@@ -7,12 +7,12 @@ export enum NCTheme {
 
 export const getTheme = (theme?: NCTheme) => {
     switch (theme) {
-    case NCTheme.Platform:
-        return ThemePlatform;
-    case NCTheme.Grey:
-        return ThemeGrey;
-    default:
-        return ThemePlatform;
+        case NCTheme.Platform:
+            return ThemePlatform;
+        case NCTheme.Grey:
+            return ThemeGrey;
+        default:
+            return ThemePlatform;
     }
 };
 

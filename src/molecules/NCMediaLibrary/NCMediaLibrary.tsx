@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Button, NCBox, NCList } from '../../atoms';
-import { ButtonType } from '../../atoms/Button/Button';
-import { IconType } from '../../atoms/Icon/Icon';
-import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
-import { MediaLibraryService, Media } from '../../services/media-library.service';
-import { NCActions } from '../NCActions/NCActions';
 import './NCMediaLibrary.scss';
 
+import { Button, NCBox, NCList } from '../../atoms';
+import { Media, MediaLibraryService } from '../../services/media-library.service';
+import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
+import React, { useEffect, useState } from 'react';
+
+import { ButtonType } from '../../atoms/Button/Button';
+import { IconType } from '../../atoms/Icon/Icon';
+import { NCActions } from '../NCActions/NCActions';
+
 export interface NCMediaLibraryProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     actionHook: (media: Media) => any;
 }
 
-export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = ({ actionHook }) => {
+export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (props: NCMediaLibraryProps) => {
     // TODO: handle commented action
     // const authorizedFiles = [ 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml' ];
 
@@ -199,7 +202,7 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = ({ a
                             {
                                 label: 'Done',
                                 setClick: () => {
-                                    actionHook(selectedItem);
+                                    props.actionHook(selectedItem);
                                 }
                             }
                         ]} />

@@ -15,19 +15,19 @@ export interface DisplaySelectorProps {
   defaultValue?: DisplayList
 }
 
-export const DisplaySelector: React.FunctionComponent<DisplaySelectorProps> = ({ onChange, defaultValue }: DisplaySelectorProps) => {
-    const [selected, setSelected] = useState<DisplayList>(defaultValue || 0);
+export const DisplaySelector: React.FunctionComponent<DisplaySelectorProps> = (props: DisplaySelectorProps) => {
+    const [ selected, setSelected ] = useState<DisplayList>(props.defaultValue || 0);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const selectedValue = parseInt(event.currentTarget.value);
         setSelected(selectedValue);
-        onChange(selectedValue);
+        props.onChange(selectedValue);
     };
 
     return (
         <div className='displaylist'>
-            <ButtonIcon value={DisplayList.List.toString()} size={ButtonSize.MEDIUM} icon={`${process.env.REACT_APP_S3_URL}/media/icons/burgerMenu.svg`} name="list" active={selected == DisplayList.List} onClick={(e) => handleClick(e)} key={DisplayList.List}/>
-            <ButtonIcon value={DisplayList.Waffle.toString()} size={ButtonSize.MEDIUM} icon={`${process.env.REACT_APP_S3_URL}/media/icons/waffleMenu.svg`} name="waffle" active={selected == DisplayList.Waffle} onClick={(e) => handleClick(e)} key={DisplayList.Waffle}/>
+            <ButtonIcon value={DisplayList.List.toString()} size={ButtonSize.MEDIUM} icon={`${process.env.REACT_APP_S3_URL}/media/icons/burgerMenu.svg`} name="list" active={selected === DisplayList.List} onClick={(e) => handleClick(e)} key={DisplayList.List}/>
+            <ButtonIcon value={DisplayList.Waffle.toString()} size={ButtonSize.MEDIUM} icon={`${process.env.REACT_APP_S3_URL}/media/icons/waffleMenu.svg`} name="waffle" active={selected === DisplayList.Waffle} onClick={(e) => handleClick(e)} key={DisplayList.Waffle}/>
         </div>
     );
 };

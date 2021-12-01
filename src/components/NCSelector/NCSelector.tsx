@@ -1,9 +1,11 @@
-import React, { ChangeEvent } from 'react';
-import { MenuItem, MuiThemeProvider, Select } from '@material-ui/core';
-import { getTheme, NCTheme } from '../../styles/Themes';
 import './NCSelector.scss';
 
+import { MenuItem, MuiThemeProvider, Select } from '@material-ui/core';
+import { NCTheme, getTheme } from '../../styles/Themes';
+import React, { ChangeEvent } from 'react';
+
 export interface NCSelectorProps {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     id?: string;
     disabled?: boolean;
     select?: { [key: string]: string };
@@ -12,9 +14,9 @@ export interface NCSelectorProps {
     fieldValue: string;
     fieldName: string;
     fieldImage: string;
-    actionHook?: (search: string) => any;
     defaultOptionLabel?: string;
     theme?: NCTheme;
+    actionHook?: (search: string) => any;
 }
 
 export const NCSelector: React.FunctionComponent<NCSelectorProps> = (props: NCSelectorProps) => {

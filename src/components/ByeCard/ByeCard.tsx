@@ -13,8 +13,7 @@ interface ByeCardProps {
 export const ByeCard: React.FunctionComponent<ByeCardProps> = (props: ByeCardProps) => {
     const soloSize = [ 20, 40, 80 ];
     const teamSize = [ 48, 80, 121 ];
-    let profilePictureSize;
-    profilePictureSize = props.full ?
+    const profilePictureSize = props.full ?
         props.isSolo ?
             props.xs ? soloSize[1] : soloSize[2] :
             props.xs ? teamSize[1] : teamSize[2] :

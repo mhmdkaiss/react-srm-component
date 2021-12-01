@@ -42,10 +42,10 @@ export const NCStepper: React.FunctionComponent<NCStepperProps> = (props: NCStep
                                 </div>
                                 <div className="label text-center mt-1">{props.stepsLabel[step]}</div>
                             </div>
-                        )
+                        );
                     })}
                 </div>
             </MuiThemeProvider>
         </React.Fragment>
     );
-}
+};

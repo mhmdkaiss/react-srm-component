@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {useIntl} from 'react-intl';
-import { TeamLeaderboard} from '../../models/Team';
+import { useIntl } from 'react-intl';
+import { TeamLeaderboard } from '../../models/Team';
 import { ProfilePicture } from '../ProfilePicture/ProfilePicture';
 import { TeamPicture } from '../TeamPicture/TeamPicture';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
@@ -15,7 +15,7 @@ export interface NCParticipantListProps {
 
 export const NCParticipantList: React.FunctionComponent<NCParticipantListProps> = ({ list, selected, winners = [], isLeaderboard }: NCParticipantListProps) => {
     const intl = useIntl();
-    const [isSolo, setIsSolo] = useState<boolean>(false);
+    const [ isSolo, setIsSolo ] = useState<boolean>(false);
 
     useEffect(() => {
         setIsSolo(Math.max(...list.filter(t => t).map(t => Object.keys(t.players).length)) < 2);
@@ -27,13 +27,13 @@ export const NCParticipantList: React.FunctionComponent<NCParticipantListProps> 
                 <tr>
                     {
                         isLeaderboard &&
-                            <th scope="col">{intl.formatMessage({id: 'tournament.match.position'})}</th>
+                            <th scope="col">{intl.formatMessage({ id: 'tournament.match.position' })}</th>
 
                     }
-                    <th scope="col">{intl.formatMessage({id: 'tournament.match.participant'})}</th>
+                    <th scope="col">{intl.formatMessage({ id: 'tournament.match.participant' })}</th>
                     {
                         isLeaderboard &&
-                            <th scope="col">{intl.formatMessage({id: 'tournament.match.score'})}</th>
+                            <th scope="col">{intl.formatMessage({ id: 'tournament.match.score' })}</th>
                     }
                 </tr>
             </thead>
