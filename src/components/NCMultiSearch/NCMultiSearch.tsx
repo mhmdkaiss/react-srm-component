@@ -8,6 +8,7 @@ export interface NCMultiSearchProps extends NCPreviewSearchProps {
     selected: Array<string>;
     compareParam: string;
     onDelete: (deleted: any) => void;
+    hideSelected?: boolean
 }
 
 export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props: NCMultiSearchProps) => {
@@ -16,19 +17,18 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
             <MuiThemeProvider theme={ThemePlatform}>
                 {
                     props.selected.length > 0 &&
-                    <div className="d-flex mb-2">
-                        {
-                            props.list.filter(item => props.selected.includes(item[props.displayParam])).map((item, index) => {
-                                return (
-                                    <div key={index} className={index > 0 ? 'mx-3' : 'mr-3'}>
-                                        <NCChip
-                                            label={item[props.displayParam]}
-                                            onChange={() => props.onDelete(item)}
-                                            deletion={true}
-                                        />
-                                    </div>
-                                );
-                            })
+                    <div className="d-flex mb-2 row">
+                        {props.list.filter(item => props.selected.includes(item[props.displayParam])).map((item, index) => {
+                            return (
+                                <div key={index} className='mx-3 mb-1' >
+                                    <NCChip
+                                        label={item[props.displayParam]}
+                                        onChange={() => props.onDelete(item)}
+                                        deletion={true}
+                                    />
+                                </div>
+                            );
+                        })
                         }
                     </div>
                 }
@@ -40,7 +40,10 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
                         focusHook={props.focusHook}
                         typingHook={props.typingHook}
                         actionHook={props.actionHook}
-                        list={props.list}
+                        list={props.hideSelected
+                            ? props.list.filter(item => !props.selected.includes(item[props.displayParam]))
+                            : props.list
+                        }
                         displayParam={props.displayParam}
                         onSelection={(item: any) => {
                             if (!props.selected.includes(item[props.compareParam])) {
