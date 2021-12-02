@@ -39,6 +39,10 @@
         .content {
             font-size: 14px;
             font-weight: 400;
+
+            &> a {
+                color: $primary-color
+            }
         }
     }
 }
