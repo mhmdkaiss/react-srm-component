@@ -60,6 +60,9 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/component/toasts'>
                         <ListItemText primary='Toasts'/>
                     </ListItem>
+                    <ListItem button component={Link} to='/component/loader'>
+                        <ListItemText primary='Loader'/>
+                    </ListItem>
                 </List>
             </Collapse>
         </List>

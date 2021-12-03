@@ -49,6 +49,7 @@ import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCSelector } from './components/NCSelector/NCSelector';
 import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 import { ByeCard } from './components/ByeCard/ByeCard';
+import { NCLoader } from './components/NCLoader/NCLoader';
 
 export {
     DatePicker,
@@ -105,4 +106,5 @@ export {
     NCSelector,
     NCColorPicker,
     NCDialog,
+    NCLoader,
 };

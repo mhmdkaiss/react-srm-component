@@ -13,6 +13,7 @@ import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import { Navigation } from './components/Navigation/Navigation'
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage'
+import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
 
 const routes = [
     {
@@ -42,6 +43,10 @@ const routes = [
     {
         path: "/component/toasts",
         component: ToastDemoPage,
+    },
+    {
+        path: "/component/loader",
+        component: LoaderDemoPage,
     }
 ]
 

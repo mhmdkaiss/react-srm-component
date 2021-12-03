@@ -47,7 +47,7 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                                         return (
                                             <div
                                                 key={index}
-                                                className={`preview-item py-1 ${JSON.stringify(props.selected) === JSON.stringify(item) ? 'selected' : ''}`}
+                                                className={`preview-item text-elipsis w-100 py-1 ${JSON.stringify(props.selected) === JSON.stringify(item) ? 'selected' : ''}`}
                                                 onClick={() => {props.onSelection(item);}}
                                             >
                                                 {item[props.displayParam]}
