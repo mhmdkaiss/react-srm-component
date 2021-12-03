@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
 import './NCToast.scss';
+
 import { Icon, IconType } from '../Icon/Icon';
+import React, { useEffect } from 'react';
 import { ToastModel, ToastPosition } from '../../models/NCToastModel';
 
 export interface NCToastContainerProps {
