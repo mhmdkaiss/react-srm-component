@@ -20,6 +20,7 @@ export enum IconType {
     Gift = 'gift',
     GoToLink = 'goToLink',
     GoToPreviousPage = 'goToPreviousPage',
+    Info = 'info',
     Instagram = 'instagram',
     Maximize = 'maximize',
     Minimize = 'minimize',
