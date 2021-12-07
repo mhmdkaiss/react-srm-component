@@ -50,6 +50,7 @@ import { NCSelector } from './components/NCSelector/NCSelector';
 import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 import { ByeCard } from './components/ByeCard/ByeCard';
 import { NCLoader } from './components/NCLoader/NCLoader';
+import { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
 
 export {
     DatePicker,
@@ -107,4 +108,5 @@ export {
     NCColorPicker,
     NCDialog,
     NCLoader,
+    NCPremiumCTA,
 };

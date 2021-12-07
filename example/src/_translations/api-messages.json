@@ -58,5 +58,9 @@
     {
         "term": "game_account.modal.description",
         "comment": "Seems like you didn’t provide an account for this game. We need this information to validate results."
+    },
+    {
+        "term": "premium.go_premium",
+        "comment": "Go Premium"
     }
 ]
