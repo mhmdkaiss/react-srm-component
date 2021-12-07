@@ -50,6 +50,7 @@ import { NCSelector } from './components/NCSelector/NCSelector';
 import { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 import { ByeCard } from './components/ByeCard/ByeCard';
 import { NCLoader } from './components/NCLoader/NCLoader';
+import { NCLottieAnimation } from './components/NCLottieAnimation/NCLottieAnimation';
 import { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
 
 export {
@@ -108,5 +109,6 @@ export {
     NCColorPicker,
     NCDialog,
     NCLoader,
+    NCLottieAnimation,
     NCPremiumCTA,
 };

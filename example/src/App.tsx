@@ -14,6 +14,7 @@ import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCar
 import { Navigation } from './components/Navigation/Navigation'
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage'
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
+import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage'
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage'
 
 const routes = [
@@ -48,6 +49,10 @@ const routes = [
     {
         path: "/component/loader",
         component: LoaderDemoPage,
+    },
+    {
+        path: "/component/lottie-animation",
+        component: LottieAnimationDemoPage,
     },
     {
         path: "/component/premium-cta",
