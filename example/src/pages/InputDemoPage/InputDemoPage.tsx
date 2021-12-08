@@ -16,10 +16,20 @@ import {
     NCPreviewSearchAsync,
     NCSelector,
     NCColorPicker,
+    NCScrollTopButton,
 } from '@cactus/srm-component';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
 export const InputDemoPage: React.FunctionComponent = () => {
+
+    // Scroll Top Button
+    const scrollTop = (clicked: boolean) => {
+        if (!clicked) {
+            return;
+        }
+       window.scrollTo(0, 0);
+    };
+
     // Toogles
     const [switchChecked, setSwitchChecked] = useState<boolean>();
     const [chipChecked, setChipChecked] = useState<boolean>();
@@ -426,6 +436,14 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     />
                 </div>
             </div>
+
+            <div className='my-5'>
+                <h4>Scroll top button</h4>
+                <div className='my-4'>
+                    <NCScrollTopButton size={ 62 } actionHook={ scrollTop }/>
+                </div>
+            </div>
+
         </div>
     );
 };

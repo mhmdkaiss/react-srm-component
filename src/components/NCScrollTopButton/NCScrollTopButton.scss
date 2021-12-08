@@ -1,0 +1,151 @@
+@import '../../styles/colors.scss';
+
+.scroll-top-button-container {
+    .circle {
+        position: absolute;
+        background: $grey2;
+        border: 2px solid $primary-color;
+        border-radius: 50%;
+        animation: container-animation 2s ease-out infinite 1.2s;
+        width: 100%;
+        height: 100%;
+    }
+
+    .icon-goToPreviousPage {
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        background: $primary-color;
+        transform: rotate(90deg) translateY(50%);
+        left: 50%;
+    }
+
+    .sliding {
+        .icon-goToPreviousPage {
+            top: 10%;
+            animation: sliding-animation 2s ease-out 200ms infinite;
+        }
+    }
+
+    .destination {
+        .icon-goToPreviousPage {
+            top: 35%;
+            animation: destination-animation 2s ease-out 200ms infinite;
+        }
+    }
+
+    &:hover {
+        .circle {
+            background: $grey3;
+            border-color: $grey6;
+            animation: none;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+        }
+
+        .sliding {
+            top: 50%;
+            transform: rotate(90deg) translate(-50%, 50%);
+        }
+
+        .destination {
+            top: 50%;
+            transform: rotate(90deg) translate(-50%, 50%);
+        }
+
+        .icon-goToPreviousPage {
+            background: $grey5;
+            animation: none;
+        }
+    }
+
+    &:active {
+        .circle {
+            box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+                inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+            border: none;
+        }
+
+        .icon-goToPreviousPage {
+            background: $grey6;
+        }
+    }
+}
+
+@keyframes container-animation {
+    0% {
+        left: 0%;
+        right: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    25% {
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        height: 90%;
+    }
+    50% {
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        height: 90%;
+    }
+    75% {
+        left: 0%;
+        right: 0%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes sliding-animation {
+    0% {
+        top: 10%;
+        opacity: 1;
+    }
+    25% {
+        top: 35%;
+        opacity: 0;
+    }
+    50% {
+        top: 35%;
+        opacity: 1;
+    }
+    75% {
+        top: 10%;
+        opacity: 0;
+    }
+}
+
+@keyframes destination-animation {
+    0% {
+        top: 35%;
+        opacity: 0;
+    }
+    25% {
+        top: 35%;
+        opacity: 1;
+    }
+    49.8% {
+        top: 35%;
+        opacity: 1;
+    }
+    49.9% {
+        top: 35%;
+        opacity: 0;
+    }
+    50% {
+        top: 10%;
+        opacity: 0;
+    }
+    75% {
+        top: 10%;
+        opacity: 1;
+    }
+    99.9% {
+        top: 10%;
+    }
+}

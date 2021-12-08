@@ -53,6 +53,7 @@ import {
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
+import { NCScrollTopButton } from './components/NCScrollTopButton/NCScrollTopButton';
 
 export {
     DatePicker,
@@ -110,6 +111,7 @@ export {
     NCColorPicker,
     NCDialog,
     NCLoader,
+    NCScrollTopButton,
     NCLottieAnimation,
     NCPremiumCTA,
     NCLineUp,
