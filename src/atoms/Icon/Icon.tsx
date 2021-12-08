@@ -41,7 +41,7 @@ export enum IconType {
     Success = 'success',
     Trashcan = 'trashcan',
     Twitter = 'twitter',
-    UnvailableLocation = 'unvailableLocation',
+    UnavailableLocation = 'unavailableLocation',
     UploadCloud = 'uploadCloud',
     User = 'user',
     WaffleMenu = 'waffleMenu',
