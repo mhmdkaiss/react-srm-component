@@ -24,7 +24,7 @@ export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey,
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table code help wordcount powerpaste'
+            'insertdatetime media table code help wordcount'
         ],
         toolbar: 'undo redo | formatselect | ' +
         'bold italic backcolor | alignleft aligncenter ' +
