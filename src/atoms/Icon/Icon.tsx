@@ -1,12 +1,14 @@
-import React from 'react';
 import { IconMask } from './IconMask';
+import React from 'react';
 
 export enum IconType {
     AddUser = 'addUser',
+    Back = 'back',
     Brackets = 'brackets',
     BurgerMenu = 'burgerMenu',
     Calendar = 'calendar',
     Discord = 'discord',
+    Clock = 'clock',
     Close = 'close',
     Copy = 'copy',
     Cross = 'cross',
@@ -18,13 +20,17 @@ export enum IconType {
     EyeCrossed = 'eyeCrossed',
     Facebook = 'facebook',
     Gift = 'gift',
+    Google = 'google',
     GoToLink = 'goToLink',
     GoToPreviousPage = 'goToPreviousPage',
     Info = 'info',
     Instagram = 'instagram',
+    Lock = 'lock',
     Maximize = 'maximize',
     Minimize = 'minimize',
+    Mobile = 'mobile',
     Move = 'move',
+    Notification = 'notification',
     People = 'people',
     Plus = 'plus',
     Premium = 'premium',
@@ -35,16 +41,11 @@ export enum IconType {
     Success = 'success',
     Trashcan = 'trashcan',
     Twitter = 'twitter',
+    UnvailableLocation = 'unvailableLocation',
     UploadCloud = 'uploadCloud',
     User = 'user',
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
-    Lock = 'lock',
-    Clock = 'clock',
-    Back = 'back',
-    Google = 'google',
-    Notification = 'notification',
-    Mobile = 'mobile'
 }
 
 export interface IconProps {
