@@ -41,7 +41,10 @@ export enum IconType {
     Warning = 'warning',
     Lock = 'lock',
     Clock = 'clock',
-    Back = 'back'
+    Back = 'back',
+    Google = 'google',
+    Notification = 'notification',
+    Mobile = 'mobile'
 }
 
 export interface IconProps {

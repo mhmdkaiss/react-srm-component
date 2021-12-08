@@ -1,0 +1,33 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-title-container {
+    display: flex;
+    align-items: baseline;
+    margin: 5px 0;
+
+    .nc-color-led {
+        width: 4px;
+        height: 16px;
+        margin-right: 6px;
+        background: $electric-lime;
+
+        @include breakpoint(mobile) {
+            height: 12px;
+            margin-right: 4px;
+        }
+    }
+
+    span {
+        font-size: $big-text;
+        line-height: 127%;
+        letter-spacing: 0.02em;
+        color: $grey6;
+
+        @include breakpoint(mobile) {
+            font-size: 18px;
+            line-height: 123%;
+        }
+    }
+}

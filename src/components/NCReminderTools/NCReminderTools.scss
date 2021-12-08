@@ -1,0 +1,27 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-reminder-tools {
+    margin-top: 32px;
+
+    @media screen and (max-width: $sm) {
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $grey6;
+        display: flex;
+        text-align: left;
+        margin-bottom: 8px;
+
+        @media screen and (max-width: $sm) {
+            text-align: center;
+        }
+    }
+}

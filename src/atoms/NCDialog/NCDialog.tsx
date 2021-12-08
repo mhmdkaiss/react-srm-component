@@ -1,9 +1,9 @@
 import './NCDialog.scss';
 
 import React from 'react';
-import IconTimes from '../../styles/svg/IconTimes';
+import { TimesIcon } from '../../styles/svg';
 
-interface DialogProps {
+export interface DialogProps {
     title?: string;
     children: React.ReactNode;
     show: boolean;
@@ -43,7 +43,7 @@ export const NCDialog: React.FunctionComponent<DialogProps> = ({
                         className="dialog-close"
                         onClick={() => closeDialog()}
                     >
-                        <IconTimes />
+                        <TimesIcon />
                     </div>
                 </div>
                 <div className="dialog-body">{children}</div>

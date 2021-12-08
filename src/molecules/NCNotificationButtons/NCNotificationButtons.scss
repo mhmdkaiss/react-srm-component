@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-notification-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+
+    @media screen and (max-width: $sm) {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

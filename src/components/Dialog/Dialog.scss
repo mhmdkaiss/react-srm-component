@@ -1,7 +1,6 @@
-@import "../../styles/colors";
-@import "../../styles/variables";
-@import "../../styles/mixins";
-
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .dialog {
     display: flex;
@@ -58,9 +57,9 @@
                 top: 0%;
                 bottom: 0%;
                 background: linear-gradient(
-                360deg,
-                rgba(26, 26, 26, 0.81) 0%,
-                rgba(0, 0, 0, 0.59) 100%
+                    360deg,
+                    rgba(26, 26, 26, 0.81) 0%,
+                    rgba(0, 0, 0, 0.59) 100%
                 );
                 box-shadow: inset 0px 0px 0px 55px -8px #ffffff;
                 border-radius: 8px;
@@ -72,7 +71,7 @@
                 right: 0;
                 top: 0;
                 bottom: 0;
-                background: url($s3-url + "/media/shared-library/background/dialog-background.png");
+                background: url($s3-url + '/media/shared-library/background/dialog-background.png');
                 border-radius: 8px;
                 opacity: 0.2;
             }
@@ -95,7 +94,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 22px;
+            font-size: $big-text;
             margin-bottom: 28px;
             color: $grey;
         }
@@ -118,7 +117,7 @@
             &--preview {
                 height: 73px;
                 margin-bottom: 23px;
-                font-size: 16px;
+                font-size: $medium-text;
                 line-height: 24px;
                 display: flex;
                 flex-direction: column;
@@ -133,7 +132,7 @@
                 margin-bottom: 23px;
                 width: auto;
                 white-space: nowrap;
-                font-size: 22px;
+                font-size: $big-text;
                 line-height: 27, 94px;
                 color: $white;
             }

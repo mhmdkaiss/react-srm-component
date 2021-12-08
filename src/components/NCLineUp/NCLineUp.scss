@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.nc-line-up-text-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: $sm) {
+        margin: 6px 0 0 0;
+    }
+
+    .welcome-message {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 120%;
+        color: $grey6;
+        letter-spacing: 0.04em;
+
+        @media screen and (max-width: $sm) {
+            display: none;
+        }
+    }
+}

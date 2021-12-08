@@ -1,0 +1,15 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+
+.buttons-demo-page {
+    color: $grey5;
+    font-size: $big-text;
+
+    .theme-title {
+        font-size: $bigger-text;
+    }
+
+    td {
+        padding: 25px;
+    }
+}

@@ -1,0 +1,36 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-step {
+    display: flex;
+    flex-direction: column;
+    max-width: 11vw;
+
+    @media screen and (max-width: $sm) {
+        max-width: initial;
+        flex-direction: row;
+        margin: 8px;
+    }
+
+    .nc-step-description {
+        font-size: $medium-text;
+        line-height: 150%;
+        display: flex;
+        align-self: center;
+        text-align: center;
+        color: $white;
+        margin: 32px 0 0 0;
+        max-width: 200px;
+
+        @media screen and (max-width: $sm) {
+            font-size: $small-text;
+            letter-spacing: 0.015em;
+            line-height: 140%;
+            text-align: left;
+            align-items: center;
+            margin: 0;
+            max-width: initial;
+        }
+    }
+}

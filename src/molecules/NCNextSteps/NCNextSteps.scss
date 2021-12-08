@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-next-steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+
+    @media screen and (max-width: $sm) {
+        flex-direction: column;
+    }
+}

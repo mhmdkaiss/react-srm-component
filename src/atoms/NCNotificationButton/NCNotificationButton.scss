@@ -1,0 +1,70 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+@mixin hoverEffect() {
+    border: $primary-color 1px solid;
+    transition: 0.2s ease-in-out;
+
+    p {
+        color: $primary-color;
+        transition: 0.2s ease-in-out;
+    }
+}
+
+.nc-notification-button {
+    display: flex;
+    flex-direction: row;
+    background-color: $grey2;
+    border: $grey2 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    height: 64px;
+    width: 100%;
+
+    &:hover {
+        @include hoverEffect();
+    }
+
+    .nc-icon-container {
+        width: 54px;
+        height: 100%;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+
+    .nc-notification-button-icon {
+        align-self: center;
+    }
+
+    .nc-active-icon {
+        background: $electric-lime;
+    }
+
+    svg {
+        align-self: center;
+        width: 100%;
+        max-width: 4em;
+        margin-top: -2px;
+    }
+
+    .nc-notification-button-text {
+        font-size: $medium-text;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: left;
+        color: $grey6;
+        transition: 0.2s ease-in-out;
+        align-self: center;
+        margin: 16px 16px 16px 0;
+    }
+}

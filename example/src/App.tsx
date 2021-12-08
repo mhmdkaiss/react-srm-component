@@ -1,21 +1,23 @@
-import React from 'react'
-import './App.scss'
-import ContextStore from "./store"
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
-import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
-import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
-import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
-import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
-import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import './App.scss'
 import { Navigation } from './components/Navigation/Navigation'
+import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage'
+import { HeadersDemoPage } from './pages/HeadersDemoPage/HeadersDemoPage'
+import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
+import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage'
+import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage'
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage'
+import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
+import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
+import ContextStore from "./store"
 
 const routes = [
     {
@@ -25,6 +27,10 @@ const routes = [
     {
         path: '/atoms/inputs',
         component: InputDemoPage
+    },
+    {
+        path: '/atoms/headers',
+        component: HeadersDemoPage
     },
     {
         path: '/atoms/dialog',
@@ -57,6 +63,10 @@ const routes = [
     {
         path: "/component/premium-cta",
         component: PremiumCTADemoPage,
+    },
+    {
+        path: "/component/line-up",
+        component: LineUpDemoPage,
     }
 ]
 

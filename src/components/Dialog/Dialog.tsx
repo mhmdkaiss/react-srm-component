@@ -1,7 +1,7 @@
 import './Dialog.scss';
 
 import React from 'react';
-import IconTimes from '../../styles/svg/IconTimes';
+import { TimesIcon } from '../../styles/svg';
 
 interface DialogProps {
     bodyComponent: React.ReactElement | React.FunctionComponent;
@@ -36,7 +36,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = (props: DialogProps)
                                 props.setShow(false);
                             }}
                         >
-                            <IconTimes />
+                            <TimesIcon />
                         </div>
                         { props.headerComponent &&
                             <div className="dialog__content--header">{props.headerComponent}</div>
