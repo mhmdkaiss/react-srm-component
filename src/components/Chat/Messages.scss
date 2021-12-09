@@ -2,57 +2,58 @@
 @import 'src/styles/variables';
 
 .messages-component {
-  &.messages {
-    max-height: 400px;
-    min-height: 400px;
-    overflow: hidden;
-    overflow-y: scroll;
+    &.messages {
+        max-height: 400px;
+        min-height: 400px;
+        overflow: hidden;
+        overflow-y: scroll;
+        overflow-wrap: break-word;
 
-    &.fullscreen-chat {
-      max-height: unset;
-      min-height: unset;
-      height: 100%;
+        &.fullscreen-chat {
+            max-height: unset;
+            min-height: unset;
+            height: 100%;
+        }
+
+        &::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+
+        .referee {
+            .username {
+                color: $persimmon;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            .message {
+                color: $persimmon;
+            }
+        }
+
+        .me {
+            .message {
+                background: $grey1;
+                padding: 8px;
+                border-radius: 8px;
+            }
+        }
+
+        .username {
+            color: $primary-color;
+            font-size: $smallest-text;
+        }
+
+        .code {
+            color: $grey5;
+            font-size: $smallest-text;
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 24px;
+            color: $grey6;
+        }
     }
-
-    &::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-    }
-
-    .referee {
-      .username {
-        color: $persimmon;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .message {
-        color: $persimmon;
-      }
-    }
-
-    .me {
-      .message {
-        background: $grey1;
-        padding: 8px;
-        border-radius: 8px;
-      }
-    }
-
-    .username {
-      color: $primary-color;
-      font-size: $smallest-text;
-    }
-
-    .code {
-      color: $grey5;
-      font-size: $smallest-text;
-    }
-
-    .message {
-      font-size: 16px;
-      line-height: 24px;
-      color: $grey6;
-    }
-  }
 }
