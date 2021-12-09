@@ -45,17 +45,9 @@
             height: 90%;
         }
 
-        .sliding {
-            top: 50%;
-            transform: rotate(90deg) translate(-50%, 50%);
-        }
-
-        .destination {
-            top: 50%;
-            transform: rotate(90deg) translate(-50%, 50%);
-        }
-
         .icon-goToPreviousPage {
+            top: 50%;
+            transform: rotate(90deg) translate(-50%, 50%);
             background: $grey5;
             animation: none;
         }
