@@ -17,6 +17,7 @@ import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPag
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
 import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
+import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage'
 import ContextStore from "./store"
 
 const routes = [
@@ -43,6 +44,10 @@ const routes = [
     {
         path: '/component/user-team-cards',
         component: UserTeamCardsDemoPage,
+    },
+    {
+        path: '/component/tournament-cards',
+        component: TournamentCardDemoPage,
     },
     {
         path: "/component/lists",

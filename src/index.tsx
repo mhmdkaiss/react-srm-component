@@ -54,6 +54,7 @@ import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
 import { NCScrollTopButton } from './components/NCScrollTopButton/NCScrollTopButton';
+import { NCTournamentCard, CardSize } from './components/NCTournamentCard/NCTournamentCard';
 
 export {
     DatePicker,
@@ -115,5 +116,7 @@ export {
     NCLottieAnimation,
     NCPremiumCTA,
     NCLineUp,
-    NCReminderTools
+    NCReminderTools,
+    NCTournamentCard,
+    CardSize
 };

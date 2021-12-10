@@ -1,0 +1,92 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+
+.nc-tournament-card {
+    &.xs {
+        width: 180px;
+
+        .tournament-banner {
+            height: 96px;
+        }
+    }
+
+    &.s {
+        width: 290px;
+
+        .tournament-banner {
+            height: 206px;
+        }
+    }
+
+    &.xs,
+    &.s {
+        .tournament-title {
+            font-size: $medium-text;
+        }
+    }
+
+    &.m {
+        width: 458px;
+
+        .tournament-banner {
+            height: 242px;
+        }
+
+        .tournament-title {
+            font-size: $big-text;
+        }
+    }
+
+    &.l {
+        width: 820px;
+
+        .tournament-banner {
+            height: 284px;
+            width: 450px !important;
+            margin-right: 32px;
+        }
+
+        .tournament-title {
+            font-size: 28px;
+        }
+    }
+
+    .tournament-banner {
+        border-radius: 8px;
+        background-size: cover;
+    }
+
+    .tournament-title {
+        font-size: $big-text;
+        color: $white;
+        line-height: 127%;
+    }
+
+    .tournament-infos {
+        display: none;
+
+        div:not(:last-child):after {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: $tournament;
+            border-radius: 50%;
+            margin: 0px 8px;
+        }
+
+        .icon-platform {
+            background: $grey6;
+        }
+    }
+
+    .icon-partner {
+        width: 22px;
+        height: 22px;
+    }
+
+    .info-text {
+        font-size: 13px;
+        color: $grey6;
+    }
+}

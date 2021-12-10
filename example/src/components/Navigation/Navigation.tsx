@@ -57,6 +57,9 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/component/user-team-cards'>
                         <ListItemText primary='User/Team cards'/>
                     </ListItem>
+                    <ListItem button component={Link} to='/component/tournament-cards'>
+                        <ListItemText primary='Tournaments cards'/>
+                    </ListItem>
                     <ListItem button component={Link} to='/component/lists'>
                         <ListItemText primary="Lists"/>
                     </ListItem>
