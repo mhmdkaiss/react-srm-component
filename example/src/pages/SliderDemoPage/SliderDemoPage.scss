@@ -1,0 +1,22 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+
+.slider-demo-page {
+    color: $grey5;
+    font-size: $big-text;
+    gap: 40px;
+
+    .component-title {
+        font-size: $bigger-text;
+    }
+
+    .slider-demo-container {
+        width: 60vw;
+
+        .selector-demo {
+            .nc-slider-selector {
+                border: 4px dotted $grey5;
+            }
+        }
+    }
+}

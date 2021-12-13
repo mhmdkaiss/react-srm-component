@@ -55,6 +55,9 @@ import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
 import { NCScrollTopButton } from './components/NCScrollTopButton/NCScrollTopButton';
 import { NCTournamentCard, CardSize } from './components/NCTournamentCard/NCTournamentCard';
+import { NCSlider } from './components/NCSlider/NCSlider';
+import { NCSliderBackground } from './components/NCSlider/NCSliderBackground/NCSliderBackground';
+import { NCSliderSelector } from './components/NCSlider/NCSliderSelector/NCSliderSelector';
 
 export {
     DatePicker,
@@ -118,5 +121,8 @@ export {
     NCLineUp,
     NCReminderTools,
     NCTournamentCard,
-    CardSize
+    CardSize,
+    NCSlider,
+    NCSliderBackground,
+    NCSliderSelector,
 };

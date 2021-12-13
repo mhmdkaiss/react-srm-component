@@ -1,0 +1,32 @@
+@import '../../../styles/colors';
+
+.nc-slider-selector {
+    cursor: grab;
+    z-index: 1;
+
+    &:active {
+        cursor: grabbing;
+    }
+
+    .slide-selector-container {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .slide-selector-wrapper {
+            .slide-selector {
+                width: 32px;
+                height: 4px;
+                border-radius: 2px;
+                background: $white;
+            }
+
+            &.active,
+            &:hover {
+                .slide-selector {
+                    background: $primary-color;
+                }
+            }
+        }
+    }
+}

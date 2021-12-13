@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+
+.nc-slider-background {
+    top: 0;
+    left: 0;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .slide-background {
+        height: 480px;
+        background-size: cover;
+        background-position: center;
+        min-width: 100%;
+        position: relative;
+    }
+}

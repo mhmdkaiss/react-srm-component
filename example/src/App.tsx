@@ -19,6 +19,7 @@ import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage'
 import ContextStore from "./store"
+import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage'
 
 const routes = [
     {
@@ -72,6 +73,10 @@ const routes = [
     {
         path: "/component/line-up",
         component: LineUpDemoPage,
+    },
+    {
+        path: "/component/slider",
+        component: SliderDemoPage,
     }
 ]
 
