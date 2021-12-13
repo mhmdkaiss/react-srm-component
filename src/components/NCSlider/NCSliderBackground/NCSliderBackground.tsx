@@ -14,11 +14,11 @@ export const NCSliderBackground: React.FunctionComponent<NCSliderBackgroundProps
 
     useEffect(() => {
         let images = props.backgroundUrls || [];
-        if (props.content?.length && (!bgUrls || props.content.length > bgUrls.length)) {
-            images = [ ...images, ...Array(props.content.length - (bgUrls?.length || 0)).fill('') ];
+        if (props.content?.length && (!images || props.content.length > images.length)) {
+            images = [ ...images, ...Array(props.content.length - (images?.length || 0)).fill('') ];
         }
         setBgUrls(images);
-    }, [props]);
+    }, [ props.backgroundUrls, props.content ]);
 
     return (
         <div
