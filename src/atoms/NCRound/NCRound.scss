@@ -1,0 +1,16 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.nc-round {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 170px;
+
+    p {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $white;
+        margin: 8px 0;
+    }
+}

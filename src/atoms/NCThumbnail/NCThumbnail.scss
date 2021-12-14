@@ -1,0 +1,13 @@
+@import '../../styles/colors';
+
+.nc-thumbnail {
+    border-radius: 8px;
+    align-self: stretch;
+    order: 1;
+    box-shadow: inset 0px -1px 1px opacity($white, 0.25),
+        inset 0px 2px 8px opacity($black, 0.25);
+    flex-grow: 1;
+    height: 84.8px;
+    width: 100%;
+    object-fit: cover;
+}

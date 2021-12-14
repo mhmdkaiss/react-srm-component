@@ -59,6 +59,8 @@ import { NCSlider } from './components/NCSlider/NCSlider';
 import { NCSliderBackground } from './components/NCSlider/NCSliderBackground/NCSliderBackground';
 import { NCSliderSelector } from './components/NCSlider/NCSliderSelector/NCSliderSelector';
 
+export { NCRound } from './atoms/NCRound/NCRound';
+export { NCMapRounds } from './components/NCMapRounds/NCMapRounds';
 export {
     DatePicker,
     Dialog,
@@ -126,3 +128,4 @@ export {
     NCSliderBackground,
     NCSliderSelector,
 };
+

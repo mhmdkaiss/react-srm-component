@@ -52,12 +52,12 @@ $twitter-foreground: white;
 $facebook-background: #3c5b9b;
 $facebook-foreground: white;
 $instagram-background: radial-gradient(
-  circle at 30% 107%,
-  #fdf497 0%,
-  #fdf497 5%,
-  #fd5949 45%,
-  #d6249f 60%,
-  #285aeb 90%
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
 );
 $instagram-foreground: white;
 $google-background: #df4a32;
@@ -65,33 +65,52 @@ $google-foreground: white;
 $twitch-background: #65469c;
 $twitch-foreground: white;
 
+/* OPACITY */
+@function opacity($color, $alpha) {
+    @return rgba($color, $alpha);
+}
+
 /* GRADIENT */
 $blue-cornflower-gradient: linear-gradient(
-  90deg,
-  #94e5ff 0%,
-  $blue-cornflower 100%
+    90deg,
+    #94e5ff 0%,
+    $blue-cornflower 100%
 );
+
+$grey1-overlapping-title-gradient: linear-gradient(
+        180deg,
+        opacity($grey1, 0.9) 0%,
+        opacity($grey1, 0.6375) 53.65%,
+        opacity($grey1, 0) 100%
+    ),
+    linear-gradient(
+        180deg,
+        opacity($grey1, 0.6) 0%,
+        opacity($grey1, 0.425) 53.65%,
+        opacity($grey1, 0) 100%
+    );
+
 $cyan-gradient: linear-gradient(90deg, $mint-green 0%, $cyan 100%);
 $electric-lime-gradient: linear-gradient(
-  270deg,
-  $electric-lime 0%,
-  #ebff00 100%
+    270deg,
+    $electric-lime 0%,
+    #ebff00 100%
 );
 $orange-outrageous-yellow-school-gradient: linear-gradient(
-  0deg,
-  $orange-outrageous 0.03%,
-  $yellow-school 99.97%
+    0deg,
+    $orange-outrageous 0.03%,
+    $yellow-school 99.97%
 );
 $orange-outrageous-yellow-school-horizontal-gradient: linear-gradient(
-  270deg,
-  $orange-outrageous 0%,
-  $yellow-school 100%
+    270deg,
+    $orange-outrageous 0%,
+    $yellow-school 100%
 );
 $persimmon-gradient: linear-gradient(90deg, #ff9b52 0%, $persimmon 100%);
 $yellow-school-orange-outrageous-gradient: linear-gradient(
-  270deg,
-  $yellow-school 13.54%,
-  $orange-outrageous 100%
+    270deg,
+    $yellow-school 13.54%,
+    $orange-outrageous 100%
 );
 $yellow-school-gradient: linear-gradient(0deg, $yellow-school, $yellow-school);
 $yellow-gradient: linear-gradient(90deg, #fff963 0%, $yellow 100%);
@@ -119,9 +138,9 @@ $premium-gradient: $orange-outrageous-yellow-school-gradient;
 $premium-hover-gradient: $yellow-school-orange-outrageous-gradient;
 $premium-horizontal-gradient: linear-gradient(270deg, #fe5c2b 0%, #ffde00 100%);
 $premium-hover-horizontal-gradient: linear-gradient(
-  270deg,
-  #ffde00 13.54%,
-  #fe5c2b 100%
+    270deg,
+    #ffde00 13.54%,
+    #fe5c2b 100%
 );
 
 /* PREMIUM PALETTE */
@@ -129,103 +148,103 @@ $premium-primary-color: $yellow;
 $premium-secondary-color: $orange;
 
 .primary-color {
-  color: $primary-color;
+    color: $primary-color;
 }
 .primary-dim-color {
-  color: $primary-dim-color;
+    color: $primary-dim-color;
 }
 .yellow-color {
-  color: $yellow;
+    color: $yellow;
 }
 .red-color {
-  color: $red;
+    color: $red;
 }
 .orange-color {
-  color: $orange;
+    color: $orange;
 }
 .vivid-orange {
-  color: $vivid-orange;
+    color: $vivid-orange;
 }
 
 .secondary-color-cool {
-  color: $secondary-color-cool;
+    color: $secondary-color-cool;
 }
 .secondary-color-light {
-  color: $secondary-color-light;
+    color: $secondary-color-light;
 }
 .secondary-color-mid {
-  color: $secondary-color-mid;
+    color: $secondary-color-mid;
 }
 .secondary-color-dim {
-  color: $secondary-color-dim;
+    color: $secondary-color-dim;
 }
 .secondary-color-dark {
-  color: $secondary-color-dark;
+    color: $secondary-color-dark;
 }
 
 .premium-primary-color {
-  color: $premium-primary-color;
+    color: $premium-primary-color;
 }
 .premium-secondary-color {
-  color: $premium-secondary-color;
+    color: $premium-secondary-color;
 }
 
 .white {
-  color: $white;
+    color: $white;
 }
 .red {
-  color: $red;
+    color: $red;
 }
 .black {
-  color: $black;
+    color: $black;
 }
 
 .nt-scheduled {
-  background-image: linear-gradient(90deg, #ff9b52 0%, #ff5b51 100%);
-  background-size: 100%;
-  background-repeat: repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+    background-image: linear-gradient(90deg, #ff9b52 0%, #ff5b51 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 .nt-generating {
-  background-image: linear-gradient(90deg, #94e5ff 0%, #5f82ff 100%);
-  background-size: 100%;
-  background-repeat: repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+    background-image: linear-gradient(90deg, #94e5ff 0%, #5f82ff 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 .nt-started {
-  background-image: linear-gradient(270deg, #b2f617 0%, #ebff00 100%);
-  background-size: 100%;
-  background-repeat: repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+    background-image: linear-gradient(270deg, #b2f617 0%, #ebff00 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 .nt-paused {
-  color: $grey6;
+    color: $grey6;
 }
 
 .nt-ended {
-  color: $light-grey;
+    color: $light-grey;
 }
 
 .nt-cancelled {
-  color: $red;
+    color: $red;
 }
 
 .red-icon {
-  color: $red !important;
+    color: $red !important;
 
-  &:hover {
-    background-color: rgba(255, 0, 0, 0.08) !important;
-  }
+    &:hover {
+        background-color: rgba(255, 0, 0, 0.08) !important;
+    }
 }

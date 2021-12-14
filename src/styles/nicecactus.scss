@@ -25,7 +25,6 @@
 @import '../components/NCSelector/NCSelector.scss';
 @import '../components/NCScrollTopButton/NCScrollTopButton.scss';
 @import '../components/NCLottieAnimation/NCLottieAnimation.scss';
-
 @import '../components/ProfilePicture/ProfilePicture.scss';
 @import '../components/NCFlagSelector/NCFlagSelector.scss';
 @import '../components/NCAccordion/NCAccordion.scss';
@@ -38,6 +37,8 @@
 @import '../components/NCSlider/NCSlider.scss';
 @import '../components/NCSlider/NCSliderBackground/NCSliderBackground.scss';
 @import '../components/NCSlider/NCSliderSelector/NCSliderSelector.scss';
+@import '../components/NCMapRounds/NCMapRounds.scss';
+@import '../components/NCRoundsBattle/NCRoundsBattle.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -49,6 +50,9 @@
 @import '../atoms/NCStepBubble/NCStepBubble.scss';
 @import '../atoms/NCTitle/NCTitle.scss';
 @import '../atoms/NCNotificationButton/NCNotificationButton.scss';
+@import '../atoms/NCThumbnail/NCThumbnail.scss';
+@import '../atoms/NCOverlappingTitle/NCOverlappingTitle.scss';
+@import '../atoms/NCRound/NCRound.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
@@ -56,6 +60,7 @@
 @import '../molecules/NCNextSteps/NCNextSteps.scss';
 @import '../molecules/NCNextSteps/NCStep.scss';
 @import '../molecules/NCNotificationButtons/NCNotificationButtons.scss';
+@import '../molecules/NCMap/NCMap.scss';
 
 // CSS
 .nicecactus-input {

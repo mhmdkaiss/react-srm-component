@@ -13,13 +13,14 @@ import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage'
 import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage'
+import { MapRoundsDemoPage } from './pages/MapRoundsDemoPage/MapRoundsDemoPage'
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage'
+import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage'
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
 import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
-import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage'
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
 import ContextStore from "./store"
-import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage'
 
 const routes = [
     {
@@ -77,7 +78,11 @@ const routes = [
     {
         path: "/component/slider",
         component: SliderDemoPage,
-    }
+    },
+    {
+        path: "/component/map-rounds",
+        component: MapRoundsDemoPage,
+    },
 ]
 
 const App = () => {

@@ -1,0 +1,32 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-rounds-battle-container {
+    min-width: 170px;
+    overflow-x: auto;
+
+    .nc-stage-header {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $grey5;
+        margin: 0;
+    }
+
+    .nc-rounds-battle {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .nc-rounds-battle-best-of-format {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $electric-lime;
+        margin-left: 15px;
+    }
+}
+
+.nc-best-of-format {
+    display: flex;
+}

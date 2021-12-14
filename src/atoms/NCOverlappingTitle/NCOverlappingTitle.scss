@@ -1,0 +1,22 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.nc-overlapping-title-container {
+    background: $grey1-overlapping-title-gradient;
+    background-blend-mode: overlay, normal;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    bottom: 0;
+    height: 42px;
+    width: 100%;
+
+    .nc-overlapping-title {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $white;
+        transform: inherit;
+        text-align: center;
+    }
+}
