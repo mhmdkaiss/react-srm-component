@@ -169,6 +169,7 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
                 <NCSliderBackground
                     scrollableRef={scrollableSliderRef}
                     content={props.content}
+                    height={props.height}
                 />
             }
             <div className="slide-selector-container position-absolute mb-4 d-flex">

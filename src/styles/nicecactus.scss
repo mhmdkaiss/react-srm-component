@@ -122,6 +122,11 @@
     margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
+
+    @include breakpoint(mobile) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 /* utils */

@@ -23,7 +23,7 @@ export const NCSliderBackground: React.FunctionComponent<NCSliderBackgroundProps
     return (
         <div
             ref={props.scrollableRef}
-            className="nc-slider-background position-relative"
+            className="nc-slider-background"
         >
             {
                 bgUrls && bgUrls.map((img, index) => {
