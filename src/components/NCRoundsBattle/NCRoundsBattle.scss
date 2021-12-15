@@ -18,15 +18,27 @@
         flex-direction: row;
         gap: 32px;
     }
-
-    .nc-rounds-battle-best-of-format {
-        font-size: $medium-text;
-        line-height: 150%;
-        color: $electric-lime;
-        margin-left: 15px;
-    }
 }
 
-.nc-best-of-format {
+.nc-rounds-battle-container-best-of-format {
+    @extend .nc-rounds-battle-container;
     display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 32px;
+
+    p {
+        flex: 1;
+    }
+
+    .nc-stage-header-best-of-format {
+        @extend .nc-stage-header;
+        text-align: right;
+    }
+
+    .nc-rounds-battle-best-of {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $grey6;
+    }
 }

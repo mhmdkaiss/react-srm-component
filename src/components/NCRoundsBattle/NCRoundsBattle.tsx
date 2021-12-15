@@ -10,25 +10,30 @@ interface NCRoundsBattleProps {
 }
 
 export const NCRoundsBattle: React.FunctionComponent<NCRoundsBattleProps> = (props: NCRoundsBattleProps) => {
-    const { battles, bestOfFormat } = props;
+    const { stageHeader, battles } = props;
     return (
-        <div className={`nc-rounds-battle-container ${battles.length === 0 ? 'nc-best-of-format' : ''}`}>
-            <p className='nc-stage-header'>{props.stageHeader}</p>
+        <React.Fragment>
             {battles.length > 0
-                ? <div className="nc-rounds-battle">
-                    {props.battles.map(({ id, round_map, round_mode }, i) => {
-                        const { image } = round_map;
-                        return <NCRound
-                            key={`round_${id}_${i}`}
-                            thumbnail={image ? image : ''}
-                            title={round_mode.title}
-                            mapName={round_map.title}
-                            round={i+1}
-                        />;
-                    })}
+                ? <div className='nc-rounds-battle-container'>
+                    <p className='nc-stage-header'>{stageHeader}</p>
+                    <div className="nc-rounds-battle">
+                        {battles.map(({ id, round_map, round_mode }, i) => {
+                            const { image } = round_map;
+                            return <NCRound
+                                key={`round_${id}_${i}`}
+                                thumbnail={image ? image : ''}
+                                title={round_mode.title}
+                                mapName={round_map.title}
+                                round={i+1}
+                            />;
+                        })}
+                    </div>
                 </div>
-                : <p className='nc-rounds-battle-best-of-format'>{`Best of ${bestOfFormat}`}</p>
+                : <div className='nc-rounds-battle-container-best-of-format'>
+                    <p className='nc-stage-header-best-of-format'>{stageHeader}</p>
+                    <p className='nc-rounds-battle-best-of'>{`Best of ${props.bestOfFormat}`}</p>
+                </div>
             }
-        </div>
+        </React.Fragment>
     );
 };
