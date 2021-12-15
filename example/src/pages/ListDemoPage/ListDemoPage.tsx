@@ -1,6 +1,7 @@
 import React from "react";
-import { DisplaySelector, GameList, NCFlagSelector, NCParticipantList } from "@cactus/srm-component"
+import { DisplaySelector, GameList, NCFlagSelector, NCParticipantList, NCCardList, NCTournamentCard, CardSize, UserCard } from "@cactus/srm-component"
 import "./ListDemoPage.scss";
+import { PLAYER_MOCK } from '../../mock/UserTeamCards/UserTeamCards.mock';
 
 const games = [{
   "id": "teamfight-tactics",
@@ -200,6 +201,34 @@ const players = teams.map(t => {
     return team;
 })
 
+const tournamentCards = [ ...Array(6)].map((_, index) => {
+    return (
+        <NCTournamentCard
+            key={`tournament-card-${index}`}
+            name="Tournament tile"
+            banner="https://esm-dev-public.s3.amazonaws.com/game/5cbefb8ccf473930ea0237f1/medias/TournamentBanner"
+            date={1630677600}
+            platforms={['ps4']}
+            format={1}
+            prize={90}
+            size={CardSize.xs}
+            partner={'creditagricole'}
+        />
+    )
+});
+
+const userCards = [ ...Array(6)].map((_, index) => {
+    return (
+        <UserCard
+            key={`user-card-${index}`}
+            playerId={PLAYER_MOCK.id}
+            full={false}
+            xs={false}
+            player={PLAYER_MOCK.player}
+        />
+    )
+});
+
 
 export const ListDemoPage: React.FunctionComponent = () => {
     return (
@@ -236,6 +265,14 @@ export const ListDemoPage: React.FunctionComponent = () => {
                   }}
                   publicUrl="https://esm-dev-public.s3.amazonaws.com"
                 ></NCFlagSelector>
+            </div>
+
+            <span className="theme-title">Cards List</span>
+            <div className="col-6">
+                <NCCardList cards={tournamentCards} />
+            </div>
+            <div className="col-6">
+                <NCCardList cards={userCards} />
             </div>
         </div>
     )

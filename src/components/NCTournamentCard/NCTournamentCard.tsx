@@ -1,6 +1,6 @@
 import './NCTournamentCard.scss';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import { IconMask, Button, ButtonTheme, ButtonType } from '../..';
 
@@ -26,7 +26,6 @@ export interface NCTournamentCardProps {
 
 export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = (props: NCTournamentCardProps) => {
     const intl = useIntl();
-    const test = useRef<HTMLDivElement | null>(null);
     const size = props.size || CardSize.s;
 
     const dateOption: Intl.DateTimeFormatOptions = {
@@ -35,10 +34,6 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
         hour: '2-digit',
         minute: '2-digit',
     };
-
-    useEffect(() => {
-        console.log(test);
-    }, [test]);
 
     const renderFirstRow = () => {
         return (
