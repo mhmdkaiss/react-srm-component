@@ -1,14 +1,28 @@
 @import '@cactus/srm-component/dist/src/styles/colors';
 @import '@cactus/srm-component/dist/src/styles/variables';
 
-.list-demo-page{
+.list-demo-page {
     display: flex;
     flex-flow: column;
     width: 100%;
     color: $grey5;
     gap: 64px;
+    margin-bottom: 800px;
 
     .theme-title {
         font-size: $bigger-text;
+    }
+
+    .nc-hover-card {
+        .nc-user-card {
+            transition: inherit;
+        }
+
+        &.opening {
+            .nc-user-card {
+                width: 440px;
+                height: 400px;
+            }
+        }
     }
 }

@@ -1,5 +1,15 @@
 import React from "react";
-import { DisplaySelector, GameList, NCFlagSelector, NCParticipantList, NCCardList, NCTournamentCard, CardSize, UserCard } from "@cactus/srm-component"
+import {
+    DisplaySelector,
+    GameList,
+    NCFlagSelector,
+    NCParticipantList,
+    NCCardList,
+    NCTournamentCard,
+    CardSize,
+    UserCard,
+    NCAnimatedCardList
+} from "@cactus/srm-component"
 import "./ListDemoPage.scss";
 import { PLAYER_MOCK } from '../../mock/UserTeamCards/UserTeamCards.mock';
 
@@ -202,11 +212,16 @@ const players = teams.map(t => {
 })
 
 const tournamentCards = [ ...Array(6)].map((_, index) => {
+    const i = index % 3;
+    const gameId = i ? i === 1 ?
+        '5ee2000cca2d921b383b5c94' :
+        '5cbefb8ccf473930ea0237f1' :
+        '5c436c2c766ea609157540e8';
     return (
         <NCTournamentCard
             key={`tournament-card-${index}`}
             name="Tournament tile"
-            banner="https://esm-dev-public.s3.amazonaws.com/game/5cbefb8ccf473930ea0237f1/medias/TournamentBanner"
+            banner={`https://esm-dev-public.s3.amazonaws.com/game/${gameId}/medias/TournamentBanner`}
             date={1630677600}
             platforms={['ps4']}
             format={1}
@@ -228,7 +243,6 @@ const userCards = [ ...Array(6)].map((_, index) => {
         />
     )
 });
-
 
 export const ListDemoPage: React.FunctionComponent = () => {
     return (
@@ -267,12 +281,25 @@ export const ListDemoPage: React.FunctionComponent = () => {
                 ></NCFlagSelector>
             </div>
 
-            <span className="theme-title">Cards List</span>
-            <div className="col-6">
+            <span className="theme-title mt-5 pt-5">Cards List</span>
+            <div className="col-8">
                 <NCCardList cards={tournamentCards} />
             </div>
-            <div className="col-6">
+            <div className="col-8">
                 <NCCardList cards={userCards} />
+            </div>
+            <span className="theme-title mt-5 pt-5">Animated Cards List</span>
+            <div className="col-8">
+                <NCAnimatedCardList cards={tournamentCards} />
+            </div>
+            <div className="d-flex">
+                <div className="col-8">
+                    <NCAnimatedCardList cards={userCards} maxCardWidth={440}/>
+                </div>
+                <div className="col-4 text-center">
+                    <div>This style is there just to test with another card</div>
+                    <div>It's only on example page, not in the shared library</div>
+                </div>
             </div>
         </div>
     )

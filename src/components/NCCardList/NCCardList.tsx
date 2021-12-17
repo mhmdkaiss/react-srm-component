@@ -6,6 +6,7 @@ import { Icon, IconType } from '../../atoms/Icon/Icon';
 export interface NCCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
+    hoveredCard?: (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => void;
 }
 
 export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCardListProps) => {
@@ -70,6 +71,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                                 ref={index === 0 ? cardRef : null}
                                 key={`card-container-${index}`}
                                 className="card-container"
+                                onMouseEnter={(e) => {
+                                    if (props.hoveredCard && scrollableRef.current) {
+                                        props.hoveredCard(card, e.currentTarget.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
+                                    }
+                                }}
                             >
                                 {card}
                             </div>

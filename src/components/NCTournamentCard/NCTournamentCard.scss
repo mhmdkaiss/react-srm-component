@@ -90,3 +90,47 @@
         color: $grey6;
     }
 }
+
+.nc-hover-card {
+    .nc-tournament-card,
+    .tournament-banner,
+    .tournament-content,
+    .tournament-title,
+    .tournament-infos {
+        transition: inherit;
+    }
+
+    .nc-tournament-card {
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+
+        .tournament-content {
+            background-color: transparent;
+        }
+    }
+
+    &.opening {
+        .nc-tournament-card {
+            width: 340px;
+
+            .tournament-banner {
+                height: 196px;
+                border-radius: 8px 8px 0px 0px;
+            }
+
+            .tournament-content {
+                padding: 8px 16px;
+                border-radius: 0px 0px 8px 8px;
+                background-color: $grey2;
+
+                .tournament-title {
+                    font-size: 22px;
+                }
+
+                .tournament-infos {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

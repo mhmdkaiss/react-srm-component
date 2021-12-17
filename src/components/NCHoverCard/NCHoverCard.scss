@@ -1,0 +1,9 @@
+.nc-hover-card {
+    transform: translateY(0px);
+    transition: all 0.2s;
+    z-index: 3;
+
+    &.opening {
+        transform: translateY(-50%);
+    }
+}

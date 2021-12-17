@@ -62,6 +62,8 @@ import { NCSliderSelector } from './components/NCSlider/NCSliderSelector/NCSlide
 export { NCRound } from './atoms/NCRound/NCRound';
 export { NCMapRounds } from './components/NCMapRounds/NCMapRounds';
 export { NCCardList } from './components/NCCardList/NCCardList';
+export { NCAnimatedCardList } from './components/NCAnimatedCardList/NCAnimatedCardList';
+export { NCHoverCard } from './components/NCHoverCard/NCHoverCard';
 export {
     DatePicker,
     Dialog,
