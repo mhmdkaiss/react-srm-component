@@ -5,6 +5,8 @@ import { Player, PremiumStatus } from '../../models/Player';
 
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import React from 'react';
+import { Tooltip } from '@material-ui/core';
+import { useIntl } from 'react-intl';
 
 export enum UserCardRoundedSize {
     xs = 'xs',
@@ -17,10 +19,16 @@ export interface UserCardRoundedProps {
     size: UserCardRoundedSize;
     selectable?: boolean;
     selected?: boolean;
+    gameAccount?: boolean;
 }
 
 export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (props: UserCardRoundedProps) => {
     const pictureSize = props.size === UserCardRoundedSize.xs ? 24 : 40;
+    const intl = useIntl();
+
+    const copyGameAccount = () => {
+        navigator.clipboard.writeText(props.player.account);
+    };
 
     let isPremium: boolean;
     if (!props.player.premium) {
@@ -56,8 +64,15 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (p
                 </div>
                 {
                     // eslint-disable-next-line eqeqeq
-                    props.size === UserCardRoundedSize.small && props.player.elo != null && (
+                    props.size === UserCardRoundedSize.small && props.player.elo != null && !props.gameAccount && (
                         <span className='elo'>ELO:{props.player.elo}</span>
+                    )
+                }
+                {
+                    props.gameAccount && (
+                        <Tooltip title={intl.formatMessage({ id: 'player.copy.game.account' })} arrow>
+                            <span className='game-account' onClick={() => copyGameAccount()}>{props.player.account}</span>
+                        </Tooltip>
                     )
                 }
             </div>

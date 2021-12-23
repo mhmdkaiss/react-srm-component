@@ -9,21 +9,16 @@ export interface DialogProps {
     show: boolean;
     setShow: (show: boolean) => void;
     noPadding?: boolean;
+    noHeader?: boolean;
+    onClose?: (closed: string) => void;
 }
-
-export const NCDialog: React.FunctionComponent<DialogProps> = ({
-    title,
-    children,
-    show,
-    setShow,
-    noPadding,
-}) => {
-    if (show === false) {
+export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProps) => {
+    if (props.show === false) {
         return null;
     }
 
     const closeDialog = () => {
-        setShow(false);
+        props.setShow(false);
     };
 
     return (
@@ -33,20 +28,29 @@ export const NCDialog: React.FunctionComponent<DialogProps> = ({
             onClick={() => closeDialog()}
         >
             <div
-                className={`dialog-content ${noPadding ? 'no-padding' : ''}`}
+                className={`dialog-content ${props.noPadding ? 'no-padding' : ''}`}
                 onClick={(e) => e.stopPropagation()}
                 style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
             >
-                <div className="dialog-header">
-                    <div className="dialog-title">{title}</div>
-                    <div
-                        className="dialog-close"
+                {props.noHeader
+                    ? <div
+                        className="dialog-close-no-header d-flex"
                         onClick={() => closeDialog()}
                     >
                         <TimesIcon />
                     </div>
-                </div>
-                <div className="dialog-body">{children}</div>
+                    : <div className="dialog-header">
+                        <div className="dialog-title">{props.title}</div>
+                        <div
+                            className="dialog-close"
+                            onClick={() => closeDialog()}
+                        >
+                            <TimesIcon />
+                        </div>
+                    </div>
+                }
+
+                <div className="dialog-body">{props.children}</div>
             </div>
         </div>
     );

@@ -1,23 +1,26 @@
 import React from "react"
-import { Button, ButtonSize, NCBox, NCCard, NCDialog, NCMediaLibrary } from "@cactus/srm-component"
+import { Button, ButtonSize, HoverUserTeamCard, Icon, IconType, NCDialog } from "@cactus/srm-component"
+import { TEAM_MOCK } from "../../mock/UserTeamCards/UserTeamCards.mock";
 
 export const DialogDemoPage: React.FunctionComponent = () => {
     const [atomsOpen, setAtomsOpen] = React.useState(true);
 
-    const selected = (v: any) => {
-        setAtomsOpen(false);
-    }
-
     return (
         <div className='buttons-demo-page'>
-            <Button label="show modal" size={ButtonSize.BIG} setClick={() => setAtomsOpen(true)}/>
-            <NCCard>
-                <NCBox>
-                    <NCMediaLibrary actionHook={selected}></NCMediaLibrary>
-                </NCBox>
-            </NCCard>
-            <NCDialog show={atomsOpen} setShow={setAtomsOpen}>
-                <NCMediaLibrary actionHook={selected}></NCMediaLibrary>
+            <div><Icon
+                icon={IconType.Copy} width={18} height={20}
+            /></div>
+            <Button label="show modal" size={ButtonSize.BIG} setClick={() => setAtomsOpen(true)} />
+            <HoverUserTeamCard
+                team={TEAM_MOCK}
+                isSolo={false}
+            />
+
+            <NCDialog show={atomsOpen} setShow={setAtomsOpen} noPadding={true} noHeader={true}>
+                <HoverUserTeamCard
+                    team={TEAM_MOCK}
+                    isSolo={false}
+                />
             </NCDialog>
         </div>
     )

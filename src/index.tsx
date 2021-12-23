@@ -51,6 +51,7 @@ import {
     UserCardRoundedSize
 } from './components/UserCard/UserCardRounded';
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
+import { HoverUserTeamCard } from './components/HoverUserTeamCard/HoverUserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
 import { NCScrollTopButton } from './components/NCScrollTopButton/NCScrollTopButton';
@@ -76,6 +77,7 @@ export {
     ByeCard,
     UserCard,
     UserTeamCard,
+    HoverUserTeamCard,
     Icon,
     IconMask,
     IconType,

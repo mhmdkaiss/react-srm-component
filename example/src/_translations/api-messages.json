@@ -62,5 +62,25 @@
     {
         "term": "premium.go_premium",
         "comment": "Go Premium"
+    },
+    {
+        "term": "team.captain",
+        "comment": "Team captain"
+    },
+    {
+        "term": "team.titular.players",
+        "comment": "Titular players"
+    },
+    {
+        "term": "player.game.account",
+        "comment": "Game account"
+    },
+    {
+        "term": "player.game.account.copied",
+        "comment": "Game account copied"
+    },
+    {
+        "term": "player.copy.game.account",
+        "comment": "Copy game account"
     }
 ]

@@ -1,0 +1,82 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+$mobile: 576px;
+
+.hover-user-team-card-component {
+    .user-team-card-hover-text {
+        font-size: 16px;
+    }
+
+    .copy-game-account {
+        background: white;
+        display: none;
+
+        @include breakpoint(mobile) {
+            display: flex;
+        }
+    }
+
+    .hovered-card {
+        z-index: 1;
+        position: relative;
+        width: 554px;
+        border-radius: 8px;
+        color: inherit !important;
+        text-decoration: none !important;
+        cursor: pointer;
+
+        @include breakpoint(mobile) {
+            width: 304px;
+        }
+
+        &:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 68px);
+            backdrop-filter: blur(16px);
+            border-radius: 0 0 8px 8px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+
+            &.team {
+                border-radius: 8px;
+                box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+                    inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+            }
+
+            &.solo {
+                border-radius: 50%;
+            }
+        }
+
+        .color-white {
+            color: $white;
+        }
+
+        .color-grey5 {
+            color: $grey5;
+        }
+
+        .user-grid {
+            font-family: $font;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            @include breakpoint(mobile) {
+                max-height: 161px;
+                grid-template-columns: 100%;
+                overflow-y: auto;
+            }
+        }
+    }
+}

@@ -396,7 +396,7 @@
     "game_account.modal.example": "Exemple: Pablo",
     "game_account.modal.username": "Pseudo",
     "tournament.action.signedup": "Inscrit",
-    "tournament.action.cancel": "Tournoi annulé",
+    "tournament.action.cancel": "Se désinscrire",
     "tournament.registration.error.default": "Une erreur est survenue",
     "tournament.registration.error.notfound": "Nous n'avons pas trouvé ce compte.",
     "tournament.registration.error.conflict": "Vous êtes déjà inscrits à un tournoi sur cette plage horraire",
@@ -525,5 +525,14 @@
     "tournament.home.slide-action": "Register for free",
     "tournament.home.today": "Today",
     "tournament.home.tomorrow": "Tomorrow",
-    "tournament.home.this.weekend": "This week"
+    "tournament.home.this.weekend": "This week",
+    "tournament.rank": "{ order, selectordinal, one {#st} two {#nd} few {#rd} other {#th} }",
+    "tournament.and": "and",
+    "tournament.to": "to",
+    "team.captain": "Team captain",
+    "team.titular.players": "Titular players",
+    "player.game.account": "Game account",
+    "tournament.brough-by": "Brought to you by",
+    "player.game.account.copied": "Game account copied!",
+    "player.copy.game.account": "Copy game account"
 }
