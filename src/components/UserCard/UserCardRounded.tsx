@@ -20,6 +20,7 @@ export interface UserCardRoundedProps {
     selectable?: boolean;
     selected?: boolean;
     gameAccount?: boolean;
+    copyGameAccountCallback?: () => void;
 }
 
 export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (props: UserCardRoundedProps) => {
@@ -28,6 +29,9 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (p
 
     const copyGameAccount = () => {
         navigator.clipboard.writeText(props.player.account);
+        if (props.copyGameAccountCallback) {
+            props.copyGameAccountCallback();
+        }
     };
 
     let isPremium: boolean;

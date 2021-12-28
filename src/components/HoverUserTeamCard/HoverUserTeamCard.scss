@@ -10,7 +10,7 @@ $mobile: 576px;
     }
 
     .copy-game-account {
-        background: white;
+        background-color: $white;
         display: none;
 
         @include breakpoint(mobile) {
@@ -56,6 +56,18 @@ $mobile: 576px;
 
             &.solo {
                 border-radius: 50%;
+            }
+        }
+
+        .captain {
+            flex-direction: row;
+
+            @include breakpoint(mobile) {
+                flex-direction: column;
+
+                .title {
+                    margin-top: 8px;
+                }
             }
         }
 

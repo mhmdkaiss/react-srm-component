@@ -1,14 +1,17 @@
 import './HoverUserTeamCard.scss';
+
 import React, { useEffect, useState } from 'react';
-import { useIntl } from 'react-intl';
-import { Team } from '../../models/Team';
 import { UserCardRounded, UserCardRoundedSize } from '../UserCard/UserCardRounded';
+
 import { Player } from '../../models/Player';
+import { Team } from '../../models/Team';
 import { Tooltip } from '@material-ui/core';
+import { useIntl } from 'react-intl';
 
 interface HoverUserTeamCardProps {
     team: Team;
     isSolo: boolean;
+    copyGameAccountCallback: () => void;
 }
 
 export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> = (props: HoverUserTeamCardProps) => {
@@ -19,6 +22,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
 
     const copyGameAccount = () => {
         navigator.clipboard.writeText(props.team.tag);
+        props.copyGameAccountCallback();
     };
 
     useEffect(() => {
@@ -86,8 +90,8 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                             </div>
                         </div>
                         : <div className='color-white user-team-card-hover-text mt-2 mx-2'>
-                            <div className='d-flex'>
-                                <div className='ml-2 mr-4 d-flex align-self-center'>{intl.formatMessage({ id: 'team.captain' })}</div>
+                            <div className='captain d-flex'>
+                                <div className='title ml-2 mr-4 d-flex align-self-center'>{intl.formatMessage({ id: 'team.captain' })}</div>
                                 {teamCaptain && teamCaptainId &&
                                 <div className='d-flex ml-4 justify-content-center'>
                                     <UserCardRounded
@@ -95,6 +99,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                         playerId={teamCaptainId}
                                         size={UserCardRoundedSize.small}
                                         gameAccount={true}
+                                        copyGameAccountCallback={props.copyGameAccountCallback}
                                     />
                                 </div>
                                 }
@@ -118,6 +123,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                             playerId={item[0]}
                                             size={UserCardRoundedSize.small}
                                             gameAccount={true}
+                                            copyGameAccountCallback={props.copyGameAccountCallback}
                                         />
                                     </div>
                                 );
