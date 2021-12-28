@@ -1,0 +1,30 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+
+.nc-partner-card-component {
+    min-width: 190px;
+
+    .image {
+        border-radius: 8px;
+        max-height: 205px;
+    }
+
+    .name {
+        width: 0;
+        min-width: 100%;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: $grey6;
+    }
+
+    .social {
+        display: grid;
+        column-gap: 16px;
+        grid-template-columns: repeat(auto-fill, 18px);
+
+        .mask-icon {
+            background-color: $grey6;
+        }
+    }
+}

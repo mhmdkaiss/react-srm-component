@@ -14,6 +14,7 @@ import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage'
 import { MapRoundsDemoPage } from './pages/MapRoundsDemoPage/MapRoundsDemoPage'
+import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage'
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage'
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage'
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
@@ -82,6 +83,10 @@ const routes = [
     {
         path: "/component/map-rounds",
         component: MapRoundsDemoPage,
+    },
+    {
+        path: '/component/partner-card',
+        component: PartnerCardDemoPage,
     },
 ]
 

@@ -46,12 +46,14 @@ export enum IconType {
     Tournament = 'tournament',
     Training = 'training',
     Trashcan = 'trashcan',
+    Twitch = 'twitch',
     Twitter = 'twitter',
     UnavailableLocation = 'unavailableLocation',
     UploadCloud = 'uploadCloud',
     User = 'user',
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
+    YouTube = 'youtube',
 }
 
 export interface IconProps {
