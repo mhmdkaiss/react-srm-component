@@ -2,7 +2,7 @@ import './Tabs.scss';
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export interface TabParameter {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -32,7 +32,6 @@ interface TabsProps {
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
-    const [ currentTab, setCurrentTab ] = useState<TabParameter>();
     const [ currentTabIndex, setCurrentTabIndex ] = useState<number>(0);
     const [ currentTabPos, setCurrentTabPos ] = useState<number>(0);
     const tabsRef = useRef<Array<HTMLDivElement | null>>([]);
@@ -43,6 +42,8 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     const [ arrowShowed, setArrowShowed ] = useState<boolean>(false);
     const [ disableLeft, setDisableLeft ] = useState<boolean>(false);
     const [ disableRight, setDisableRight ] = useState<boolean>(false);
+
+    const location = useLocation();
 
     useEffect(() => {
         tabsRef.current = tabsRef.current.slice(0, props.tabs.length);
@@ -57,7 +58,6 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     }, []);
 
     const onTabChange = (tab: TabParameter, index: number, pos: number | undefined) => {
-        setCurrentTab(tab);
         setCurrentTabIndex(index);
         if (pos) {
             setCurrentTabPos(pos);
@@ -66,7 +66,6 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
     };
 
     const cleanTab = () => {
-        setCurrentTab(props.tabs[currentTabIndex]);
         setCurrentTabIndex(0);
         setCurrentTabPos(0);
     };
@@ -144,7 +143,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                             ref={(element) => tabsRef.current[index] = element}
                                             className={
                                                 `tab-container d-flex justify-content-center align-items-center position-relative
-                                                ${currentTab && tab.name === currentTab.name ? 'active' : ''}
+                                                ${location.pathname.startsWith(tab.path) ? 'active' : ''}
                                                 ${tab.disabled? 'disabled' : ''}`
                                             }
                                             onClick={() => {
