@@ -1,13 +1,11 @@
-import './NCMediaUpload.scss';
-
-import { Icon, IconType } from '../../atoms/Icon/Icon';
 import React, { useCallback, useEffect, useState } from 'react';
-
-import { Media } from '../../services/media-library.service';
-import { NCDialog } from '../..';
-import { NCMediaLibrary } from '../../molecules';
 import { useDropzone } from 'react-dropzone';
 import { useIntl } from 'react-intl';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
+import { NCDialog } from '../../atoms/NCDialog/NCDialog';
+import { NCMediaLibrary } from '../../molecules';
+import { Media } from '../../services/media-library.service';
+import './NCMediaUpload.scss';
 
 export type ctxType = 'url' | 'blob'
 export interface NCMediaUploadProps {

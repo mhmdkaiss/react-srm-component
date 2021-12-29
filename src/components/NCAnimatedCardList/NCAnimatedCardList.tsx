@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { NCCardList } from '../..';
-import { NCHoverCard } from '../..';
+import { NCCardList } from '../../components/NCCardList/NCCardList';
+import { NCHoverCard } from '../../components/NCHoverCard/NCHoverCard';
 
 export interface NCAnimatedCardListProps {
     cards: Array<React.ReactNode>;

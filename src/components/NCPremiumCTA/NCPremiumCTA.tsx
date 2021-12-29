@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, ButtonTheme, IconType } from '../..';
-import './NCPremiumCTA.scss';
-import { useDynamicText } from '../../hooks/useDynamicText';
 import { useIntl } from 'react-intl';
+import { Button, ButtonTheme } from '../../atoms/Button/Button';
+import { IconType } from '../../atoms/Icon/Icon';
+import { useDynamicText } from '../../hooks/useDynamicText';
+import './NCPremiumCTA.scss';
 
 export interface NCPremiumCTAProps {
     image: string;

@@ -13073,6 +13073,11 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
+twitch-player@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/twitch-player/-/twitch-player-2.0.2.tgz#c8fb50661e3bc71d198da54d9f7986b14181e090"
+  integrity sha512-X9UEleuHoL8oJF0LCseYr0iB1bpKJ2gwjvSviz38KuK2V0r8fVlL707t2V75+1HFM2uXaHoIeIKsvzoPWcNZlA==
+
 type-check@~0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"

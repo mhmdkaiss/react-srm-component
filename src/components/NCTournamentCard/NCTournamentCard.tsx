@@ -1,8 +1,8 @@
-import './NCTournamentCard.scss';
-
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { IconMask, Button, ButtonTheme, ButtonType } from '../..';
+import { Button, ButtonTheme, ButtonType } from '../../atoms/Button/Button';
+import { IconMask } from '../../atoms/Icon/IconMask';
+import './NCTournamentCard.scss';
 
 export enum CardSize {
     xs = 1,

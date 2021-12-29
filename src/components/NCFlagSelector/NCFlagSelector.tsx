@@ -1,10 +1,8 @@
-import './NCFlagSelector.scss';
-
-import React, { useEffect, useState } from 'react';
-
 import { MuiThemeProvider } from '@material-ui/core';
-import { ThemePlatform } from '../..';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
+import { ThemePlatform } from '../../styles/Themes';
+import './NCFlagSelector.scss';
 
 interface Lang {
     _id: string;

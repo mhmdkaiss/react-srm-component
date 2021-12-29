@@ -1,0 +1,22 @@
+.stream-container {
+    padding: 0;
+    position: relative;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0) 20.56%,
+        hsla(0, 0%, 0%, 0) 81.77%,
+        rgba(0, 0, 0, 0.51) 94.79%
+    );
+    filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.45));
+    border-radius: 24px;
+    margin-top: -45px;
+    margin-left: -32px;
+}
+
+.nc-stream > iframe {
+    border-radius: 24px;
+    border: none;
+    z-index: 0;
+}

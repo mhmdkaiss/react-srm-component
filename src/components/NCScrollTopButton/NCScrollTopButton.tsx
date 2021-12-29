@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, IconType } from '../..';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
 import './NCScrollTopButton.scss';
 
 interface NCScrollTopButtonProps {
