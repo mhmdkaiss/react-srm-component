@@ -29,6 +29,9 @@ yarn start
 
 ### Potential issues ###
 
+#### Error: Unhandled Rejection useContext is undefined with error on return useContext(Context) location;
+npm link ../webapp-tournament/node_modules/react-router-dom
+
 #### Error: [React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry. ####
 npm link ../webapp-tournament/node_modules/react-intl
 
