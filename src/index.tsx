@@ -41,7 +41,7 @@ import { NCSwitch } from './components/NCSwitch/NCSwitch';
 import { NCTextArea } from './components/NCTextArea/NCTextArea';
 import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
 import { NCToastContainer } from './components/NCToastContainer/NCToastContainer';
-import { CardSize, NCTournamentCard } from './components/NCTournamentCard/NCTournamentCard';
+import { NCTournamentCard } from './components/NCTournamentCard/NCTournamentCard';
 import { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { Tabs } from './components/Tabs/Tabs';
@@ -126,7 +126,6 @@ export {
     NCLineUp,
     NCReminderTools,
     NCTournamentCard,
-    CardSize,
     NCSlider,
     NCSliderBackground,
     NCSliderSelector,

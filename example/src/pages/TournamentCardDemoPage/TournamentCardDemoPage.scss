@@ -4,9 +4,38 @@
 .tournament-demo-page {
     color: $grey5;
     font-size: $big-text;
-    gap: 40px;
 
-    .component-title {
-        font-size: $bigger-text;
+    .grid,
+    .grid-2 {
+        display: grid;
+        gap: 40px;
+        text-align: center;
+
+        .row-name {
+            font-size: $big-text;
+            color: $grey5;
+            text-transform: uppercase;
+            border-bottom: 1px solid $grey5;
+        }
+    }
+
+    .grid {
+        grid-template-columns: 100px 131px 400px 340px 500px;
+
+        .row-name {
+            grid-column: 1 / 6;
+        }
+
+        .nc-hover-card.opening.forced {
+            transform: none !important;
+        }
+    }
+
+    .grid-2 {
+        grid-template-columns: 100px auto auto;
+
+        .row-name {
+            grid-column: 1 / 4;
+        }
     }
 }

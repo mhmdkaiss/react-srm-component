@@ -6,7 +6,6 @@ import {
     NCParticipantList,
     NCCardList,
     NCTournamentCard,
-    CardSize,
     UserCard,
     NCAnimatedCardList
 } from "@cactus/srm-component"
@@ -211,6 +210,19 @@ const players = teams.map(t => {
     return team;
 })
 
+const tournament =  {
+    id: "4684223f-1522-4e05-8e20-601b11584247",
+    date: 1630677600,
+    gameSlug: "rocket-league",
+    min: 4,
+    name: "NPTF-37- 3",
+    partner: "creditagricole",
+    platforms: ["ps4", "pc", "xbox", "switch"],
+    entrance: {
+        fee: 0,
+    }
+}
+
 const tournamentCards = [ ...Array(6)].map((_, index) => {
     const i = index % 3;
     const gameId = i ? i === 1 ?
@@ -220,14 +232,10 @@ const tournamentCards = [ ...Array(6)].map((_, index) => {
     return (
         <NCTournamentCard
             key={`tournament-card-${index}`}
-            name="Tournament tile"
-            banner={`https://esm-dev-public.s3.amazonaws.com/game/${gameId}/medias/TournamentBanner`}
-            date={1630677600}
-            platforms={['ps4']}
-            format={1}
-            prize={90}
-            size={CardSize.xs}
-            partner={'creditagricole'}
+            tournament={tournament}
+            gameName="test game"
+            gameId={gameId}
+            prize="10e"
         />
     )
 });

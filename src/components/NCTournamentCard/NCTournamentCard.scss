@@ -2,134 +2,232 @@
 @import '../../styles/colors';
 
 .nc-tournament-card {
-    &.xs {
-        width: 180px;
-
-        .tournament-banner {
-            height: 96px;
-        }
-    }
-
-    &.s {
-        width: 290px;
-
-        .tournament-banner {
-            height: 206px;
-        }
-    }
-
-    &.xs,
-    &.s {
-        .tournament-title {
-            font-size: $medium-text;
-        }
-    }
-
-    &.m {
-        width: 458px;
-
-        .tournament-banner {
-            height: 242px;
-        }
-
-        .tournament-title {
-            font-size: $big-text;
-        }
-    }
-
-    &.l {
-        width: 820px;
-
-        .tournament-banner {
-            height: 284px;
-            width: 450px !important;
-            margin-right: 32px;
-        }
-
-        .tournament-title {
-            font-size: 28px;
-        }
-    }
+    position: relative;
+    min-width: 148px;
+    max-width: 340px;
+    height: fit-content;
+    background: transparent;
 
     .tournament-banner {
-        border-radius: 8px;
-        background-size: cover;
-    }
+        width: 100%;
 
-    .tournament-title {
-        font-size: $big-text;
-        color: $white;
-        line-height: 127%;
-    }
-
-    .tournament-infos {
-        display: none;
-
-        div:not(:last-child):after {
+        &:after {
             content: '';
             display: block;
-            width: 4px;
-            height: 4px;
-            background: $tournament;
-            border-radius: 50%;
-            margin: 0px 8px;
+            padding-bottom: 50%;
         }
 
-        .icon-platform {
-            background: $grey6;
+        .banner-image {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
     }
 
-    .icon-partner {
-        width: 22px;
-        height: 22px;
+    .tournament-content {
+        overflow: hidden;
+
+        .tournament-infos {
+            display: flex;
+            white-space: nowrap;
+            font-size: $smallest-text;
+            color: $grey6;
+
+            &.title {
+                font-size: $medium-text;
+                color: $white;
+            }
+
+            &.entrance {
+                color: $orange-outrageous !important;
+                display: none;
+            }
+
+            div:last-child {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            div:not(:last-child) {
+                display: flex;
+                align-items: center;
+
+                &:after {
+                    content: '';
+                    display: flex;
+                    display: block;
+                    width: 4px;
+                    height: 4px;
+                    background: $tournament;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                }
+            }
+
+            .winner {
+                display: flex;
+                font-size: $small-text;
+
+                .icon-crown {
+                    background: linear-gradient(
+                        180deg,
+                        #ffe350 0%,
+                        #fff2b0 46.15%,
+                        #bc9e00 100%
+                    );
+                }
+            }
+
+            .icon-platform,
+            .icon-plus {
+                background: $grey6;
+                margin: 0px 1px;
+            }
+        }
+
+        .additional-infos {
+            display: none;
+
+            .partner {
+                display: flex;
+                font-size: $smallest-text;
+                color: $grey6;
+
+                .icon-partner {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
     }
 
-    .info-text {
-        font-size: 13px;
-        color: $grey6;
+    &.restricted {
+        .tournament-infos,
+        .partner {
+            color: $grey5 !important;
+        }
+
+        .icon-platform,
+        .icon-plus {
+            background: $grey5 !important;
+        }
+    }
+
+    &.highlight1 {
+        display: flex;
+        flex-direction: row;
+        min-width: 820px;
+        max-width: 820px;
+
+        .tournament-banner {
+            margin-right: 32px;
+            width: 458px !important;
+            height: auto;
+        }
+
+        .additional-infos {
+            .partner-container {
+                display: block !important;
+            }
+        }
+
+        &:hover {
+            .banner-image {
+                border-radius: 8px 0 0 8px;
+            }
+        }
+    }
+
+    &.highlight2 {
+        width: 458px;
+
+        &:hover {
+            .banner-image {
+                border-radius: 8px 8px 0 0;
+            }
+        }
+    }
+
+    &.highlight1,
+    &.highlight2 {
+        .tournament-content {
+            padding: 16px;
+
+            .title {
+                font-size: 28px !important;
+            }
+        }
+    }
+}
+
+.nc-hover-card.opening,
+.highlight1,
+.highlight2 {
+    .entrance {
+        display: flex !important;
+    }
+}
+
+.nc-hover-card.opening {
+    .title {
+        font-size: $big-text !important;
+    }
+}
+
+.nc-hover-card.opening .nc-tournament-card,
+.highlight1:hover,
+.highlight2:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    background-color: $grey2 !important;
+}
+
+.nc-hover-card.opening .nc-tournament-card,
+.highlight1,
+.highlight2 {
+    .tournament-content {
+        .tournament-infos {
+            font-size: $medium-text;
+        }
+
+        .winner {
+            display: none !important;
+        }
+
+        .additional-infos {
+            display: block;
+
+            .winner {
+                display: flex !important;
+            }
+        }
     }
 }
 
 .nc-hover-card {
     .nc-tournament-card,
-    .tournament-banner,
+    .banner-image,
     .tournament-content,
-    .tournament-title,
     .tournament-infos {
         transition: inherit;
     }
 
-    .nc-tournament-card {
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-        border-radius: 8px;
-
-        .tournament-content {
-            background-color: transparent;
-        }
-    }
-
     &.opening {
+        transform: translateY(-33%);
+
         .nc-tournament-card {
             width: 340px;
 
-            .tournament-banner {
-                height: 196px;
+            .banner-image {
                 border-radius: 8px 8px 0px 0px;
             }
 
             .tournament-content {
                 padding: 8px 16px;
                 border-radius: 0px 0px 8px 8px;
-                background-color: $grey2;
-
-                .tournament-title {
-                    font-size: 22px;
-                }
-
-                .tournament-infos {
-                    font-size: 16px;
-                }
             }
         }
     }
