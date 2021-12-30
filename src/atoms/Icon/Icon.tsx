@@ -20,6 +20,7 @@ export enum IconType {
     EyeCrossed = 'eyeCrossed',
     Facebook = 'facebook',
     Feed = 'feed',
+    Filters = 'filters',
     Gift = 'gift',
     Google = 'google',
     GoToLink = 'goToLink',
