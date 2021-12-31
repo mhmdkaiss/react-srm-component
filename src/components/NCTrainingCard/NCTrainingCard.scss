@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+
+.nc-training-card {
+    min-width: 255px;
+    max-width: 472px;
+
+    img {
+        width: 100%;
+    }
+
+    span {
+        color: $white;
+    }
+}
