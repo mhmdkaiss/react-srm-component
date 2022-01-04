@@ -91,6 +91,7 @@
             width: fit-content;
             z-index: 1;
             color: $grey;
+            overflow: auto;
 
             @media screen and (max-width: $sm) {
                 margin-bottom: 1rem;
