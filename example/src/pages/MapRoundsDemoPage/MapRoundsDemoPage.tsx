@@ -8,14 +8,14 @@ import GarrisonImg from '../../styles/img/garrison.jpg';
 export const MapRoundsDemoPage: React.FunctionComponent = () => {
     const demoMapRounds = [
         {
-            "id": 18071991,
+            "id": "18071991",
             "type": "classic",
             "best_of_format": 5,
             "index": 1,
             "reverseIndex": 4,
             "rounds_battle": [
             {
-                "id": 12092021,
+                "id": "12092021",
                 "position": 0,
                 "round_mode": {
                     "position": 1,
@@ -28,7 +28,7 @@ export const MapRoundsDemoPage: React.FunctionComponent = () => {
                 }
             },
             {
-                "id": 11092021,
+                "id": "11092021",
                 "position": 1,
                 "round_mode": {
                     "position": 1,
