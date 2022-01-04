@@ -45,6 +45,7 @@
 @import '../components/NCPartnerCard/NCPartnerCard.scss';
 @import '../components/NCStream/NCStream.scss';
 @import '../components/NCTrainingCard/NCTrainingCard.scss';
+@import '../components/NCPromotionalBanner/NCPromotionalBanner.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -59,6 +60,7 @@
 @import '../atoms/NCThumbnail/NCThumbnail.scss';
 @import '../atoms/NCOverlappingTitle/NCOverlappingTitle.scss';
 @import '../atoms/NCRound/NCRound.scss';
+@import '../atoms/NCBackgroundImage/NCBackgroundImage.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
@@ -144,4 +146,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.clickable {
+    cursor: pointer;
 }

@@ -2,6 +2,7 @@ export { NCOverlappingTitle } from '../atoms/NCOverlappingTitle/NCOverlappingTit
 export { NCThumbnail } from '../atoms/NCThumbnail/NCThumbnail';
 export { Button } from './Button/Button';
 export { Icon } from './Icon/Icon';
+export { NCBackgroundImage } from './NCBackgroundImage/NCBackgroundImage';
 export { NCBox } from './NCBox/NCBox';
 export { NCCard } from './NCCard/NCCard';
 export { NCDialog } from './NCDialog/NCDialog';

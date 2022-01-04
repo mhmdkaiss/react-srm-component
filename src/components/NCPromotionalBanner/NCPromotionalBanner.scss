@@ -1,0 +1,82 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-promo-banner > .nc-card {
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.nc-promo-banner {
+    height: 160px;
+
+    @media screen and (max-width: $sm) {
+        height: 240px;
+    }
+
+    .promo-content-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        margin-left: 42%;
+        justify-content: space-between;
+
+        @media screen and (max-width: $sm) {
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .promo-text {
+            z-index: 0;
+            color: $white;
+            font-size: $higher-text;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 115%;
+            text-align: start;
+            align-self: center;
+            margin: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+
+            @media screen and (max-width: $sm) {
+                width: 100%;
+                padding: 16px 16px 0 16px;
+                text-align: center;
+                -webkit-line-clamp: 3;
+            }
+        }
+
+        .promo-button {
+            justify-content: center;
+            max-width: 230px;
+            min-width: 207px;
+
+            @media screen and (max-width: $sm) {
+                width: 100%;
+                max-width: unset;
+                min-width: unset;
+            }
+        }
+
+        .promo-button > span {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    .promo-content-container > .button-container {
+        padding: 0 32px;
+
+        @media screen and (max-width: $sm) {
+            padding: 0 16px 16px 16px;
+            width: 100%;
+        }
+    }
+}

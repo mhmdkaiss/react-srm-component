@@ -1,17 +1,15 @@
-import './HoverUserTeamCard.scss';
-
+import { Tooltip } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { UserCardRounded, UserCardRoundedSize } from '../UserCard/UserCardRounded';
-
+import { useIntl } from 'react-intl';
 import { Player } from '../../models/Player';
 import { Team } from '../../models/Team';
-import { Tooltip } from '@material-ui/core';
-import { useIntl } from 'react-intl';
+import { UserCardRounded, UserCardRoundedSize } from '../UserCard/UserCardRounded';
+import './HoverUserTeamCard.scss';
 
 interface HoverUserTeamCardProps {
     team: Team;
     isSolo: boolean;
-    copyGameAccountCallback: () => void;
+    copyGameAccountCallback?: () => void;
 }
 
 export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> = (props: HoverUserTeamCardProps) => {
@@ -22,7 +20,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
 
     const copyGameAccount = () => {
         navigator.clipboard.writeText(props.team.tag);
-        props.copyGameAccountCallback();
+        props.copyGameAccountCallback && props.copyGameAccountCallback();
     };
 
     useEffect(() => {

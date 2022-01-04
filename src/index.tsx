@@ -67,6 +67,7 @@ export { NCMediaUpload } from './components/NCMediaUpload/NCMediaUpload';
 export { NCMultiMediaUpload } from './components/NCMultiMediaUpload/NCMultiMediaUpload';
 export { NCPartnerCard } from './components/NCPartnerCard/NCPartnerCard';
 export { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
+export { NCPromotionalBanner } from './components/NCPromotionalBanner/NCPromotionalBanner';
 export { NCStream } from './components/NCStream/NCStream';
 export { Partner } from './models/Partner';
 export {
