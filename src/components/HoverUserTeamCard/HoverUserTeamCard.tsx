@@ -17,9 +17,10 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
     const intl = useIntl();
     const [ teamCaptain, setTeamCaptain ] = useState<Player>();
     const [ teamCaptainId, setTeamCaptainId ] = useState<string>();
+    const player = Object.values(props.team.players)[0];
 
     const copyGameAccount = () => {
-        navigator.clipboard.writeText(props.team.tag);
+        navigator.clipboard.writeText(player.account);
         props.copyGameAccountCallback && props.copyGameAccountCallback();
     };
 
@@ -83,7 +84,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                     {intl.formatMessage({ id: 'player.game.account' })}
                                 </div>
                                 <Tooltip title={intl.formatMessage({ id: 'player.copy.game.account' })} arrow>
-                                    <div onClick={() => copyGameAccount()}>{props.team.tag}</div>
+                                    <div onClick={() => copyGameAccount()}>{player.account}</div>
                                 </Tooltip>
                             </div>
                         </div>
