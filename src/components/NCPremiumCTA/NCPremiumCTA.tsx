@@ -21,7 +21,7 @@ export const NCPremiumCTA: React.FunctionComponent<NCPremiumCTAProps> = (props: 
         <div className="position-relative p-0 overflow-hidden nc-premium-cta">
             <div className="image-container align-items-md-center justify-content-md-start align-items-start justify-content-center">
                 <div className="mask d-block position-absolute"></div>
-                <img className="w-100 mt-0 mt-xl-5" src={props.image} />
+                <img className="w-100 mt-0 image-premium-cta" src={props.image} />
             </div>
             <div
                 className="d-flex flex-column flex-md-row align-items-center justify-content-end mx-3 mx-md-4 mt-5 mb-3 mt-md-3 text-center text-md-left"
