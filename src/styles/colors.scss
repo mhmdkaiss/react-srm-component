@@ -90,6 +90,13 @@ $grey1-overlapping-title-gradient: linear-gradient(
         opacity($grey1, 0) 100%
     );
 
+$grey1-gradient: linear-gradient(
+    180deg,
+    opacity($grey1, 0.6) 0%,
+    opacity($grey1, 0.425) 53.65%,
+    opacity($grey1, 0) 100%
+);
+
 $cyan-gradient: linear-gradient(90deg, $mint-green 0%, $cyan 100%);
 $electric-lime-gradient: linear-gradient(
     270deg,

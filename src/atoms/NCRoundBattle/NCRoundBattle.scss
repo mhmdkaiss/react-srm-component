@@ -1,9 +1,10 @@
 @import '../../styles/colors';
 @import '../../styles/variables';
 
-.nc-round {
+.nc-round-battle {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     min-width: 170px;
 
@@ -12,5 +13,10 @@
         line-height: 150%;
         color: $white;
         margin: 8px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        overflow: hidden;
     }
 }

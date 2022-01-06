@@ -1,0 +1,27 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../components/NCRound/NCRound.scss';
+
+.nc-rounds-bracket-container {
+    @extend .nc-rounds-battle-container;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 32px;
+
+    p {
+        flex: 1;
+    }
+
+    .nc-rounds-bracket-stage-header {
+        @extend .nc-stage-header;
+        text-align: right;
+    }
+
+    .nc-rounds-bracket-best-of {
+        font-size: $medium-text;
+        line-height: 150%;
+        color: $electric-lime;
+    }
+}

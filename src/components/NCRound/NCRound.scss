@@ -20,7 +20,11 @@
     }
 }
 
-.nc-rounds-battle-container-best-of-format {
+.nc-rounds-battle-container:first-of-type {
+    margin-top: 16px;
+}
+
+.nc-rounds-no-battle-container {
     @extend .nc-rounds-battle-container;
     display: flex;
     justify-content: center;
@@ -31,14 +35,18 @@
         flex: 1;
     }
 
-    .nc-stage-header-best-of-format {
+    .nc-rounds-no-battle-stage-header {
         @extend .nc-stage-header;
         text-align: right;
     }
 
-    .nc-rounds-battle-best-of {
+    .nc-rounds-no-battle-best-of {
         font-size: $medium-text;
         line-height: 150%;
-        color: $grey6;
+        color: $electric-lime;
     }
+}
+
+.nc-rounds-no-battle-container:first-of-type {
+    margin-top: 0px;
 }

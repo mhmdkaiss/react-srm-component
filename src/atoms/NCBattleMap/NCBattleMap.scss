@@ -1,0 +1,21 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.nc-battle-map {
+    position: relative;
+}
+
+.nc-battle-no-map {
+    background: $grey1-gradient;
+    border-radius: 8px;
+    box-shadow: inset 0px -1px 1px rgba($white, 0.25),
+        inset 0px 2px 8px rgba($black, 0.25);
+
+    p {
+        color: $white;
+        font-weight: normal;
+        font-size: $medium-text;
+        line-height: 150%;
+        text-align: center;
+    }
+}

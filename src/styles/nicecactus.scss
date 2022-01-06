@@ -38,14 +38,16 @@
 @import '../components/NCSlider/NCSlider.scss';
 @import '../components/NCSlider/NCSliderBackground/NCSliderBackground.scss';
 @import '../components/NCSlider/NCSliderSelector/NCSliderSelector.scss';
-@import '../components/NCMapRounds/NCMapRounds.scss';
-@import '../components/NCRoundsBattle/NCRoundsBattle.scss';
+@import '../components/NCTournamentRounds/NCTournamentRounds.scss';
 @import '../components/NCCardList/NCCardList.scss';
 @import '../components/NCHoverCard/NCHoverCard.scss';
 @import '../components/NCPartnerCard/NCPartnerCard.scss';
 @import '../components/NCStream/NCStream.scss';
 @import '../components/NCTrainingCard/NCTrainingCard.scss';
 @import '../components/NCPromotionalBanner/NCPromotionalBanner.scss';
+@import '../components/NCRoundsBracket/NCRoundsBracket.scss';
+@import '../components/NCRoundsDoubleElimination/NCRoundsDoubleElimination.scss';
+@import '../components/NCRoundsResult/NCRoundsResult.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -59,8 +61,9 @@
 @import '../atoms/NCNotificationButton/NCNotificationButton.scss';
 @import '../atoms/NCThumbnail/NCThumbnail.scss';
 @import '../atoms/NCOverlappingTitle/NCOverlappingTitle.scss';
-@import '../atoms/NCRound/NCRound.scss';
 @import '../atoms/NCBackgroundImage/NCBackgroundImage.scss';
+@import '../atoms/NCRoundBattle/NCRoundBattle.scss';
+@import '../atoms/NCBattleMap/NCBattleMap.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
@@ -68,7 +71,6 @@
 @import '../molecules/NCNextSteps/NCNextSteps.scss';
 @import '../molecules/NCNextSteps/NCStep.scss';
 @import '../molecules/NCNotificationButtons/NCNotificationButtons.scss';
-@import '../molecules/NCMap/NCMap.scss';
 
 // CSS
 .nicecactus-input {

@@ -1,0 +1,55 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-rounds-double-elimination {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+
+    @media screen and (max-width: $sm) {
+        gap: 32px;
+        justify-content: space-around;
+        margin-top: 12px;
+    }
+
+    .grand-final-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 32px;
+        padding: 8px 0;
+        background: $grey3;
+        border-radius: 8px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: $small-text;
+        line-height: 24px;
+
+        .grand-final-header {
+            text-align: right;
+            color: $grey5;
+        }
+
+        .grand-final-best-of {
+            text-align: left;
+            color: $grey6;
+        }
+    }
+
+    .grand-final-container > p {
+        margin: 0;
+    }
+
+    .rounds-result-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 32px;
+
+        @media screen and (max-width: $sm) {
+            flex-direction: column;
+        }
+    }
+}

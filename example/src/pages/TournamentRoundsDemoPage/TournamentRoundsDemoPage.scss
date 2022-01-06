@@ -1,0 +1,28 @@
+.tournament-rounds-container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.rounds-mobile {
+    width: 360px;
+    min-width: 360px;
+}
+
+.rounds-mobile > .nc-card {
+    .nc-tournament-rounds {
+        .nc-rounds-double-elimination {
+            gap: 32px;
+            justify-content: space-around;
+            margin-top: 12px;
+
+            .rounds-result-container {
+                flex-direction: column;
+
+                .nc-rounds-result {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

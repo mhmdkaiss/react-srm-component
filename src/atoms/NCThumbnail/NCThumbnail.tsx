@@ -8,7 +8,7 @@ interface NCThumbnailProps {
 export const NCThumbnail: React.FunctionComponent<NCThumbnailProps> = (props: NCThumbnailProps) => {
     return (
         <React.Fragment>
-            <img className='nc-thumbnail' src={props.timg}></img>
+            <img className='nc-thumbnail' src={props.timg} draggable={false} />
         </React.Fragment>
     );
 };

@@ -5,17 +5,15 @@ import './NCPromotionalBanner.scss';
 
 interface NCPromotionalBannerProps {
     text: string;
-    openLink: () => void;
     image: string,
     buttonText?: string;
+    openLink?: () => void;
 }
 
-export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerProps> = ({
-    text,
-    image,
-    openLink,
-    buttonText
-}) => {
+export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerProps> = (
+    props: NCPromotionalBannerProps
+) => {
+    const { text, image, buttonText, openLink } = props;
     return (
         buttonText ?
             <div className='nc-promo-banner'>
@@ -34,7 +32,7 @@ export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerPro
                     </div>
                 </NCCard>
             </div>
-            : <div className='nc-promo-banner clickable' onClick={openLink}>
+            : <div className={`nc-promo-banner ${openLink ? 'clickable' : ''}`} onClick={openLink}>
                 <NCCard>
                     <NCBackgroundImage src={image} />
                     <div className='promo-content-container'>

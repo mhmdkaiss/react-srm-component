@@ -25,3 +25,9 @@ export interface MapRound {
     type: string
 }
 
+export enum TournamentFormat {
+    BRACKET = 0,
+    ROUND_ROBIN = 1,
+    DOUBLE_ELIM = 2,
+    ROBIN_BRACKET = 3,
+}
