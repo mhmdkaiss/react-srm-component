@@ -2,25 +2,12 @@
 @import '@cactus/srm-component/dist/src/styles/colors';
 
 .loader-1 {
-    @include loader($grey3, 300px);
+    @include loader(300px);
 }
 
 .loader-2 {
     @include loader(
-        $grey3,
         300px,
         'https://public.nicecact.us/game/super-smash-bros-ultimate/medias/LogoImage'
     );
-}
-
-.loader-3 {
-    @include loader(
-        $white,
-        300px,
-        'https://public.nicecact.us/game/super-smash-bros-ultimate/medias/LogoImage'
-    );
-}
-
-.transparent {
-    @include loader(transparent, 300px);
 }

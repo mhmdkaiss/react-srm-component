@@ -8,20 +8,12 @@ export const LoaderDemoPage: React.FunctionComponent = () => {
             <h1 className="secondary-color-light">Loaders</h1>
 
             <div className="d-flex">
-                <div className="loader-1">
+                <div className="loader-1 text-center mr-5">
+                    <h3 className="secondary-color-light">Default</h3>
                     <NCLoader />
                 </div>
-                <div className="loader-2 mx-5">
-                    <NCLoader />
-                </div>
-                <div className="loader-3">
-                    <NCLoader />
-                </div>
-            </div>
-            <div className="text-center mt-5">
-                <h1 className="secondary-color-light">Limitation</h1>
-                <span className="red-color mb-3">{'Background can\'t be transparent'}</span>
-                <div className="transparent mt-4">
+                <div className="loader-2 text-center ml-5">
+                    <h3 className="secondary-color-light">Custom image</h3>
                     <NCLoader />
                 </div>
             </div>

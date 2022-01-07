@@ -1,11 +1,9 @@
 @mixin loader(
-    $inner-color: white,
     $size: 64px,
     $img:
         'data:image/svg+xml;utf8,<svg width="50" height="59" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.205 47.831C7.013 54.72 16.548 59 27.103 59c6.889 0 13.343-1.824 18.89-5.006-.278-4.706-.556-9.399-.57-9.59-.044-.587-.105-2.322-.179-4.589L50 35.177l-4.886.471c-.044-1.428-.09-2.911-.137-4.356l4.044-6.167-4.21 1.418c-.052-1.364-.104-2.551-.152-3.416-.218-3.722-.436-6.403-.808-8.493-.631-3.502-1.708-5.421-3.918-7.991a15.34 15.34 0 00-2.137-2.03L38.556 0l-3.352 2.92c-1.837-.98-3.822-1.599-5.627-1.588-4.769.032-9.476 3.733-11.803 7.63l-3.857-2.234 1.78 5.947a289.852 289.852 0 00-2.918 5.564l-3.11-1.545 1.523 4.696c-2.769 5.55-5.7 11.827-7.529 16.745L0 35.623l2.107 6.762a392.599 392.599 0 00-1.902 5.446zm34.903-26.26c1.326.35 1.589 3.11 1.497 4.777-.078 1.441-1.162 4.835-2.777 4.681-1.615-.153-1.976-3.163-1.513-6.025.464-2.863 1.99-3.648 2.793-3.433zm-11.684 4.192c.843-3.904-.818-5.754-1.38-5.87-1.005-.204-2.483 1.053-2.855 3.45-.549 3.539.235 5.853 1.469 6.036.705.105 2.113-.555 2.766-3.616z" fill="url(%23prefix__paint0_radial)"/><defs><radialGradient id="prefix__paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-8.49997 50.00005 -42.37288 -7.20335 33.5 9)"><stop stop-color="%23B2F617"/><stop offset="1" stop-color="%23B2F617" stop-opacity="0"/></radialGradient></defs></svg>'
 ) {
     .loader-container {
-        background: $inner-color;
         width: 100vw;
         height: 100vh;
     }
@@ -16,6 +14,11 @@
         height: $size;
 
         .spin-loader {
+            mask-image: radial-gradient(
+                rgba(0, 0, 0, 0) 69%,
+                rgba(0, 0, 0, 1) 70%,
+                rgba(0, 0, 0, 1) 100%
+            );
             border-radius: 80%;
             display: block;
             width: 100%;
@@ -36,19 +39,7 @@
                 animation: line-color 10s linear 0s infinite normal;
             }
 
-            &::after {
-                border-radius: 80%;
-                width: calc(100% - 8px);
-                height: calc(100% - 8px);
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 1;
-                background: $inner-color;
-            }
-
-            &:before,
-            &:after {
+            &:before {
                 content: '';
                 display: block;
                 position: absolute;
