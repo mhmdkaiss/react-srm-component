@@ -6,6 +6,7 @@ export interface NCAnimatedCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
     maxCardWidth?: number;
+    scrollHook?: (scrollLeft: number) => void;
 }
 
 export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps> = (props: NCAnimatedCardListProps) => {
@@ -54,6 +55,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
             <NCCardList
                 cards={props.cards}
                 hoveredCard={updateHoverCards}
+                scrollHook={props.scrollHook}
             />
             {
                 hover1

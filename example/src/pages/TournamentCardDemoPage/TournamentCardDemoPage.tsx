@@ -13,14 +13,15 @@ const tournament =  {
     platforms: ["ps4", "pc", "xbox", "switch"],
     entrance: {
         fee: 0,
-    }
+    },
+    format: 1,
 }
 
 const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cbefb8ccf473930ea0237f1', cardStyle?: number) => {
     return (
         <NCTournamentCard
             tournament={tournament}
-            gameId={gameId}
+            banner={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${gameId}/medias/TournamentBanner`}
             gameName="Game Name"
             prize="10 €"
             restricted={restricted}

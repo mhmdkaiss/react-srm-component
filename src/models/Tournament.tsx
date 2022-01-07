@@ -9,6 +9,7 @@ export interface Tournament {
     entrance: {
         fee: TournamentFee;
     }
+    format?: number,
 }
 
 export enum TournamentFee {

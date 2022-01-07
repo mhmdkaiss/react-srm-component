@@ -24,7 +24,7 @@ export const NCRadioGroup: React.FunctionComponent<NCRadioGroupProps> = (props: 
                     <RadioGroup aria-label="gender" name="gender1" value={props.value} onChange={(event) => {
                         props.actionHook(event.target.value as string);
                     }}>
-                        <div className="d-flex flex-row">
+                        <div className="d-flex flex-row flex-wrap">
                             {
                                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                 props.fields.map((field: any, index: number) => {

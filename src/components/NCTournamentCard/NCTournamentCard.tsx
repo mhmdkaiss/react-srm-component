@@ -12,7 +12,7 @@ export enum TournamentCardStyle {
 export interface NCTournamentCardProps {
     tournament: Tournament;
     gameName: string;
-    gameId: string;
+    banner: string;
     restricted?: boolean;
     prize?: string;
     winner?: string;
@@ -37,18 +37,19 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     useEffect(() => {
         if (platformContaierRef?.current) {
             const containerWidth = platformContaierRef.current.clientWidth;
-            const childCount = platformContaierRef.current.childElementCount;
-            if (containerWidth < childCount* iconSize) {
-                setPlatforms([...platforms.slice(0, Math.floor(containerWidth / iconSize) - 2)]);
-            }
+            setPlatforms(
+                containerWidth < props.tournament.platforms.length * iconSize ?
+                    [...platforms.slice(0, Math.floor(containerWidth / iconSize) - 1)] :
+                    props.tournament.platforms
+            );
         }
-    }, [platformContaierRef]);
+    }, [platformContaierRef.current]);
 
     const renderSecondRow = () => {
         return (
             <div className="tournament-infos">
                 <div>{ props.prize }</div>
-                <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.min === 1 ? 'solo' : 'team' }` }) }</div>
+                <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.format === 1 ? 'solo' : 'team' }` }) }</div>
             </div>
         );
     };
@@ -59,33 +60,36 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 <div>
                     {new Intl.DateTimeFormat('default', dateOption).format(new Date(props.tournament.date * 1000))}
                 </div>
-                <div
-                    ref={platformContaierRef}
-                    className="d-flex align-items-center"
-                >
-                    {
-                        platforms.map(platform => {
-                            return (
-                                <IconMask
-                                    key={platform}
-                                    icon={`${process.env.REACT_APP_S3_URL}/media/platforms/${platform}.svg`}
-                                    width={iconSize}
-                                    height={iconSize}
-                                    name="platform"
-                                />
-                            );
-                        })
-                    }
-                    {
-                        props.tournament.platforms.length > platforms.length &&
-                        <Icon
-                            icon={IconType.Plus}
-                            width={iconSize - 4}
-                            height={iconSize - 4}
-                            styleName="ml-1"
-                        />
-                    }
-                </div>
+                {
+                    platforms &&
+                    <div
+                        ref={platformContaierRef}
+                        className="platform-container d-flex align-items-center"
+                    >
+                        {
+                            platforms.map(platform => {
+                                return (
+                                    <IconMask
+                                        key={platform}
+                                        icon={`${process.env.REACT_APP_S3_URL}/media/platforms/${platform}.svg`}
+                                        width={iconSize}
+                                        height={iconSize}
+                                        name="platform"
+                                    />
+                                );
+                            })
+                        }
+                        {
+                            props.tournament.platforms.length > platforms.length &&
+                            <Icon
+                                icon={IconType.Plus}
+                                width={iconSize - 4}
+                                height={iconSize - 4}
+                                styleName="ml-1"
+                            />
+                        }
+                    </div>
+                }
             </div>
         );
     };
@@ -130,7 +134,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
             <div className="tournament-banner position-relative">
                 <img
                     className="banner-image position-absolute"
-                    src={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${props.gameId}/medias/TournamentBanner`}
+                    src={props.banner}
                 />
             </div>
             <div className="tournament-content align-self-center">
@@ -157,7 +161,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                         renderLastRow()
                 }
 
-                <div className="additional-infos">
+                <div className={`additional-infos mb-1 ${props.tournament.partner ? '' : 'mt-2'}`}>
                     {
                         props.winner &&
                             renderLastRow()

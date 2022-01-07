@@ -220,7 +220,8 @@ const tournament =  {
     platforms: ["ps4", "pc", "xbox", "switch"],
     entrance: {
         fee: 0,
-    }
+    },
+    format: 1,
 }
 
 const tournamentCards = [ ...Array(6)].map((_, index) => {
@@ -234,7 +235,7 @@ const tournamentCards = [ ...Array(6)].map((_, index) => {
             key={`tournament-card-${index}`}
             tournament={tournament}
             gameName="test game"
-            gameId={gameId}
+            banner={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${gameId}/medias/TournamentBanner`}
             prize="10e"
         />
     )

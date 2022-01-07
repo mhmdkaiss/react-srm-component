@@ -7,6 +7,7 @@ export interface NCCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
     hoveredCard?: (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => void;
+    scrollHook?: (scrollLeft: number) => void;
 }
 
 export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCardListProps) => {
@@ -23,17 +24,24 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     }, [props.cards]);
 
     useEffect(() => {
+        window.addEventListener('resize', updateArrows);
+    }, []);
+
+    useEffect(() => {
         if (cardRef.current) {
             setCardWidth(cardRef.current.clientWidth);
         }
     }, [cardRef]);
 
     const updateArrows = () => {
+        if (props.scrollHook && scrollableRef.current) {
+            props.scrollHook(scrollableRef.current.scrollLeft);
+        }
         const scrollLeft = scrollableRef.current?.scrollLeft || 0;
         const scrollWidth = scrollableRef.current?.scrollWidth || 0;
         const containerWidth = scrollableRef.current?.getBoundingClientRect().width || 0;
         setLeftArrow(scrollLeft > 0);
-        setRightArrow((scrollWidth > containerWidth) && (scrollLeft + containerWidth < scrollWidth));
+        setRightArrow((scrollWidth > containerWidth) && (Math.ceil(scrollLeft + containerWidth) < scrollWidth));
     };
 
     const scrollContainer = (toLeft?: boolean) => {
