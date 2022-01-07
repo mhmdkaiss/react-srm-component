@@ -1,11 +1,12 @@
 import { MuiThemeProvider, TextField } from '@material-ui/core';
 import React, { ChangeEvent } from 'react';
+
 import { ThemePlatform } from '../../styles/Themes';
 
 export interface NCInputProps {
     ref?: any;
     id?: string;
-    value: string;
+    value: string | number;
     label?: string;
     type?: string;
     placeHolder?: string;
