@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useIntl } from 'react-intl';
+import { NCTypography } from '../../atoms';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
 import { NCDialog } from '../../atoms/NCDialog/NCDialog';
 import { NCMediaLibrary } from '../../molecules';
 import { Media } from '../../services/media-library.service';
+import { NCInput } from '../NCInput/NCInput';
 import './NCMediaUpload.scss';
 
 export type ctxType = 'url' | 'blob'
@@ -25,10 +26,12 @@ export interface NCMediaUploadProps {
     disabled?: boolean;
     actionHook: (ctx: ctxType, file: string) => void;
     mediaLibrary?: boolean;
+    s3PublicUrl?: string;
+    noPreview?: boolean;
+    inputMode?: boolean;
 }
 
 export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props: NCMediaUploadProps) => {
-    const intl = useIntl();
     const [ previewImg, setPreviewImg ] = useState<string>();
     const [ errorMesg, setErrorMesg ] = useState<string>();
 
@@ -93,7 +96,6 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
         style.zone += ' disabled';
     }
     if (!isDragActive) {
-        console.log('style.image', previewBackground);
         style.image = previewBackground;
     }
 
@@ -101,11 +103,13 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
 
     const mediaSelected = (v: Media) => {
         props.actionHook('url', v.publicUrl);
-        setPreviewImg(v.publicUrl);
+        if (props.noPreview === false) {
+            setPreviewImg(v.publicUrl);
+        }
         setMLOpen(false);
     };
     const getLibraryProps = () => {
-        if (!props.mediaLibrary) {
+        if (!props.mediaLibrary || props.disabled) {
             return {};
         }
         return {
@@ -117,7 +121,10 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
 
     return (
         <React.Fragment>
-            <div className={style.container}>
+            <div
+                className={style.container}
+                hidden={props.inputMode}
+            >
                 {props.labelImg && (<label>{props.labelImg}</label>)}
                 <div
                     className={style.zone}
@@ -129,17 +136,21 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
                         className="image-zone"
                         style={{ backgroundImage: style.image }}
                     >
-                        <span className="">{props.infoMsg || intl.formatMessage({
-                            id: 'media-upload.info.message',
-                        })}</span>
+
+                        <NCTypography intlID='media-upload.info.message'>{props.infoMsg}</NCTypography>
                         <Icon icon={IconType.Cloud} height={64} width={64} />
                         <span className="error-msg">{errorMesg}</span>
                     </div>
                 </div>
             </div>
+            {props.inputMode === true && (
+                <div {...getLibraryProps()}>
+                    <NCInput value="" onChange={() => {return;}} disabled />
+                </div>
+            )}
 
             <NCDialog show={MLOpen} setShow={setMLOpen}>
-                <NCMediaLibrary actionHook={mediaSelected}></NCMediaLibrary>
+                <NCMediaLibrary s3PublicUrl={props.s3PublicUrl} actionHook={mediaSelected}></NCMediaLibrary>
             </NCDialog>
         </React.Fragment>
     );

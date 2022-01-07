@@ -15,8 +15,8 @@ import {
 } from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
-    const [userCardSelected, setUserCardSelected] = useState<boolean>(false);
-    const [teamCardSelected, setTeamCardSelected] = useState<boolean>(false);
+    const [ userCardSelected, setUserCardSelected ] = useState<boolean>(false);
+    const [ teamCardSelected, setTeamCardSelected ] = useState<boolean>(false);
 
     return (
         <div className='d-flex flex-column user-team-cards-demo-page'>

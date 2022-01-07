@@ -1,6 +1,11 @@
-@import '../../styles/colors';
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
 
 .nc-medialibrary {
+    @include media-breakpoint-up(lg) {
+        width: 50vw;
+    }
     .breadcrumb {
         display: flex;
         align-items: center;

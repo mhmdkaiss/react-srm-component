@@ -217,6 +217,8 @@
         &.text {
             @include button-design(null, $grey6, transparent, $gradient: false);
             text-decoration: underline;
+            padding-left: 0;
+            padding-right: 0;
 
             &:hover {
                 @include button-design(null, $white, null, $gradient: false);

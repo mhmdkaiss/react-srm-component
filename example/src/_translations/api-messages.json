@@ -82,5 +82,9 @@
     {
         "term": "player.copy.game.account",
         "comment": "Copy game account"
+    },
+    {
+        "term": "media-upload.info.message",
+        "comment": "drag and drop an image or click"
     }
 ]

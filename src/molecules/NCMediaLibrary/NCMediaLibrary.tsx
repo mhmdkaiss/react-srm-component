@@ -1,6 +1,6 @@
 import './NCMediaLibrary.scss';
 
-import { Button, NCBox, NCList } from '../../atoms';
+import { Button, NCBox, NCList, NCTypography } from '../../atoms';
 import { Media, MediaLibraryService } from '../../services/media-library.service';
 import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
 import React, { useEffect, useState } from 'react';
@@ -12,17 +12,16 @@ import { NCActions } from '../NCActions/NCActions';
 export interface NCMediaLibraryProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     actionHook: (media: Media) => any;
+    s3PublicUrl?: string;
 }
 
 export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (props: NCMediaLibraryProps) => {
     // TODO: handle commented action
     // const authorizedFiles = [ 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml' ];
 
-    // const [ medias, setMedias ] = useState<Array<Media>>([]);
     const [ selectedItem, setSelectedItem ] = useState<Media>();
     const [ currentPath, setCurrentPath ] = useState<string>('/');
     const [ paths, setPaths ] = useState<Array<string>>([currentPath]);
-    // const [ fileFormat, setFileFormat ] = useState<{width: number, height: number}>({ width: 0, height: 0 });
 
     const [ table, setTable ] = useState<NCListProps>({ header: [
         {
@@ -48,16 +47,16 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
     }, []);
 
     const getMediaLibrary = (path: string = '') => {
-        console.log('getMediaLibrary', path);
         MediaLibraryService.getMediaLibrary(path).then((data: Array<Media>) => {
             filterMedia(data);
         }).catch(error => console.error(error));
     };
 
     const filterMedia = (medias: Array<Media>) => {
-        console.log('filterMedia', medias);
-        const _m = medias.sort(f => (f.file ? 1 : -1));
-        // setMedias(_m);
+        const _m = medias.map(m => {
+            m.publicUrl = props.s3PublicUrl + m.publicUrl;
+            return m;
+        }).sort(f => (f.file ? 1 : -1));
         setTable({
             header: table.header,
             data: fillRows(_m)
@@ -116,21 +115,21 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
     //     }
     // };
 
-    // const convertBytes = (bytes: any) => {
-    //     const sizes = [ 'bytes', 'kB', 'MB', 'GB', 'TB' ];
+    const convertBytes = (bytes: any) => {
+        const sizes = [ 'bytes', 'kB', 'MB', 'GB', 'TB' ];
 
-    //     if (bytes === 0) {
-    //         return 'n/a';
-    //     }
+        if (bytes === 0) {
+            return 'n/a';
+        }
 
-    //     const i = Number(Math.floor(Math.log(bytes) / Math.log(1024)));
+        const i = Number(Math.floor(Math.log(bytes) / Math.log(1024)));
 
-    //     if (i === 0) {
-    //         return bytes + ' ' + sizes[i];
-    //     }
+        if (i === 0) {
+            return bytes + ' ' + sizes[i];
+        }
 
-    //     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-    // };
+        return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+    };
 
     const fillRows = (ms: Array<Media>): Array<NCListRows> => {
         return ms.map(m => {
@@ -145,7 +144,7 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
                 },
                 size: {
                     tdClassName: '',
-                    tdContent: m.size,
+                    tdContent: convertBytes(m.size),
                 },
                 uploaddate: {
                     tdClassName: '',
@@ -185,7 +184,6 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
                 selectedItem?.file && (
                     <div className={'preview-container d-flex flex-column'}>
                         <img src={selectedItem.publicUrl} alt={selectedItem.name}
-                            // onLoad={(event) => setFileFormat({ width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight })}
                             style={{
                                 maxHeight: '350px',
                                 objectFit: 'contain',
@@ -193,11 +191,9 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
                         />
                         <NCActions actions={[
                             {
-                                label: 'Choose another',
+                                label: <NCTypography intlID='media-library.action.choose'>Choose another</NCTypography>,
                                 type: ButtonType.SECONDARY,
-                                setClick: () => {
-                                    setSelectedItem(undefined);
-                                },
+                                setClick: () => setSelectedItem(undefined),
                             },
                             {
                                 label: 'Done',

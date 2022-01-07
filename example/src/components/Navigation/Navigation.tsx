@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import './Navigation.scss';
 
 export const Navigation: React.FunctionComponent = () => {
-    const [atomsOpen, setAtomsOpen] = React.useState(false);
-    const [componentsOpen, setComponentsOpen] = React.useState(false);
+    const [ atomsOpen, setAtomsOpen ] = React.useState(false);
+    const [ componentsOpen, setComponentsOpen ] = React.useState(false);
 
     return (
         <List
@@ -41,6 +41,9 @@ export const Navigation: React.FunctionComponent = () => {
                     </ListItem>
                     <ListItem button component={Link} to='/component/stepper'>
                         <ListItemText primary='Steppers' />
+                    </ListItem>
+                    <ListItem button component={Link} to='/atoms/typography'>
+                        <ListItemText primary='Typography'/>
                     </ListItem>
                 </List>
             </Collapse>

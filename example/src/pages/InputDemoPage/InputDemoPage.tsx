@@ -31,26 +31,26 @@ export const InputDemoPage: React.FunctionComponent = () => {
     };
 
     // Toogles
-    const [switchChecked, setSwitchChecked] = useState<boolean>();
-    const [chipChecked, setChipChecked] = useState<boolean>();
-    const [chipDeleted, setChipDeleted] = useState<boolean>();
+    const [ switchChecked, setSwitchChecked ] = useState<boolean>();
+    const [ chipChecked, setChipChecked ] = useState<boolean>();
+    const [ chipDeleted, setChipDeleted ] = useState<boolean>();
 
     //Search Bars
     const searchList = [{ name: 'Item 1' }, { name: 'Item 2' }];
     const searchFiled = 'name';
-    const [selectedItem, setSelectedItem] = useState<{ name: string }>(
+    const [ selectedItem, setSelectedItem ] = useState<{ name: string }>(
         searchList[0]
     );
-    const [selectedItem2, setSelectedItem2] = useState<{ name: string }>();
-    const [searchSelected, setSearchSelected] = useState<Array<string>>([]);
-    const [searchListLoading, setSearchListLoading] = useState<boolean>(false);
-    const [asyncSearchList, setAsyncSearchList] = useState<
+    const [ selectedItem2, setSelectedItem2 ] = useState<{ name: string }>();
+    const [ searchSelected, setSearchSelected ] = useState<Array<string>>([]);
+    const [ searchListLoading, setSearchListLoading ] = useState<boolean>(false);
+    const [ asyncSearchList, setAsyncSearchList ] = useState<
         Array<{ name: string }>
     >([]);
 
     //Media uploader
-    const [bannerImage, setBannerImage] = useState<string | null>(null);
-    const [updatedMedia, setUpdatedMedia] = useState<{
+    const [ bannerImage, setBannerImage ] = useState<string | null>(null);
+    const [ updatedMedia, setUpdatedMedia ] = useState<{
         [key: string]: { previous?: string; value: string };
     }>({});
 
@@ -80,7 +80,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
         { key: 'key2', value: 'value2' },
         { key: 'key3', value: 'value3' },
     ];
-    const [ruleGame, setRuleGame] = useState<string>(ncSelectValues[0].value);
+    const [ ruleGame, setRuleGame ] = useState<string>(ncSelectValues[0].value);
     const renderNcSelect = () => {
         return (
             <div className='my-3'>
@@ -108,7 +108,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
         { key: 'key2', value: 'value2', image: 'assets/nc-logo-small.png' },
         { key: 'key3', value: 'value3' },
     ];
-    const [selectorRuleGame, setSelectorRuleGame] = useState<string>(ncSelectorValues[0].value);
+    const [ selectorRuleGame, setSelectorRuleGame ] = useState<string>(ncSelectorValues[0].value);
     const renderNCSelector = () => {
         return (
             <div className='my-3'>
@@ -127,11 +127,11 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     disabled={false}
                 />
             </div>
-            )
-    }
+        );
+    };
 
     // NC ColorPicker
-    const [ncColorPickerValue, setNcColorPickerValue] = useState<string>('#b2f617')
+    const [ ncColorPickerValue, setNcColorPickerValue ] = useState<string>('#b2f617');
     const renterNCColorPicker = () => {
         return (
             <div className='my-3'>
@@ -166,7 +166,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
     };
 
     // NC TextArea
-    const [ncAreaValue, setNcAreaValue] = useState<string>('Bonsoir ! ');
+    const [ ncAreaValue, setNcAreaValue ] = useState<string>('Bonsoir ! ');
     const renderNCTextArea = () => {
         return (
             <div className='my-3'>
@@ -192,7 +192,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
         { key: 'key2', value: 'value2', disabled: false },
         { key: 'key3', value: 'value3', disabled: true },
     ];
-    const [ncRadioGroupValue, setNcRadioGroupValue] = useState<string>(
+    const [ ncRadioGroupValue, setNcRadioGroupValue ] = useState<string>(
         ncRadioValues[0].value
     );
     const renderNCRadioGroup = () => {
@@ -215,7 +215,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
         <div className='white'>
             <div>
                 <h4>Text input</h4>
-                <NCInput label='Label' value='Value' onChange={() => {}} />
+                <NCInput label='Label' value='Value' onChange={(e) => {
+                    console.log('e');
+                }} />
                 {renderNCTextArea()}
                 {renderNcSelect()}
                 {renderNCSelector()}
@@ -231,7 +233,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <DatePicker
                     initialDate={''}
                     label='Date picker'
-                    dateChanged={() => {}}
+                    dateChanged={(e) => {
+                        console.log('e');
+                    }}
                 />
             </div>
             <div className='my-5'>
@@ -241,7 +245,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     <SearchBar
                         searchFields={{ search: { label: '' } }}
                         placeHolder='Place holder'
-                        actionHook={() => {}}
+                        actionHook={(e) => {
+                            console.log('e');
+                        }}
                     />
                 </div>
 
@@ -254,7 +260,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             field3: { label: 'Label3' },
                         }}
                         placeHolder='Place holder'
-                        actionHook={() => {}}
+                        actionHook={(e) => {
+                            console.log('e');
+                        }}
                     />
                 </div>
 
@@ -267,7 +275,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                                 search: { label: 'Label1' },
                             }}
                             placeHolder='Place holder'
-                            actionHook={() => {}}
+                            actionHook={(e) => {
+                                console.log('e');
+                            }}
                             list={[{ name: 'item1' }, { name: 'Item 2' }]}
                             displayParam='name'
                             onSelection={(e: any) => {
@@ -342,7 +352,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             search: { label: 'Label1' },
                         }}
                         placeHolder='Place holder'
-                        actionHook={() => {}}
+                        actionHook={(e) => {
+                            console.log('e');
+                        }}
                         list={searchList}
                         displayParam={searchFiled}
                         selected={searchSelected}

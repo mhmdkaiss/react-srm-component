@@ -9,9 +9,11 @@
         "test": "react-app-rewired test",
         "serve": "serve -c build",
         "eject": "react-app-rewired eject",
-        "lint": "eslint src/**/*.ts*",
+        "lint": "eslint . --ext .ts,.tsx",
         "translations:pull": "node scripts/translations/poeditor.js --action=pull",
-        "translations:push": "node scripts/translations/poeditor.js --action=push"
+        "translations:push": "node scripts/translations/poeditor.js --action=push",
+        "shared:upgrade": "sh ./node_modules/@cactus/srm-component/dist/config/install-config.sh",
+        "postinstall": "yarn shared:upgrade"
     },
     "dependencies": {
         "@cactus/srm-component": "link:..",
@@ -59,7 +61,8 @@
         "typescript-react-intl": "link:../node_modules/typescript-react-intl",
         "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack-cli": "^4.5.0",
-        "webpack-manifest-plugin": "^3.0.0"
+        "webpack-manifest-plugin": "^3.0.0",
+        "twitch-player": "^2.0.2"
     },
     "watch": {
         "build:dev-nc": {
@@ -89,5 +92,18 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "lint-staged": {
+        "*.{scss,json}": [
+            "prettier --write"
+        ],
+        "*.{ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "twitch-player": "<rootDir>/node_modules/twitch-player/"
+        }
     }
 }

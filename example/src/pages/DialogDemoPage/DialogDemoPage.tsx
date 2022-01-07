@@ -40,5 +40,5 @@ export const DialogDemoPage: React.FunctionComponent = () => {
 
             <NCToastContainer toastList={toastsList} onDeleteToast={deleteToast} position={ToastPosition.TOP_RIGHT} duration={7000}/>
         </div>
-    )
-}
+    );
+};

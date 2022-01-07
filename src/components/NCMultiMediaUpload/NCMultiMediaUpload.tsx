@@ -4,11 +4,12 @@ import React from 'react';
 import { ctxType, NCMediaUpload, NCMediaUploadProps } from '../NCMediaUpload/NCMediaUpload';
 
 export interface NCMultiMediaUploadProps {
+  s3PublicUrl: string;
   images: Array<NCMediaUploadProps & { typeImg: string }>;
   actionHook: (type: string, ctx: ctxType, image: string) => void;
 }
 
-export const NCMultiMediaUpload: React.FunctionComponent<NCMultiMediaUploadProps> = ({ images, actionHook }) => {
+export const NCMultiMediaUpload: React.FunctionComponent<NCMultiMediaUploadProps> = ({ s3PublicUrl, images, actionHook }) => {
     return (
         <React.Fragment>
             <div className="multi-media-upload-container">
@@ -27,6 +28,7 @@ export const NCMultiMediaUpload: React.FunctionComponent<NCMultiMediaUploadProps
                             actionHook={(t, img) => {
                                 actionHook(ic.typeImg, t, img);
                             }}
+                            s3PublicUrl={s3PublicUrl}
                         />
                     );
                 }))}

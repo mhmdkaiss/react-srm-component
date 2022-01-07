@@ -1,9 +1,8 @@
-import React from "react";
-import { Button, ButtonTheme, ButtonType, ButtonSize, IconType, ButtonIcon } from "@cactus/srm-component"
-import "./ButtonsDemoPage.scss";
+import React from 'react';
+import { Button, ButtonTheme, ButtonType, ButtonSize, IconType, ButtonIcon } from '@cactus/srm-component';
+import './ButtonsDemoPage.scss';
 
 export const ButtonsDemoPage: React.FunctionComponent = () => {
-
     const renderButton = (theme: ButtonTheme, type: ButtonType, name: string) => {
         return <div className="d-flex flex-column my-5">
             <span className="theme-title">{name}</span>
@@ -12,8 +11,8 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
                     {renderAllSizes(theme, type)}
                 </tbody>
             </table>
-        </div>
-    }
+        </div>;
+    };
 
     const renderButtonIcon = (icon: string) => {
         return <div className="d-flex flex-column my-5">
@@ -38,18 +37,16 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
                     </tr>
                 </tbody>
             </table>
-        </div>
-    }
-
-
+        </div>;
+    };
 
     const renderAllSizes = (theme: ButtonTheme, type: ButtonType) => {
         return <>
             {renderRow(theme, type, ButtonSize.BIG, 'Big')}
             {renderRow(theme, type, ButtonSize.MEDIUM, 'Medium')}
             {renderRow(theme, type, ButtonSize.SMALL, 'Small')}
-        </>
-    }
+        </>;
+    };
 
     const renderRow = (theme: ButtonTheme, type: ButtonType, size: ButtonSize, name: string) => {
         return <tr>
@@ -68,31 +65,31 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
             <td>
                 <Button label="Button Text" theme={theme} type={type} size={size} disabled icon={{ type: IconType.People, width: 24, height: 24 }} />
             </td>
-        </tr>
-    }
+        </tr>;
+    };
 
     return (
         <div className='buttons-demo-page'>
-            {renderButton(ButtonTheme.CLASSIC, ButtonType.PRIMARY, "Classic - Primary")}
-            {renderButton(ButtonTheme.CLASSIC, ButtonType.SECONDARY, "Classic - Secondary")}
-            {renderButton(ButtonTheme.CLASSIC, ButtonType.TEXT, "Classic - Texte")}
+            {renderButton(ButtonTheme.CLASSIC, ButtonType.PRIMARY, 'Classic - Primary')}
+            {renderButton(ButtonTheme.CLASSIC, ButtonType.SECONDARY, 'Classic - Secondary')}
+            {renderButton(ButtonTheme.CLASSIC, ButtonType.TEXT, 'Classic - Texte')}
 
-            {renderButton(ButtonTheme.TOURNAMENT, ButtonType.PRIMARY, "Tournament - Primary")}
-            {renderButton(ButtonTheme.TOURNAMENT, ButtonType.SECONDARY, "Tournament - Secondary")}
+            {renderButton(ButtonTheme.TOURNAMENT, ButtonType.PRIMARY, 'Tournament - Primary')}
+            {renderButton(ButtonTheme.TOURNAMENT, ButtonType.SECONDARY, 'Tournament - Secondary')}
 
-            {renderButton(ButtonTheme.TRACKING, ButtonType.PRIMARY, "Tracking - Primary")}
-            {renderButton(ButtonTheme.TRACKING, ButtonType.SECONDARY, "Tracking - Secondary")}
+            {renderButton(ButtonTheme.TRACKING, ButtonType.PRIMARY, 'Tracking - Primary')}
+            {renderButton(ButtonTheme.TRACKING, ButtonType.SECONDARY, 'Tracking - Secondary')}
 
-            {renderButton(ButtonTheme.TRAINING, ButtonType.PRIMARY, "Training - Primary")}
-            {renderButton(ButtonTheme.TRAINING, ButtonType.SECONDARY, "Training - Secondary")}
+            {renderButton(ButtonTheme.TRAINING, ButtonType.PRIMARY, 'Training - Primary')}
+            {renderButton(ButtonTheme.TRAINING, ButtonType.SECONDARY, 'Training - Secondary')}
 
-            {renderButton(ButtonTheme.PREMIUM, ButtonType.PRIMARY, "Premium - Primary")}
-            {renderButton(ButtonTheme.PREMIUM, ButtonType.SECONDARY, "Premium - Secondary")}
+            {renderButton(ButtonTheme.PREMIUM, ButtonType.PRIMARY, 'Premium - Primary')}
+            {renderButton(ButtonTheme.PREMIUM, ButtonType.SECONDARY, 'Premium - Secondary')}
 
-            {renderButton(ButtonTheme.RED, ButtonType.PRIMARY, "Red- Primary")}
-            {renderButton(ButtonTheme.RED, ButtonType.SECONDARY, "Red- Secondary")}
+            {renderButton(ButtonTheme.RED, ButtonType.PRIMARY, 'Red- Primary')}
+            {renderButton(ButtonTheme.RED, ButtonType.SECONDARY, 'Red- Secondary')}
 
-            {renderButtonIcon("https://esm-prod-public.s3.eu-west-1.amazonaws.com/game/5c36302a0842120a74d1afdc/medias/IconImage")}
+            {renderButtonIcon('https://esm-prod-public.s3.eu-west-1.amazonaws.com/game/5c36302a0842120a74d1afdc/medias/IconImage')}
         </div>
-    )
+    );
 };

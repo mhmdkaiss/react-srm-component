@@ -16,15 +16,25 @@ export const GameList: React.FunctionComponent<GameListProps> = (props: GameList
     const [ selected, setSelected ] = useState<number>(0);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setSelected(parseInt(event.currentTarget.value));
-        props.onChange(props.games[selected]);
+        const newValue = parseInt(event.currentTarget.value);
+        setSelected(newValue);
+        props.onChange(props.games[newValue]);
     };
 
     return (
         <div className='gamelist'>
             {
                 props.games.map((game: Game, index: number) => {
-                    return <ButtonIcon value={index.toString()} size={ButtonSize.BIG} icon={game.icon} name={game.id} active={selected === index} onClick={(e) => handleClick(e)} key={index} fancy={props.fancy}/>;
+                    return <ButtonIcon
+                        value={index.toString()}
+                        size={ButtonSize.BIG}
+                        icon={game.icon}
+                        name={game.id}
+                        active={selected === index}
+                        onClick={handleClick}
+                        key={index}
+                        fancy={props.fancy}
+                    />;
                 })
             }
         </div>

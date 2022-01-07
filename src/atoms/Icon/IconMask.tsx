@@ -6,6 +6,7 @@ interface IconMaskProps {
     name: string;
     icon: string;
     styleName?: string;
+    onClick?: (event: React.MouseEvent) => void;
 }
 
 export const IconMask: React.FunctionComponent<IconMaskProps> = ({
@@ -13,7 +14,8 @@ export const IconMask: React.FunctionComponent<IconMaskProps> = ({
     height,
     name,
     icon,
-    styleName
+    styleName,
+    onClick,
 }) => {
     return (
         <div
@@ -30,6 +32,7 @@ export const IconMask: React.FunctionComponent<IconMaskProps> = ({
                 width: width,
                 height: height,
             }}
+            onClick={onClick}
         ></div>
     );
 };

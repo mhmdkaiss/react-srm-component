@@ -65,6 +65,7 @@ export interface IconProps {
     height?: number;
     icon: IconType;
     styleName?: string;
+    onClick?: (event: React.MouseEvent) => void;
 }
 
 export const Icon: React.FunctionComponent<IconProps> = ({
@@ -72,8 +73,16 @@ export const Icon: React.FunctionComponent<IconProps> = ({
     height,
     icon,
     styleName,
+    onClick,
 }) => {
     return (
-        <IconMask icon={`${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg`} name={icon} width={width} height={height} styleName={styleName}/>
+        <IconMask
+            icon={`${process.env.REACT_APP_S3_URL}/media/icons/${icon}.svg`}
+            name={icon}
+            width={width}
+            height={height}
+            styleName={styleName}
+            onClick={onClick}
+        />
     );
 };

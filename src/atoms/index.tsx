@@ -11,4 +11,5 @@ export { NCNotificationButton } from './NCNotificationButton/NCNotificationButto
 export { NCStepBubble } from './NCStepBubble/NCStepBubble';
 export { NCTitle } from './NCTitle/NCTitle';
 export { NCToast } from './NCToast/NCToast';
+export { NCTypography } from './NCTypography/NCTypography';
 

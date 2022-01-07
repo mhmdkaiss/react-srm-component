@@ -1,0 +1,137 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.hero {
+    font-weight: 300;
+    font-size: 96px;
+    letter-spacing: -0.04em;
+    line-height: 100%;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 54px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: capitalize;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 300;
+    line-height: 100%;
+}
+
+h4,
+h5,
+h6,
+.subtitle2 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 76px;
+    letter-spacing: -0.03em;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 48px;
+    }
+}
+
+h2 {
+    font-size: 60px;
+    letter-spacing: -0, 01em;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 36px;
+    }
+}
+
+h3 {
+    font-size: 48px;
+    letter-spacing: -0, 01em;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 28px;
+        line-height: 112%;
+    }
+}
+
+h4,
+h5 {
+    letter-spacing: 0em;
+}
+
+h4 {
+    font-size: 36px;
+    line-height: 112%;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 22px;
+        line-height: 120%;
+    }
+}
+
+h5 {
+    font-size: 28px;
+    line-height: 115%;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 20px;
+        line-height: 133%;
+    }
+}
+
+h6 {
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    line-height: 127%;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 16px;
+        line-height: 123%;
+    }
+}
+
+.subtitle1,
+.subtitle2 {
+    line-height: 120%;
+    letter-spacing: 0.04em;
+}
+
+.subtitle1 {
+    font-weight: 700;
+    font-size: 18px;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 16px;
+    }
+}
+
+.subtitle2 {
+    font-size: 16px;
+    text-transform: uppercase;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 14px;
+        line-height: 150%;
+    }
+}
+
+.overtitle {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    @include media-breakpoint-down(xs) {
+        font-size: 14px;
+        line-height: 150%;
+    }
+}

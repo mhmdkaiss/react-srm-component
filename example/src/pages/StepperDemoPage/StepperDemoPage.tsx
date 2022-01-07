@@ -1,19 +1,19 @@
-import "./StepperDemoPage.scss";
+import './StepperDemoPage.scss';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { NCStepper } from "@cactus/srm-component";
+import { NCStepper } from '@cactus/srm-component';
 
 export const StepperDemoPage: React.FunctionComponent = () => {
     const MAX_STEP = 8;
     const ACTIVE_STEP = 4;
 
-    const steps = ['Select team', 'Select players', 'Select captain'];
-    const steps2 = steps.concat(['Select boss', 'Select legend']);
-    const steps3 = steps2.concat(['Select demon', 'Select god']);
+    const steps = [ 'Select team', 'Select players', 'Select captain' ];
+    const steps2 = steps.concat([ 'Select boss', 'Select legend' ]);
+    const steps3 = steps2.concat([ 'Select demon', 'Select god' ]);
 
-    const [activeStep, setActiveStep] = useState<number>(ACTIVE_STEP);
-    const [error, setError] = useState<boolean>(false);
+    const [ activeStep, setActiveStep ] = useState<number>(ACTIVE_STEP);
+    const [ error, setError ] = useState<boolean>(false);
 
     const moveStep = (currentStep: number, next: boolean) => {
         if (next) {
@@ -26,7 +26,7 @@ export const StepperDemoPage: React.FunctionComponent = () => {
         if (currentStep > 1) {
             setActiveStep(--currentStep);
         }
-    }
+    };
 
     return (
         <div className="stepper-page white">
@@ -73,5 +73,5 @@ export const StepperDemoPage: React.FunctionComponent = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };

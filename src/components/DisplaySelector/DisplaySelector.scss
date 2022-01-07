@@ -1,6 +1,12 @@
-.displaylist{
+@import '../../styles/colors';
+
+.display-selector {
     display: flex;
     gap: 16px;
-    width: 100%;
     flex-flow: row nowrap;
+
+    .selector-active {
+        background-color: $grey2;
+        border-radius: 0.5rem;
+    }
 }

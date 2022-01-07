@@ -1,7 +1,6 @@
-import './SliderDemoPage.scss';
-
+import { NCSlider, NCSliderBackground, NCSliderSelector } from '@cactus/srm-component';
 import React from 'react';
-import { NCSlider, NCSliderSelector, NCSliderBackground } from '@cactus/srm-component';
+import './SliderDemoPage.scss';
 
 export const SliderDemoPage: React.FunctionComponent = () => {
     const scrollableRef1: React.RefObject<HTMLDivElement> = React.createRef();
@@ -15,42 +14,23 @@ export const SliderDemoPage: React.FunctionComponent = () => {
         `${process.env.REACT_APP_S3_URL}/homepage/carousel/backgroundMobile/LoL.jpg`,
     ];
 
+    const backgroundContent = [];
+    for (let i = 0; i < 6; ++i) {
+        backgroundContent.push(
+            <div key={`background-${i}`} className="w-100 h-100 d-flex">
+                <div className="m-auto white">Background content (Slide ${i+1})</div>
+            </div>
+        );
+    }
 
-    const backgroundContent = [
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Background content (Slide 1)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Background content (Slide 2)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Background content (Slide 3)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Background content (Slide 4)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Background content (Slide 5)</div>
-        </div>,
-    ]
-
-    const slideContent = [
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Selector content (Slide 1)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Selector content (Slide 2)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Selector content (Slide 3)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Selector content (Slide 4)</div>
-        </div>,
-        <div className="w-100 h-100 d-flex">
-            <div className="m-auto white">Selector content (Slide 5)</div>
-        </div>,
-    ]
+    const slideContent = [];
+    for (let i = 0; i < 6; ++i) {
+        slideContent.push(
+            <div key={`selector-${i}`} className="w-100 h-100 d-flex">
+                <div className="m-auto white">Selector content (Slide ${i+1})</div>
+            </div>,
+        );
+    }
 
     return (
         <div className='slider-demo-page d-flex flex-column'>

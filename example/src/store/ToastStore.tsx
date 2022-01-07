@@ -1,5 +1,5 @@
-import { ToastModel } from "@cactus/srm-component";
-import { action, Action } from "easy-peasy";
+import { ToastModel } from '@cactus/srm-component';
+import { action, Action } from 'easy-peasy';
 
 export interface ToastStore {
     list: Array<ToastModel>;

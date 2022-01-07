@@ -1,10 +1,8 @@
-import React from "react";
-import { NCLoader } from "@cactus/srm-component";
-
+import { NCLoader } from '@cactus/srm-component';
+import React from 'react';
 import './LoaderDemoPage.scss';
 
 export const LoaderDemoPage: React.FunctionComponent = () => {
-
     return (
         <React.Fragment>
             <h1 className="secondary-color-light">Loaders</h1>
@@ -22,12 +20,11 @@ export const LoaderDemoPage: React.FunctionComponent = () => {
             </div>
             <div className="text-center mt-5">
                 <h1 className="secondary-color-light">Limitation</h1>
-                    <span className="red-color mb-3">Background can't be transparent</span>
-                    <div className="transparent mt-4">
-                        <NCLoader />
-                    </div>
+                <span className="red-color mb-3">{'Background can\'t be transparent'}</span>
+                <div className="transparent mt-4">
+                    <NCLoader />
+                </div>
             </div>
         </React.Fragment>
     );
-
-}
+};

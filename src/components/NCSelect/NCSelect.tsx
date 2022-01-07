@@ -10,8 +10,8 @@ export interface SelectProps {
 	select?: { [key: string]: string };
 	selectedField?: string | undefined;
 	selectFields: Array<any>;
-	fieldValue: string;
-	fieldName: string;
+	fieldValue?: string;
+	fieldName?: string;
 	orderSelectFields?: (a: any, b: any) => number
 	actionHook: (search: string | undefined) => any;
 	defaultOptionLabel?: string;
@@ -19,6 +19,7 @@ export interface SelectProps {
 		label: string,
 		value?: any,
 	};
+    disabled?: boolean,
 }
 
 export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProps) => {
@@ -31,11 +32,12 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                     <Select
                         id={props.id}
                         native
+                        disabled={props.disabled}
                         value={props.selectedField || selectField}
                         className="w-100 nicecactus-input"
                         inputProps={{
-                            name: props.fieldValue,
-                            id: `select-${props.fieldValue}`,
+                            name: props.id,
+                            id: `select-${props.id}`,
                         }}
                         onChange={(
                             event: ChangeEvent<{ label?: string | undefined; value: unknown; }>
@@ -57,14 +59,18 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                             </option>
                         )}
                         {props.selectFields.sort(props.orderSelectFields).map((key: any, index: number) => {
+                            const { _name: name, _value: value } = props.fieldName && props.fieldValue ?
+                                { _name: key[props.fieldName], _value: key[props.fieldValue] } :
+                                { _name: key, _value: key };
+
                             return (
                                 <option
                                     id={'select-menu-item-' + index}
-                                    label={key[props.fieldName]}
+                                    label={name}
                                     key={index}
-                                    value={key[props.fieldValue]}
+                                    value={value}
                                 >
-                                    {key[props.fieldName]}
+                                    {name}
                                 </option>
                             );
                         })}

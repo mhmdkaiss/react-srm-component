@@ -1,5 +1,5 @@
-import { createContextStore } from "easy-peasy";
-import { toastInitState, ToastStore } from "./store/ToastStore";
+import { createContextStore } from 'easy-peasy';
+import { toastInitState, ToastStore } from './store/ToastStore';
 
 export interface ContextStoreModel {
   getUsername: () => string;
@@ -7,19 +7,19 @@ export interface ContextStoreModel {
 }
 
 const ContextStore = createContextStore<ContextStoreModel>(
-  {
-      getUsername: () => {
-        let user: any;
-        try {
-          user = JSON.parse(localStorage.getItem("user") || '{}');
-        } catch {}
+    {
+        getUsername: () => {
+            let user: any;
+            try {
+                user = JSON.parse(localStorage.getItem('user') || '{}');
+            } catch {}
 
-        return user?.name || 'Stranger';
-      },
-      toast: toastInitState
-  }, {
-    name: "ds-example"
-  }
+            return user?.name || 'Stranger';
+        },
+        toast: toastInitState
+    }, {
+        name: 'ds-example'
+    }
 );
 
 export default ContextStore;

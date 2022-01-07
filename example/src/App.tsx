@@ -1,30 +1,35 @@
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import './App.scss'
-import { Navigation } from './components/Navigation/Navigation'
-import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage'
-import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage'
-import { HeadersDemoPage } from './pages/HeadersDemoPage/HeadersDemoPage'
-import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage'
-import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage'
-import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage'
-import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage'
-import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage'
-import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage'
-import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage'
-import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage'
-import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage'
-import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage'
-import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage'
-import { TournamentRoundsDemoPage } from './pages/TournamentRoundsDemoPage/TournamentRoundsDemoPage'
-import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardDemoPage'
-import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage'
-import ContextStore from "./store"
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.scss';
+import { Navigation } from './components/Navigation/Navigation';
+import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
+import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
+import { HeadersDemoPage } from './pages/HeadersDemoPage/HeadersDemoPage';
+import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
+import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage';
+import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
+import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage';
+import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage';
+import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
+import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
+import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
+import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
+import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage';
+import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage';
+import { TournamentRoundsDemoPage } from './pages/TournamentRoundsDemoPage/TournamentRoundsDemoPage';
+import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardDemoPage';
+import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
+import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
+import ContextStore from './store';
 
 const routes = [
+    {
+        path: '/atoms/typography',
+        component: TypographyDemoPage,
+    },
     {
         path: '/atoms/button',
         component: ButtonsDemoPage
@@ -58,42 +63,42 @@ const routes = [
         component: TrainingCardDemoPage,
     },
     {
-        path: "/component/lists",
+        path: '/component/lists',
         component: ListDemoPage,
     },
     {
-        path: "/component/toasts",
+        path: '/component/toasts',
         component: ToastDemoPage,
     },
     {
-        path: "/component/loader",
+        path: '/component/loader',
         component: LoaderDemoPage,
     },
     {
-        path: "/component/lottie-animation",
+        path: '/component/lottie-animation',
         component: LottieAnimationDemoPage,
     },
     {
-        path: "/component/premium-cta",
+        path: '/component/premium-cta',
         component: PremiumCTADemoPage,
     },
     {
-        path: "/component/line-up",
+        path: '/component/line-up',
         component: LineUpDemoPage,
     },
     {
-        path: "/component/slider",
+        path: '/component/slider',
         component: SliderDemoPage,
     },
     {
-        path: "/component/tournament-rounds",
+        path: '/component/tournament-rounds',
         component: TournamentRoundsDemoPage,
     },
     {
         path: '/component/partner-card',
         component: PartnerCardDemoPage,
     },
-]
+];
 
 const App = () => {
     return (
@@ -122,8 +127,8 @@ const App = () => {
                 </Router>
             </ContextStore.Provider>
         </div>
-    )
-}
+    );
+};
 
 function RouteWithSubRoutes(route: any) {
     return (
@@ -134,7 +139,7 @@ function RouteWithSubRoutes(route: any) {
                 <route.component {...props} routes={route.routes} />
             )}
         />
-    )
+    );
 }
 
-export default App
+export default App;
