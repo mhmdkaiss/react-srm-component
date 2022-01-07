@@ -22,6 +22,8 @@ export const Messages: React.FunctionComponent<ChatProps> = ({ messages, current
 
                 if (isReferee) {
                     name = intl.formatMessage({ id: 'chat.referee' });
+                } else if (!m.senderName) {
+                    name = intl.formatMessage({ id: `tournament.${isMe ? 'you' : 'opponent'}` });
                 } else {
                     const hashIndex = m.senderName.lastIndexOf('#');
                     code = hashIndex !== -1 ? m.senderName.slice(hashIndex) : '';
