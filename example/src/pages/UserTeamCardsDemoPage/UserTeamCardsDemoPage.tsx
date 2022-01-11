@@ -12,6 +12,7 @@ import {
     UserCardRounded,
     UserCardRoundedSize,
     ByeCard,
+    HoverUserTeamCard,
 } from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
@@ -310,6 +311,27 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 isSolo={false}
                             />
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span className='component-title'>
+                    Hover card
+                </span>
+                <div className='my-4 d-flex'>
+                    <div className='mr-4'>
+                        <span>User</span>
+                        <HoverUserTeamCard
+                            isSolo={true}
+                            team={TEAM_MOCK}
+                        />
+                    </div>
+                    <div className='ml-4'>
+                        <span>Team</span>
+                        <HoverUserTeamCard
+                            isSolo={false}
+                            team={TEAM_MOCK}
+                        />
                     </div>
                 </div>
             </div>

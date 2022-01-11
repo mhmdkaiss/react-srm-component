@@ -79,12 +79,17 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                     </div>
                     {props.isSolo
                         ? <div>
-                            <div className='color-white justify-content-center user-team-card-hover-text mt-4'>
+                            <div className='color-white justify-content-center user-team-card-hover-text pb-4 mt-4'>
                                 <div className='text-uppercase font-weight-bold'>
                                     {intl.formatMessage({ id: 'player.game.account' })}
                                 </div>
                                 <Tooltip title={intl.formatMessage({ id: 'player.copy.game.account' })} arrow>
-                                    <div onClick={() => copyGameAccount()}>{player.account}</div>
+                                    <div
+                                        className="cursor-pointer"
+                                        onClick={() => copyGameAccount()}
+                                    >
+                                        {player.account}
+                                    </div>
                                 </Tooltip>
                             </div>
                         </div>
@@ -92,7 +97,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                             <div className='captain d-flex'>
                                 <div className='title ml-2 mr-4 d-flex align-self-center'>{intl.formatMessage({ id: 'team.captain' })}</div>
                                 {teamCaptain && teamCaptainId &&
-                                <div className='d-flex ml-4 justify-content-center'>
+                                <div className='d-flex ml-4 justify-content-center cursor-pointer'>
                                     <UserCardRounded
                                         player={teamCaptain}
                                         playerId={teamCaptainId}
@@ -107,10 +112,10 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                         </div>
                     }
                     {!props.isSolo ? (
-                        <div className="user-grid mx-2 mt-2 mb-3">
+                        <div className="user-grid mx-2 mt-2 pb-3">
                             {teamPlayer.map((item, key) => {
                                 return (
-                                    <div key={key} className="d-flex user-container mx-2 my-1">
+                                    <div key={key} className="d-flex user-container mx-2 my-1 cursor-pointer">
                                         {Object.keys(props.team.players).map((item) => {
                                             return (
                                                 <div key={item} className="d-flex user-container mx-2 my-1">
@@ -129,8 +134,6 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                             })}
                         </div>
                     ) : null}
-
-                    {props.isSolo ? <div className="mt-2 mb-3"></div> : null}
                 </div>
             </div>
         );

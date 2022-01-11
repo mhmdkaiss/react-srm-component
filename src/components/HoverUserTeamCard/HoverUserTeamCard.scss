@@ -25,7 +25,6 @@ $mobile: 576px;
         border-radius: 8px;
         color: inherit !important;
         text-decoration: none !important;
-        cursor: pointer;
 
         @include breakpoint(mobile) {
             width: 304px;
