@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import { Link, useLocation } from 'react-router-dom';
 
 export interface TabParameter {
@@ -156,7 +155,12 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                                     <div className="h-100 w-100">
                                                         <div className="tab-name text-uppercase  mx-auto mt-2">{tab.name}</div>
                                                     </div> :
-                                                    <props.NcRouterLink to={tab.path} className="h-100 w-100">
+                                                    <props.NcRouterLink to={{
+                                                        pathname: tab.path,
+                                                        search: location?.search,
+                                                    }}
+                                                    className="h-100 w-100"
+                                                    >
                                                         <div className="tab-name text-uppercase  mx-auto mt-2">{tab.name}</div>
                                                     </props.NcRouterLink>
                                             }
