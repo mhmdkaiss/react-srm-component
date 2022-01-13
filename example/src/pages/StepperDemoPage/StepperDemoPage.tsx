@@ -18,13 +18,13 @@ export const StepperDemoPage: React.FunctionComponent = () => {
     const moveStep = (currentStep: number, next: boolean) => {
         if (next) {
             if (currentStep < MAX_STEP) {
-                setActiveStep(++currentStep);
+                setActiveStep(currentStep + 1);
             }
             return;
         }
 
         if (currentStep > 1) {
-            setActiveStep(--currentStep);
+            setActiveStep(currentStep - 1);
         }
     };
 

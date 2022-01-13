@@ -1,15 +1,14 @@
+import React from 'react';
 import { NCCardList, NCTrainingCard } from '@cactus/srm-component';
-
-import React from "react";
-import { createMockTraining } from '../../mock/TrainingCard/TrainingCard.mocl';
+import { createMockTraining } from '../../mock/TrainingCard/TrainingCard.mock';
 
 export const TrainingCardDemoPage: React.FunctionComponent = () => {
     const generateCards = (length: number) => {
         return [...Array(length)].map(() => {
             const training = createMockTraining();
-            return [<NCTrainingCard key={training.id} name={training.name} image={training.image} />]
+            return [<NCTrainingCard key={training.id} name={training.name} image={training.image} />];
         });
-    }
+    };
 
     const renderRow = (length: number) => {
         return (
@@ -17,7 +16,7 @@ export const TrainingCardDemoPage: React.FunctionComponent = () => {
                 <NCCardList cards={generateCards(length)}/>
             </div>
         );
-    }
+    };
 
     return (
         <div>
@@ -28,5 +27,4 @@ export const TrainingCardDemoPage: React.FunctionComponent = () => {
             {renderRow(9)}
         </div>
     );
-
-}
+};

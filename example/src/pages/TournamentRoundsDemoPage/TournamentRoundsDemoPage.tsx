@@ -1,15 +1,15 @@
-import { NCCard, NCTitle, NCTournamentRounds } from "@cactus/srm-component";
-import React from "react";
+import { NCCard, NCTitle, NCTournamentRounds } from '@cactus/srm-component';
+import React from 'react';
 import {
     MAP_ROUNDS_BRACKET_MOCK,
     MAP_ROUNDS_BRACKET_NO_IMAGES_MOCK,
     MAP_ROUNDS_DOUBLE_ELIM_MOCK
-} from "../../mock/TournamentRounds/TournamentRounds.mock";
-import "./TournamentRoundsDemoPage.scss";
+} from '../../mock/TournamentRounds/TournamentRounds.mock';
+import './TournamentRoundsDemoPage.scss';
 
 export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
-    const noBattleImagesThemeColor = "#FFC000";
-    const doubleElimThemeColor = "#FF0DAE";
+    const noBattleImagesThemeColor = '#FFC000';
+    const doubleElimThemeColor = '#FF0DAE';
     return (
         <React.Fragment>
             <h1 className="secondary-color-light">Tournament Rounds</h1>
@@ -35,9 +35,9 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
             <br/>
             <div className="tournament-rounds-container">
                 <NCCard>
-                    <NCTitle 
-                        label='Rounds Bracket (without battle images)' 
-                        color={noBattleImagesThemeColor} 
+                    <NCTitle
+                        label='Rounds Bracket (without battle images)'
+                        color={noBattleImagesThemeColor}
                     />
                     <NCTournamentRounds
                         displayFormat={0}
@@ -59,8 +59,8 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
             <br/>
             <div className="tournament-rounds-container">
                 <NCCard>
-                    <NCTitle 
-                        label='Rounds Double Elimination' 
+                    <NCTitle
+                        label='Rounds Double Elimination'
                         color={doubleElimThemeColor}
                     />
                     <NCTournamentRounds
@@ -69,10 +69,10 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
                         themeColor={doubleElimThemeColor}
                     />
                 </NCCard>
-                <div className="rounds-mobile" style={{overflowX: "hidden", maxHeight: "398px"}}>
+                <div className="rounds-mobile" style={{ overflowX: 'hidden', maxHeight: '398px' }}>
                     <NCCard>
-                        <NCTitle 
-                            label='Rounds' 
+                        <NCTitle
+                            label='Rounds'
                             color={doubleElimThemeColor}
                         />
                         <NCTournamentRounds
@@ -84,6 +84,6 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
                 </div>
             </div>
         </React.Fragment>
-    )
-}
+    );
+};
 

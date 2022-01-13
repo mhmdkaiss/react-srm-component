@@ -1,22 +1,15 @@
-import './PartnerCardDemoPage.scss';
-
-import * as faker from 'faker';
-
 import React from 'react';
-import {
-    NCCardList,
-    NCPartnerCard
-} from '@cactus/srm-component';
+import './PartnerCardDemoPage.scss';
+import { NCCardList, NCPartnerCard } from '@cactus/srm-component';
 import { createMockPartner } from '../../mock/PartnerCard/PartnerCard.mock';
 
 export const PartnerCardDemoPage: React.FunctionComponent = () => {
-
     const generateCards = () => {
         return [...Array(10)].map(() => {
             const partner = createMockPartner();
-            return [<NCPartnerCard key={partner.id} partner={partner} />]
+            return [<NCPartnerCard key={partner.id} partner={partner} />];
         });
-    }
+    };
 
     return (
         <div className='d-flex flex-column partner-card-demo-page'>

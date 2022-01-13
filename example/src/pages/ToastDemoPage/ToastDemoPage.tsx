@@ -45,7 +45,7 @@ export const ToastDemoPage: React.FunctionComponent = () => {
 
     let toastProperties: ToastModel;
 
-    const selectPosition = (e: any) => {
+    const selectPosition = (e: string) => {
         positionsFields.map((field) => {
             return (field.key === e ? setPosition(field.value) : null);
         });
@@ -101,7 +101,7 @@ export const ToastDemoPage: React.FunctionComponent = () => {
                 <NCSelect
                     fieldName={'value'}
                     fieldValue={'key'}
-                    actionHook={selectPosition}
+                    actionHook={() => selectPosition}
                     selectFields={positionsFields}
                 />
             </div>

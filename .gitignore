@@ -18,6 +18,10 @@ dist
 .env.production.local
 !example/.env
 !example/.env.*
+!example/.eslintignore
+!example/.eslintrc
+!example/.prettierrc
+!example/.stylelintrc
 
 # vscode
 settings.json

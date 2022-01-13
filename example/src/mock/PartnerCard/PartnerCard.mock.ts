@@ -1,5 +1,6 @@
 import * as faker from 'faker';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createMockPartner = () => {
     return {
         id: faker.datatype.uuid(),
@@ -14,5 +15,5 @@ export const createMockPartner = () => {
             discord: faker.datatype.boolean() ? 'https://nextcactus.gg?discord': '',
             instagram: faker.datatype.boolean() ? 'https://nextcactus.gg?instagram': '',
         }
-    }
+    };
 };

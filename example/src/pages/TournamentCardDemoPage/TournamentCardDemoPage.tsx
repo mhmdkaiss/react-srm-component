@@ -3,19 +3,19 @@ import './TournamentCardDemoPage.scss';
 import React from 'react';
 import { NCTournamentCard, NCAnimatedCardList } from '@cactus/srm-component';
 
-const tournament =  {
-    id: "4684223f-1522-4e05-8e20-601b11584247",
+const tournament = {
+    id: '4684223f-1522-4e05-8e20-601b11584247',
     date: 1630677600,
-    gameSlug: "rocket-league",
+    gameSlug: 'rocket-league',
     min: 4,
-    name: "NPTF-37- 3",
-    partner: "creditagricole",
-    platforms: ["ps4", "pc", "xbox", "switch"],
+    name: 'NPTF-37- 3',
+    partner: 'creditagricole',
+    platforms: [ 'ps4', 'pc', 'xbox', 'switch' ],
     entrance: {
         fee: 0,
     },
     format: 1,
-}
+};
 
 const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cbefb8ccf473930ea0237f1', cardStyle?: number) => {
     return (
@@ -28,8 +28,8 @@ const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cb
             winner={winner}
             cardStyle={cardStyle}
         />
-    )
-}
+    );
+};
 
 const renderRow = (title: string, restricted?: boolean, winner?: string) => {
     return (
@@ -49,17 +49,16 @@ const renderRow = (title: string, restricted?: boolean, winner?: string) => {
                                 '5ee2000cca2d921b383b5c94' :
                                 '5cbefb8ccf473930ea0237f1' :
                                 '5c436c2c766ea609157540e8';
-                            return (renderCard(restricted, winner, gameId))
+                            return (renderCard(restricted, winner, gameId));
                         })
                     }
                 />
             </div>
         </React.Fragment>
-    )
-}
+    );
+};
 
 export const TournamentCardDemoPage: React.FunctionComponent = () => {
-
     return (
         <div className='tournament-demo-page'>
             <div className='grid mt-5'>

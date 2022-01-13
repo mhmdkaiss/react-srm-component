@@ -21,13 +21,12 @@ import {
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
 export const InputDemoPage: React.FunctionComponent = () => {
-
     // Scroll Top Button
     const scrollTop = (clicked: boolean) => {
         if (!clicked) {
             return;
         }
-       window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     };
 
     // Toogles
@@ -216,7 +215,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
             <div>
                 <h4>Text input</h4>
                 <NCInput label='Label' value='Value' onChange={(e) => {
-                    console.log('e');
+                    console.log('event', e);
                 }} />
                 {renderNCTextArea()}
                 {renderNcSelect()}
@@ -234,7 +233,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     initialDate={''}
                     label='Date picker'
                     dateChanged={(e) => {
-                        console.log('e');
+                        console.log('event', e);
                     }}
                 />
             </div>
@@ -246,7 +245,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         searchFields={{ search: { label: '' } }}
                         placeHolder='Place holder'
                         actionHook={(e) => {
-                            console.log('e');
+                            console.log('event', e);
                         }}
                     />
                 </div>
@@ -261,7 +260,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         }}
                         placeHolder='Place holder'
                         actionHook={(e) => {
-                            console.log('e');
+                            console.log('event', e);
                         }}
                     />
                 </div>
@@ -276,11 +275,11 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             }}
                             placeHolder='Place holder'
                             actionHook={(e) => {
-                                console.log('e');
+                                console.log('event', e);
                             }}
                             list={[{ name: 'item1' }, { name: 'Item 2' }]}
                             displayParam='name'
-                            onSelection={(e: any) => {
+                            onSelection={(e) => {
                                 console.log(e);
                                 setSelectedItem2(e);
                             }}
@@ -317,7 +316,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             label='Place holder'
                             list={asyncSearchList}
                             displayParam='name'
-                            onSelection={(e: any) => {
+                            onSelection={(e) => {
                                 console.log(e);
                                 setSelectedItem2(e);
                             }}
@@ -353,13 +352,13 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         }}
                         placeHolder='Place holder'
                         actionHook={(e) => {
-                            console.log('e');
+                            console.log('event', e);
                         }}
                         list={searchList}
                         displayParam={searchFiled}
                         selected={searchSelected}
                         compareParam={searchFiled}
-                        onSelection={(selected: any) => {
+                        onSelection={(selected) => {
                             const item = searchList.find(
                                 (item) =>
                                     item[searchFiled] === selected[searchFiled]
@@ -369,7 +368,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                                 setSearchSelected([...searchSelected]);
                             }
                         }}
-                        onDelete={(deleted: any) => {
+                        onDelete={(deleted) => {
                             setSearchSelected([
                                 ...searchSelected.filter(
                                     (item) => item !== deleted[searchFiled]

@@ -9,6 +9,7 @@ export interface ContextStoreModel {
 const ContextStore = createContextStore<ContextStoreModel>(
     {
         getUsername: () => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             let user: any;
             try {
                 user = JSON.parse(localStorage.getItem('user') || '{}');

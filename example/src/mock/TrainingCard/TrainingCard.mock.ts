@@ -9,12 +9,13 @@ const trainings = [
     '5ef46a80ad6ad898839cbb04',
     '5f6db79159cb1973d10545c6',
     '6062d7918ece279faec2ad5d',
-]
+];
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createMockTraining = () => {
     return {
         id: faker.datatype.uuid(),
         name: `${faker.company.companyName()}`,
         image: `https://esm-prod-public.s3.amazonaws.com/training/program/${trainings[Math.floor(Math.random() * trainings.length)]}/medias/Cover`,
-    }
+    };
 };

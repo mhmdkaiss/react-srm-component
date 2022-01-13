@@ -1,7 +1,7 @@
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import { Navigation } from './components/Navigation/Navigation';
@@ -100,7 +100,7 @@ const routes = [
     },
 ];
 
-const App = () => {
+const App = (): ReactElement => {
     return (
         <div className='app'>
             <ContextStore.Provider>
@@ -114,7 +114,7 @@ const App = () => {
                     </AppBar>
                     <div className='content d-flex flex-row w-100 h-100'>
                         <div className='navigation'>
-                            <Navigation></Navigation>
+                            <Navigation/>
                         </div>
                         <div className='content p-5'>
                             <Switch>
@@ -130,6 +130,7 @@ const App = () => {
     );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function RouteWithSubRoutes(route: any) {
     return (
         <Route
