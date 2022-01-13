@@ -22,7 +22,7 @@ const MAP_ROUNDS_FORMATS = {
     },
 };
 
-const renderTournamentRoundsContent = (props: NCTournamentRoundsProps) : React.ReactElement | undefined => {
+const renderTournamentRoundsContent = (props: NCTournamentRoundsProps) => {
     const { displayFormat, ...roundsProps } = props;
     return MAP_ROUNDS_FORMATS[displayFormat]?.({ ...roundsProps });
 };

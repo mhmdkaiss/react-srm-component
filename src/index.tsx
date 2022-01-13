@@ -56,7 +56,6 @@ import {
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
-
 export { NCAnimatedCardList } from './components/NCAnimatedCardList/NCAnimatedCardList';
 export { NCCardList } from './components/NCCardList/NCCardList';
 export { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
@@ -67,6 +66,7 @@ export { NCPartnerCard } from './components/NCPartnerCard/NCPartnerCard';
 export { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
 export { NCPromotionalBanner } from './components/NCPromotionalBanner/NCPromotionalBanner';
 export { NCStream } from './components/NCStream/NCStream';
+export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';
 export {

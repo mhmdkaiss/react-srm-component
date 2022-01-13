@@ -1,0 +1,51 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-tournament-discord {
+    display: flex;
+    flex-direction: column;
+    background: $grey2;
+    padding: 16px 32px;
+    border-radius: 16px;
+
+    @media screen and (max-width: $sm) {
+        padding: 8px;
+    }
+
+    .nc-join-discord-message {
+        font-weight: bold;
+        font-size: $small-text;
+        line-height: 100%;
+        width: 65%;
+        text-align: center;
+        align-self: center;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: $grey6;
+        flex-grow: 1;
+        margin: 0 16px;
+
+        @media screen and (max-width: $sm) {
+            width: 100%;
+        }
+    }
+
+    .nc-invite-links-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: safe center;
+        gap: 32px;
+        padding-top: 16px;
+        overflow-x: auto;
+
+        @media screen and (max-width: $sm) {
+            justify-content: safe start;
+            gap: 16px;
+        }
+    }
+
+    .one-invite :first-child {
+        max-width: initial;
+    }
+}

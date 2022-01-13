@@ -100,10 +100,5 @@
         "*.{ts,tsx}": [
             "eslint --fix"
         ]
-    },
-    "jest": {
-        "moduleNameMapper": {
-            "twitch-player": "<rootDir>/node_modules/twitch-player/"
-        }
     }
 }

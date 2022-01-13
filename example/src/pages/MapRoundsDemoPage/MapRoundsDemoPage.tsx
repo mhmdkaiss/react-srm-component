@@ -52,7 +52,7 @@ export const MapRoundsDemoPage: React.FunctionComponent = () => {
             <NCCard>
                 <NCTitle label={mapRoundsTitle} />
                 <NCMapRounds mapRounds={demoMapRounds} />
-        </NCCard>
+            </NCCard>
         </React.Fragment>
     )
 }

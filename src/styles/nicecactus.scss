@@ -48,6 +48,7 @@
 @import '../components/NCRoundsBracket/NCRoundsBracket.scss';
 @import '../components/NCRoundsDoubleElimination/NCRoundsDoubleElimination.scss';
 @import '../components/NCRoundsResult/NCRoundsResult.scss';
+@import '../components/NCTournamentDiscord/NCTournamentDiscord.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -65,6 +66,8 @@
 @import '../atoms/NCRoundBattle/NCRoundBattle.scss';
 @import '../atoms/NCBattleMap/NCBattleMap.scss';
 @import '../atoms/NCTypography/NCTypography.scss';
+@import '../atoms/NCInviteLink/NCInviteLink.scss';
+@import '../atoms/NCDiscordGuild/NCDiscordGuild.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
