@@ -86,5 +86,9 @@
     {
         "term": "media-upload.info.message",
         "comment": "drag and drop an image or click"
+    },
+    {
+        "term": "only.captain.can.talk",
+        "comment": "Only the captain can talk with the other team"
     }
 ]

@@ -228,7 +228,7 @@ export const Chat: React.FunctionComponent<ChatProps> = (props: ChatProps) => {
                             <div className={'chat-shadow position-absolute w-100'}></div>
                             <Messages fullScreen={props.fullScreen || false} messages={props.messages} currentUserId={props.currentUserId} />
                             <div className="footer mt-3 px-3 pb-2">
-                                {props.isCaptain &&
+                                {props.isCaptain ?
                                     <React.Fragment>
                                         <span className="input-text">
                                             <FormattedMessage
@@ -250,6 +250,9 @@ export const Chat: React.FunctionComponent<ChatProps> = (props: ChatProps) => {
                                             </span>
                                         </div>
                                     </React.Fragment>
+
+                                    :
+                                    <span className="input-text-no-captain d-flex justify-content-center">{intl.formatMessage({ id: 'only.captain.can.talk' })}</span>
                                 }
                             </div>
                         </div>
