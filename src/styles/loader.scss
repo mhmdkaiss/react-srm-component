@@ -110,6 +110,7 @@
 
     @keyframes cactus-color {
         0% {
+            width: 42%; // Fix chrome issue on mask
             background: #00ffd1;
         }
         25% {
