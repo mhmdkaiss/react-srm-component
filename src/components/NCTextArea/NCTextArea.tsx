@@ -4,12 +4,14 @@ import React from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 
 export interface NCTextAreaProps {
-    value: string;
+    value : string;
+    defaultValue?: string;
     placeHolder: string;
     minRows?: number;
     maxRows?: number;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     actionHook: (search: string) => any;
+    disabled?: boolean
 }
 
 export const NCTextArea: React.FunctionComponent<NCTextAreaProps> = (props: NCTextAreaProps) => {
@@ -20,13 +22,15 @@ export const NCTextArea: React.FunctionComponent<NCTextAreaProps> = (props: NCTe
                     <TextareaAutosize
                         className="w-100"
                         placeholder={props.placeHolder}
-                        defaultValue={props.value}
+                        defaultValue={props.defaultValue}
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onChange={(event: any) => {
                             props.actionHook(event.target.value as string);
                         }}
                         rowsMin={props.minRows}
                         rowsMax={props.maxRows}
+                        disabled={props.disabled}
+                        value={props.value}
                     />
                 </div>
             </MuiThemeProvider>

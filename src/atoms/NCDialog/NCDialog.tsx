@@ -11,6 +11,7 @@ export interface DialogProps {
     noPadding?: boolean;
     noHeader?: boolean;
     onClose?: (closed: string) => void;
+    wildBody?: boolean;
 }
 export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProps) => {
     if (props.show === false) {
@@ -50,7 +51,7 @@ export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProp
                     </div>
                 }
 
-                <div className="dialog-body">{props.children}</div>
+                <div className={`dialog-body${props.wildBody ? ' w-100' : ''}`}>{props.children}</div>
             </div>
         </div>
     );
