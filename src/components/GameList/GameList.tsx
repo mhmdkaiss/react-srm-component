@@ -34,6 +34,7 @@ export const GameList: React.FunctionComponent<GameListProps> = (props: GameList
                         onClick={handleClick}
                         key={index}
                         fancy={props.fancy}
+                        tooltipTitle={game.title}
                     />;
                 })
             }
