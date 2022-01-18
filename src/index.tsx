@@ -69,6 +69,7 @@ export { NCStream } from './components/NCStream/NCStream';
 export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';
+export { NCImage } from './atoms/NCImage/NCImage';
 export {
     DatePicker,
     Dialog,

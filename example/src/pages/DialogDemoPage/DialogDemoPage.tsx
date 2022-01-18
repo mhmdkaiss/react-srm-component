@@ -7,7 +7,8 @@ import {
     NCToastType,
     ToastModel,
     ToastPosition,
-    NCSwitch
+    NCSwitch,
+    NCImage,
 } from '@cactus/srm-component';
 import ContextStore from '../../store';
 import React, { useState } from 'react';
@@ -32,6 +33,7 @@ export const DialogDemoPage: React.FunctionComponent = () => {
 
     return (
         <div className='buttons-demo-page'>
+            <h4>NCDialog</h4>
             <Button label="show modal" size={ButtonSize.BIG} setClick={() => setAtomsOpen(true)}/>
             <NCDialog
                 show={atomsOpen}
@@ -72,6 +74,12 @@ export const DialogDemoPage: React.FunctionComponent = () => {
                 onDeleteToast={deleteToast}
                 position={ToastPosition.TOP_RIGHT}
                 duration={7000}
+            />
+
+            <h4 className='mt-5'>NCImage</h4>
+            <NCImage
+                src="https://public.nextcactus.gg/media/assets/homepage-banner.png"
+                styleName='w-50'
             />
         </div>
     );
