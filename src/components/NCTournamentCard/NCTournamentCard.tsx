@@ -1,13 +1,15 @@
-import './NCTournamentCard.scss';
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { Icon, IconMask, Button, ButtonTheme, ButtonType, IconType } from '../..';
+import { Button, ButtonTheme, ButtonType } from '../../atoms/Button/Button';
+import { Icon, IconType } from '../../atoms/Icon/Icon';
+import { IconMask } from '../../atoms/Icon/IconMask';
 import { Tournament, TournamentFee } from '../../models/Tournament';
+import './NCTournamentCard.scss';
 
 export enum TournamentCardStyle {
     HIGHLIGHT1 = 1,
-    HIGHLIGHT2 = 2
+    HIGHLIGHT2 = 2,
+    SIMILAR_TOURNAMENT = 3
 }
 export interface NCTournamentCardProps {
     tournament: Tournament;
@@ -128,7 +130,8 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
         <div className={
             `nc-tournament-card
             ${props.cardStyle === TournamentCardStyle.HIGHLIGHT1 ? 'highlight1' :
-            (props.cardStyle === TournamentCardStyle.HIGHLIGHT2) ? 'highlight2' : ''}
+            (props.cardStyle === TournamentCardStyle.HIGHLIGHT2) ? 'highlight2' :
+                (props.cardStyle === TournamentCardStyle.SIMILAR_TOURNAMENT) ? 'similar-tournament' : ''}
             ${props.restricted ? 'restricted' : ''}`
         }>
             <div className="tournament-banner position-relative">

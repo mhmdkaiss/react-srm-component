@@ -1,13 +1,13 @@
-import './NCCardList.scss';
-
 import React, { useEffect, useRef, useState } from 'react';
-import { Icon, IconType } from '../../atoms/Icon/Icon';
+import { Icon, IconProps, IconType } from '../../atoms/Icon/Icon';
+import './NCCardList.scss';
 
 export interface NCCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
     hoveredCard?: (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => void;
     scrollHook?: (scrollLeft: number) => void;
+    customArrowsStyle?: IconProps;
 }
 
 export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCardListProps) => {
@@ -18,8 +18,24 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     const [ leftArrow, setLeftArrow ] = useState<boolean>(false);
     const [ rightArrow, setRightArrow ] = useState<boolean>(false);
     const [ cardWidth, setCardWidth ] = useState<number>();
+    const [ arrowIcon, setArrowIcon ] = useState<React.ReactNode>();
+
+    const { customArrowsStyle } = props;
+
+    const renderArrow = () => {
+        const iconProps =
+            customArrowsStyle
+                ? { ...customArrowsStyle }
+                : {
+                    icon: IconType.GoToPreviousPage,
+                    height: 12,
+                    width: 12
+                };
+        return <Icon {...iconProps} />;
+    };
 
     useEffect(() => {
+        setArrowIcon(renderArrow());
         updateArrows();
     }, [props.cards]);
 
@@ -53,17 +69,12 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
 
     return (
         <div className="nc-card-list position-relative">
-            {
-                leftArrow &&
+            {leftArrow &&
                 <div
                     className="left position-absolute d-flex align-items-center cursor-pointer"
                     onClick={() => scrollContainer(true)}
                 >
-                    <Icon
-                        icon={IconType.GoToPreviousPage}
-                        height={12}
-                        width={12}
-                    />
+                    {arrowIcon}
                 </div>
             }
             <div
@@ -91,17 +102,12 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                     })
                 }
             </div>
-            {
-                rightArrow &&
+            {rightArrow &&
                 <div
                     className="right position-absolute d-flex align-items-center cursor-pointer"
                     onClick={() => scrollContainer()}
                 >
-                    <Icon
-                        icon={IconType.GoToPreviousPage}
-                        height={12}
-                        width={12}
-                    />
+                    {arrowIcon}
                 </div>
             }
         </div>

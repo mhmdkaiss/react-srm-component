@@ -161,6 +161,23 @@
             }
         }
     }
+
+    &.similar-tournament {
+        width: 170px;
+
+        .tournament-banner {
+            height: 96px;
+        }
+
+        .tournament-infos {
+            line-height: 116%;
+            letter-spacing: 0.04em;
+
+            &.title {
+                line-height: 150%;
+            }
+        }
+    }
 }
 
 .nc-hover-card.opening,

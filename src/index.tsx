@@ -41,7 +41,6 @@ import { NCSwitch } from './components/NCSwitch/NCSwitch';
 import { NCTextArea } from './components/NCTextArea/NCTextArea';
 import { NCTinyMce } from './components/NCTinyMce/NCTinyMce';
 import { NCToastContainer } from './components/NCToastContainer/NCToastContainer';
-import { NCTournamentCard } from './components/NCTournamentCard/NCTournamentCard';
 import { NCTrainingCard } from './components/NCTrainingCard/NCTrainingCard';
 import { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 import { SearchBar } from './components/SearchBar/SearchBar';
@@ -66,6 +65,7 @@ export { NCPartnerCard } from './components/NCPartnerCard/NCPartnerCard';
 export { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
 export { NCPromotionalBanner } from './components/NCPromotionalBanner/NCPromotionalBanner';
 export { NCStream } from './components/NCStream/NCStream';
+export { NCTournamentCard, TournamentCardStyle } from './components/NCTournamentCard/NCTournamentCard';
 export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';
@@ -128,7 +128,6 @@ export {
     NCLottieAnimation,
     NCLineUp,
     NCReminderTools,
-    NCTournamentCard,
     NCTrainingCard,
     NCSlider,
     NCSliderBackground,
