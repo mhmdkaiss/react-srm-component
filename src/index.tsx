@@ -70,6 +70,8 @@ export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTourname
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';
 export { NCImage } from './atoms/NCImage/NCImage';
+export { NCFeedCard } from './components/NCFeedCard/NCFeedCard';
+export { FeedModel } from './models/Feed';
 export {
     DatePicker,
     Dialog,

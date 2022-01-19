@@ -7,6 +7,7 @@ import './App.scss';
 import { Navigation } from './components/Navigation/Navigation';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
+import { FeedCardDemoPage } from './pages/FeedCardDemoPage/FeedCardDemoPage';
 import { HeadersDemoPage } from './pages/HeadersDemoPage/HeadersDemoPage';
 import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
 import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage';
@@ -97,6 +98,10 @@ const routes = [
     {
         path: '/component/partner-card',
         component: PartnerCardDemoPage,
+    },
+    {
+        path: '/component/feed-cards',
+        component: FeedCardDemoPage,
     },
 ];
 

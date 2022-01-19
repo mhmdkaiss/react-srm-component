@@ -63,14 +63,17 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/component/tournament-cards'>
                         <ListItemText primary='Tournaments cards'/>
                     </ListItem>
-                    <ListItem button component={Link} to='/component/tournament-rounds'>
-                        <ListItemText primary='Tournament Rounds'/>
-                    </ListItem>
                     <ListItem button component={Link} to='/component/training-cards'>
                         <ListItemText primary='Training cards'/>
                     </ListItem>
                     <ListItem button component={Link} to='/component/partner-card'>
                         <ListItemText primary='Partner card'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/component/feed-cards'>
+                        <ListItemText primary='Feed cards'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/component/tournament-rounds'>
+                        <ListItemText primary='Tournament Rounds'/>
                     </ListItem>
                     <ListItem button component={Link} to='/component/lists'>
                         <ListItemText primary="Lists"/>

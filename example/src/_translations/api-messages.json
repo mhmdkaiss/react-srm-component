@@ -90,5 +90,9 @@
     {
         "term": "only.captain.can.talk",
         "comment": "Only the captain can talk with the other team"
+    },
+    {
+        "term": "feed.share.on",
+        "comment": "Share on"
     }
 ]
