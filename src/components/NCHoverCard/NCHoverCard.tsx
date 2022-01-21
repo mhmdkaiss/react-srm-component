@@ -1,5 +1,5 @@
 import './NCHoverCard.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export interface NCHoverCardProps {
     card: React.ReactNode,
@@ -13,8 +13,11 @@ export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NC
     const [ opening, setOpening ] = useState<boolean>();
     const [ left, setLeft ] = useState<number>(props.cardRect.left);
     const [ timerClose, setTimerClose ] = useState<NodeJS.Timeout>();
-    const [ timerDelete, setTimerDelete ] = useState<NodeJS.Timeout>();
     const maxCardWidth = props.maxCardWidth || 340;
+
+    const scrollInit = window.scrollY;
+    const [ scrollDiff, setScrollDiff ] = useState<number>(0);
+    const triggerBoxRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         setOpening(true);
@@ -30,34 +33,38 @@ export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NC
                 setLeft(centered);
             }
         }
-
-        if (!isTouchDevice()) {
-            const t = setTimeout(() => {
-                startClosing();
-            }, 200);
-            setTimerClose(t);
-        }
     }, [props]);
 
     useEffect(() => {
         window.onscroll = (() => {
-            startClosing();
+            setScrollDiff(scrollInit - window.scrollY);
+        });
+
+        window.onmouseup = ((e: MouseEvent) => {
+            if (triggerBoxRef.current) {
+                const boxSize = triggerBoxRef.current.getBoundingClientRect();
+                if (
+                    e.pageX < boxSize.left || e.pageX > boxSize.left + boxSize.width ||
+                    e.pageY < boxSize.top || e.pageX > boxSize.top + boxSize.height
+                ) {
+                    startClosing();
+                }
+            }
         });
     }, []);
 
     useEffect(() => {
         return () => {
             clearTimer(timerClose);
-            clearTimer(timerDelete);
         };
-    }, [ timerClose, timerDelete ]);
+    }, [timerClose]);
 
     const startClosing = () => {
         setOpening(false);
         const t = setTimeout(() => {
             props.closedHook(true);
         }, 200);
-        setTimerDelete(t);
+        setTimerClose(t);
     };
 
     const clearTimer = (timer?: NodeJS.Timeout) => {
@@ -66,27 +73,33 @@ export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NC
         }
     };
 
-    const isTouchDevice = () => {
-        return window.matchMedia('(any-hover: none)').matches;
-    };
-
     return (
-        <div
-            className={`nc-hover-card position-fixed ${opening ? 'opening' : 'closing'}`}
-            style={{
-                left: opening ? left : props.cardRect.left,
-                top: opening ? props.cardRect.top + props.containerRect.height / 2 : props.cardRect.top,
-            }}
-            onMouseLeave={() => {
-                if (opening) {
-                    startClosing();
-                }
-            }}
-            onMouseMove={() => {
-                clearTimer(timerClose);
-            }}
-        >
-            {props.card}
+        <div className='nc-hover-card-container'>
+            <div
+                className={`nc-hover-card position-fixed ${opening ? 'opening' : 'closing'}`}
+                style={{
+                    left: opening ? left : props.cardRect.left,
+                    top: opening ? props.cardRect.top + props.containerRect.height / 2 : props.cardRect.top,
+                    marginTop: scrollDiff,
+                }}
+            >
+                {props.card}
+            </div>
+            <div
+                ref={triggerBoxRef}
+                className='trigger-box position-fixed'
+                style={{
+                    left: props.cardRect.left,
+                    top: props.cardRect.top,
+                    width: props.cardRect.width,
+                    height: props.cardRect.height,
+                }}
+                onMouseLeave={() => {
+                    if (opening) {
+                        startClosing();
+                    }
+                }}
+            ></div>
         </div>
     );
 };

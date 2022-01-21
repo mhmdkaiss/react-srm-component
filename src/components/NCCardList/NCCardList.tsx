@@ -22,6 +22,13 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
 
     const { customArrowsStyle } = props;
 
+    const isTouchDevice = () => {
+        return window.matchMedia('(any-hover: none)').matches;
+    };
+
+    const [ hoverTimer, setHoverTimer ] = useState<NodeJS.Timeout>();
+    const hoverTimeout = isTouchDevice() ? 0 : 1000;
+
     const renderArrow = () => {
         const iconProps =
             customArrowsStyle
@@ -92,7 +99,18 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                                 className="card-container"
                                 onMouseEnter={(e) => {
                                     if (props.hoveredCard && scrollableRef.current) {
-                                        props.hoveredCard(card, e.currentTarget.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
+                                        const target = e.currentTarget;
+                                        const timer = setTimeout(() => {
+                                            if (props.hoveredCard && scrollableRef.current && e.currentTarget) {
+                                                props.hoveredCard(card, target.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
+                                            }
+                                        }, hoverTimeout);
+                                        setHoverTimer(timer);
+                                    }
+                                }}
+                                onMouseLeave={() => {
+                                    if (hoverTimer) {
+                                        clearTimeout(hoverTimer);
                                     }
                                 }}
                             >

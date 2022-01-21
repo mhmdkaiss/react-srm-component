@@ -22,7 +22,7 @@ const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cb
         <NCTournamentCard
             tournament={tournament}
             banner={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${gameId}/medias/TournamentBanner`}
-            gameName="Game Name"
+            gameName="Long game name"
             prize="10 €"
             restricted={restricted}
             winner={winner}

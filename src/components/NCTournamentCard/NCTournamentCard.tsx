@@ -19,6 +19,7 @@ export interface NCTournamentCardProps {
     prize?: string;
     winner?: string;
     cardStyle?: TournamentCardStyle;
+    forceSmall?: boolean;
     joinHook?: (event: React.MouseEvent) => void;
     readHook?: (event: React.MouseEvent) => void;
 }
@@ -35,22 +36,45 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
         minute: '2-digit',
     };
     const iconSize = 16;
+    const marqueeSliderRef = useRef<HTMLDivElement | null>(null);
+    const marqueeContainerRef = useRef<HTMLDivElement | null>(null);
+    const [ marqueeWidth, setMarqueeWidth ] = useState<number>(0);
+    const [ marqueeHeight, setMarqueeHeight ] = useState<number>(0);
+    const [ ellipsis, setEllipsis ] = useState<boolean>(false);
+    const animationDuration = 200;
 
     useEffect(() => {
-        if (platformContaierRef?.current) {
-            const containerWidth = platformContaierRef.current.clientWidth;
-            setPlatforms(
-                containerWidth < props.tournament.platforms.length * iconSize ?
-                    [...platforms.slice(0, Math.floor(containerWidth / iconSize) - 1)] :
-                    props.tournament.platforms
-            );
-        }
+        setTimeout(() => {
+            if (platformContaierRef?.current) {
+                const containerWidth = platformContaierRef.current.clientWidth;
+                setPlatforms(
+                    containerWidth < props.tournament.platforms.length * iconSize ?
+                        [...platforms.slice(0, Math.floor(containerWidth / iconSize) - 1)] :
+                        props.tournament.platforms
+                );
+            }
+        }, animationDuration);
     }, [platformContaierRef.current]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (marqueeSliderRef.current && marqueeContainerRef.current) {
+                const containerSize = marqueeContainerRef.current.offsetWidth;
+                const marqueeSize = marqueeSliderRef.current.offsetWidth - containerSize;
+                setMarqueeWidth(marqueeSliderRef.current.offsetWidth < containerSize ? 0 : marqueeSize);
+                setMarqueeHeight(marqueeSliderRef.current?.offsetHeight);
+                setEllipsis(marqueeSliderRef.current.offsetWidth > containerSize);
+            }
+        }, animationDuration);
+    }, [ marqueeSliderRef.current, marqueeContainerRef.current ]);
 
     const renderSecondRow = () => {
         return (
             <div className="tournament-infos">
-                <div>{ props.prize }</div>
+                {
+                    props.prize &&
+                    <div>{ props.prize } €</div>
+                }
                 <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.format === 1 ? 'solo' : 'team' }` }) }</div>
             </div>
         );
@@ -127,13 +151,16 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     };
 
     return (
-        <div className={
-            `nc-tournament-card
-            ${props.cardStyle === TournamentCardStyle.HIGHLIGHT1 ? 'highlight1' :
+        <div
+            className={
+                `nc-tournament-card
+                ${props.cardStyle === TournamentCardStyle.HIGHLIGHT1 ? 'highlight1' :
             (props.cardStyle === TournamentCardStyle.HIGHLIGHT2) ? 'highlight2' :
                 (props.cardStyle === TournamentCardStyle.SIMILAR_TOURNAMENT) ? 'similar-tournament' : ''}
-            ${props.restricted ? 'restricted' : ''}`
-        }>
+                ${props.restricted ? 'restricted' : ''}
+                ${props.forceSmall ? 'small' : ''}`
+            }
+        >
             <div className="tournament-banner position-relative">
                 <img
                     className="banner-image position-absolute"
@@ -141,9 +168,25 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 />
             </div>
             <div className="tournament-content align-self-center">
-                <div className="tournament-infos title mt-1">
-                    <div>{ props.gameName }</div>
-                    <div>{ props.tournament.name }</div>
+                <div
+                    ref={marqueeContainerRef}
+                    className={`marquee-container ${ellipsis ? 'manual-ellipsis' : ''}`}
+                >
+                    <div
+                        className="position-relative marquee-content"
+                        style={{
+                            width: marqueeWidth,
+                            height: marqueeHeight,
+                        }}
+                    >
+                        <div
+                            ref={marqueeSliderRef}
+                            className="marquee-slider tournament-infos title position-absolute mt-1"
+                        >
+                            <div>{ props.gameName }</div>
+                            <div>{ props.tournament.name }</div>
+                        </div>
+                    </div>
                 </div>
                 {
                     !props.restricted &&

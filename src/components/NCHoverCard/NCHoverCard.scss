@@ -1,5 +1,10 @@
-.nc-hover-card {
-    transform: translateY(0px);
-    transition: all 0.2s;
-    z-index: 3;
+.nc-hover-card-container {
+    .nc-hover-card {
+        transition: all 0.2s ease-out;
+        z-index: 3;
+    }
+
+    .trigger-box {
+        z-index: 3;
+    }
 }

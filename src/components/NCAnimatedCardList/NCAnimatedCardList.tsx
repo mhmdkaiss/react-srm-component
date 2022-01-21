@@ -10,65 +10,31 @@ export interface NCAnimatedCardListProps {
 }
 
 export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps> = (props: NCAnimatedCardListProps) => {
-    const [ hover1, setHover1 ] = useState<React.ReactNode>();
-    const [ hover2, setHover2 ] = useState<React.ReactNode>();
-    const [ hover3, setHover3 ] = useState<React.ReactNode>();
-    const [ hover4, setHover4 ] = useState<React.ReactNode>();
+    const [ hoverCard, setHoverCard ] = useState<React.ReactNode>();
 
-    const updateHoverCards = (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => {
-        if (addHoverCard(hover1, setHover1, card, cardRect, containerRect)) {
+    const updateHoverCard = (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => {
+        if (!card) {
             return;
         }
 
-        if (addHoverCard(hover2, setHover2, card, cardRect, containerRect)) {
-            return;
-        }
-
-        if (addHoverCard(hover3, setHover3, card, cardRect, containerRect)) {
-            return;
-        }
-
-        if (addHoverCard(hover4, setHover4, card, cardRect, containerRect)) {
-            return;
-        }
-    };
-
-    const addHoverCard = (state: React.ReactNode, setStateFunction: React.Dispatch<React.SetStateAction<React.ReactNode>>, card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect): boolean => {
-        if (!state) {
-            const hoverCard = <NCHoverCard
-                card={card}
-                cardRect={cardRect}
-                containerRect={containerRect}
-                maxCardWidth={props.maxCardWidth}
-                closedHook={() => {
-                    setStateFunction(undefined);
-                }}
-            />;
-            setStateFunction(hoverCard);
-            return true;
-        }
-        return false;
+        const customCard = <NCHoverCard
+            card={card}
+            cardRect={cardRect}
+            containerRect={containerRect}
+            maxCardWidth={props.maxCardWidth}
+            closedHook={() => setHoverCard(undefined)}
+        />;
+        setHoverCard(customCard);
     };
 
     return (
         <React.Fragment>
             <NCCardList
                 cards={props.cards}
-                hoveredCard={updateHoverCards}
+                hoveredCard={updateHoverCard}
                 scrollHook={props.scrollHook}
             />
-            {
-                hover1
-            }
-            {
-                hover2
-            }
-            {
-                hover3
-            }
-            {
-                hover4
-            }
+            { hoverCard }
         </React.Fragment>
     );
 };

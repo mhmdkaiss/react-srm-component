@@ -8,6 +8,10 @@
     height: fit-content;
     background: transparent;
 
+    &.small {
+        width: 148px;
+    }
+
     .tournament-banner {
         width: 100%;
 
@@ -180,6 +184,27 @@
     }
 }
 
+:not(.nc-hover-card) > .nc-tournament-card {
+    .marquee-container.manual-ellipsis {
+        display: flex;
+        justify-content: space-between;
+
+        .marquee-content {
+            width: calc(100% - 15px) !important;
+            overflow: hidden;
+        }
+
+        &::after {
+            content: '...';
+            display: block;
+            color: $white;
+            font-size: $small-text;
+            margin-top: auto;
+            line-height: 1;
+        }
+    }
+}
+
 .nc-hover-card.opening,
 .highlight1,
 .highlight2 {
@@ -230,6 +255,7 @@
 
 .nc-hover-card {
     .nc-tournament-card,
+    .tournament-banner,
     .banner-image,
     .tournament-content,
     .tournament-infos {
@@ -249,6 +275,30 @@
             .tournament-content {
                 padding: 8px 16px;
                 border-radius: 0px 0px 8px 8px;
+
+                .marquee-container {
+                    .marquee-slider {
+                        animation: marquee 10s linear infinite;
+
+                        @keyframes marquee {
+                            0% {
+                                left: 0px;
+                            }
+                            5% {
+                                left: 0px;
+                            }
+                            50% {
+                                left: -100%;
+                            }
+                            55% {
+                                left: -100%;
+                            }
+                            100% {
+                                left: 0px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

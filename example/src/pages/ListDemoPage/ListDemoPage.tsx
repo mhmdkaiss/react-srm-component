@@ -219,19 +219,24 @@ const tournament = {
     format: 1,
 };
 
-const tournamentCards = [...Array(6)].map((_, index) => {
+const tournamentCards = [...Array(9)].map((_, index) => {
     const i = index % 3;
     const gameId = i ? i === 1 ?
         '5ee2000cca2d921b383b5c94' :
         '5cbefb8ccf473930ea0237f1' :
         '5c436c2c766ea609157540e8';
+    const gameName = i ? i === 1 ?
+        'Small game' :
+        'Long game name' :
+        'Very very long game name';
     return (
         <NCTournamentCard
             key={`tournament-card-${index}`}
             tournament={tournament}
-            gameName="test game"
+            gameName={gameName}
             banner={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${gameId}/medias/TournamentBanner`}
-            prize="10e"
+            prize="10"
+            forceSmall={true}
         />
     );
 });
