@@ -31,7 +31,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
     return (
         <React.Fragment>
             <NCCardList
-                cards={props.loadingCard ? Array(Math.floor(Math.random() * 3 + 4)).fill(props.loadingCard) : props.cards}
+                cards={props.loadingCard ? Array(props.cards.length || 4).fill(props.loadingCard) : props.cards}
                 hoveredCard={updateHoverCard}
                 scrollHook={props.scrollHook}
             />
