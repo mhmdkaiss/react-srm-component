@@ -21,11 +21,10 @@ export interface TabSettings {
 }
 
 interface TabsProps {
-    basename: string;
     tabs: Array<TabParameter>;
-    color?: string;
-
     NcRouterLink: typeof Link;
+    basename?: string;
+    color?: string;
 }
 
 export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
@@ -110,7 +109,12 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
             <div className="sub-tabs position-absolute" style={{ left: currentTabPos }}>
                 {props.tabs[currentTabIndex] && props.tabs[currentTabIndex].children && props.tabs[currentTabIndex].children?.map((tab, index) => {
                     return !tab.hide && (
-                        <props.NcRouterLink key={index} className={`sub-tab ${tab.disabled ? 'disabled' : ''}`} onClick={() => { !tab.disabled ? cleanTab() : {}; }} to={tab.disabled ? '#' : (props.tabs[currentTabIndex].path + tab.path)}>{tab.name}</props.NcRouterLink>
+                        <props.NcRouterLink
+                            key={index}
+                            className={`sub-tab ${tab.disabled ? 'disabled' : ''}`}
+                            onClick={() => { !tab.disabled ? cleanTab() : {}; }}
+                            to={tab.disabled ? '#' : (props.tabs[currentTabIndex].path + tab.path)}>{tab.name}
+                        </props.NcRouterLink>
                     );
                 })
                 }
@@ -134,13 +138,14 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                     if (tab.hide) {
                                         return;
                                     }
+                                    const tabPath = props.basename ? tab.path.replace(':tournamentId', props.basename): tab.path;
                                     return (
                                         <div
                                             key={tab.name}
                                             ref={(element) => tabsRef.current[index] = element}
                                             className={
                                                 `tab-container d-flex justify-content-center align-items-center position-relative
-                                                ${location.pathname.startsWith(tab.path) ? 'active' : ''}
+                                                ${location.pathname.startsWith(tabPath) ? 'active' : ''}
                                                 ${tab.disabled? 'disabled' : ''}`
                                             }
                                             onClick={() => {
@@ -156,7 +161,7 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props: TabsProps) => {
                                                         <div className="tab-name text-uppercase  mx-auto mt-2">{tab.name}</div>
                                                     </div> :
                                                     <props.NcRouterLink to={{
-                                                        pathname: tab.path,
+                                                        pathname: tabPath,
                                                         search: location?.search,
                                                     }}
                                                     className="h-100 w-100"
