@@ -101,7 +101,7 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                                     if (props.hoveredCard && scrollableRef.current) {
                                         const target = e.currentTarget;
                                         const timer = setTimeout(() => {
-                                            if (props.hoveredCard && scrollableRef.current && e.currentTarget) {
+                                            if (props.hoveredCard && scrollableRef.current && target) {
                                                 props.hoveredCard(card, target.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
                                             }
                                         }, hoverTimeout);
