@@ -35,6 +35,7 @@
 @import '../components/NCLineUp/NCLineUp.scss';
 @import '../components/NCReminderTools/NCReminderTools.scss';
 @import '../components/NCTournamentCard/NCTournamentCard.scss';
+@import '../components/NCTournamentCard/NCTournamentCardLoading/NCTournamentCardLoading.scss';
 @import '../components/NCSlider/NCSlider.scss';
 @import '../components/NCSlider/NCSliderBackground/NCSliderBackground.scss';
 @import '../components/NCSlider/NCSliderSelector/NCSliderSelector.scss';
@@ -129,6 +130,12 @@
             }
         }
     }
+}
+
+.nc-loading {
+    background: $grey2;
+    border-radius: 8px;
+    animation: 1.5s ease-in-out infinite Blink;
 }
 
 .nicecactus-page-container {

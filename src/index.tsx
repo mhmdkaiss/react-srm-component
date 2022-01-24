@@ -66,6 +66,7 @@ export { NCPremiumCTA } from './components/NCPremiumCTA/NCPremiumCTA';
 export { NCPromotionalBanner } from './components/NCPromotionalBanner/NCPromotionalBanner';
 export { NCStream } from './components/NCStream/NCStream';
 export { NCTournamentCard, TournamentCardStyle } from './components/NCTournamentCard/NCTournamentCard';
+export { NCTournamentCardLoading } from './components/NCTournamentCard/NCTournamentCardLoading/NCTournamentCardLoading';
 export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';

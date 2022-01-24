@@ -6,6 +6,7 @@ export interface NCAnimatedCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
     maxCardWidth?: number;
+    loadingCard?: React.ReactNode;
     scrollHook?: (scrollLeft: number) => void;
 }
 
@@ -13,7 +14,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
     const [ hoverCard, setHoverCard ] = useState<React.ReactNode>();
 
     const updateHoverCard = (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => {
-        if (!card) {
+        if (!card || props.loadingCard) {
             return;
         }
 
@@ -30,7 +31,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
     return (
         <React.Fragment>
             <NCCardList
-                cards={props.cards}
+                cards={props.loadingCard ? Array(Math.floor(Math.random() * 3 + 4)).fill(props.loadingCard) : props.cards}
                 hoveredCard={updateHoverCard}
                 scrollHook={props.scrollHook}
             />

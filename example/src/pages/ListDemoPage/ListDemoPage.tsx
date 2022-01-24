@@ -2,6 +2,7 @@ import {
     DisplaySelector,
     GameList, NCAnimatedCardList, NCCardList, NCFlagSelector,
     NCParticipantList, NCTournamentCard,
+    NCTournamentCardLoading,
     UserCard
 } from '@cactus/srm-component';
 import React from 'react';
@@ -309,6 +310,13 @@ export const ListDemoPage: React.FunctionComponent = () => {
                     <div>This style is there just to test with another card</div>
                     <div>{'It\'s only on example page, not in the shared library'}</div>
                 </div>
+            </div>
+            <span className="theme-title mt-5 pt-5">Loading Cards List</span>
+            <div className="col-8">
+                <NCAnimatedCardList
+                    cards={tournamentCards}
+                    loadingCard={<NCTournamentCardLoading />}
+                />
             </div>
         </div>
     );

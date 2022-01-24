@@ -6,3 +6,15 @@
         background-position: -2% 50%;
     }
 }
+
+@keyframes Blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
