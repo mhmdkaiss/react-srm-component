@@ -68,8 +68,10 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 const marqueeSize = sliderSize - containerSize;
                 setMarqueeWidth(marqueeSliderRef.current.offsetWidth < containerSize ? 0 : marqueeSize);
                 setMarqueeHeight(marqueeSliderRef.current?.offsetHeight);
-                setEllipsis(marqueeSliderRef.current.offsetWidth > containerSize);
-                setTextAnimationDuration((sliderSize - containerSize - textAnimationMargin) / textAnimationSpeed);
+                let textDuration = (sliderSize - containerSize - textAnimationMargin) / textAnimationSpeed;
+                textDuration = (textDuration > 0 && textDuration < 2) ? 2 : textDuration;
+                setTextAnimationDuration(textDuration);
+                setEllipsis(textDuration > 0);
             }
         }, mainAnimationDuration);
     }, [ marqueeSliderRef.current, marqueeContainerRef.current ]);

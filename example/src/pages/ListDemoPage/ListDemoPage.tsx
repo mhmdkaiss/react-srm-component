@@ -210,7 +210,7 @@ const tournament = {
     date: 1630677600,
     gameSlug: 'rocket-league',
     min: 4,
-    name: 'NPTF-37- 3',
+    name: 'Tournament name',
     partner: 'creditagricole',
     platforms: [ 'ps4', 'pc', 'xbox', 'switch' ],
     entrance: {

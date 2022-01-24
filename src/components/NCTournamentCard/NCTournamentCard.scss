@@ -278,19 +278,19 @@
 
                 .marquee-container {
                     .marquee-slider {
-                        animation: marquee 10s linear infinite;
+                        animation: marquee 10s linear 0.5s infinite;
 
                         @keyframes marquee {
                             0% {
                                 left: 0px;
                             }
-                            5% {
+                            20% {
                                 left: 0px;
                             }
                             50% {
                                 left: -100%;
                             }
-                            55% {
+                            70% {
                                 left: -100%;
                             }
                             100% {
