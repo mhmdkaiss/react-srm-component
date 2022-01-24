@@ -41,7 +41,11 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     const [ marqueeWidth, setMarqueeWidth ] = useState<number>(0);
     const [ marqueeHeight, setMarqueeHeight ] = useState<number>(0);
     const [ ellipsis, setEllipsis ] = useState<boolean>(false);
-    const animationDuration = 200;
+
+    const mainAnimationDuration = 200;
+    const [ textAnimationDuration, setTextAnimationDuration ] = useState<number>(0);
+    const textAnimationSpeed = 20;
+    const textAnimationMargin = 6;
 
     useEffect(() => {
         setTimeout(() => {
@@ -53,19 +57,21 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                         props.tournament.platforms
                 );
             }
-        }, animationDuration);
+        }, mainAnimationDuration);
     }, [platformContaierRef.current]);
 
     useEffect(() => {
         setTimeout(() => {
             if (marqueeSliderRef.current && marqueeContainerRef.current) {
                 const containerSize = marqueeContainerRef.current.offsetWidth;
-                const marqueeSize = marqueeSliderRef.current.offsetWidth - containerSize;
+                const sliderSize = marqueeSliderRef.current.offsetWidth;
+                const marqueeSize = sliderSize - containerSize;
                 setMarqueeWidth(marqueeSliderRef.current.offsetWidth < containerSize ? 0 : marqueeSize);
                 setMarqueeHeight(marqueeSliderRef.current?.offsetHeight);
                 setEllipsis(marqueeSliderRef.current.offsetWidth > containerSize);
+                setTextAnimationDuration((sliderSize - containerSize - textAnimationMargin) / textAnimationSpeed);
             }
-        }, animationDuration);
+        }, mainAnimationDuration);
     }, [ marqueeSliderRef.current, marqueeContainerRef.current ]);
 
     const renderSecondRow = () => {
@@ -181,6 +187,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                     >
                         <div
                             ref={marqueeSliderRef}
+                            style={{ animationDuration: `${textAnimationDuration}s` }}
                             className="marquee-slider tournament-infos title position-absolute mt-1"
                         >
                             <div>{ props.gameName }</div>

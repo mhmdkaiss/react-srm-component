@@ -27,7 +27,7 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     };
 
     const [ hoverTimer, setHoverTimer ] = useState<NodeJS.Timeout>();
-    const hoverTimeout = isTouchDevice() ? 0 : 1000;
+    const hoverTimeout = isTouchDevice() ? 0 : 500;
 
     const renderArrow = () => {
         const iconProps =

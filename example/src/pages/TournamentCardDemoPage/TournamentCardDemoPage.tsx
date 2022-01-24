@@ -18,11 +18,13 @@ const tournament = {
 };
 
 const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cbefb8ccf473930ea0237f1', cardStyle?: number) => {
+    const gameName = [ 'Small game', 'Long game name', 'Very very long game name' ][Math.floor(Math.random() * (3))]
+
     return (
         <NCTournamentCard
             tournament={tournament}
             banner={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${gameId}/medias/TournamentBanner`}
-            gameName="Long game name"
+            gameName={gameName}
             prize="10 €"
             restricted={restricted}
             winner={winner}
