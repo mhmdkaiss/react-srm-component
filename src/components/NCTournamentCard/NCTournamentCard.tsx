@@ -67,14 +67,14 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 const sliderSize = marqueeSliderRef.current.offsetWidth;
                 const marqueeSize = sliderSize - containerSize;
                 setMarqueeWidth(marqueeSliderRef.current.offsetWidth < containerSize ? 0 : marqueeSize);
-                setMarqueeHeight(marqueeSliderRef.current?.offsetHeight);
+                setMarqueeHeight(marqueeSliderRef.current.offsetHeight);
                 let textDuration = (sliderSize - containerSize - textAnimationMargin) / textAnimationSpeed;
                 textDuration = (textDuration > 0 && textDuration < 2) ? 2 : textDuration;
                 setTextAnimationDuration(textDuration);
                 setEllipsis(textDuration > 0);
             }
         }, mainAnimationDuration);
-    }, [ marqueeSliderRef.current, marqueeContainerRef.current ]);
+    }, [ marqueeSliderRef.current, marqueeContainerRef.current, marqueeSliderRef.current?.offsetHeight ]);
 
     const renderSecondRow = () => {
         return (
