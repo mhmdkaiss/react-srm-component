@@ -21,6 +21,9 @@ const STAGE_HEADERS = {
     'third_phase': () => {
         return 'round.third_place';
     },
+    'third_place': () => {
+        return 'round.third_place';
+    },
     'classic_loser_final': () => {
         return 'round.loser.final';
     }
