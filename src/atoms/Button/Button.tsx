@@ -10,6 +10,7 @@ export enum ButtonTheme {
     TRACKING = 'tracking',
     PREMIUM = 'premium',
     RED = 'red',
+    CUSTOM = 'custom'
 }
 
 export enum ButtonType {

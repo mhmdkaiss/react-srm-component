@@ -89,6 +89,8 @@ export const ButtonsDemoPage: React.FunctionComponent = () => {
             {renderButton(ButtonTheme.RED, ButtonType.PRIMARY, 'Red- Primary')}
             {renderButton(ButtonTheme.RED, ButtonType.SECONDARY, 'Red- Secondary')}
 
+            {renderButton(ButtonTheme.CUSTOM, ButtonType.PRIMARY, 'Custom Theme')}
+
             {renderButtonIcon('https://esm-prod-public.s3.eu-west-1.amazonaws.com/game/5c36302a0842120a74d1afdc/medias/IconImage')}
         </div>
     );

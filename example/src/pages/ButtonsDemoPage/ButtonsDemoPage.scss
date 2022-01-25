@@ -1,15 +1,46 @@
 @import '@cactus/srm-component/dist/src/styles/colors';
 @import '@cactus/srm-component/dist/src/styles/variables';
+@import '@cactus/srm-component/dist/src/styles/button-mixins';
 
 .buttons-demo-page {
-  color: $grey5;
-  font-size: $big-text;
+    color: $grey5;
+    font-size: $big-text;
 
-  .theme-title {
-    font-size: $bigger-text;
-  }
+    .theme-title {
+        font-size: $bigger-text;
+    }
 
-  td {
-    padding: 25px;
-  }
+    td {
+        padding: 25px;
+    }
+
+    .button {
+        // When we have multiple different custom buttons in same component we can pass class to the button
+        &.custom {
+            background: $orange-outrageous;
+            @include text-color($black);
+
+            &:hover {
+                @include button-design(
+                    $primary-color,
+                    $primary-color,
+                    transparent,
+                    $gradient: false
+                );
+            }
+
+            &:active {
+                @include button-design(
+                    $primary-color,
+                    $primary-color,
+                    transparent,
+                    $gradient: false
+                );
+            }
+
+            &:disabled {
+                @include button-disable($grey4, $border: false);
+            }
+        }
+    }
 }
