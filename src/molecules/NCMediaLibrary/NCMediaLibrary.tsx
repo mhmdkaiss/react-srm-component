@@ -1,13 +1,12 @@
-import './NCMediaLibrary.scss';
-
-import { Button, NCBox, NCList, NCTypography } from '../../atoms';
-import { Media, MediaLibraryService } from '../../services/media-library.service';
-import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
 import React, { useEffect, useState } from 'react';
-
-import { ButtonType } from '../../atoms/Button/Button';
+import { NCInput } from '../..';
+import { NCBox, NCDialog, NCDropZone, NCList, NCTypography } from '../../atoms';
+import { Button, ButtonType } from '../../atoms/Button/Button';
 import { IconType } from '../../atoms/Icon/Icon';
+import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
+import { Media, MediaLibraryService } from '../../services/media-library.service';
 import { NCActions } from '../NCActions/NCActions';
+import './NCMediaLibrary.scss';
 
 export interface NCMediaLibraryProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,12 +15,14 @@ export interface NCMediaLibraryProps {
 }
 
 export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (props: NCMediaLibraryProps) => {
-    // TODO: handle commented action
-    // const authorizedFiles = [ 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml' ];
+    const authorizedFiles = [ 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml' ];
 
     const [ selectedItem, setSelectedItem ] = useState<Media>();
     const [ currentPath, setCurrentPath ] = useState<string>('/');
     const [ paths, setPaths ] = useState<Array<string>>([currentPath]);
+    const [ open, setOpen ] = useState<boolean>(false);
+    const [ newFolder, setNewFolder ] = useState<string>('');
+    const [ uploading, setUploading ] = useState<boolean>(false);
 
     const [ table, setTable ] = useState<NCListProps>({ header: [
         {
@@ -64,13 +65,17 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
     };
 
     const handleClickLine = (media: Media) => {
-        setSelectedItem(media);
-        const newPath = `${media.key}`;
-        setCurrentPath(newPath);
-        paths.push(newPath);
-        setPaths(paths);
-        if (!media.file) {
-            getMediaLibrary(newPath);
+        try {
+            setSelectedItem(media);
+            const newPath = `${media.key}`;
+            setCurrentPath(newPath);
+            paths.push(newPath);
+            setPaths(paths);
+            if (!media.file) {
+                getMediaLibrary(newPath);
+            }
+        } catch (e) {
+            console.log('ouloulou', e);
         }
     };
 
@@ -85,37 +90,38 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
         }
     };
 
-    // const createMedia = (name: string) => {
-    //     MediaLibraryService.createMedia(`${currentPath}${name}/`, '').then(() => {
-    //         getMediaLibrary(currentPath);
-    //     });
-    // };
+    const createFolder = (path: string, name: string) => {
+        const _nFolder = `${path}${name}/`;
+        MediaLibraryService.createMedia(_nFolder, '').then(() => {
+            handleClickLine(new Media(_nFolder));
+        });
+    };
 
-    // const uploadMedia = (event: any) => {
-    //     const file = event.target.files[0];
-    //     if (file && authorizedFiles.includes(file.type)) {
-    //         const reader = new FileReader();
-    //         reader.onload = (event: any) => {
-    //             MediaLibraryService.createMedia(`${currentPath}${file.name}`, event.target.result.toString()).then(() => {
-    //                 getMediaLibrary(currentPath);
-    //             });
-    //         };
-    //         reader.readAsDataURL(file);
-    //     } else {
-    //         // toast.error('You can only upload images');
-    //     }
-    // };
+    const uploadMedia = (path: string, file: File) => {
+        if (file && authorizedFiles.includes(file.type)) {
+            uploading;
+            const reader = new FileReader();
+            reader.onload = (event: any) => {
+                MediaLibraryService.createMedia(`${path}${file.name}`, event.target.result.toString()).then(() => {
+                    getMediaLibrary(path);
+                });
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // toast.error('You can only upload images');
+        }
+    };
 
-    // const deleteMedia = () => {
-    //     if (selectedItem) {
-    //         MediaLibraryService.deleteMedia(selectedItem.key).then(() => {
-    //             selectedItem.file ? getMediaLibrary(currentPath) : handleBackPath();
-    //             setSelectedItem(undefined);
-    //         });
-    //     }
-    // };
+    const deleteMedia = () => {
+        if (selectedItem) {
+            MediaLibraryService.deleteMedia(selectedItem.key).then(() => {
+                selectedItem.file ? getMediaLibrary(currentPath) : handleBackPath();
+                setSelectedItem(undefined);
+            });
+        }
+    };
 
-    const convertBytes = (bytes: any) => {
+    const convertBytes = (bytes: number) => {
         const sizes = [ 'bytes', 'kB', 'MB', 'GB', 'TB' ];
 
         if (bytes === 0) {
@@ -140,15 +146,15 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
                 },
                 name: {
                     tdClassName: '',
-                    tdContent: m.name,
+                    tdContent: <NCTypography variant='body1'>{m.name}</NCTypography>,
                 },
                 size: {
                     tdClassName: '',
-                    tdContent: convertBytes(m.size),
+                    tdContent: <NCTypography variant='body1'>{m.file ? convertBytes(m.size) : '-'}</NCTypography>,
                 },
                 uploaddate: {
                     tdClassName: '',
-                    tdContent: (new Date(m.modified)).toLocaleString(),
+                    tdContent: <NCTypography variant='body1'>{(new Date(m.modified)).toLocaleString()}</NCTypography>,
                 },
             };
         });
@@ -156,28 +162,94 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
 
     return (
         <div className="nc-medialibrary">
-            <Button
-                label={currentPath}
-                type={ButtonType.TEXT}
-                disabled={currentPath === '/'}
-                icon={{ type: IconType.Back, width: 24, height: 24 }}
-                setClick={() =>
-                    handleBackPath()
-                }
-            />
+            <NCActions
+                style={{
+                }}
+                actions={[
+                    {
+                        type: ButtonType.TEXT,
+                        icon: { type: IconType.Back, width: 24, height: 24 },
+                        label: <NCTypography variant='body1'>{currentPath}</NCTypography>,
+                        disabled: currentPath === '/',
+                        setClick: () => handleBackPath()
+                    },
+                    {
+                        type: ButtonType.TEXT,
+                        containerClass: 'ml-auto',
+                        icon: { type: IconType.AddFolder, width: 24, height: 24 },
+                        setClick: () => {
+                            setOpen(true);
+                        }
+                    },
+                    {
+                        type: ButtonType.TEXT,
+                        icon: { type: IconType.Trashcan, width: 24, height: 24 },
+                        disabled: !selectedItem || !selectedItem.file,
+                        setClick: () => {
+                            deleteMedia();
+                        }
+                    },
+                ]} />
+
+            <NCDialog show={open} setShow={setOpen} title={<NCTypography variant='h5'>Create new folder</NCTypography>} >
+                <NCBox style={{
+                    gap: '1rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}>
+                    <NCInput
+                        placeHolder='folder name'
+                        value={newFolder}
+                        onChange={(v) => {
+                            setNewFolder(v);
+                        }}
+                    />
+                    <Button
+                        setClick={() => {
+                            createFolder(currentPath, newFolder);
+                            setNewFolder('');
+                            setOpen(false);
+                        }}
+                    >
+                        <NCTypography>Create</NCTypography>
+                    </Button>
+                </NCBox>
+            </NCDialog>
             {
                 table?.header && table?.data && !selectedItem?.file && (
-                    <NCBox style={{
-                        overflowY: 'scroll',
-                        maxHeight: '350px'
-                    }}>
-                        <NCList
-                            variant='nc-tournament-list'
-                            type='thead-sticky'
-                            header={table.header}
-                            data={table.data}>
-                        </NCList>
-                    </NCBox>
+                    <NCDropZone
+                        actionHook={(files) => {
+                            setUploading(true);
+                            for (const file of files) {
+                                uploadMedia(paths[(paths.length - 1)], file);
+                            }
+                            setUploading(false);
+                        }}
+                        errorHook={(e) => {
+                            console.log('errorHook', e);
+                        }}
+                    >
+                        <NCBox className='media-scrollbar'>
+                            <NCList
+                                variant='nc-list'
+                                type='thead-sticky tr-filled'
+                                header={table.header}
+                                data={table.data}>
+                            </NCList>
+                            { table?.data?.length === 0 ? (
+                                <NCBox
+                                    style={{
+                                        marginTop: '16rem',
+                                        marginBottom: '16rem',
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    <NCTypography variant='body1' className='red-color'>{'Sorry, no items in this folder :('}</NCTypography>
+                                </NCBox>
+                            ) : <React.Fragment />}
+                        </NCBox>
+                    </NCDropZone>
                 )
             }
             {
@@ -193,7 +265,7 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
                             {
                                 label: <NCTypography intlID='media-library.action.choose'>Choose another</NCTypography>,
                                 type: ButtonType.SECONDARY,
-                                setClick: () => setSelectedItem(undefined),
+                                setClick: () => handleBackPath(),
                             },
                             {
                                 label: 'Done',

@@ -1,0 +1,39 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.drop-zone {
+    border: 4px dashed $white;
+    width: 100%;
+    position: relative;
+
+    &.dragable:after {
+        content: '';
+        background: repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 45px,
+            $grey5 45px,
+            $grey5 75px
+        );
+        background-repeat: repeat-x;
+        background-size: 410% 100%;
+        animation: Dragagle 21s linear infinite;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    &.disabled {
+        background: repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 45px,
+            $red 45px,
+            $red 75px
+        );
+        background-repeat: repeat-x;
+        background-size: 410% 100%;
+    }
+}

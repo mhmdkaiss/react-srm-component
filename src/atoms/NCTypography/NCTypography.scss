@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: capitalize;
+    text-transform: unset;
 }
 
 h1,
@@ -59,7 +59,7 @@ h3 {
     letter-spacing: -0, 01em;
 
     @include media-breakpoint-down(xs) {
-        font-size: 28px;
+        font-size: $higher-text;
         line-height: 112%;
     }
 }
@@ -80,7 +80,7 @@ h4 {
 }
 
 h5 {
-    font-size: 28px;
+    font-size: $higher-text;
     line-height: 115%;
 
     @include media-breakpoint-down(xs) {
@@ -90,12 +90,12 @@ h5 {
 }
 
 h6 {
-    font-size: 22px;
+    font-size: $big-text;
     letter-spacing: 0.02em;
     line-height: 127%;
 
     @include media-breakpoint-down(xs) {
-        font-size: 16px;
+        font-size: $medium-text;
         line-height: 123%;
     }
 }
@@ -108,30 +108,47 @@ h6 {
 
 .subtitle1 {
     font-weight: 700;
-    font-size: 18px;
+    font-size: $tall-text;
 
     @include media-breakpoint-down(xs) {
-        font-size: 16px;
+        font-size: $medium-text;
     }
 }
 
 .subtitle2 {
-    font-size: 16px;
+    font-size: $medium-text;
     text-transform: uppercase;
 
     @include media-breakpoint-down(xs) {
-        font-size: 14px;
+        font-size: $small-text;
         line-height: 150%;
     }
 }
 
+.body1,
+.body2 {
+    font-weight: 400;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.body1 {
+    font-size: $medium-text;
+    line-height: 24px;
+}
+
+.body2 {
+    font-size: $small-text;
+    line-height: 20px;
+}
+
 .overtitle {
     font-weight: 700;
-    font-size: 14px;
+    font-size: $small-text;
     text-transform: uppercase;
 
     @include media-breakpoint-down(xs) {
-        font-size: 14px;
+        font-size: $small-text;
         line-height: 150%;
     }
 }

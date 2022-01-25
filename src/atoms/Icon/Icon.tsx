@@ -61,6 +61,8 @@ export enum IconType {
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
     YouTube = 'youtube',
+    AddFolder = 'addFolder',
+    FileUpload = 'fileUpload',
 }
 
 export interface IconProps {

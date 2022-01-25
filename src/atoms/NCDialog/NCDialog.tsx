@@ -1,10 +1,9 @@
-import './NCDialog.scss';
-
 import React from 'react';
 import { TimesIcon } from '../../styles/svg';
+import './NCDialog.scss';
 
 export interface DialogProps {
-    title?: string;
+    title?: string | React.ReactText | React.ReactChild;
     children: React.ReactNode;
     show: boolean;
     setShow: (show: boolean) => void;

@@ -4,17 +4,38 @@
 
 .nc-medialibrary {
     @include media-breakpoint-up(lg) {
-        width: 50vw;
+        width: 69vw;
     }
-    .breadcrumb {
-        display: flex;
-        align-items: center;
-        margin-bottom: 2.5rem;
 
-        .icon-back {
-            background: $black;
-            margin: 2px;
-            display: none;
-        }
+    .icon-back {
+        background-color: $primary-color !important;
+        margin: 2px;
+    }
+
+    .icon-fileUpload,
+    .icon-addFolder {
+        background-color: $primary-color !important;
+    }
+
+    .icon-trashcan {
+        background-color: $red !important;
+    }
+
+    .button.classic.text:disabled .icon-trashcan {
+        background-color: $light-grey !important;
+    }
+
+    .media-scrollbar {
+        @include nc-scrollbar(4px);
+        max-height: 58vh;
+        overflow-y: scroll;
+    }
+
+    .preview-container {
+        gap: 1rem;
+    }
+
+    .dialog-body {
+        width: auto !important;
     }
 }

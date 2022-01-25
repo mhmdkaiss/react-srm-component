@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { NCTypography } from '../../atoms';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
@@ -75,11 +75,6 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
         isDragActive,
     } = useDropzone(_dropzone);
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    useEffect(() => {
-        console.log('errorMesg>', errorMesg);
-    }, [errorMesg]);
-
     const previewBackground = `linear-gradient(rgb(36 36 36 / 70%), rgb(36 36 36 / 70%)), url("${previewImg}"), url("${props.currentImg}"), url("${props.currentImage}"), url("${props.defaultImg}")`;
     const style = {
         container: 'media-upload-container',
@@ -144,8 +139,8 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
                 </div>
             </div>
             {props.inputMode === true && (
-                <div {...getLibraryProps()}>
-                    <NCInput value="" onChange={() => {return;}} disabled />
+                <div {...getLibraryProps()} className='w-100'>
+                    <NCInput value={previewImg || props.currentImg || ''} onChange={() => {return;}} iconType='clip' disabled />
                 </div>
             )}
 

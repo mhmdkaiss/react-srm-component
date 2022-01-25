@@ -45,6 +45,9 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/atoms/typography'>
                         <ListItemText primary='Typography'/>
                     </ListItem>
+                    <ListItem button component={Link} to='/atoms/zone'>
+                        <ListItemText primary='Zone'/>
+                    </ListItem>
                 </List>
             </Collapse>
             <ListItem button onClick={() => setComponentsOpen(!componentsOpen)}>
@@ -95,6 +98,9 @@ export const Navigation: React.FunctionComponent = () => {
                     </ListItem>
                     <ListItem button component={Link} to='/component/slider'>
                         <ListItemText primary='Slider'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/component/media-library'>
+                        <ListItemText primary='MediaLibrary'/>
                     </ListItem>
                 </List>
             </Collapse>

@@ -61,6 +61,18 @@ const variantMap: VariantType = {
         type: 'span',
         className: 'overtitle',
     },
+    'span': {
+        type: 'span',
+        className: '',
+    },
+    'body1': {
+        type: 'span',
+        className: 'body1',
+    },
+    'body2': {
+        type: 'span',
+        className: 'body2',
+    },
     'string': {
         type: undefined,
         className: '',
@@ -76,7 +88,7 @@ export const NCTypography: React.FunctionComponent<NCTypographyProps & React.HTM
     ...other
 }) => {
     const _v = variant && variantMap[variant].type || React.Fragment;
-    const _c = variant && variantMap[variant].type && { className: variantMap[variant].className } || {};
+    const _c = variant && variantMap[variant].type && { className: `${variantMap[variant].className} ${other['className']}` } || {};
     const _msg = (!intlObj?.id && !intlID) ? children :
         <FormattedMessage
             id={intlID || intlObj?.id}

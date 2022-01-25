@@ -1,12 +1,14 @@
 import axios from 'axios';
 
-export interface Media {
-    name: string;
-    modified: string;
-    size: number;
-    file: boolean;
-    key: string;
-    publicUrl: string;
+export class Media {
+    constructor(
+        public key: string,
+        public file: boolean = false,
+        public name: string = '',
+        public modified: string = (new Date()).toDateString(),
+        public size: number = 0,
+        public publicUrl: string = '',
+    ) {}
 }
 
 export enum FileManagerMode {

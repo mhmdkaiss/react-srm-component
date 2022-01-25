@@ -14,6 +14,7 @@ import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage';
 import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage';
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage';
+import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryDemoPage';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
@@ -24,12 +25,17 @@ import { TournamentRoundsDemoPage } from './pages/TournamentRoundsDemoPage/Tourn
 import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardDemoPage';
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
+import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
 import ContextStore from './store';
 
 const routes = [
     {
         path: '/atoms/typography',
         component: TypographyDemoPage,
+    },
+    {
+        path: '/atoms/zone',
+        component: ZoneDemoPage,
     },
     {
         path: '/atoms/button',
@@ -102,6 +108,10 @@ const routes = [
     {
         path: '/component/feed-cards',
         component: FeedCardDemoPage,
+    },
+    {
+        path: '/component/media-library',
+        component: MediaLibraryDemoPage,
     },
 ];
 

@@ -2,6 +2,7 @@ import { MuiThemeProvider, TextField } from '@material-ui/core';
 import React, { ChangeEvent } from 'react';
 
 import { ThemePlatform } from '../../styles/Themes';
+import './NCInput.scss';
 
 export interface NCInputProps {
     ref?: any;
@@ -13,9 +14,11 @@ export interface NCInputProps {
     onChange: (value: string) => void;
     disabled?: boolean;
     autofocus?: boolean;
+    iconType?: string;
+    iconHook?: () => void;
 }
 
-export const NCInput: React.FunctionComponent<NCInputProps> = ({ id, label, value, placeHolder, type, disabled, autofocus, onChange, ref }: NCInputProps) => {
+export const NCInput: React.FunctionComponent<NCInputProps> = ({ id, label, value, placeHolder, type, disabled, autofocus, onChange, ref, iconType, iconHook }: NCInputProps) => {
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
@@ -34,6 +37,18 @@ export const NCInput: React.FunctionComponent<NCInputProps> = ({ id, label, valu
                         type={type}
                         disabled={disabled || false}
                     />
+                    {iconType && (<div
+                        className='nc-input-icon'
+                        style={{
+                            maskImage: `url(${process.env.REACT_APP_S3_URL}/media/icons/${iconType}.svg)`,
+                            WebkitMaskImage: `url(${process.env.REACT_APP_S3_URL}/media/icons/${iconType}.svg)`,
+                        }}
+                        onClick={() => {
+                            if (iconHook) {
+                                iconHook();
+                            }
+                        }}
+                    ></div>)}
                 </div>
             </MuiThemeProvider>
         </React.Fragment>

@@ -25,13 +25,16 @@ export enum ButtonSize {
 }
 
 export interface ButtonProps {
-    label: string | ReactElement;
+    /* @deprecated label: use children context instead */
+    label?: string | ReactElement;
+    children?: React.ReactText | React.ReactChild | Array<React.ReactChild>,
     theme?: ButtonTheme;
     type?: ButtonType;
     size?: ButtonSize;
     disabled?: boolean;
     setClick?: (event: MouseEvent) => void;
     styleClass?: string;
+    containerClass?: string;
     icon?: { type: IconType, width: number, height: number };
     color?: string;
 }
@@ -48,7 +51,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
     };
 
     return (
-        <div className="button-container" style={{ borderColor: props.color }}>
+        <div className={`button-container ${props.containerClass}`} style={{ borderColor: props.color }}>
             <button
                 className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${props.styleClass} ${props.color ? 'custom-hover' : ''}`}
                 disabled={props.disabled}
@@ -63,7 +66,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                         WebkitTextFillColor: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
                     }}
                 >
-                    {props.label}
+                    {props.label || props.children}
                 </span>
             </button>
         </div>

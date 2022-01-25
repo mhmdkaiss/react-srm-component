@@ -6,6 +6,7 @@ export { NCBackgroundImage } from './NCBackgroundImage/NCBackgroundImage';
 export { NCBox } from './NCBox/NCBox';
 export { NCCard } from './NCCard/NCCard';
 export { NCDialog } from './NCDialog/NCDialog';
+export { NCDropZone } from './NCDropZone/NCDropZone';
 export { NCList } from './NCList/NCList';
 export { NCNotificationButton } from './NCNotificationButton/NCNotificationButton';
 export { NCStepBubble } from './NCStepBubble/NCStepBubble';

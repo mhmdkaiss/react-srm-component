@@ -1,9 +1,7 @@
+import React from 'react';
 import './NCList.scss';
 
-import React from 'react';
-
-declare type NCListVariant = 'nc-tournament-list';
-declare type NCListVariantion = 'thead-sticky';
+declare type NCListVariant = 'nc-tournament-list' | 'nc-list';
 
 export interface NCListHeader {
     thId: string,
@@ -23,7 +21,7 @@ export interface NCListCel {
 
 export interface NCListProps {
     variant?: NCListVariant,
-    type?: NCListVariantion,
+    type?: string,
     header: Array<NCListHeader>,
     data: Array<NCListRows>,
 }

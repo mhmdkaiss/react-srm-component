@@ -1,17 +1,35 @@
 @import 'src/styles/colors';
 @import 'src/styles/variables';
 
-.nc-tournament-list {
+.nc-tournament-list,
+.nc-list {
     &.thead-sticky {
         thead {
             position: sticky;
             top: 0;
         }
     }
+    &.tr-filled {
+        tbody {
+            tr {
+                &:nth-child(2n) {
+                    background: $grey4;
+                }
+
+                &:not(:nth-child(2n)) {
+                    background: $grey3;
+                }
+            }
+        }
+
+        th {
+            background: $grey3;
+            border-bottom: 1px solid $grey5;
+        }
+    }
 
     thead tr {
         color: $grey6;
-        font-size: $smallest-text;
         border-bottom: 1px solid $grey5;
     }
 
@@ -21,7 +39,6 @@
 
     th,
     td {
-        font-weight: 400 !important;
         border: 0 !important;
     }
 

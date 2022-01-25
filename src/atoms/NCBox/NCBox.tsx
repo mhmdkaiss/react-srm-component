@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface NCBoxProps {
-    children: React.ReactChild
+    children: React.ReactText | React.ReactChild | Array<React.ReactChild>
 }
 
 export const NCBox: React.FunctionComponent<NCBoxProps & React.HTMLAttributes<HTMLDivElement>> = ({
@@ -9,10 +9,8 @@ export const NCBox: React.FunctionComponent<NCBoxProps & React.HTMLAttributes<HT
     ...other
 }) => {
     return (
-        <React.Fragment>
-            <div {...other}>
-                {children}
-            </div>
-        </React.Fragment>
+        <div {...other}>
+            {children}
+        </div>
     );
 };

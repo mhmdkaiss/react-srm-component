@@ -7,9 +7,9 @@ export interface NCActionsProps {
     actions: Array<ButtonProps>,
 }
 
-export const NCActions: React.FunctionComponent<NCActionsProps> = ({ actions }) => {
+export const NCActions: React.FunctionComponent<NCActionsProps & React.HTMLAttributes<HTMLDivElement>> = ({ actions, ...other }) => {
     return (
-        <div className="nc-action-container">
+        <div className="nc-action-container" {...other}>
             {
                 actions.map((m, i) => {
                     return <Button key={i} {...m} />;
