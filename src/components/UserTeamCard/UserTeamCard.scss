@@ -1,92 +1,91 @@
-@import "../../styles/colors.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
 
 $mobile: 576px;
 
 .user-team-card-component {
-
-  .hovered-card {
-    z-index: 1;
-    position: absolute;
-    width: 380px;
-    border-radius: 8px;
-    color: inherit !important;
-    text-decoration: none !important;
-    cursor: pointer;
-
-    @media screen and (max-width: $mobile) {
-      width: 213px;
-    }
-
-    &:after {
-      z-index: -1;
-      content: "";
-      position: absolute;
-      display: block;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 68px);
-      backdrop-filter: blur(16px);
-      border-radius: 0 0 8px 8px;
-    }
-
-    .avatar {
-      width: 80px;
-      height: 80px;
-
-      &.team {
+    .hovered-card {
+        z-index: 10;
+        position: absolute;
+        width: 380px;
         border-radius: 8px;
-        box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
-          inset 0px 2px 8px rgba(0, 0, 0, 0.25);
-      }
+        color: inherit !important;
+        text-decoration: none !important;
+        cursor: pointer;
 
-      &.solo {
-        border-radius: 50%;
-      }
-    }
+        @media screen and (max-width: $mobile) {
+            width: 213px;
+        }
 
-    .color-white {
-      color: $white;
-    }
-
-    .color-grey5 {
-      color: $grey5;
-    }
-
-    .user-grid {
-      font-family: $font;
-      display: grid;
-      grid-template-columns: 50% 50%;
-
-      @media screen and (max-width: $mobile) {
-        max-height: 161px;
-        grid-template-columns: 100%;
-        overflow-y: auto;
-      }
-
-      .user-container {
-        border-radius: 16px;
-        background: $grey2;
-        box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
-          inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+        &:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 68px);
+            backdrop-filter: blur(16px);
+            border-radius: 0 0 8px 8px;
+        }
 
         .avatar {
-          border-radius: 50%;
-          height: 24px;
-          width: 24px;
-          min-width: 24px;
+            width: 80px;
+            height: 80px;
+
+            &.team {
+                border-radius: 8px;
+                box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+                    inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+            }
+
+            &.solo {
+                border-radius: 50%;
+            }
         }
 
-        .name {
-          padding-top: 2px;
-          color: $white;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          font-size: 13px;
+        .color-white {
+            color: $white;
         }
-      }
+
+        .color-grey5 {
+            color: $grey5;
+        }
+
+        .user-grid {
+            font-family: $font;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            @media screen and (max-width: $mobile) {
+                max-height: 161px;
+                grid-template-columns: 100%;
+                overflow-y: auto;
+            }
+
+            .user-container {
+                border-radius: 16px;
+                background: $grey2;
+                box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+                    inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+
+                .avatar {
+                    border-radius: 50%;
+                    height: 24px;
+                    width: 24px;
+                    min-width: 24px;
+                }
+
+                .name {
+                    padding-top: 2px;
+                    color: $white;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-size: 13px;
+                }
+            }
+        }
     }
-  }
 }
