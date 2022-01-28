@@ -32,7 +32,7 @@
         .promo-text {
             z-index: 0;
             color: $white;
-            font-size: $higher-text;
+            font-size: $big-text;
             font-style: normal;
             font-weight: normal;
             line-height: 115%;
@@ -77,6 +77,47 @@
         @media screen and (max-width: $sm) {
             padding: 0 16px 16px 16px;
             width: 100%;
+        }
+    }
+
+    .promo-banner-background-image-container {
+        display: flex;
+        position: absolute;
+        width: 70%;
+        height: 100%;
+
+        @include breakpoint(sm) {
+            width: initial;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .mask {
+            width: 262px;
+            height: 100%;
+            top: 0;
+            right: 0px;
+            position: absolute;
+            background: linear-gradient(
+                90deg,
+                rgba(50, 54, 57, 0) -0.84%,
+                $grey4 100%
+            );
+
+            @include breakpoint(sm) {
+                width: 100%;
+                right: initial;
+                background: linear-gradient(
+                    180deg,
+                    rgba(50, 54, 57, 0) 0%,
+                    $grey4 100%
+                );
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardD
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
+import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage'
 import ContextStore from './store';
 
 const routes = [
@@ -88,6 +89,10 @@ const routes = [
     {
         path: '/component/premium-cta',
         component: PremiumCTADemoPage,
+    },
+    {
+        path: '/component/promotionnal-banner',
+        component: PromotionnalBannerDemoPage,
     },
     {
         path: '/component/line-up',

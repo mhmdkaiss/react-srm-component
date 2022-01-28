@@ -1,44 +1,51 @@
 import React from 'react';
 import { NCBackgroundImage, NCCard } from '../../atoms';
 import { Button, ButtonSize, ButtonTheme, ButtonType } from '../../atoms/Button/Button';
+import { useDynamicText } from '../../hooks/useDynamicText';
 import './NCPromotionalBanner.scss';
 
 interface NCPromotionalBannerProps {
-    text: string;
+    text: Array<string>;
     image: string,
     buttonText?: string;
-    openLink?: () => void;
+    buttonLink?: string;
 }
 
 export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerProps> = (
     props: NCPromotionalBannerProps
 ) => {
-    const { text, image, buttonText, openLink } = props;
+    const dynamicTextValue = useDynamicText(props.text || ['']);
+
+    const openLink = () => {
+        window.open(props.buttonLink, '_blank');
+    };
+
     return (
-        buttonText ?
-            <div className='nc-promo-banner'>
-                <NCCard>
-                    <NCBackgroundImage src={image} />
-                    <div className='promo-content-container'>
-                        <p className='promo-text'>{text}</p>
+        <div
+            className={`nc-promo-banner ${props.buttonLink ? 'clickable' : ''}`}
+            onClick={() => {
+                if (props.buttonLink && !props.buttonText) {
+                    openLink();
+                }
+            }}
+        >
+            <NCCard>
+                <NCBackgroundImage src={props.image} />
+                <div className='promo-content-container'>
+                    <p className='promo-text'>{dynamicTextValue}</p>
+                    {
+                        props.buttonText && props.buttonLink &&
                         <Button
-                            label={buttonText}
+                            label={props.buttonText}
                             theme={ButtonTheme.CLASSIC}
                             type={ButtonType.PRIMARY}
                             size={ButtonSize.MEDIUM}
                             setClick={openLink}
                             styleClass='promo-button'
                         />
-                    </div>
-                </NCCard>
-            </div>
-            : <div className={`nc-promo-banner ${openLink ? 'clickable' : ''}`} onClick={openLink}>
-                <NCCard>
-                    <NCBackgroundImage src={image} />
-                    <div className='promo-content-container'>
-                        <p className='promo-text'>{text}</p>
-                    </div>
-                </NCCard>
-            </div>
+                    }
+                </div>
+            </NCCard>
+        </div>
     );
 };
