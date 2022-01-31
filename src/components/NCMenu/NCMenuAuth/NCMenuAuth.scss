@@ -1,0 +1,36 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/button-mixins';
+
+.nc-menu-auth {
+    .user {
+        .profile-picture {
+            height: 44px;
+            width: 44px;
+
+            img {
+                max-height: 44px;
+                max-width: 44px;
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        .nickname,
+        .code {
+            font-size: $smallest-text;
+        }
+    }
+
+    .dropdown-header-menu {
+        &:hover {
+            .menu {
+                display: block;
+            }
+        }
+
+        .menu {
+            display: none;
+        }
+    }
+}

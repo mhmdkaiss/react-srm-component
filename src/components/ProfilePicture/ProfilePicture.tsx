@@ -1,10 +1,10 @@
 import React, { CSSProperties } from 'react';
-import { Player, PremiumStatus } from '../../models/Player';
+import { Premium, PremiumStatus } from '../../models/Player';
 import './ProfilePicture.scss';
 
 export interface ProfilePictureProps {
     playerId: string;
-    player: Player;
+    player: { premium: boolean | Premium };
     size?: number;
 }
 

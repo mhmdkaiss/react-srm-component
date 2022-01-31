@@ -1,0 +1,134 @@
+import React, { useState } from 'react';
+import { HashLink } from 'react-router-hash-link';
+import { MemoizedNCMenuAuth, NCMenuAuth } from '../NCMenuAuth/NCMenuAuth';
+import { slide as Menu } from 'react-burger-menu';
+import './NCCornerMenu.scss';
+import { Link } from 'react-router-dom';
+import { NCMenuLanguageSwitcher } from '../NCMenuLanguageSwitcher/NCMenuLanguageSwitcher';
+import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
+import { NCMenuAuthUser } from '../../../models/NCMenuUser';
+
+export interface NCCornerMenuProps {
+    logo: string;
+    hideNcLogo?: boolean
+    menuItems?: Array<MenuItem>;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    language?: { selectedLanguage: string, availlableLanguages: Array<string>, onLanguageSelected: (language: string) => void }
+    user: NCMenuAuthUser | null;
+    onLogout: () => void;
+    onOpenDashboard: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    bmStyles: any;
+}
+
+export interface MenuItem {
+    name: string;
+    href: string;
+    hash?: string;
+}
+
+export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: NCCornerMenuProps) => {
+    const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
+    const renderMenuItem = (menuItem: MenuItem) => {
+        if (menuItem.href.startsWith('/') ) {
+            return <HashLink onClick={() => setIsMenuOpen(false)} smooth to={{ pathname: menuItem.href, hash: menuItem.hash }} >{menuItem.name}</HashLink>;
+        }
+        return <a href={menuItem.href}>{menuItem.name}</a>;
+    };
+
+    return (
+        <div className="nc-corner-menu d-flex">
+            <div
+                className="top-menu-container d-none d-md-flex w-100 px-4"
+            >
+                <div className='d-flex align-items-center'>
+                    <Link to="/" className='mr-4'>
+                        <img
+                            src={props.logo}
+                            className='logo'
+                            alt="logo"
+                        />
+                    </Link>
+                    { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
+                        <img
+                            src={`${process.env.REACT_APP_S3_URL}/media/assets/nc-logo-horizontal.png`}
+                            className="logo d-none d-lg-block"
+                            alt="Nicecactus Logo"
+                        />
+                        <img
+                            src={`${process.env.REACT_APP_S3_URL}/media/assets/nc-logo-small.png`}
+                            className="logo d-lg-none"
+                            alt="Nicecactus Logo"
+                        />
+                    </a> }
+                </div>
+                <div className="menu-items">
+                    {props.menuItems?.map(menuItem => {
+                        return <span key={menuItem.name} className='mx-3'>
+                            {renderMenuItem(menuItem)}
+                        </span>;
+                    })}
+                </div>
+                <div className="menu-buttons d-flex align-items-center">
+                    { props.language && props.language.availlableLanguages?.length > 1 && <div className='language-switcher mx-4'>
+                        <NCMenuLanguageSwitcher languages={props.language.availlableLanguages} selectedLanguage={props.language.selectedLanguage} onLanguageSelected={props.language.onLanguageSelected}/>
+                        <div className="position-fixed menu pt-2">
+                            <NCDropdownMenu items={ props.language.availlableLanguages.map(l => {
+                                return {
+                                    name: l.toUpperCase(),
+                                    onClick: () => props.language?.onLanguageSelected(l)
+                                };
+                            })}
+                            />
+                        </div>
+                    </div>}
+                    <MemoizedNCMenuAuth user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
+                </div>
+            </div>
+
+            <div className="d-md-none top-menu-container w-100 px-3">
+                <div className="d-flex align-items-center">
+                    <Menu
+                        styles={props.bmStyles}
+                        onStateChange={(state) => setIsMenuOpen(state.isOpen)}
+                        isOpen={isMenuOpen}
+                    >
+                        {props.menuItems?.map(menuItem => {
+                            return <div key={menuItem.name} className="menu-item">
+                                {renderMenuItem(menuItem)}
+                            </div>;
+                        })}
+                        <NCMenuAuth isSideMenu={true} user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
+                        { props.language && props.language?.availlableLanguages?.length > 1 && <div className='mx-4'>
+                            <NCMenuLanguageSwitcher
+                                languages={props.language.availlableLanguages}
+                                selectedLanguage={props.language.selectedLanguage}
+                                onLanguageSelected={props.language.onLanguageSelected}
+                                isSideMenu={true}
+                            />
+                        </div>}
+                    </Menu>
+                    <div className='d-flex justify-content-center'>
+                        <Link to="/" className='mx-3'>
+                            <img
+                                src={props.logo}
+                                className='logo'
+                                alt="logo"
+                            />
+                        </Link>
+                        { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
+                            <img
+                                src={`${process.env.REACT_APP_S3_URL}/media/assets/nc-logo-small.png`}
+                                className="logo"
+                                alt="Nicecactus Logo"
+                            />
+                        </a> }
+                    </div>
+                </div>
+                <div className="menu-buttons">
+                    <MemoizedNCMenuAuth user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
+                </div>
+            </div>
+        </div>
+    );
+};

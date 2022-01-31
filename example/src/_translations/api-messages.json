@@ -94,5 +94,21 @@
     {
         "term": "feed.share.on",
         "comment": "Share on"
+    },
+    {
+        "term": "ds.nc-menu-auth.dashboard",
+        "comment": "Dashboard"
+    },
+    {
+        "term": "ds.nc-menu-auth.logout",
+        "comment": "Logout"
+    },
+    {
+        "term": "ds.nc-menu-auth.login",
+        "comment": "Login"
+    },
+    {
+        "term": "ds.nc-menu-auth.register",
+        "comment": "Register"
     }
 ]
