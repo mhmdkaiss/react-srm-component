@@ -82,6 +82,9 @@
 @import '../molecules/NCNextSteps/NCStep.scss';
 @import '../molecules/NCNotificationButtons/NCNotificationButtons.scss';
 
+//Templates
+@import '../templates/NCDivWithBackgroundImage/NCDivWithBackgroundImage.scss';
+
 // CSS
 .nicecactus-input {
     label {

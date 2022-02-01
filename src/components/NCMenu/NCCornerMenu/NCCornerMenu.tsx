@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { MemoizedNCMenuAuth, NCMenuAuth } from '../NCMenuAuth/NCMenuAuth';
-import { slide as Menu } from 'react-burger-menu';
 import './NCCornerMenu.scss';
 import { Link } from 'react-router-dom';
 import { NCMenuLanguageSwitcher } from '../NCMenuLanguageSwitcher/NCMenuLanguageSwitcher';
 import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
 import { NCMenuAuthUser } from '../../../models/NCMenuUser';
+import { NCCornerSideMenu } from './NCCornerSideMenu';
+import { Icon, IconType } from '../../../atoms/Icon/Icon';
 
 export interface NCCornerMenuProps {
     logo: string;
@@ -17,8 +18,6 @@ export interface NCCornerMenuProps {
     user: NCMenuAuthUser | null;
     onLogout: () => void;
     onOpenDashboard: () => void;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    bmStyles: any;
 }
 
 export interface MenuItem {
@@ -88,13 +87,12 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
 
             <div className="d-md-none top-menu-container w-100 px-3">
                 <div className="d-flex align-items-center">
-                    <Menu
-                        styles={props.bmStyles}
-                        onStateChange={(state) => setIsMenuOpen(state.isOpen)}
-                        isOpen={isMenuOpen}
-                    >
+                    <div className='side-menu-button cursor-pointer d-flex justify-content-center align-items-center' onMouseDown={() => setIsMenuOpen(!isMenuOpen)}>
+                        <Icon icon={IconType.BurgerMenu}/>
+                    </div>
+                    <NCCornerSideMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen}>
                         {props.menuItems?.map(menuItem => {
-                            return <div key={menuItem.name} className="menu-item">
+                            return <div key={menuItem.name} className="menu-item d-flex justify-content-around">
                                 {renderMenuItem(menuItem)}
                             </div>;
                         })}
@@ -107,7 +105,7 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                                 isSideMenu={true}
                             />
                         </div>}
-                    </Menu>
+                    </NCCornerSideMenu>
                     <div className='d-flex justify-content-center'>
                         <Link to="/" className='mx-3'>
                             <img

@@ -70,6 +70,7 @@ export { NCTournamentCardLoading } from './components/NCTournamentCard/NCTournam
 export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { Partner } from './models/Partner';
+export { SocialEnum, SocialLink } from './models/Social';
 export { NCImage } from './atoms/NCImage/NCImage';
 export { NCFeedCard } from './components/NCFeedCard/NCFeedCard';
 export { FeedModel } from './models/Feed';

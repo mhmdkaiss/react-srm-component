@@ -10,6 +10,7 @@ import './Navigation.scss';
 export const Navigation: React.FunctionComponent = () => {
     const [ atomsOpen, setAtomsOpen ] = React.useState(false);
     const [ componentsOpen, setComponentsOpen ] = React.useState(false);
+    const [ templatesOpen, setTemplatesOpen ] = React.useState(false);
 
     return (
         <List
@@ -104,6 +105,24 @@ export const Navigation: React.FunctionComponent = () => {
                     </ListItem>
                     <ListItem button component={Link} to='/component/media-library'>
                         <ListItemText primary='MediaLibrary'/>
+                    </ListItem>
+                </List>
+            </Collapse>
+            <ListItem button onClick={() => setTemplatesOpen(!templatesOpen)}>
+                <ListItemText primary='Templates'/>
+                <Icon
+                    icon={templatesOpen ? IconType.Minimize : IconType.Maximize}
+                    width={24}
+                    height={24}
+                />
+            </ListItem>
+            <Collapse in={templatesOpen} timeout='auto' unmountOnExit>
+                <List component='div' disablePadding>
+                    <ListItem button component={Link} to='/template/div-with-background'>
+                        <ListItemText primary='Div with background'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/template/corner-footer'>
+                        <ListItemText primary='Corner footer'/>
                     </ListItem>
                 </List>
             </Collapse>

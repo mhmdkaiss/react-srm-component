@@ -26,6 +26,17 @@
                 display: none;
             }
         }
+
+        .side-menu-button {
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+
+            .mask-icon {
+                width: 22px;
+                height: 22px;
+            }
+        }
     }
 
     .login-button {

@@ -26,8 +26,10 @@ import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardD
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
-import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage'
+import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage';
 import ContextStore from './store';
+import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
+import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
 
 const routes = [
     {
@@ -117,6 +119,14 @@ const routes = [
     {
         path: '/component/media-library',
         component: MediaLibraryDemoPage,
+    },
+    {
+        path: '/template/div-with-background',
+        component: DivWithBackgroundDemoPage,
+    },
+    {
+        path: '/template/corner-footer',
+        component: CornerFooterDemoPage,
     },
 ];
 
