@@ -8,6 +8,7 @@ import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
 import { NCMenuAuthUser } from '../../../models/NCMenuUser';
 import { NCCornerSideMenu } from './NCCornerSideMenu';
 import { Icon, IconType } from '../../../atoms/Icon/Icon';
+import { useIntl } from 'react-intl';
 
 export interface NCCornerMenuProps {
     logo: string;
@@ -27,12 +28,14 @@ export interface MenuItem {
 }
 
 export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: NCCornerMenuProps) => {
+    const intl = useIntl();
     const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
     const renderMenuItem = (menuItem: MenuItem) => {
+        const nameTranslated = intl.messages[menuItem.name] ? intl.formatMessage({ id: menuItem.name }): menuItem.name;
         if (menuItem.href.startsWith('/') ) {
-            return <HashLink onClick={() => setIsMenuOpen(false)} smooth to={{ pathname: menuItem.href, hash: menuItem.hash }} >{menuItem.name}</HashLink>;
+            return <HashLink onClick={() => setIsMenuOpen(false)} smooth to={{ pathname: menuItem.href, hash: menuItem.hash }} >{nameTranslated}</HashLink>;
         }
-        return <a href={menuItem.href}>{menuItem.name}</a>;
+        return <a href={menuItem.href}>{nameTranslated}</a>;
     };
 
     return (

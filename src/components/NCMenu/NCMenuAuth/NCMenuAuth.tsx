@@ -27,8 +27,8 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
 
     return (
         <div
-            className={`nc-menu-auth d-flex justify-content-center cursor-pointer ${
-                props.isSideMenu ? 'flex-column' : ''
+            className={`nc-menu-auth d-flex cursor-pointer ${
+                props.isSideMenu ? 'side-menu flex-column align-items-center' : 'top-menu justify-content-center'
             }`}
         >
             {props.user && !props.isSideMenu && (
@@ -60,7 +60,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                 </div>
             )}
             {!props.user && (
-                <div className={`my-auto ${!props.isSideMenu ? 'mr-4' : ''}`}>
+                <div className={`my-auto ${!props.isSideMenu ? 'mr-4' : 'menu-item'}`}>
                     <Link
                         className={'login-button'}
                         to="/login"
