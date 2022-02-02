@@ -76,6 +76,7 @@ export { NCFeedCard } from './components/NCFeedCard/NCFeedCard';
 export { FeedModel } from './models/Feed';
 export { NCDropZone } from './atoms/NCDropZone/NCDropZone';
 export * from './components/NCMenu';
+export * from './components/NCCalendar';
 export {
     DatePicker,
     Dialog,

@@ -1,0 +1,30 @@
+@import '~@cactus/srm-component/dist/src/styles/colors';
+@import '~@cactus/srm-component/dist/src/styles/variables';
+
+.calendar-demo-page {
+    color: $grey5;
+
+    .nc-corner-calendar {
+        gap: 8px;
+        .calendar-item {
+            width: 46px;
+            height: 46px;
+
+            &.has-events {
+                cursor: pointer;
+                border-radius: 50%;
+                background-color: $red;
+
+                &:hover {
+                    border: 1px $red solid;
+                    background-color: transparent;
+                }
+
+                &.selected {
+                    background-color: $blue;
+                    color: $red;
+                }
+            }
+        }
+    }
+}

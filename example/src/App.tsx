@@ -30,6 +30,7 @@ import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/P
 import ContextStore from './store';
 import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
 import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
+import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
 
 const routes = [
     {
@@ -121,6 +122,10 @@ const routes = [
         component: MediaLibraryDemoPage,
     },
     {
+        path: '/component/calendar',
+        component: CalendarDemoPage,
+    },
+    {
         path: '/template/div-with-background',
         component: DivWithBackgroundDemoPage,
     },
@@ -146,7 +151,7 @@ const App = (): ReactElement => {
                         <div className='navigation'>
                             <Navigation/>
                         </div>
-                        <div className='content p-5'>
+                        <div className='content w-100 p-5'>
                             <Switch>
                                 {routes.map((route, i) => (
                                     <RouteWithSubRoutes key={i} {...route} />
