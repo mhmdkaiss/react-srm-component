@@ -109,6 +109,9 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/component/calendar'>
                         <ListItemText primary='Calendar'/>
                     </ListItem>
+                    <ListItem button component={Link} to='/component/menu'>
+                        <ListItemText primary='Menu'/>
+                    </ListItem>
                 </List>
             </Collapse>
             <ListItem button onClick={() => setTemplatesOpen(!templatesOpen)}>

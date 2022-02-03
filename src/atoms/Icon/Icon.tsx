@@ -1,5 +1,5 @@
-import { IconMask } from './IconMask';
 import React from 'react';
+import { IconMask } from './IconMask';
 
 export enum IconType {
     AddUser = 'addUser',
@@ -63,6 +63,8 @@ export enum IconType {
     YouTube = 'youtube',
     AddFolder = 'addFolder',
     FileUpload = 'fileUpload',
+    UpArrow = 'upArrow',
+    Colapse = 'colapse',
 }
 
 export interface IconProps {

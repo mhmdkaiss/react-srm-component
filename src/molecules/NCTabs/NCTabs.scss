@@ -1,0 +1,88 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-tabs {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+
+    &.tabs-bo {
+        gap: 64px;
+
+        .nc-tab-link {
+            padding: 0;
+        }
+    }
+    &:not(.tabs-bo) {
+        // default
+        gap: 32px;
+
+        .nc-tab-link {
+            & > * {
+                white-space: nowrap;
+            }
+        }
+
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+            scrollbar-width: none;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        scrollbar-width: none; // for firefox
+    }
+
+    .nc-tab-link {
+        position: relative;
+        color: $grey6;
+        text-decoration: none;
+        align-self: center;
+        padding: 0 0 8px 0;
+
+        &:after {
+            content: '';
+            background: $primary-color;
+            position: absolute;
+            z-index: 5;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            transition-property: width;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+        }
+
+        &:not(.nc-tab-disabled):hover::after,
+        &:not(.nc-tab-disabled):focus::after,
+        &:not(.nc-tab-disabled).nc-tab-active::after {
+            left: 0;
+            right: auto;
+            width: 100%;
+        }
+        &:not(.nc-tab-disabled):hover,
+        &:not(.nc-tab-disabled).nc-tab-active {
+            color: $primary-color;
+        }
+
+        &.nc-tab-disabled {
+            color: $grey5;
+        }
+    }
+
+    &.tabs-bo > *:not(:last-child) {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: $grey6;
+            right: -32px;
+        }
+    }
+}

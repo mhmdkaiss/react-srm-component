@@ -75,6 +75,7 @@
 @import '../atoms/NCDiscordGuild/NCDiscordGuild.scss';
 @import '../atoms/NCDropZone/NCDropZone.scss';
 @import '../atoms/NCLanguageIcon/NCLanguageIcon.scss';
+@import '../atoms/NCDropdown/NCDropdown.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
@@ -82,6 +83,7 @@
 @import '../molecules/NCNextSteps/NCNextSteps.scss';
 @import '../molecules/NCNextSteps/NCStep.scss';
 @import '../molecules/NCNotificationButtons/NCNotificationButtons.scss';
+@import '../molecules/NCTabs/NCTabs.scss';
 
 //Templates
 @import '../templates/NCDivWithBackgroundImage/NCDivWithBackgroundImage.scss';

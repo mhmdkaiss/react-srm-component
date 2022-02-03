@@ -15,3 +15,5 @@ export { NCToast } from './NCToast/NCToast';
 export { NCTypography } from './NCTypography/NCTypography';
 export { NCLanguageIcon } from './NCLanguageIcon/NCLanguageIcon';
 export { NCDropdownMenu } from './NCDropdownMenu/NCDropdownMenu';
+export { NCDropdown } from './NCDropdown/NCDropdown';
+

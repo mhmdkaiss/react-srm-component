@@ -88,7 +88,7 @@
                     top: 49px;
                     flex-direction: column;
                     display: flex;
-                    z-index: 1;
+                    z-index: 10;
 
                     .sub-tab {
                         min-width: 181px;
@@ -143,10 +143,10 @@
             }
         }
     }
-}
 
-.tabs + div {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+    // & + div {
+    //     display: flex;
+    //     flex-direction: column;
+    //     gap: 32px;
+    // }
 }

@@ -18,7 +18,7 @@ const tournament = {
 };
 
 const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cbefb8ccf473930ea0237f1', cardStyle?: number) => {
-    const gameName = [ 'Small game', 'Long game name', 'Very very long game name' ][Math.floor(Math.random() * (3))]
+    const gameName = [ 'Small game', 'Long game name', 'Very very long game name' ][Math.floor(Math.random() * (3))];
 
     return (
         <NCTournamentCard

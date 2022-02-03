@@ -15,6 +15,7 @@ import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage';
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage';
 import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryDemoPage';
+import { MenuDemoPage } from './pages/MenuDemoPage/MenuDemoPage';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
@@ -133,6 +134,10 @@ const routes = [
         path: '/template/corner-footer',
         component: CornerFooterDemoPage,
     },
+    {
+        path: '/component/menu',
+        component: MenuDemoPage,
+    },
 ];
 
 const App = (): ReactElement => {
@@ -147,7 +152,7 @@ const App = (): ReactElement => {
                             </Typography>
                         </Toolbar>
                     </AppBar>
-                    <div className='content d-flex flex-row w-100 h-100'>
+                    <div className='d-flex flex-row w-100 h-100'>
                         <div className='navigation'>
                             <Navigation/>
                         </div>

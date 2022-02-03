@@ -1,0 +1,92 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-dropdown {
+    &,
+    .nc-dropdown-content-menu {
+        height: 100%;
+    }
+
+    .nc-dropdown-content-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        gap: 16px;
+        z-index: 10;
+
+        .icon-colapse {
+            background-color: $grey6;
+            border: 10px solid $grey6;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            margin: 0px 0px;
+            transition: transform 0.4s ease-in-out;
+        }
+    }
+
+    .nc-dropdown-content {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        border-radius: 0 0 0.5rem 0.5rem;
+        text-decoration: none;
+        z-index: 10;
+
+        .nc-dropdown-item {
+            color: $white;
+            min-width: 181px;
+            min-height: 36px;
+            padding: 8px;
+            background-color: $grey2;
+            text-decoration: none;
+
+            &:hover,
+            &.nc-dropdown-item-active {
+                background-color: $grey3;
+            }
+
+            &.nc-dropdown-item-active {
+                color: $primary-color !important;
+            }
+            &.nc-dropdown-item-disabled {
+                color: $grey4 !important;
+                background-color: $grey2;
+                pointer-events: none;
+            }
+            &:not(:last-child) {
+                border-bottom: 1px solid $grey4;
+            }
+        }
+    }
+
+    &.nc-dropdown-disabled {
+        pointer-events: none;
+    }
+
+    &:not(.nc-dropdown-disabled).nc-dropdown-active,
+    &:not(.nc-dropdown-disabled).nc-dropdown-hover:hover {
+        color: $primary-color !important;
+        z-index: 10;
+
+        .icon-colapse {
+            transform: rotate(180deg);
+            background-color: $primary-color;
+            border: 10px solid $primary-color;
+        }
+        & .nc-dropdown-content {
+            display: flex;
+            width: 100%;
+        }
+    }
+}
+
+.nc-tab-active > .nc-dropdown {
+    .icon-colapse {
+        background-color: $primary-color;
+        border: 10px solid $primary-color;
+    }
+}
