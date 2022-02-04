@@ -20,6 +20,7 @@ export interface UserCardRoundedProps {
     selectable?: boolean;
     selected?: boolean;
     gameAccount?: boolean;
+    onClick?: (click: boolean) => void;
     copyGameAccountCallback?: () => void;
 }
 
@@ -46,8 +47,13 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (p
     return (
         <div
             className={`user-card-rounded-component d-flex align-items-center pr-3 ${
-                props.selectable ? 'cursor-pointer selectable' : ''
+                (props.selectable || props.onClick) ? 'cursor-pointer selectable' : ''
             } ${props.selected ? 'selected' : ''} size-${props.size}`}
+            onClick={() => {
+                if (props.onClick) {
+                    props.onClick(true);
+                }
+            }}
         >
             <MemoizedProfilePicture
                 size={pictureSize}

@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+
+.team-card-rounded {
+    background: $grey2;
+    font-size: $smallest-text;
+    box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.25),
+        inset 0px 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+
+    .team-picture {
+        border-radius: 4px;
+        margin: 1px;
+    }
+
+    .tag {
+        margin-right: 4px;
+        margin-left: 6px;
+    }
+
+    &.clickable {
+        border: 1px solid transparent;
+
+        &:hover {
+            border-color: $white;
+            overflow: hidden;
+            background-color: transparent;
+        }
+    }
+}

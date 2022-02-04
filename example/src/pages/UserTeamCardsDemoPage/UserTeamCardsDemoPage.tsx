@@ -13,6 +13,7 @@ import {
     UserCardRoundedSize,
     ByeCard,
     HoverUserTeamCard,
+    TeamCardRounded,
 } from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
@@ -229,6 +230,18 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 selectable={SelectionType.Selected}
                                 selected={teamCardSelected}
                                 team={TEAM_MOCK}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='my-4 d-flex flex-column'>
+                    <span>Rounded</span>
+                    <div className='d-flex'>
+                        <div className='mr-3'>
+                            <TeamCardRounded
+                                team={TEAM_MOCK}
+                                onClick={() => console.log('on click')}
                             />
                         </div>
                     </div>
