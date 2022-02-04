@@ -27,6 +27,7 @@ import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardD
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
+import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
 import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage';
 import ContextStore from './store';
 import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
@@ -121,6 +122,10 @@ const routes = [
     {
         path: '/component/media-library',
         component: MediaLibraryDemoPage,
+    },
+    {
+        path: '/shared/auth-form',
+        component: AuthFormDemoPage,
     },
     {
         path: '/component/calendar',

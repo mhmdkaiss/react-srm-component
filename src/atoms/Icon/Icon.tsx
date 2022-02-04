@@ -3,6 +3,7 @@ import { IconMask } from './IconMask';
 
 export enum IconType {
     AddUser = 'addUser',
+    Apple = 'apple',
     Back = 'back',
     Book = 'book',
     Brackets = 'brackets',

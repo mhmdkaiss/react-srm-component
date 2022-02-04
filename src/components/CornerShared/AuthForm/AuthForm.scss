@@ -1,0 +1,196 @@
+@import 'src/styles/colors';
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+@import 'src/styles/button-mixins';
+
+.corner-login {
+    color: white;
+
+    .button {
+        &.custom {
+            &.login {
+                background: $white;
+                @include text-color($black);
+
+                &:hover {
+                    @include button-design(
+                        $white,
+                        $white,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $white,
+                        $white,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+
+            &.twitch {
+                border-color: $twitch-background;
+                background: $twitch-background;
+                @include text-color($twitch-foreground);
+
+                &:hover {
+                    @include button-design(
+                        $twitch-background,
+                        $twitch-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $twitch-background,
+                        $twitch-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+
+            &.discord {
+                background: $discord-background;
+                @include text-color($discord-foreground);
+
+                &:hover {
+                    @include button-design(
+                        $discord-background,
+                        $discord-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $discord-background,
+                        $discord-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+
+            &.google {
+                background: $google-background;
+                @include text-color($google-foreground);
+
+                &:hover {
+                    @include button-design(
+                        $google-background,
+                        $google-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $google-background,
+                        $google-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+
+            &.facebook {
+                background: $facebook-background;
+                @include text-color($facebook-foreground);
+
+                &:hover {
+                    @include button-design(
+                        $facebook-background,
+                        $facebook-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $facebook-background,
+                        $facebook-foreground,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+
+            &.apple {
+                background: $apple-background;
+                @include text-color($apple-foreground);
+
+                &:hover {
+                    @include button-design(
+                        $apple-background,
+                        $apple-background,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:active {
+                    @include button-design(
+                        $apple-background,
+                        $apple-background,
+                        transparent,
+                        $gradient: false
+                    );
+                }
+
+                &:disabled {
+                    @include button-disable($grey4, $border: false);
+                }
+            }
+        }
+    }
+
+    .corner-divider {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: $light-grey;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin: 40px 0;
+
+        .divider-line {
+            width: 45%;
+            height: 1px;
+            background: $light-grey;
+        }
+
+        .divider-label {
+            margin: 0 1rem;
+        }
+    }
+}

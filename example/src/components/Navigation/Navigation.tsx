@@ -3,14 +3,49 @@ import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navigation.scss';
 
 export const Navigation: React.FunctionComponent = () => {
     const [ atomsOpen, setAtomsOpen ] = React.useState(false);
     const [ componentsOpen, setComponentsOpen ] = React.useState(false);
+    const [ sharedComponentsOpen, setSharedComponentsOpen ] = React.useState(false);
     const [ templatesOpen, setTemplatesOpen ] = React.useState(false);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        checkUnCollapsed(location.pathname.split('/')[1]);
+    }, [location]);
+
+    const checkUnCollapsed = (pathName: string) => {
+        collapseAll();
+        switch (pathName) {
+            case 'atoms':
+                setAtomsOpen(true);
+                break;
+            case 'component':
+                setComponentsOpen(true);
+                break;
+            case 'shared':
+                setSharedComponentsOpen(true);
+                break;
+            case 'template':
+                setTemplatesOpen(true);
+                break;
+            default:
+                collapseAll();
+                break;
+        }
+    };
+
+    const collapseAll = () => {
+        setSharedComponentsOpen(false);
+        setTemplatesOpen(false);
+        setComponentsOpen(false);
+        setAtomsOpen(false);
+    };
 
     return (
         <List
@@ -41,7 +76,7 @@ export const Navigation: React.FunctionComponent = () => {
                         <ListItemText primary='Dialog'/>
                     </ListItem>
                     <ListItem button component={Link} to='/component/stepper'>
-                        <ListItemText primary='Steppers' />
+                        <ListItemText primary='Steppers'/>
                     </ListItem>
                     <ListItem button component={Link} to='/atoms/typography'>
                         <ListItemText primary='Typography'/>
@@ -132,6 +167,22 @@ export const Navigation: React.FunctionComponent = () => {
                     </ListItem>
                 </List>
             </Collapse>
+            <ListItem button onClick={() => setSharedComponentsOpen(!sharedComponentsOpen)}>
+                <ListItemText primary='Shared Components'/>
+                <Icon
+                    icon={sharedComponentsOpen ? IconType.Minimize : IconType.Maximize}
+                    width={24}
+                    height={24}
+                />
+            </ListItem>
+            <Collapse in={sharedComponentsOpen} timeout='auto' unmountOnExit>
+                <List component='div' disablePadding>
+                    <ListItem button component={Link} to='/shared/auth-form'>
+                        <ListItemText primary='Auth Form'/>
+                    </ListItem>
+                </List>
+            </Collapse>
+
         </List>
     );
 };

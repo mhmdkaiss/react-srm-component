@@ -45,7 +45,7 @@ $intermediate: #ff7e00;
 $advanced: #ff0048;
 $primary: #0f161d;
 
-$discord-background: #8c9eff;
+$discord-background: #5865f2;
 $discord-foreground: white;
 $twitter-background: #2daae1;
 $twitter-foreground: white;
@@ -64,6 +64,8 @@ $google-background: #df4a32;
 $google-foreground: white;
 $twitch-background: #65469c;
 $twitch-foreground: white;
+$apple-background: white;
+$apple-foreground: black;
 
 /* OPACITY */
 @function opacity($color, $alpha) {

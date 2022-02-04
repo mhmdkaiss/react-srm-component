@@ -52,6 +52,7 @@
 @import '../components/NCTournamentDiscord/NCTournamentDiscord.scss';
 @import '../components/NCFeedCard/NCFeedCard.scss';
 @import '../components/NCInput/NCInput.scss';
+@import '../components/CornerShared/AuthForm/AuthForm';
 @import '../components/NCMenu/NCMenu.scss';
 @import '../components/NCCalendar/NCCalendar.scss';
 
@@ -174,4 +175,8 @@
 
 .clickable {
     cursor: pointer;
+}
+
+.text-underline {
+    text-decoration: underline;
 }

@@ -1,0 +1,21 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+@import '@cactus/srm-component/dist/src/styles/button-mixins';
+
+.corner-login-demo-page {
+    .login-wrapper {
+        padding: 50px;
+        background-color: transparent;
+        border: 4px dashed #ffffff;
+        border-radius: 15px;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 99999999s;
+        -webkit-text-fill-color: $white !important;
+        font-family: 'mollenregular';
+    }
+}
