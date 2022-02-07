@@ -33,7 +33,7 @@ export const NCCornerFooter: React.FunctionComponent<NCCornerFooterProps> = (pro
                         <Icon icon={IconType[iconKey]} />
                     </a>;
                 })}</div>}
-            {props.links && <div className='links-section footer-section d-flex justify-content-around align-items-center flex-column flex-md-row'>
+            {props.links && <div className='links-section footer-section d-flex justify-content-around text-center align-items-center flex-column flex-md-row'>
                 {props.links.map(l => {
                     const nameTranslated = intl.messages[l.name] ? intl.formatMessage({ id: l.name }): l.name;
                     return <a key={l.name} href={l.url}>{nameTranslated}</a>;

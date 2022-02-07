@@ -1,0 +1,42 @@
+@import '../../styles/colors';
+
+$transitionTime: 0.4;
+$paddingTransitionTime: 0.1;
+
+.nc-pure-accordion {
+    .accordion-title {
+        height: 50px;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: border-radius #{$paddingTransitionTime}s ease-in-out;
+        transition-delay: #{$transitionTime - $paddingTransitionTime}s;
+
+        .mask-icon {
+            background-color: $white;
+            width: 24px;
+            height: 24px;
+            transition: all #{$transitionTime}s ease-in-out;
+        }
+
+        &.open {
+            transition-delay: unset;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            .mask-icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .accordion-content-container {
+        color: $black;
+        overflow: hidden;
+        transition: height #{$transitionTime}s ease-in-out;
+        transition-delay: #{$paddingTransitionTime}s;
+        &.closed {
+            transition-delay: unset;
+            height: 0 !important;
+        }
+    }
+}

@@ -81,6 +81,7 @@ export { AuthForm } from './components/CornerShared/AuthForm/AuthForm';
 export * from './components/NCMenu';
 export * from './components/NCCalendar';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
+export { NCPureAccordion } from './components/NCPureAccordion/NCPureAccordion';
 export {
     DatePicker,
     Dialog,

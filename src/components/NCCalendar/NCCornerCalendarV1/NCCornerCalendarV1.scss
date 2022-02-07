@@ -1,0 +1,104 @@
+@import '../../../styles/colors';
+@import '../../../styles/button-mixins';
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+@import '~bootstrap/scss/bootstrap-reboot';
+
+.nc-corner-calendar-v1 {
+    border-radius: 8px;
+    width: 840px;
+
+    @include media-breakpoint-down(sm) {
+        width: 430px;
+    }
+
+    max-width: 100%;
+    padding: 0px 8px;
+
+    .calendars,
+    .details {
+        max-height: 500px;
+
+        @include media-breakpoint-down(sm) {
+            max-height: 400px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            max-height: 300px;
+        }
+
+        overflow-y: auto;
+        @include nc-scrollbar(8px);
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #e7e7e7;
+            border-radius: 8px;
+        }
+    }
+    .calendars {
+        padding: 20px;
+
+        .month {
+            font-size: 20px;
+            padding-bottom: 20px;
+            text-transform: uppercase;
+        }
+    }
+
+    .divider {
+        opacity: 0.4;
+        border-bottom: 1px solid #474747;
+        margin: 20px 0;
+    }
+
+    .details {
+        .date {
+            font-size: $higher-text;
+            line-height: 34px;
+        }
+
+        .time {
+            font-size: $tall-text;
+            line-height: 24px;
+        }
+
+        .name {
+            font-size: 24px;
+            line-height: 24px;
+        }
+    }
+
+    .nc-corner-calendar {
+        gap: 28px;
+
+        @include media-breakpoint-down(md) {
+            gap: 20px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            gap: 10px;
+        }
+
+        .calendar-item {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: $tall-text;
+            padding-top: 5px;
+        }
+    }
+
+    .legend {
+        font-size: $tall-text;
+
+        .circle {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

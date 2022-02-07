@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 import React, { useState } from 'react';
 import './CalendarDemoPage.scss';
-import { NCCornerCalendar, NCCornerCalendarEvent } from '@cactus/srm-component';
+import { NCCornerCalendar, NCCornerCalendarEvent, NCCornerCalendarV1 } from '@cactus/srm-component';
 import { IntlProvider } from 'react-intl';
 
 interface NCCornerCalendarEventExtended extends NCCornerCalendarEvent {
@@ -45,9 +45,13 @@ export const CalendarDemoPage: React.FunctionComponent = () => {
         setSelectedEvents(events.filter(e => eventIds.includes(e.id)));
     };
 
+    const openEvent = (e: string) => {
+        alert('Open event ' + e);
+    };
+
     return <div className='calendar-demo-page d-flex flex-column'>
         <div>
-            <h2>Corner calendar</h2>
+            <h2>Corner calendar base</h2>
             <div className='row'>
                 <div className='col-4'>
                     <div className='mt-3'>
@@ -85,6 +89,12 @@ export const CalendarDemoPage: React.FunctionComponent = () => {
                     </div>
                 </div>
             </div>
+            <h2 className='mt-5'>Corner calendar v1</h2>
+            <NCCornerCalendarV1
+                events={events.reverse().map(e => ({ ...e, date: Math.round(e.date.getTime() / 1000) }))}
+                onOpenEvent={openEvent}
+                games={[{ name: 'Fifa', slug: 'fifa' }, { name: 'LoL', slug: 'lol' }]}
+                openEventLabel="Aller au tournoi" />
         </div>
     </div>;
 };
