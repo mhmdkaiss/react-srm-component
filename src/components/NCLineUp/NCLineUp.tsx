@@ -9,11 +9,11 @@ interface NCLineUpProps {
 
 export const NCLineUp: React.FunctionComponent<NCLineUpProps> = ({ message, nextSteps }) => {
     return (
-        <div>
+        <React.Fragment>
             <div className="nc-line-up-text-container">
                 <p className="welcome-message">{message}</p>
             </div>
             <NCNextSteps steps={nextSteps} />
-        </div>
+        </React.Fragment>
     );
 };

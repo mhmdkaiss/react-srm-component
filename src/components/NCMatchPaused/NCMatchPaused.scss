@@ -1,0 +1,69 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.nc-match-paused-container {
+    display: flex;
+    flex-direction: column;
+
+    .nc-match-header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: $medium-text;
+            line-height: 150%;
+            text-align: center;
+            color: $grey5;
+            margin: 0px;
+        }
+
+        .nc-copy-match-id {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+
+            .nc-copy-match-paused-id-icon {
+                background: $grey5;
+            }
+
+            p {
+                margin: 0px;
+                font-size: $smallest-text;
+                line-height: 116%;
+                letter-spacing: 0.04em;
+            }
+        }
+    }
+
+    .nc-scheduled-date-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .nc-match-scheduled-date {
+            font-size: $medium-text;
+            line-height: 150%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: $grey5;
+        }
+
+        .nc-match-date-count-down {
+            font-weight: bold;
+            font-size: $medium-text;
+            line-height: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: $electric-lime;
+        }
+    }
+}

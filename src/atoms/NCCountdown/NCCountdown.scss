@@ -1,0 +1,14 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.nc-countdown {
+    display: flex;
+    font-weight: bold;
+    font-size: $medium-text;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $electric-lime;
+}

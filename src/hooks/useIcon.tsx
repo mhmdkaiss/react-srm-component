@@ -8,11 +8,21 @@ type UseIconReturnType = {
 
 const ICONS = {
     google: <GoogleIcon />,
-    notification: <Icon width={24} height={24} icon={IconType.Notification} styleName={'nc-notification-button-icon nc-active-icon'} />,
-    mobile: <Icon width={24} height={24} icon={IconType.Mobile} styleName={'nc-notification-button-icon nc-active-icon'} />
+    notification: <Icon
+        width={24}
+        height={24}
+        icon={IconType.Notification}
+        styleName={'nc-notification-button-icon nc-active-icon'}
+    />,
+    mobile: <Icon
+        width={24}
+        height={24}
+        icon={IconType.Mobile}
+        styleName={'nc-notification-button-icon nc-active-icon'}
+    />
 };
 
-export const useIcon = () : UseIconReturnType => {
+export const useIcon = (): UseIconReturnType => {
     /**
      * Function to get the specific icon
      */

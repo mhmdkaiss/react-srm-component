@@ -57,6 +57,7 @@
 @import '../components/NCMenu/NCMenu.scss';
 @import '../components/NCCalendar/NCCalendar.scss';
 @import '../components/NCPureAccordion/NCPureAccordion.scss';
+@import '../components/NCMatchPaused/NCMatchPaused.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -79,6 +80,7 @@
 @import '../atoms/NCDropZone/NCDropZone.scss';
 @import '../atoms/NCLanguageIcon/NCLanguageIcon.scss';
 @import '../atoms/NCDropdown/NCDropdown.scss';
+@import '../atoms/NCCountdown/NCCountdown.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
