@@ -9,6 +9,7 @@ export enum AuthFormType {
 export interface AuthFormAgreement {
     key: string,
     text: string | React.ReactElement,
+    textValues?: {[key: string]: string},
     mandatory: boolean,
     checked: boolean,
 }

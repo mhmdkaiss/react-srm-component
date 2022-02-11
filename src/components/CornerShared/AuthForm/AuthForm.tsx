@@ -18,10 +18,13 @@ import { AuthFormDefaultTheme } from '../../../styles/MuiAuthFormTheme';
 interface AuthFormProps {
     formType: AuthFormType;
     agreementList: Array<AuthFormAgreement>
-    onFormSubmit: (response: AuthFormData) => void;
+    onFormSubmit: (response: AuthFormData) => Promise<void>;
     socialNetworks?: Array<string>;
     theme?: Theme;
+    errorMessage?: string;
 }
+
+const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthFormProps) => {
     const intl = useIntl();
@@ -32,6 +35,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
     const [ passwordCheck, setPasswordCheck ] = useState<string>('');
     const [ agreementList, setAgreementList ] = useState<Array<AuthFormAgreement>>(props.agreementList);
     const [ formType, setFormType ] = useState<AuthFormType>(props.formType);
+    const [ processing, setProcessing ] = useState<boolean>(false);
 
     useEffect(() => {
         setFormType(props.formType);
@@ -39,12 +43,15 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
 
     useEffect(() => {
         checkDisableButton();
-    }, [ userName, userEmail, passwordCheck, password, agreementList, formType ]);
+    }, [ userName, userEmail, passwordCheck, password, agreementList, formType, processing ]);
 
     const checkDisableButton = () => {
+        if (processing) {
+            return true;
+        }
         switch (formType) {
             case AuthFormType.Login:
-                return userEmail.length === 0 || password.length === 0;
+                return userEmail.length === 0 || password.length === 0 || !emailRegex.test(userEmail);
             case AuthFormType.Register:
                 return !!(
                     agreementList.find((a) => !a.checked && a.mandatory) ||
@@ -52,12 +59,19 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                     userEmail.length === 0 ||
                     password.length === 0 ||
                     passwordCheck.length === 0 ||
-                    password !== passwordCheck
+                    password !== passwordCheck ||
+                    !emailRegex.test(userEmail)
                 );
             case AuthFormType.Forgot:
-                return userEmail.length === 0;
+                return userEmail.length === 0 || !emailRegex.test(userEmail);
         }
         return true;
+    };
+
+    const submitForm = async(response: AuthFormData) => {
+        setProcessing(true);
+        await props.onFormSubmit(response);
+        setProcessing(false);
     };
 
     const renderSocialButtons = () => {
@@ -80,10 +94,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                                     styleClass={'col-12 ' + socialNetwork}
                                     containerClass={'col-md-7 col-12'}
                                     icon={{ type: IconType[iconKey], width: 24, height: 24 }}
-                                    setClick={() => props.onFormSubmit({
-                                        type: AuthFormType.Login,
-                                        socialNetwork: socialNetwork
-                                    })}
+                                    setClick={() => submitForm({ socialNetwork: socialNetwork, type: AuthFormType.Login })}
                                 >
                                     {socialNetwork}
                                 </Button>
@@ -105,11 +116,17 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
             <React.Fragment>
                 {
                     agreementList && agreementList.map((agreement: AuthFormAgreement, index: number) => {
+                        let text = agreement.text;
+                        if ((typeof text === 'string') && intl.messages[text]) {
+                            text = intl.formatMessage({ id: text }, agreement.textValues);
+                        }
                         return (
                             <MuiThemeProvider key={index} theme={props.theme ? props.theme : AuthFormDefaultTheme}>
                                 <FormControlLabel
+                                    className='agreement'
+                                    disabled={processing}
                                     key={index}
-                                    label={agreement.text + (agreement.mandatory ? '*' : '')}
+                                    label={text + (agreement.mandatory ? '*' : '')}
                                     control={
                                         <Checkbox onChange={() => setAgreementCheck(index)} checked={agreement.checked}/>
                                     }
@@ -118,10 +135,10 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                         );
                     })
                 }
-                <p>{ intl.formatMessage({ id: 'auth.form.register.mandatory.agreements' })}</p>
+                <p className='disclaimer agreements'>{ intl.formatMessage({ id: 'auth.form.register.mandatory.agreements' })}</p>
                 {
                     formType === AuthFormType.Register &&
-                    <p>{ intl.formatMessage({ id: 'auth.form.register.agreement.terms' })}</p>
+                    <p className='disclaimer terms'>{ intl.formatMessage({ id: 'auth.form.register.agreement.terms' })}</p>
                 }
 
             </React.Fragment>
@@ -133,7 +150,8 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
             <React.Fragment>
                 <MuiThemeProvider theme={props.theme ? props.theme : AuthFormDefaultTheme}>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 email'
                         value={userEmail}
                         autoFocus={true}
                         placeholder={intl.formatMessage({ id: 'auth.form.user.email' })}
@@ -149,8 +167,11 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                         setClick={() => sendForm()}
                         disabled={checkDisableButton()}
                     >
-                        <p>{ intl.formatMessage({ id: 'auth.form.button.send' })}</p>
+                        <p>{ intl.formatMessage({ id: processing ? 'auth.form.processing' : 'auth.form.button.send' })}</p>
                     </Button>
+                </div>
+                <div className='text-underline cursor-pointer mx-auto my-1' onClick={() => setFormType(AuthFormType.Login)}>
+                    {intl.formatMessage({ id: 'auth.form.login' })}
                 </div>
 
             </React.Fragment>
@@ -162,14 +183,16 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
             <React.Fragment>
                 <MuiThemeProvider theme={props.theme ? props.theme : AuthFormDefaultTheme}>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 email'
                         value={userEmail}
                         autoFocus={true}
                         type={'email'}
                         placeholder={intl.formatMessage({ id: 'auth.form.user.email' })}
                         onChange={(e) => setUserEmail(e.target.value)}/>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 password'
                         value={password}
                         type={'password'}
                         placeholder={intl.formatMessage({ id: 'auth.form.password' })}
@@ -186,10 +209,11 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                         setClick={() => sendForm()}
                         disabled={checkDisableButton()}
                     >
-                        { intl.formatMessage({ id: 'auth.form.login' })}
+                        { intl.formatMessage({ id: processing ? 'auth.form.processing' : 'auth.form.login' })}
                     </Button>
                 </div>
-                <div className='text-underline mx-auto my-3' onClick={() => setFormType(AuthFormType.Forgot)}>
+                <div className='error-message d-flex justify-content-center mt-1'><span>{props.errorMessage}</span></div>
+                <div className='text-underline cursor-pointer mx-auto my-3' onClick={() => setFormType(AuthFormType.Forgot)}>
                     {intl.formatMessage({ id: 'auth.form.forgot.password.ask' })}
                 </div>
                 {
@@ -205,26 +229,30 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
             <React.Fragment>
                 <MuiThemeProvider theme={props.theme ? props.theme : AuthFormDefaultTheme}>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 user-name'
                         value={userName}
                         autoFocus={true}
                         placeholder={intl.formatMessage({ id: 'auth.form.user.name' })}
                         onChange={(e) => setUserName(e.target.value)}/>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 email'
                         value={userEmail}
                         type={'email'}
                         placeholder={intl.formatMessage({ id: 'auth.form.user.email' })}
                         onChange={(e) => setUserEmail(e.target.value)}/>
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 password'
                         type={'password'}
                         value={password}
                         placeholder={intl.formatMessage({ id: 'auth.form.password' })}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <TextField
-                        className='shared-input mb-3'
+                        disabled={processing}
+                        className='shared-input mb-3 password-repeat'
                         value={passwordCheck}
                         type={'password'}
                         placeholder={intl.formatMessage({ id: 'auth.form.repeat.password' })}
@@ -242,9 +270,10 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                         setClick={() => sendForm()}
                         disabled={checkDisableButton()}
                     >
-                        { intl.formatMessage({ id: 'auth.form.register' })}
+                        { intl.formatMessage({ id: processing ? 'auth.form.processing' : 'auth.form.register' })}
                     </Button>
                 </div>
+                <div className='error-message d-flex justify-content-center mt-1'><span>{props.errorMessage}</span></div>
             </React.Fragment>
         );
     };
@@ -252,10 +281,10 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
     const sendForm = () => {
         switch (formType) {
             case AuthFormType.Login:
-                props.onFormSubmit({ type: formType, email: userEmail, password });
+                submitForm({ type: formType, email: userEmail, password });
                 break;
             case AuthFormType.Register:
-                props.onFormSubmit({
+                submitForm({
                     type: formType,
                     userName,
                     password,
@@ -264,7 +293,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                 });
                 break;
             case AuthFormType.Forgot:
-                props.onFormSubmit({ type: formType, email: userEmail });
+                submitForm({ type: formType, email: userEmail });
                 break;
         }
     };
@@ -293,7 +322,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
 
     return (
         <div className='corner-login h-100 d-flex flex-column justify-content-center'>
-            <Typography variant='h3' className='white mx-auto text-uppercase mb-3'>{renderTitle()}</Typography>
+            <Typography variant='h3' className='white mx-auto text-uppercase mb-3 title'>{renderTitle()}</Typography>
             {renderForm()}
             {
                 formType !== AuthFormType.Forgot && props.socialNetworks &&

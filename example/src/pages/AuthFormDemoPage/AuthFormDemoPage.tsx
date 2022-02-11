@@ -34,7 +34,7 @@ export const AuthFormDemoPage: React.FunctionComponent = () => {
         },
     });
 
-    const getSubmittedForm = (submittedForm: AuthFormData) => {
+    const getSubmittedForm = async(submittedForm: AuthFormData) => {
         console.log(submittedForm);
     };
 

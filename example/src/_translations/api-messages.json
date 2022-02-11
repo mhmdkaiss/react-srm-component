@@ -166,5 +166,45 @@
     {
         "term": "auth.form.or",
         "comment": "auth.form.or"
+    },
+    {
+        "term": "auth.age_disclaimer",
+        "comment": "auth.age_disclaimer"
+    },
+    {
+        "term": "auth.receive_communication_partner",
+        "comment": "auth.receive_communication_partner"
+    },
+    {
+        "term": "auth.receive_communication_nc",
+        "comment": "auth.receive_communication_nc"
+    },
+    {
+        "term": "auth.form.processing",
+        "comment": "auth.form.processing"
+    },
+    {
+        "term": "auth.error.TooManyRequests",
+        "comment": "Auth error"
+    },
+    {
+        "term": "auth.error.InvalidEmail",
+        "comment": "Auth error"
+    },
+    {
+        "term": "auth.error.PasswordTooShort",
+        "comment": "Auth error"
+    },
+    {
+        "term": "auth.error.InvalidCredentials",
+        "comment": "Auth error"
+    },
+    {
+        "term": "auth.error.UserEmailAlreadyExist",
+        "comment": "Auth error"
+    },
+    {
+        "term": "auth.error.EmailConflict",
+        "comment": "Auth error"
     }
 ]
