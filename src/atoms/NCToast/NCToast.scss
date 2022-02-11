@@ -1,5 +1,5 @@
-@import 'src/styles/colors';
-@import 'src/styles/variables';
+@import '../../styles/colors';
+@import '../../styles/variables';
 
 .nc-toast-atom {
     width: 361px;
@@ -17,6 +17,8 @@
 
     max-height: 100px;
     opacity: 1;
+
+    backdrop-filter: blur(9px); /* Invalid property in Firefox */
 
     @media screen and (max-width: $xs) {
         width: 100%;
@@ -46,6 +48,10 @@
     .toast-title {
         text-transform: uppercase;
         font-weight: bold;
+        font-size: $small-text;
+        line-height: 100%;
+        letter-spacing: 0.06em;
+        color: $red;
     }
 
     .mask-icon {

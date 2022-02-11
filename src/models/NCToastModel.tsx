@@ -6,6 +6,9 @@ export class ToastModel {
         public content: string,
         public type?: NCToastType,
         public hide?: boolean,
+        public style?: string,
+        public permanent?: boolean,
+        public titleIcon?: JSX.Element,
     ) {
         this.id = new Date().valueOf();
     }
