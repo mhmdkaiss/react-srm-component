@@ -64,7 +64,7 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                         />
                     </a> }
                 </div>
-                <div className="menu-items">
+                <div className="menu-items d-flex align-items-center justify-content-center text-center">
                     {props.menuItems?.map(menuItem => {
                         return <span key={menuItem.name} className='mx-3'>
                             {renderMenuItem(menuItem)}

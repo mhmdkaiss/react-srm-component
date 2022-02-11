@@ -35,8 +35,8 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                 <div className="mx-auto">
                     <div className="dropdown-header-menu">
                         <div className="user d-flex pointer">
-                            <div className="mr-2 d-flex flex-column align-self-center mt-1">
-                                <span className='nickname '>{props.user.nickname}</span>
+                            <div className="mr-2 d-sm-flex flex-column align-self-center mt-1 nick-code-container d-none">
+                                <span className='nickname text-elipsis'>{props.user.nickname}</span>
                                 <span className="code">#{props.user.code}</span>
                             </div>
                             <MemoProfileImage user={props.user} />
@@ -60,7 +60,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                 </div>
             )}
             {!props.user && (
-                <div className={`my-auto ${!props.isSideMenu ? 'mr-4' : 'menu-item'}`}>
+                <div className={`my-auto ${!props.isSideMenu ? 'mr-4 d-none d-md-block' : 'menu-item'}`}>
                     <Link
                         className={'login-button'}
                         to="/login"
