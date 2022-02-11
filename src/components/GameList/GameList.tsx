@@ -31,7 +31,7 @@ export const GameList: React.FunctionComponent<GameListProps> = (props: GameList
             const index = selected.findIndex(i => i === newValue);
             if (index > -1) {
                 selected.splice(index, 1);
-                setSelected(selected);
+                setSelected([...selected]);
             } else {
                 setSelected([ ...selected, newValue ]);
             }
