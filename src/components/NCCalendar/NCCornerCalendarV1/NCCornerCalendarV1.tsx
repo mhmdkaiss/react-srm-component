@@ -4,12 +4,15 @@ import { useIntl } from 'react-intl';
 import moment from 'moment';
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
 import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
+import { Icon, IconType } from '../../../atoms/Icon/Icon';
 
 export interface NCCornerCalendarV1Props {
     events: Array<NCCornerCalendarV1Event>,
     games: Array<{slug: string, name: string}>,
     openEventLabel?: string;
     onOpenEvent?: (eventId: string) => void;
+    horizontal?: boolean;
+    weekdayFormat?: 'short' | 'narrow',
 }
 
 export interface NCCornerCalendarV1Event {
@@ -29,6 +32,8 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
     const [ selectedDate, setSelectedDate ] = useState<Date>();
     const [ selectedEvents, setSelectedEvents ] = useState<Array<NCCornerCalendarV1Event>>([]);
     const [ monthsWithEvent, setMonthsWithEvents ] = useState<Array<MonthYear>>([]);
+    const [ visibleMonth, setVisibleMonth ] = useState<moment.Moment>(moment());
+    const [ calendarClass, setCalendarClass ] = useState<string>('');
 
     const openEvent = (tournamentId: string) => {
         if (props.onOpenEvent) {
@@ -69,27 +74,64 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
     };
 
     useEffect(() => {
-        setMonthsWithEvents(getAllMonthsWithEvents());
+        if (props.horizontal) {
+            if (props.events.length > 0) {
+                setVisibleMonth(moment(props.events[props.events.length - 1].date * 1000));
+            }
+        } else {
+            setMonthsWithEvents(getAllMonthsWithEvents());
+        }
         selectFirstDateWithEvents();
     }, [props.events]);
+
+    const changeMonth = (offset: number): void => {
+        setCalendarClass(offset > 0 ? 'slide-left' : 'slide-right');
+        setTimeout(() => {
+            setVisibleMonth(visibleMonth.clone().add(offset, 'months'));
+            setCalendarClass('');
+        }, 130);
+    };
 
     return <div className='nc-corner-calendar-v1 d-flex flex-column p-3'>
         <div className='row'>
             <div className='col-12 col-md-6 calendars'>
-                {monthsWithEvent.map((m, i) => {
-                    const momentMonth = moment().set('month', m.month).set('year', m.year);
-                    return <React.Fragment key={`${m.month}-${m.year}`}>
-                        { i !== 0 && <div className='divider'></div>}
-                        <div className='month'>{intl.formatDate(momentMonth.toDate(), { month: 'long' })} {momentMonth.year()}</div>
+                {props.horizontal ? <React.Fragment>
+                    <div className='d-flex justify-content-between'>
+                        <div className='month-switcher cursor-pointer' onClick={() => changeMonth(-1)}>
+                            <Icon icon={IconType.Colapse} styleName='previous' />
+                        </div>
+                        <div className='month text-center'>{intl.formatDate(visibleMonth.toDate(), { month: 'long' })} {visibleMonth.year()}</div>
+                        <div className='month-switcher cursor-pointer' onClick={() => changeMonth(1)}>
+                            <Icon icon={IconType.Colapse} styleName='next' />
+                        </div>
+                    </div>
+                    <div className={`calendar-container ${calendarClass}`}>
                         <NCCornerCalendar
-                            month={momentMonth.month()}
-                            year={momentMonth.year()}
+                            month={visibleMonth.month()}
+                            year={visibleMonth.year()}
                             events={props.events.map(e => ({ ...e, date: new Date(e.date * 1000) }))}
                             selectedDate={selectedDate}
                             onDateSelected={onDateSelected}
+                            weekdayFormat={props.weekdayFormat}
                         />
-                    </React.Fragment>;
-                })}
+                    </div>
+                </React.Fragment>
+                    :
+                    monthsWithEvent.map((m, i) => {
+                        const momentMonth = moment().set('month', m.month).set('year', m.year);
+                        return <React.Fragment key={`${m.month}-${m.year}`}>
+                            { i !== 0 && <div className='divider'></div>}
+                            <div className='month'>{intl.formatDate(momentMonth.toDate(), { month: 'long' })} {momentMonth.year()}</div>
+                            <NCCornerCalendar
+                                month={momentMonth.month()}
+                                year={momentMonth.year()}
+                                events={props.events.map(e => ({ ...e, date: new Date(e.date * 1000) }))}
+                                selectedDate={selectedDate}
+                                onDateSelected={onDateSelected}
+                                weekdayFormat={props.weekdayFormat}
+                            />
+                        </React.Fragment>;
+                    })}
             </div>
             <div className='col-12 col-md-6 d-flex flex-column details align-self-center px-4 mt-3 mt-lg-0'>
                 {selectedEvents.map((se, i) => {
@@ -110,7 +152,7 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
             </div>
         </div>
         <div className='divider m-0'></div>
-        <div className='legend d-flex justify-content-around mt-3 mb-4'>
+        <div className='legend d-flex flex-column flex-sm-row justify-content-around mt-3 mb-4'>
             {props.games.map(g => <div key={g.slug} className='d-flex'>
                 <div className={`circle mr-3 ${g.slug}`}></div>
                 {g.name}

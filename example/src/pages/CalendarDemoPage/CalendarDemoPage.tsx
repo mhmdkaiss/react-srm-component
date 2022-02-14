@@ -38,7 +38,7 @@ export const CalendarDemoPage: React.FunctionComponent = () => {
             date: new Date(Date.now() + (31 * 24 * 60 * 60 * 1000)),
             classNames: [ 'bs', 'fifa' ]
         }
-    ];
+    ].reverse();
 
     const onDateSelected = (date: Date, eventIds: Array<string>) => {
         setSelectedDate(date);
@@ -91,10 +91,18 @@ export const CalendarDemoPage: React.FunctionComponent = () => {
             </div>
             <h2 className='mt-5'>Corner calendar v1</h2>
             <NCCornerCalendarV1
-                events={events.reverse().map(e => ({ ...e, date: Math.round(e.date.getTime() / 1000) }))}
+                events={events.map(e => ({ ...e, date: Math.round(e.date.getTime() / 1000) }))}
                 onOpenEvent={openEvent}
                 games={[{ name: 'Fifa', slug: 'fifa' }, { name: 'LoL', slug: 'lol' }]}
                 openEventLabel="Aller au tournoi" />
+            <h2 className='mt-5'>Corner calendar horizontal</h2>
+            <NCCornerCalendarV1
+                events={events.map(e => ({ ...e, date: Math.round(e.date.getTime() / 1000) }))}
+                onOpenEvent={openEvent}
+                games={[{ name: 'Fifa', slug: 'fifa' }, { name: 'LoL', slug: 'lol' }]}
+                openEventLabel="Aller au tournoi"
+                weekdayFormat='narrow'
+                horizontal={true} />
         </div>
     </div>;
 };

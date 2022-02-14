@@ -47,6 +47,42 @@
             padding-bottom: 20px;
             text-transform: uppercase;
         }
+
+        .month-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+
+            .mask-icon {
+                width: 14px;
+                height: 14px;
+
+                &.next {
+                    transform: rotate(-90deg);
+                }
+
+                &.previous {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .calendar-container {
+            &.slide-right,
+            &.slide-left {
+                transition: all 0.13s ease-in;
+                opacity: 0;
+            }
+            &.slide-right {
+                transform: translateX(22px);
+            }
+            &.slide-left {
+                transform: translateX(-22px);
+            }
+        }
     }
 
     .divider {

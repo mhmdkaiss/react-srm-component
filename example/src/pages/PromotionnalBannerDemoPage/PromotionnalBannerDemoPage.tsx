@@ -4,7 +4,6 @@ import { NCPromotionalBanner } from '@cactus/srm-component';
 import './PromotionnalBannerDemoPage.scss';
 
 export const PromotionnalBannerDemoPage: React.FunctionComponent = () => {
-
     return (
         <div className='promotionnal-banner-demo-page'>
             <div className='mb-3'>
