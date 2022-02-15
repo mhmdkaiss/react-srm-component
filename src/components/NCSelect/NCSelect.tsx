@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useState } from 'react';
-
 import { MuiThemeProvider } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
+import React, { ChangeEvent, useState } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 
 export interface SelectProps {
@@ -23,8 +22,8 @@ export interface SelectProps {
 }
 
 export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProps) => {
-    const [ selectField, setSelectField ] = useState<string | undefined>('null');
-
+    const [ selectField, setSelectField ] = useState<string | undefined>();
+    const { fieldName, fieldValue } = props;
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
@@ -33,7 +32,7 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                         id={props.id}
                         native
                         disabled={props.disabled}
-                        value={props.selectedField || selectField}
+                        value={selectField || props.selectedField}
                         className="w-100 nicecactus-input"
                         inputProps={{
                             name: props.id,
@@ -58,22 +57,23 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                             >
                             </option>
                         )}
-                        {props.selectFields.sort(props.orderSelectFields).map((key: any, index: number) => {
-                            const { _name: name, _value: value } = props.fieldName && props.fieldValue ?
-                                { _name: key[props.fieldName], _value: key[props.fieldValue] } :
-                                { _name: key, _value: key };
-
-                            return (
-                                <option
-                                    id={'select-menu-item-' + index}
-                                    label={name}
-                                    key={index}
-                                    value={value}
-                                >
-                                    {name}
-                                </option>
-                            );
-                        })}
+                        {props.selectFields.sort(props.orderSelectFields).map(
+                            (field: any, index: number) => {
+                                const { name, value } = fieldName && fieldValue
+                                    ? { name: field[fieldName], value: field[fieldValue] }
+                                    : { name: field, value: field };
+                                return (
+                                    <option
+                                        key={index}
+                                        id={`select-menu-item-${index}`}
+                                        disabled={field.disabled}
+                                        label={name}
+                                        value={value}
+                                    >
+                                        {name}
+                                    </option>
+                                );
+                            })}
                     </Select>
                 </div>
             </MuiThemeProvider>
