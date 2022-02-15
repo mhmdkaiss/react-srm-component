@@ -4,15 +4,16 @@ import React, { useEffect, useState } from 'react';
 
 import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import { ButtonSize } from '../../atoms/Button/Button';
-import { Game } from '../../models/Game';
+import { NoGame } from '../../models/Game';
 
 export interface GameListProps {
-    games: Array<Game>;
+    games: Array<NoGame>;
     fancy?: boolean,
     multiple?: boolean,
     defaultSelected?: Array<number>,
-    onChange?: (game: Game) => void;
+    onChange?: (game: NoGame) => void;
     selectedChanged?: (selected: Array<number>) => void;
+    disabled?: boolean;
 }
 
 export const GameList: React.FunctionComponent<GameListProps> = (props: GameListProps) => {
@@ -47,7 +48,7 @@ export const GameList: React.FunctionComponent<GameListProps> = (props: GameList
     return (
         <div className='gamelist'>
             {
-                props.games.map((game: Game, index: number) => {
+                props.games.map((game: NoGame, index: number) => {
                     return <ButtonIcon
                         value={index.toString()}
                         size={ButtonSize.BIG}
@@ -58,6 +59,7 @@ export const GameList: React.FunctionComponent<GameListProps> = (props: GameList
                         key={index}
                         fancy={props.fancy}
                         tooltipTitle={game.title}
+                        disabled = {props.disabled}
                     />;
                 })
             }

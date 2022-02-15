@@ -12,6 +12,7 @@ export interface NCPreviewSearchProps extends SearchBarProps {
     displayParam: string;
     selected?: any,
     onSelection: (clicked: any) => void;
+    disabled? : boolean;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
@@ -36,6 +37,7 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                         actionHook={props.actionHook}
                         typingHook={(text) => setSearch(text)}
                         value={props.value}
+                        disabled={props.disabled}
                     />
                     {
                         showList &&

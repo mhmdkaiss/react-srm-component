@@ -83,6 +83,8 @@ export { FeedModel } from './models/Feed';
 export { Partner } from './models/Partner';
 export { SocialEnum, SocialLink } from './models/Social';
 export { formatDateTime, FormattedDateTime } from './utils/formatDateTime';
+export { Platform } from './models/Platform';
+export { PlatformList } from './components/PlatformList/PlatformList';
 export {
     DatePicker,
     Dialog,

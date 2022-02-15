@@ -66,7 +66,7 @@ export enum IconType {
     FileUpload = 'fileUpload',
     UpArrow = 'upArrow',
     Colapse = 'colapse',
-    Pause = 'pause',
+    Pause = 'pause'
 }
 
 export interface IconProps {

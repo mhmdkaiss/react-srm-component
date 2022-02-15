@@ -17,6 +17,7 @@ import {
     NCSelector,
     NCColorPicker,
     NCScrollTopButton,
+    PlatformList,
 } from '@cactus/srm-component';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
@@ -210,6 +211,13 @@ export const InputDemoPage: React.FunctionComponent = () => {
         );
     };
 
+    const platform = { id: 'id-testt',
+        route: 'route',
+        active: 1,
+        color: 'color',
+        title: 'title',
+        checked: false };
+
     return (
         <div className='white'>
             <div>
@@ -376,6 +384,16 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             ]);
                         }}
                         hideStore={false}
+                    />
+                </div>
+            </div>
+
+            <div className='my-5'>
+                <h4>Platform list</h4>
+                <div>
+                    <PlatformList
+                        platforms={[ platform, platform ]}
+                        onChange={ () => null }
                     />
                 </div>
             </div>

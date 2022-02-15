@@ -6,3 +6,12 @@ export interface Game {
     icon: string;
 }
 
+export class NoGame {
+    constructor(
+        public active: boolean,
+        public icon: string,
+        public id: string,
+        public route: string,
+        public title: string,
+    ) {}
+}

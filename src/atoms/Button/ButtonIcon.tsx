@@ -16,6 +16,7 @@ export interface ButtonIconProps {
     tooltipTitle?: string;
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     styleClass?: string;
+    disabled?: boolean ;
 }
 
 const renderButtonIcon = (props: ButtonIconProps) => {
@@ -23,6 +24,7 @@ const renderButtonIcon = (props: ButtonIconProps) => {
         <button value={props.value}
             className={`buttonicon ${props.fancy?'fancy':''} ${props.active?'active':''} ${props.size} d-flex align-items-center justify-content-center ${props.styleClass}`}
             onClick={props.onClick}
+            disabled = {props.disabled}
         >
             <IconMask icon={props.icon} name={props.name} />
         </button>

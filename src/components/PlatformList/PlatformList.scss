@@ -1,0 +1,38 @@
+@import 'src/styles/colors';
+
+.platform-style {
+    .main-button {
+        font-size: 14px;
+        background-color: $grey4;
+        color: $white;
+        border-color: $light-grey;
+        border-radius: 1px;
+        height: 44px;
+        width: 134px;
+        border-style: solid;
+
+        .icons-background {
+            background: $grey6;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .platform-dropdown {
+        background-color: $black;
+        width: 134px;
+        overflow-y: scroll;
+        max-height: 177px;
+        a {
+            color: $grey6;
+        }
+    }
+
+    .color-border {
+        border-color: $electric-lime;
+    }
+
+    .checkbox-div {
+        height: 32px;
+    }
+}

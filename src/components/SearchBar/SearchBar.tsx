@@ -24,6 +24,7 @@ export interface SearchBarProps {
     typingHook?: (text: string) => any;
     focusHook?: (isFocused: boolean) => any;
     setOnKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => any;
+    disabled? : boolean ;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
@@ -155,6 +156,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                                 props.focusHook(false);
                             }
                         }}
+                        disabled = {props.disabled}
                     />
                     <div
                         className='search-button'

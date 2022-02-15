@@ -15,7 +15,7 @@ export const NCCheckbox: React.FunctionComponent<NCCheckboxProps> = (props: NCCh
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
-                <label className="nc-checkbox cursor-pointer">
+                <label className="nc-checkbox cursor-pointer d-flex align-items-center m-0">
                     <input type="checkbox" onChange={(e) => {props.checked = !props.checked; props.onChange(e.target.checked);}} checked={props.checked || false} />
                     <div className="frame">
                         <Icon icon={IconType.Cross} width={9} height={9} />
