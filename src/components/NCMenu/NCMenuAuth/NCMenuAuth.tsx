@@ -2,26 +2,35 @@ import React from 'react';
 import './NCMenuAuth.scss';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { NCMenuAuthUser } from '../../../models/NCMenuUser';
-import { Link } from 'react-router-dom';
 import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
 import { ProfilePicture } from '../../../components/ProfilePicture/ProfilePicture';
+import { HashLink } from 'react-router-hash-link';
 
 export interface NCMenuAuthProps {
   isSideMenu?: boolean,
   user: NCMenuAuthUser | null,
   onLogout: () => void,
   onOpenDashboard: () => void,
+  onAction?: () => void,
 }
 
 export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
     const intl = useIntl();
 
+    const onAction = () => {
+        if (props.onAction) {
+            props.onAction();
+        }
+    };
+
     const navigateDashboard = () => {
+        onAction();
         props.onOpenDashboard();
     };
 
     const logout = () => {
+        onAction();
         props.onLogout();
     };
 
@@ -61,21 +70,22 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
             )}
             {!props.user && (
                 <div className={`my-auto ${!props.isSideMenu ? 'mr-4 d-none d-md-block' : 'menu-item'}`}>
-                    <Link
+                    <HashLink
                         className={'login-button'}
-                        to="/login"
+                        to={{ pathname: '/login', hash: '#' }}
+                        onClick={onAction}
                     >
                         <FormattedMessage id="ds.nc-menu-auth.login" />
-                    </Link>
+                    </HashLink>
                 </div>
             )}
             {!props.user && !props.isSideMenu && (
-                <Link to="/register">
+                <HashLink to={{ pathname: '/register', hash: '#' }} onClick={onAction}>
                     <Button
                         label={intl.formatMessage({ id: 'ds.nc-menu-auth.register' })}
                         theme={ButtonTheme.CUSTOM}
                     />
-                </Link>
+                </HashLink>
             )}
         </div>
     );

@@ -17,9 +17,9 @@ export const NCCornerSideMenu: React.FunctionComponent<NCCornerSideMenuProps> = 
             }
         };
 
-        document.addEventListener('mouseup', handleClick);
+        document.addEventListener('click', handleClick);
         return () => {
-            document.removeEventListener('mouseup', handleClick);
+            document.removeEventListener('click', handleClick);
         };
     }, [ sideMenuRef, props.isOpen, props.setIsOpen ]);
 

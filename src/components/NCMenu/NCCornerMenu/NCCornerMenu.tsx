@@ -38,19 +38,24 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
         return <a href={menuItem.href}>{nameTranslated}</a>;
     };
 
+    const toggleSideMenu = (e: React.MouseEvent) => {
+        e.nativeEvent.stopImmediatePropagation();
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <div className="nc-corner-menu d-flex">
             <div
                 className="top-menu-container d-none d-md-flex w-100 px-4"
             >
                 <div className='d-flex align-items-center'>
-                    <Link to="/" className='mr-4'>
+                    <HashLink smooth to={{ pathname: '/', hash: '#' }} className='mr-4'>
                         <img
                             src={props.logo}
                             className='logo'
                             alt="logo"
                         />
-                    </Link>
+                    </HashLink>
                     { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
                         <img
                             src={`${process.env.REACT_APP_S3_URL}/media/assets/nc-logo-horizontal.png`}
@@ -88,9 +93,9 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                 </div>
             </div>
 
-            <div className="d-md-none top-menu-container w-100 px-3">
+            <div className="d-md-none top-menu-container w-100 px-2 px-sm-3">
                 <div className="d-flex align-items-center">
-                    <div className='side-menu-button cursor-pointer d-flex justify-content-center align-items-center' onMouseDown={() => setIsMenuOpen(!isMenuOpen)}>
+                    <div className='side-menu-button cursor-pointer d-flex justify-content-center align-items-center' onClick={(e) => toggleSideMenu(e)}>
                         <Icon icon={IconType.BurgerMenu}/>
                     </div>
                     <NCCornerSideMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen}>
@@ -99,7 +104,7 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                                 {renderMenuItem(menuItem)}
                             </div>;
                         })}
-                        <NCMenuAuth isSideMenu={true} user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
+                        <NCMenuAuth onAction={() => setIsMenuOpen(false)} isSideMenu={true} user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
                         { props.language && props.language?.availlableLanguages?.length > 1 && <div className='mx-4'>
                             <NCMenuLanguageSwitcher
                                 languages={props.language.availlableLanguages}
@@ -127,7 +132,7 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                     </div>
                 </div>
                 <div className="menu-buttons">
-                    <MemoizedNCMenuAuth user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
+                    <MemoizedNCMenuAuth onAction={() => setIsMenuOpen(false)} user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
                 </div>
             </div>
         </div>
