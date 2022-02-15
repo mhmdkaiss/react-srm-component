@@ -60,6 +60,7 @@ export const AuthFormDemoPage: React.FunctionComponent = () => {
                     onFormSubmit={(formSubmitted) => getSubmittedForm(formSubmitted)}
                     socialNetworks={socialNetworks}
                     theme={AuthFormTheme}
+                    onSwitchFormType={setFormType}
                 />
             </div>
         </div>

@@ -22,6 +22,7 @@ interface AuthFormProps {
     socialNetworks?: Array<string>;
     theme?: Theme;
     errorMessage?: string;
+    onSwitchFormType: (type: AuthFormType) => void;
 }
 
 const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
@@ -44,6 +45,12 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
     useEffect(() => {
         checkDisableButton();
     }, [ userName, userEmail, passwordCheck, password, agreementList, formType, processing ]);
+
+    const onSwitchFormType = (formType: AuthFormType) => {
+        if (props.onSwitchFormType) {
+            props.onSwitchFormType(formType);
+        }
+    };
 
     const checkDisableButton = () => {
         if (processing) {
@@ -322,7 +329,19 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
 
     return (
         <div className='corner-login h-100 d-flex flex-column justify-content-center'>
-            <Typography variant='h3' className='white mx-auto text-uppercase mb-3 title'>{renderTitle()}</Typography>
+            <Typography variant='h3' className='d-none d-md-block white mx-auto text-uppercase mb-3 title'>{renderTitle()}</Typography>
+            <div className='d-md-none form-type-selector d-flex mb-3'>
+                <div
+                    className={`cursor-pointer type mr-2 text-lowercase ${formType !== AuthFormType.Register ? 'active' : ''}`}
+                    onClick={() => onSwitchFormType(AuthFormType.Login)}>
+                    {intl.formatMessage({ id: 'auth.form.login' })}
+                </div>
+                <div
+                    className={`cursor-pointer type text-lowercase ${formType === AuthFormType.Register ? 'active' : ''}`}
+                    onClick={() => onSwitchFormType(AuthFormType.Register)}>
+                    {intl.formatMessage({ id: 'auth.form.register' })}
+                </div>
+            </div>
             {renderForm()}
             {
                 formType !== AuthFormType.Forgot && props.socialNetworks &&
