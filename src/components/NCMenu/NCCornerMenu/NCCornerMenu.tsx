@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { MemoizedNCMenuAuth, NCMenuAuth } from '../NCMenuAuth/NCMenuAuth';
 import './NCCornerMenu.scss';
-import { Link } from 'react-router-dom';
 import { NCMenuLanguageSwitcher } from '../NCMenuLanguageSwitcher/NCMenuLanguageSwitcher';
 import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
 import { NCMenuAuthUser } from '../../../models/NCMenuUser';
@@ -115,13 +114,13 @@ export const NCCornerMenu: React.FunctionComponent<NCCornerMenuProps> = (props: 
                         </div>}
                     </NCCornerSideMenu>
                     <div className='d-flex justify-content-center'>
-                        <Link to="/" className='mx-3'>
+                        <HashLink smooth to={{ pathname: '/', hash: '#' }} className='mx-3'>
                             <img
                                 src={props.logo}
                                 className='logo'
                                 alt="logo"
                             />
-                        </Link>
+                        </HashLink>
                         { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
                             <img
                                 src={`${process.env.REACT_APP_S3_URL}/media/assets/nc-logo-small.png`}
