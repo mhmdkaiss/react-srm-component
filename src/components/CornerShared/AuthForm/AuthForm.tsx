@@ -25,7 +25,7 @@ interface AuthFormProps {
     onSwitchFormType: (type: AuthFormType) => void;
 }
 
-const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+const emailRegex = /.+@.+\.[a-z]{2,3}/;
 
 export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthFormProps) => {
     const intl = useIntl();
