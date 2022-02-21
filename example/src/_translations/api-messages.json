@@ -206,5 +206,29 @@
     {
         "term": "auth.error.EmailConflict",
         "comment": "Auth error"
+    },
+    {
+        "term": "ds.nc-menu-auth.profile",
+        "comment": "Your profile"
+    },
+    {
+        "term": "ds.nc-menu-auth.account.settings",
+        "comment": "Account Settings"
+    },
+    {
+        "term": "ds.nc-menu-auth.game.account",
+        "comment": "Game account"
+    },
+    {
+        "term": "ds.nc-menu-auth.wallet",
+        "comment": "Wallet"
+    },
+    {
+        "term": "ds.nc-menu-auth.feedback",
+        "comment": "Give feedback"
+    },
+    {
+        "term": "ds.nc-menu-auth.premium",
+        "comment": "Premium"
     }
 ]

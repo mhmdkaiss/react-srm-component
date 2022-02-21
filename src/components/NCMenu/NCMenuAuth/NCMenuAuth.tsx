@@ -1,18 +1,22 @@
-import React from 'react';
 import './NCMenuAuth.scss';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { NCMenuAuthUser } from '../../../models/NCMenuUser';
-import { NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
+
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
-import { ProfilePicture } from '../../../components/ProfilePicture/ProfilePicture';
+import { DropdownMenuItem, NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
+import { FormattedMessage, useIntl } from 'react-intl';
+
 import { HashLink } from 'react-router-hash-link';
+import { NCMenuAuthUser } from '../../../models/NCMenuUser';
+import { ProfilePicture } from '../../../components/ProfilePicture/ProfilePicture';
+import React from 'react';
 
 export interface NCMenuAuthProps {
-  isSideMenu?: boolean,
-  user: NCMenuAuthUser | null,
-  onLogout: () => void,
-  onOpenDashboard: () => void,
-  onAction?: () => void,
+    isSideMenu?: boolean,
+    user: NCMenuAuthUser | null,
+    hideUserInfo?: boolean;
+    dropdownMenuItems?: Array<DropdownMenuItem>;
+    onLogout?: () => void,
+    onOpenDashboard?: () => void,
+    onAction?: () => void,
 }
 
 export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
@@ -25,14 +29,30 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
     };
 
     const navigateDashboard = () => {
-        onAction();
-        props.onOpenDashboard();
+        if (props.onOpenDashboard) {
+            onAction();
+            props.onOpenDashboard();
+        }
     };
 
     const logout = () => {
-        onAction();
-        props.onLogout();
+        if (props.onLogout) {
+            onAction();
+            props.onLogout();
+        }
     };
+
+    const items = props.dropdownMenuItems ? props.dropdownMenuItems : [
+        {
+            name: intl.formatMessage({ id: 'ds.nc-menu-auth.dashboard' }),
+            onClick: navigateDashboard
+        },
+        {
+            name: intl.formatMessage({ id: 'ds.nc-menu-auth.logout' }),
+            onClick: logout,
+            className: 'logout'
+        }
+    ];
 
     return (
         <div
@@ -44,25 +64,17 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                 <div className="mx-auto">
                     <div className="dropdown-header-menu">
                         <div className="user d-flex pointer">
-                            <div className="mr-2 d-sm-flex flex-column align-self-center mt-1 nick-code-container d-none">
-                                <span className='nickname text-elipsis'>{props.user.nickname}</span>
-                                <span className="code">#{props.user.code}</span>
-                            </div>
+                            {!props.hideUserInfo &&
+                                <div className="mr-2 d-sm-flex flex-column align-self-center nick-code-container mt-1 d-none">
+                                    <span className='nickname text-elipsis'>{props.user.nickname}</span>
+                                    <span className="code">#{props.user.code}</span>
+                                </div>
+                            }
                             <MemoProfileImage user={props.user} />
                         </div>
 
                         <div className="position-fixed menu">
-                            <NCDropdownMenu items={[
-                                {
-                                    name: intl.formatMessage({ id: 'ds.nc-menu-auth.dashboard' }),
-                                    onClick: navigateDashboard
-                                },
-                                {
-                                    name: intl.formatMessage({ id: 'ds.nc-menu-auth.logout' }),
-                                    onClick: logout,
-                                    className: 'logout'
-                                }
-                            ]} />
+                            <NCDropdownMenu items={items} />
                         </div>
 
                     </div>
