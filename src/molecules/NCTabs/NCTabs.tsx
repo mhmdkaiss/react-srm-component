@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { NCDropdown, NCTypography } from '../../atoms';
 import './NCTabs.scss';
 
@@ -88,10 +88,8 @@ export const NCTabs: React.FunctionComponent<NCTabsProps & React.HTMLAttributes<
     }
 
     return (
-        <BrowserRouter>
-            <div {...other} className={`nc-tabs${variant === 'bo' ? ' tabs-bo' : ''}${other.className ? ' ' + other.className : ''}`}>
-                {tabs.map((tab, index) => renderTab(tab, index))}
-            </div>
-        </BrowserRouter>
+        <div {...other} className={`nc-tabs${variant === 'bo' ? ' tabs-bo' : ''}${other.className ? ' ' + other.className : ''}`}>
+            {tabs.map((tab, index) => renderTab(tab, index))}
+        </div>
     );
 };
