@@ -211,7 +211,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
         );
     };
 
-    const platform = { id: 'id-testt',
+    const platform = { id: 'pc',
         route: 'route',
         active: 1,
         color: 'color',

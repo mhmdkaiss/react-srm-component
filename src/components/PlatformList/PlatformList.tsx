@@ -11,6 +11,16 @@ export interface PlatformListProps {
     disabled? : boolean ;
 }
 
+enum IconsPlatforms {
+    Ps4 = 'ps4',
+    Ps5 = 'ps5',
+    Mobile = 'mobile',
+    Pc = 'pc',
+    Switch = 'switch',
+    Xbox = 'xbox',
+    Pcmobile = 'pc-mobile'
+}
+
 export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { platforms, onChange, disabled = false } : PlatformListProps) => {
     const [ search, setSearch ] = useState('Various');
     const [ icon, setIcon ] = useState<string>('Pc');
@@ -18,8 +28,8 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
 
     const [ platformsState, setPlatforms ] = useState( platforms );
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function getKeyByValue(object : any, value : string ) {
-        return Object.keys(object).find(key => object[key] === value);
+    function getKeyByValue(object : any, id : string ) {
+        return Object.keys(object).find(key => object[key] === id);
     }
 
     const tempSelectedPlatforms : Array< ExtendedPlatform > = [];
@@ -45,7 +55,7 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             for (let i=0; i< tempPlatforms.length ; i++){
                 if (tempPlatforms[i].checked === true ) {id = tempPlatforms[i].id;}
             }
-            const key = getKeyByValue( IconType, id ) ? getKeyByValue( IconType, id ) ?? '' : 'Pc' ;
+            const key = getKeyByValue( IconsPlatforms, id ) ? getKeyByValue( IconsPlatforms, id ) ?? '' : 'Pc' ;
             setIcon(key);
             setSearch(id);
         }
@@ -61,11 +71,12 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             >
                 <div className=''>
                     <IconMask
-                        key={IconType[icon]}
-                        icon={`${process.env.REACT_APP_S3_URL}/media/platforms/${IconType[icon]}.svg`}
+                        key={IconsPlatforms[icon]}
+                        icon={`${process.env.REACT_APP_S3_URL}/media/platforms/${IconsPlatforms[icon]}.svg`}
                         width={20}
                         height={20}
                         name="platform"
+                        styleName='icons-background'
                     />
                 </div>
                 <div className='mx-auto' >
