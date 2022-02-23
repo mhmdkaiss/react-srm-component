@@ -24,8 +24,6 @@ export declare type NCTinyMceProps = {
 export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey, onChange, editorConfig, value, disabled, s3PublicUrl }: NCTinyMceProps) => {
     const [ mediaLibraryOpen, setMediaLibraryOpen ] = React.useState(false);
     const selected = (v: any) => {
-        console.log('selected', v);
-        console.log('editorRef', editorRef.current);
         ((editorRef.current as any).editor as any).insertContent(`<img src="${v.publicUrl}" alt="${v.name}" />`);
         setMediaLibraryOpen(false);
     };
@@ -40,7 +38,7 @@ export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey,
             'searchreplace visualblocks code fullscreen',
             'insertdatetime media table code help wordcount'
         ],
-        toolbar: 'undo redo | formatselect | ' +
+        toolbar: 'undo redo | copy paste | styleselect | ' +
         'bold italic backcolor | alignleft aligncenter ' +
         'alignright alignjustify | bullist numlist outdent indent | ' +
         'removeformat | help ncmedialibrary',
@@ -52,30 +50,6 @@ export const NCTinyMce: React.FunctionComponent<NCTinyMceProps> = ({ id, apiKey,
             _editor.on('ExecCommand', (e) => {
                 console.log('The ' + e.command + ' command was fired.', e);
             });
-        },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        file_picker_callback: (_cb, value, meta) => {
-            console.log('file_picker_callback:value', value);
-            console.log('file_picker_callback:meta', meta);
-        },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        images_upload_handler: (blobInfo, _success, _failure) => {
-            console.log('images_upload_handler:blobInfo', blobInfo);
-        },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onTabChange: (_dialogApi: any, details: any) => {
-            // log the contents of details
-            console.log(details.newTabName);
-            console.log(details.oldTabName);
-            // switch back to the old tab
-            // dialogApi.showTab(details.oldTabName);
-        },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        file_browser_callback: (field_name: any, _url: any, _type: any, _win: any) => {
-            console.log('file_browser_callback:field_name', field_name);
-            console.log('file_browser_callback:_url', _url);
-            console.log('file_browser_callback:_type', _type);
-            // win.document.getElementById(field_name).value = 'my browser value';
         },
         ...editorConfig,
     };
