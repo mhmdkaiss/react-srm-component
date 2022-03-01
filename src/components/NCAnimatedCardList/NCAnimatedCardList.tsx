@@ -8,12 +8,14 @@ export interface NCAnimatedCardListProps {
     maxCardWidth?: number;
     loadingCard?: React.ReactNode;
     scrollHook?: (scrollLeft: number) => void;
+    cardClicked?: (index: number) => void;
 }
 
 export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps> = (props: NCAnimatedCardListProps) => {
     const [ hoverCard, setHoverCard ] = useState<React.ReactNode>();
 
-    const updateHoverCard = (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => {
+    const updateHoverCard = (cardIndex: number, cardRect: DOMRect, containerRect: DOMRect) => {
+        const card = props.cards[cardIndex];
         if (!card || props.loadingCard) {
             return;
         }
@@ -24,6 +26,11 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
             containerRect={containerRect}
             maxCardWidth={props.maxCardWidth}
             closedHook={() => setHoverCard(undefined)}
+            onClick={() => {
+                if (props.cardClicked) {
+                    props.cardClicked(cardIndex);
+                }
+            }}
         />;
         setHoverCard(customCard);
     };

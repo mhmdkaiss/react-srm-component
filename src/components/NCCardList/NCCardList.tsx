@@ -5,7 +5,7 @@ import './NCCardList.scss';
 export interface NCCardListProps {
     cards: Array<React.ReactNode>;
     cardGap?: number;
-    hoveredCard?: (card: React.ReactNode, cardRect: DOMRect, containerRect: DOMRect) => void;
+    hoveredCard?: (cardIndex: number, cardRect: DOMRect, containerRect: DOMRect) => void;
     scrollHook?: (scrollLeft: number) => void;
     customArrowsStyle?: IconProps;
 }
@@ -102,7 +102,7 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                                         const target = e.currentTarget;
                                         const timer = setTimeout(() => {
                                             if (props.hoveredCard && scrollableRef.current && target) {
-                                                props.hoveredCard(card, target.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
+                                                props.hoveredCard(index, target.getBoundingClientRect(), scrollableRef.current.getBoundingClientRect());
                                             }
                                         }, hoverTimeout);
                                         setHoverTimer(timer);

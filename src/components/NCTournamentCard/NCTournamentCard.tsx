@@ -228,18 +228,21 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                             { renderWinner() }
                         </div>
                     }
-                    <div className={`d-flex justify-content-${props.winner ? 'end' : 'between'}`}>
-                        <Button
-                            theme={ButtonTheme.TOURNAMENT}
-                            type={props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
-                            label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : 'join'}` })}
-                            setClick={(e: React.MouseEvent) => {
-                                if (props.joinHook) {
-                                    props.joinHook(e);
-                                }
-                            }}
-                        />
-                    </div>
+                    {
+                        props.joinHook &&
+                        <div className={`d-flex justify-content-${props.winner ? 'end' : 'between'}`}>
+                            <Button
+                                theme={ButtonTheme.TOURNAMENT}
+                                type={props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
+                                label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : 'join'}` })}
+                                setClick={(e: React.MouseEvent) => {
+                                    if (props.joinHook) {
+                                        props.joinHook(e);
+                                    }
+                                }}
+                            />
+                        </div>
+                    }
                 </div>
             </div>
         </div>

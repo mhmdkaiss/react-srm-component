@@ -7,6 +7,7 @@ export interface NCHoverCardProps {
     containerRect: DOMRect,
     maxCardWidth?: number,
     closedHook: (closed: boolean) => void,
+    onClick?: () => void,
 }
 
 export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NCHoverCardProps) => {
@@ -97,6 +98,11 @@ export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NC
                 onMouseLeave={() => {
                     if (opening) {
                         startClosing();
+                    }
+                }}
+                onClick={() => {
+                    if (props.onClick) {
+                        props.onClick();
                     }
                 }}
             ></div>
