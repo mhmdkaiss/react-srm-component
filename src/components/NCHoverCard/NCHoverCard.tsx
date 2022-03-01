@@ -88,7 +88,7 @@ export const NCHoverCard: React.FunctionComponent<NCHoverCardProps> = (props: NC
             </div>
             <div
                 ref={triggerBoxRef}
-                className='trigger-box position-fixed'
+                className='trigger-box position-fixed cursor-pointer'
                 style={{
                     left: props.cardRect.left,
                     top: props.cardRect.top,
