@@ -53,6 +53,7 @@ export enum IconType {
     Send = 'send',
     Settings = 'settings',
     Share = 'share',
+    ShareNew = 'shareNew',
     Stream = 'stream',
     Success = 'success',
     Sword = 'sword',
