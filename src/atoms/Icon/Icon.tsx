@@ -42,6 +42,7 @@ export enum IconType {
     Mobile = 'mobile',
     Move = 'move',
     Notification = 'notification',
+    NotificationWithStatus = 'notificationWithStatus',
     Park = 'park',
     Pause = 'pause',
     Pen = 'pen',

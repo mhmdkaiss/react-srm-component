@@ -4,20 +4,30 @@
     border-radius: 50%;
 
     &.default {
-        background-color: $primary-color;
+        img {
+            background-color: $primary-color;
+        }
     }
 
     &.premium {
-        background: linear-gradient(180deg, #ffb35a, #ffca8c 38.01%, #ff8a00);
+        img {
+            background: linear-gradient(
+                180deg,
+                #ffb35a,
+                #ffca8c 38.01%,
+                #ff8a00
+            );
+        }
     }
 
     img {
         left: 0;
-        margin: 2px;
         height: calc(100% - 4px);
         width: calc(100% - 4px);
         border-radius: 50%;
         object-fit: cover;
+        padding: 1px;
+        border-radius: 50%;
 
         &.small-border {
             margin: 1px;
