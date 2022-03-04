@@ -47,8 +47,9 @@ export const MapRoundsDemoPage: React.FunctionComponent = () => {
     const mapRoundsTitle = 'Map rounds';
     return (
         <React.Fragment>
-            <h1 className="secondary-color-light">Map rounds</h1>
-            <br/>
+            <h1 className="secondary-color-light pb-2">
+                Map rounds
+            </h1>
             <NCCard>
                 <NCTitle label={mapRoundsTitle} />
                 <NCMapRounds mapRounds={demoMapRounds} />

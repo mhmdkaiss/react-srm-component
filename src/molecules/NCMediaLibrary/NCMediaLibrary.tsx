@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NCInput } from '../..';
 import { NCBox, NCDialog, NCDropZone, NCList, NCTypography } from '../../atoms';
 import { Button, ButtonType } from '../../atoms/Button/Button';
 import { IconType } from '../../atoms/Icon/Icon';
 import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
+import { NCInput } from '../../components/NCInput/NCInput';
 import { Media, MediaLibraryService } from '../../services/media-library.service';
 import { NCActions } from '../NCActions/NCActions';
 import './NCMediaLibrary.scss';

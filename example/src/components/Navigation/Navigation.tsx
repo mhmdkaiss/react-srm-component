@@ -63,6 +63,9 @@ export const Navigation: React.FunctionComponent = () => {
             </ListItem>
             <Collapse in={atomsOpen} timeout='auto' unmountOnExit>
                 <List component='div' disablePadding>
+                    <ListItem button component={Link} to='/atoms/bubble'>
+                        <ListItemText primary='Bubbles'/>
+                    </ListItem>
                     <ListItem button component={Link} to='/atoms/button'>
                         <ListItemText primary='Buttons'/>
                     </ListItem>

@@ -5,8 +5,13 @@ import React, { ReactElement } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import { Navigation } from './components/Navigation/Navigation';
+import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
+import { BubblesDemoPage } from './pages/BubblesDemoPage/BubblesDemoPage';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
+import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
+import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
+import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
 import { FeedCardDemoPage } from './pages/FeedCardDemoPage/FeedCardDemoPage';
 import { HeadersDemoPage } from './pages/HeadersDemoPage/HeadersDemoPage';
 import { InputDemoPage } from './pages/InputDemoPage/InputDemoPage';
@@ -18,6 +23,7 @@ import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryD
 import { MenuDemoPage } from './pages/MenuDemoPage/MenuDemoPage';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
+import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage';
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
 import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage';
@@ -27,12 +33,7 @@ import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardD
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
-import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
-import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage';
 import ContextStore from './store';
-import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
-import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
-import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
 
 const routes = [
     {
@@ -42,6 +43,10 @@ const routes = [
     {
         path: '/atoms/zone',
         component: ZoneDemoPage,
+    },
+    {
+        path: '/atoms/bubble',
+        component: BubblesDemoPage
     },
     {
         path: '/atoms/button',

@@ -59,6 +59,7 @@
 @import '../components/NCPureAccordion/NCPureAccordion.scss';
 @import '../components/NCMatchPaused/NCMatchPaused.scss';
 @import '../components/PlatformList/PlatformList.scss';
+@import '../components/NCTimePicker/NCTimePicker.scss';
 
 // Atoms
 @import '../atoms/Button/Button.scss';
@@ -82,11 +83,13 @@
 @import '../atoms/NCLanguageIcon/NCLanguageIcon.scss';
 @import '../atoms/NCDropdown/NCDropdown.scss';
 @import '../atoms/NCCountdown/NCCountdown.scss';
+@import '../atoms/NCBubble/NCBubble.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';
 @import '../molecules/NCMediaLibrary/NCMediaLibrary.scss';
 @import '../molecules/NCNextSteps/NCNextSteps.scss';
+@import '../molecules/NCWeeklyScheduling/NCWeeklyScheduling.scss';
 @import '../molecules/NCNextSteps/NCStep.scss';
 @import '../molecules/NCNotificationButtons/NCNotificationButtons.scss';
 @import '../molecules/NCTabs/NCTabs.scss';
@@ -110,6 +113,7 @@
         }
     }
 
+    .MuiSelect-selectMenu,
     select,
     input,
     textarea {

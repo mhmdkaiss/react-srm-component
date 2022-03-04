@@ -1,6 +1,5 @@
-import { Icon } from '..';
-import { IconType } from '../..';
 import React from 'react';
+import { Icon, IconType } from '../Icon/Icon';
 
 export interface DropdownMenuItem {
     name: string;

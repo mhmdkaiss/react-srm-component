@@ -12,8 +12,9 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
     const doubleElimThemeColor = '#FF0DAE';
     return (
         <React.Fragment>
-            <h1 className="secondary-color-light">Tournament Rounds</h1>
-            <br/>
+            <h1 className="secondary-color-light pb-2">
+                Tournament Rounds
+            </h1>
             <div className="tournament-rounds-container">
                 <NCCard>
                     <NCTitle label='Rounds Bracket' />
@@ -32,8 +33,7 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
                     </NCCard>
                 </div>
             </div>
-            <br/>
-            <div className="tournament-rounds-container">
+            <div className="tournament-rounds-container pt-4">
                 <NCCard>
                     <NCTitle
                         label='Rounds Bracket (without battle images)'
@@ -56,8 +56,7 @@ export const TournamentRoundsDemoPage: React.FunctionComponent = () => {
                     </NCCard>
                 </div>
             </div>
-            <br/>
-            <div className="tournament-rounds-container">
+            <div className="tournament-rounds-container pt-4">
                 <NCCard>
                     <NCTitle
                         label='Rounds Double Elimination'

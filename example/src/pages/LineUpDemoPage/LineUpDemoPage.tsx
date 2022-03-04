@@ -46,8 +46,9 @@ export const LineUpDemoPage: React.FunctionComponent = () => {
 
     return (
         <React.Fragment>
-            <h1 className="secondary-color-light">Line up widget</h1>
-            <br/>
+            <h1 className="secondary-color-light pb-3">
+                Line up widget
+            </h1>
             <NCCard>
                 <NCTitle label={lineUpTitle} />
                 <NCLineUp message={lineUpMessage} nextSteps={demoSteps} />

@@ -1,0 +1,43 @@
+@import '../../styles/colors.scss';
+
+.nc-time-picker-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    max-height: 48px;
+
+    .time-picker-input {
+        width: 100%;
+    }
+
+    .icon-clock {
+        z-index: 1;
+        position: absolute;
+        bottom: 9px;
+        right: 8px;
+        background: $grey5;
+    }
+
+    &.caret-transparent {
+        caret-color: transparent;
+    }
+
+    &.invalid-time {
+        .MuiInputBase-input {
+            color: $red;
+            text-transform: lowercase;
+        }
+
+        .MuiInput-underline::before {
+            border-bottom: 1px solid $red;
+        }
+
+        .MuiInput-underline::after {
+            border-bottom: 2px solid $red;
+        }
+
+        .icon-clock {
+            background: $red;
+        }
+    }
+}

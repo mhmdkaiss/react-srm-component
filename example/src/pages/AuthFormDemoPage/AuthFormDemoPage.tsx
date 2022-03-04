@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './AuthFormDemoPage.scss';
 import { AuthForm, AuthFormType, NCSelect } from '@cactus/srm-component';
-import { AuthFormAgreement, AuthFormData } from '../../../../src/models/AuthFormType';
 import { createMuiTheme } from '@material-ui/core';
+import React, { useState } from 'react';
+import { AuthFormAgreement, AuthFormData } from '../../../../src/models/AuthFormType';
+import './AuthFormDemoPage.scss';
 
 export const AuthFormDemoPage: React.FunctionComponent = () => {
     const formTypeValues = [
@@ -47,7 +47,7 @@ export const AuthFormDemoPage: React.FunctionComponent = () => {
                     fieldValue={'value'}
                     fieldName={'key'}
                     actionHook={(event) => {
-                        if (event) {
+                        if (typeof event === 'string') {
                             setFormType(event);
                         }
                     }}

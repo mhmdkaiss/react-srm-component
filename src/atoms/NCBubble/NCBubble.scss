@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.nc-bubble {
+    display: flex;
+    border: 2px solid;
+    border-radius: 83px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+
+    &.default-bubble-active {
+        background: linear-gradient(270deg, $electric-lime 0%, #ebff00 100%);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+        border: 0;
+        color: $grey1 !important;
+    }
+
+    &.default-bubble-active > * {
+        color: $grey1 !important;
+    }
+
+    .nc-bubble-content {
+        margin: 0;
+        font-weight: normal;
+        line-height: 130%;
+        letter-spacing: 0.04em;
+        user-select: none;
+    }
+}

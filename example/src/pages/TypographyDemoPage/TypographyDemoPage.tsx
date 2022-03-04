@@ -17,39 +17,37 @@ export const TypographyDemoPage: React.FunctionComponent = () => {
     ];
 
     return (
-        <div className='typography-demo-page' style={{
-            color: 'white',
-        }}>
+        <div className='typography-demo-page' style={{ color: 'white' }}>
             {variantList.map((v, idx) => {
                 return (
-                    <React.Fragment key={idx}>
+                    <div className='pb-3' key={idx}>
                         <NCTypography key={`typography-${v}-${idx}`} variant={v}>
                                 [{v}] Lorem ipsum dolor sit amet
                         </NCTypography>
-                        <br/>
-                    </React.Fragment>
+                    </div>
                 );
-            })
-            }
-            <br/>
-            <NCTypography
-                key={'test-id-typography'}
-                variant='h1'
-                intlObj={{
-                    id: 'test-id-typography',
-                    description: 'test-description-typography',
-                }}
-            >
+            })}
+            <div className='pb-3'>
+                <NCTypography
+                    key={'test-id-typography'}
+                    variant='h1'
+                    intlObj={{
+                        id: 'test-id-typography',
+                        description: 'test-description-typography',
+                    }}
+                >
                 the text
-            </NCTypography>
-            <br/>
-            <NCTypography
-                variant='h2'
-                intlID='test.id.values'
-                intlValues={{ test: 'ouiii' }}
-            >
-                {'the text with some {test}'}
-            </NCTypography>
+                </NCTypography>
+            </div>
+            <div className='pb-3'>
+                <NCTypography
+                    variant='h2'
+                    intlID='test.id.values'
+                    intlValues={{ test: 'ouiii' }}
+                >
+                    {'the text with some {test}'}
+                </NCTypography>
+            </div>
         </div>
     );
 };

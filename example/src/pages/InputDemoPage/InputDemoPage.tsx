@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
 import {
     DatePicker,
     NCCheckbox,
     NCChip,
+    NCColorPicker,
     NCInput,
     NCMediaUpload,
     NCMultiSearch,
     NCPreviewSearch,
+    NCPreviewSearchAsync,
     NCRadioGroup,
+    NcRadioGroupFields,
+    NCScrollTopButton,
     NCSelect,
+    NCSelector,
     NCSwitch,
     NCTextArea,
-    NcRadioGroupFields,
-    SearchBar,
-    NCPreviewSearchAsync,
-    NCSelector,
-    NCColorPicker,
-    NCScrollTopButton,
+    NCTimePicker,
     PlatformList,
+    SearchBar
 } from '@cactus/srm-component';
+import React, { useState } from 'react';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
 export const InputDemoPage: React.FunctionComponent = () => {
@@ -80,6 +81,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
         { key: 'key2', value: 'value2' },
         { key: 'key3', value: 'value3' },
     ];
+
+    const multiSelectOptions = [ 'option1', 'option2', 'option3', 'option4', 'option5' ];
+
     const [ ruleGame, setRuleGame ] = useState<string>(ncSelectValues[0].value);
     const renderNcSelect = () => {
         return (
@@ -93,11 +97,19 @@ export const InputDemoPage: React.FunctionComponent = () => {
                     fieldValue={'value'}
                     fieldName={'key'}
                     actionHook={(event) => {
-                        if (event) {
+                        if (typeof event === 'string') {
                             setRuleGame(event);
                         }
                     }}
                 />
+                <div className='pt-3'>
+                    <NCSelect
+                        selectedField={[ multiSelectOptions[0], multiSelectOptions[2] ]}
+                        selectFields={multiSelectOptions}
+                        multiple={true}
+                        actionHook={(items) => console.log(items)}
+                    />
+                </div>
             </div>
         );
     };
@@ -244,6 +256,12 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         console.log('event', e);
                     }}
                 />
+                <div className='pt-4'>
+                    <NCTimePicker
+                        label='Time picker'
+                        onChange={(time) => console.log('time', time)}
+                    />
+                </div>
             </div>
             <div className='my-5'>
                 <h4>Search Bars</h4>

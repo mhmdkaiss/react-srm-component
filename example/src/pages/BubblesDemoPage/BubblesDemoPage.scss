@@ -1,0 +1,17 @@
+@import '@cactus/srm-component/dist/src/styles/colors';
+@import '@cactus/srm-component/dist/src/styles/variables';
+@import '@cactus/srm-component/dist/src/styles/button-mixins';
+
+.bubbles-demo-page {
+    color: $grey5;
+    font-size: $big-text;
+}
+
+.bubbles-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    gap: 16px;
+    padding-bottom: 25px;
+}
