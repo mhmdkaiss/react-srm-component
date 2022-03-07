@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { Button, ButtonTheme, ButtonType } from '../../atoms/Button/Button';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
 import { IconMask } from '../../atoms/Icon/IconMask';
-import { Tournament, TournamentFee } from '../../models/Tournament';
+import { Tournament, TournamentFee, TournamentState } from '../../models/Tournament';
 import './NCTournamentCard.scss';
 
 export enum TournamentCardStyle {
@@ -81,7 +81,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
             <div className="tournament-infos">
                 {
                     props.prize &&
-                    <div>{ props.prize } €</div>
+                    <div>{ props.prize }</div>
                 }
                 <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.format === 1 ? 'solo' : 'team' }` }) }</div>
             </div>
@@ -234,7 +234,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                             <Button
                                 theme={ButtonTheme.TOURNAMENT}
                                 type={props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
-                                label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : 'join'}` })}
+                                label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : (props.tournament.state >= TournamentState.Ended) ? 'see' : 'join'}` })}
                                 setClick={(e: React.MouseEvent) => {
                                     if (props.joinHook) {
                                         props.joinHook(e);

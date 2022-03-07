@@ -17,7 +17,6 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
 
     const [ leftArrow, setLeftArrow ] = useState<boolean>(false);
     const [ rightArrow, setRightArrow ] = useState<boolean>(false);
-    const [ cardWidth, setCardWidth ] = useState<number>();
     const [ arrowIcon, setArrowIcon ] = useState<React.ReactNode>();
 
     const { customArrowsStyle } = props;
@@ -50,12 +49,6 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
         window.addEventListener('resize', updateArrows);
     }, []);
 
-    useEffect(() => {
-        if (cardRef.current) {
-            setCardWidth(cardRef.current.clientWidth);
-        }
-    }, [cardRef]);
-
     const updateArrows = () => {
         if (props.scrollHook && scrollableRef.current) {
             props.scrollHook(scrollableRef.current.scrollLeft);
@@ -68,6 +61,7 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     };
 
     const scrollContainer = (toLeft?: boolean) => {
+        const cardWidth = cardRef.current?.clientWidth || 0;
         if (scrollableRef.current && cardWidth) {
             const scrollVal = cardWidth + cardGap / 2;
             scrollableRef.current.scrollBy({ left: toLeft ? -scrollVal : scrollVal, behavior: 'smooth' });

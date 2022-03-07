@@ -218,6 +218,7 @@ const tournament = {
         fee: 0,
     },
     format: 1,
+    state: 0,
 };
 
 const tournamentCards = [...Array(9)].map((_, index) => {

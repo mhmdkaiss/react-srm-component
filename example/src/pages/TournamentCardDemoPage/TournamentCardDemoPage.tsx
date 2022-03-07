@@ -15,6 +15,7 @@ const tournament = {
         fee: 0,
     },
     format: 1,
+    state: 0,
 };
 
 const renderCard = (restricted?: boolean, winner?: string, gameId: string = '5cbefb8ccf473930ea0237f1', cardStyle?: number) => {

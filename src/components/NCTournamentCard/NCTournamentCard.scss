@@ -111,7 +111,8 @@
 
     &.restricted {
         .tournament-infos,
-        .partner {
+        .partner,
+        .manual-ellipsis {
             color: $grey5 !important;
         }
 
@@ -128,9 +129,13 @@
         max-width: 820px;
 
         .tournament-banner {
-            margin-right: 32px;
+            margin-right: 16px;
             width: 458px !important;
             height: auto;
+        }
+
+        .tournament-content {
+            width: 362px !important;
         }
 
         .additional-infos {
@@ -185,7 +190,7 @@
     }
 }
 
-:not(.nc-hover-card) > .nc-tournament-card {
+:not(.nc-hover-card) > .nc-tournament-card:not(:hover) {
     .marquee-container.manual-ellipsis {
         display: flex;
         justify-content: space-between;
@@ -198,10 +203,8 @@
         &::after {
             content: '...';
             display: block;
-            color: $white;
-            font-size: $small-text;
             margin-top: auto;
-            line-height: 1;
+            padding-bottom: 6px;
         }
     }
 }
@@ -276,29 +279,36 @@
             .tournament-content {
                 padding: 8px 16px;
                 border-radius: 0px 0px 8px 8px;
+            }
+        }
+    }
+}
 
-                .marquee-container {
-                    .marquee-slider {
-                        animation: marquee 10s linear 0.5s infinite;
+.nc-hover-card.opening,
+.nc-tournament-card:hover {
+    .marquee-container {
+        &.manual-ellipsis::after {
+            display: none;
+        }
 
-                        @keyframes marquee {
-                            0% {
-                                left: 0px;
-                            }
-                            20% {
-                                left: 0px;
-                            }
-                            50% {
-                                left: -100%;
-                            }
-                            70% {
-                                left: -100%;
-                            }
-                            100% {
-                                left: 0px;
-                            }
-                        }
-                    }
+        .marquee-slider {
+            animation: marquee 10s linear infinite;
+
+            @keyframes marquee {
+                0% {
+                    left: 0px;
+                }
+                20% {
+                    left: 0px;
+                }
+                50% {
+                    left: -100%;
+                }
+                70% {
+                    left: -100%;
+                }
+                100% {
+                    left: 0px;
                 }
             }
         }
