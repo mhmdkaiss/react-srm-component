@@ -26,12 +26,12 @@ const MENU_DEFAULT_STYLE = {
 export interface SelectProps {
 	id?: string;
 	select?: { [key: string]: string };
-	selectedField?: string | Array<unknown>;
+	selectedField?: string | Array<string>;
 	selectFields: Array<unknown>;
 	fieldValue?: string;
 	fieldName?: string;
 	orderSelectFields?: <T>(a: T, b: T) => number;
-	actionHook: (v: unknown) => void;
+	actionHook: (v: string | undefined) => void;
 	defaultOptionLabel?: string;
 	defaultOption?: {
         label: string,
@@ -44,7 +44,7 @@ export interface SelectProps {
 }
 
 export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProps) => {
-    const [ selectField, setSelectField ] = useState<unknown | Array<unknown> | undefined>();
+    const [ selectField, setSelectField ] = useState<string | Array<string>>();
     const { id, multiple, selectFields, selectedField, fieldName, fieldValue } = props;
     const menuStyle = multiple
         ? (props.menuProps ? props.menuProps : MENU_DEFAULT_STYLE)
@@ -78,7 +78,7 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                         onChange={(
                             event: ChangeEvent<{ label?: string; value: unknown; }>
                         ) => {
-                            const v = event.target.value;
+                            const v = event.target.value === 'null' ? undefined : event.target.value as string;
                             setSelectField(v);
                             props.actionHook(v);
                         }}
