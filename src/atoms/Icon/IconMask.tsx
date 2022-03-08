@@ -6,6 +6,7 @@ interface IconMaskProps {
     name: string;
     icon: string;
     styleName?: string;
+    color?: string;
     onClick?: (event: React.MouseEvent) => void;
 }
 
@@ -15,6 +16,7 @@ export const IconMask: React.FunctionComponent<IconMaskProps> = ({
     name,
     icon,
     styleName,
+    color,
     onClick,
 }) => {
     return (
@@ -31,6 +33,7 @@ export const IconMask: React.FunctionComponent<IconMaskProps> = ({
                 WebkitMaskSize: 'contain',
                 width: width,
                 height: height,
+                backgroundColor: color,
             }}
             onClick={onClick}
         ></div>

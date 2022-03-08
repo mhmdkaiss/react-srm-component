@@ -78,6 +78,7 @@ export interface IconProps {
     height?: number;
     icon: IconType;
     styleName?: string;
+    color?: string;
     onClick?: (event: React.MouseEvent) => void;
 }
 
@@ -86,6 +87,7 @@ export const Icon: React.FunctionComponent<IconProps> = ({
     height,
     icon,
     styleName,
+    color,
     onClick,
 }) => {
     return (
@@ -95,6 +97,7 @@ export const Icon: React.FunctionComponent<IconProps> = ({
             width={width}
             height={height}
             styleName={styleName}
+            color={color}
             onClick={onClick}
         />
     );
