@@ -100,7 +100,11 @@ export {
     getMonths,
     sortByMonth
 } from './utils/getAllMonths';
-export { DAYS_OF_WEEK, getDaysOfWeek } from './utils/getDaysOfWeek';
+export {
+    convertToDaysOfWeek,
+    DAYS_OF_WEEK,
+    getDaysOfWeek
+} from './utils/getDaysOfWeek';
 export {
     DatePicker,
     Dialog,
