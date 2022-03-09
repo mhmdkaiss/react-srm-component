@@ -19,6 +19,10 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     const [ rightArrow, setRightArrow ] = useState<boolean>(false);
     const [ arrowIcon, setArrowIcon ] = useState<React.ReactNode>();
 
+    const [ autoScrolling, setAutoScrolling ] = useState<boolean>(false);
+    const [ scrollLeft, setScrollLeft ] = useState<boolean>(false);
+    const [ scrollTimer, setScrollTimer ] = useState<NodeJS.Timeout>();
+
     const { customArrowsStyle } = props;
 
     const isTouchDevice = () => {
@@ -41,13 +45,45 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
     };
 
     useEffect(() => {
+        if (autoScrolling) {
+            updateScrollTimer();
+        } else {
+            deleteTimer(scrollTimer);
+        }
+    }, [autoScrolling]);
+
+    useEffect(() => {
         setArrowIcon(renderArrow());
         updateArrows();
     }, [props.cards]);
 
     useEffect(() => {
         window.addEventListener('resize', updateArrows);
+
+        return () => {
+            window.removeEventListener('resize', updateArrows);
+            deleteTimer(hoverTimer);
+            deleteTimer(scrollTimer);
+        };
     }, []);
+
+    const deleteTimer = (timer?: NodeJS.Timeout) => {
+        if (timer) {
+            clearTimeout(timer);
+        }
+    };
+
+    const updateScrollTimer = (recursion?: boolean) => {
+        if (!recursion) {
+            scrollContainer(scrollLeft);
+        }
+
+        const timer = setTimeout(() => {
+            scrollContainer(scrollLeft, 30);
+            updateScrollTimer(true);
+        }, 100);
+        setScrollTimer(timer);
+    };
 
     const updateArrows = () => {
         if (props.scrollHook && scrollableRef.current) {
@@ -60,11 +96,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
         setRightArrow((scrollWidth > containerWidth) && (Math.ceil(scrollLeft + containerWidth) < scrollWidth));
     };
 
-    const scrollContainer = (toLeft?: boolean) => {
+    const scrollContainer = (toLeft?: boolean, size?: number) => {
         const cardWidth = cardRef.current?.clientWidth || 0;
         if (scrollableRef.current && cardWidth) {
             const scrollVal = cardWidth + cardGap / 2;
-            scrollableRef.current.scrollBy({ left: toLeft ? -scrollVal : scrollVal, behavior: 'smooth' });
+            scrollableRef.current.scrollBy({ left: toLeft ? -(size || scrollVal) : (size || scrollVal), behavior: 'smooth' });
         }
     };
 
@@ -73,7 +109,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
             {leftArrow &&
                 <div
                     className="left position-absolute d-flex align-items-center cursor-pointer"
-                    onClick={() => scrollContainer(true)}
+                    onMouseDown={() => {
+                        setScrollLeft(true);
+                        setAutoScrolling(true);
+                    }}
+                    onMouseUp={() => setAutoScrolling(false)}
                 >
                     {arrowIcon}
                 </div>
@@ -117,7 +157,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
             {rightArrow &&
                 <div
                     className="right position-absolute d-flex align-items-center cursor-pointer"
-                    onClick={() => scrollContainer()}
+                    onMouseDown={() => {
+                        setScrollLeft(false);
+                        setAutoScrolling(true);
+                    }}
+                    onMouseUp={() => setAutoScrolling(false)}
                 >
                     {arrowIcon}
                 </div>
