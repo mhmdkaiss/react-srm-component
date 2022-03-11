@@ -27,12 +27,12 @@
         height: 48px;
         width: 48px;
     }
-    
+
     &.medium {
         height: 40px;
         width: 40px;
     }
-    
+
     &.small {
         height: 32px;
         width: 32px;
@@ -66,8 +66,8 @@
             box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
             border-radius: 18px;
             @include icon-color($primary-color);
-    
-            &:active{
+
+            &:active {
                 background: $grey2;
                 border: solid 1px transparent;
                 box-shadow: unset;
@@ -80,12 +80,20 @@
     &.active {
         @include icon-color($primary-color);
 
-        &:active{
+        &:active {
             @include icon-color($grey6);
         }
     }
 
     &:active {
         @include icon-color($primary-color);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+
+        &:hover {
+            cursor: default !important;
+        }
     }
 }
