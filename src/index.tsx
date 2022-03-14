@@ -87,6 +87,7 @@ export { FeedModel } from './models/Feed';
 export { Partner } from './models/Partner';
 export { Platform } from './models/Platform';
 export { SocialEnum, SocialLink } from './models/Social';
+export { TournamentState } from './models/Tournament';
 export { NCWeeklyScheduling } from './molecules/NCWeeklyScheduling/NCWeeklyScheduling';
 export {
     formatDateTime,
