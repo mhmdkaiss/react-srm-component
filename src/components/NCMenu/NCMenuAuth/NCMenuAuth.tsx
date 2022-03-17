@@ -14,6 +14,7 @@ export interface NCMenuAuthProps {
     user: NCMenuAuthUser | null,
     hideUserInfo?: boolean;
     dropdownMenuItems?: Array<DropdownMenuItem>;
+    premiumAvatar?: boolean;
     onLogout?: () => void,
     onOpenDashboard?: () => void,
     onAction?: () => void,
@@ -70,7 +71,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                                     <span className="code">#{props.user.code}</span>
                                 </div>
                             }
-                            <MemoProfileImage user={props.user} />
+                            <MemoProfileImage user={{ ...props.user, isPremium: props.premiumAvatar || props.user.isPremium }} />
                         </div>
 
                         <div className="position-fixed menu">
