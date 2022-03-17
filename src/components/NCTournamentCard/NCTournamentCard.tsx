@@ -20,6 +20,7 @@ export interface NCTournamentCardProps {
     winner?: string;
     cardStyle?: TournamentCardStyle;
     forceSmall?: boolean;
+    color?: string;
     joinHook?: (event: React.MouseEvent) => void;
     readHook?: (event: React.MouseEvent) => void;
 }
@@ -200,7 +201,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 {
                     !props.restricted &&
                     <div className='tournament-infos text-uppercase entrance mb-2'>
-                        <div>{ intl.formatMessage({ id: `tournament.card.fee.${TournamentFee[props.tournament.entrance.fee].toLowerCase()}` }) }</div>
+                        <div style={{ color: props.color ? props.color : '' }}>{ intl.formatMessage({ id: `tournament.card.fee.${TournamentFee[props.tournament.entrance.fee].toLowerCase()}` }) }</div>
                     </div>
                 }
                 {
@@ -232,9 +233,10 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                         props.joinHook &&
                         <div className={`d-flex justify-content-${props.winner ? 'end' : 'between'}`}>
                             <Button
-                                theme={ButtonTheme.TOURNAMENT}
-                                type={props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
+                                theme={props.color ? ButtonTheme.CUSTOM : ButtonTheme.TOURNAMENT}
+                                type={!props.color || props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
                                 label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : (props.tournament.state >= TournamentState.Ended) ? 'see' : 'join'}` })}
+                                color={props.color || ''}
                                 setClick={(e: React.MouseEvent) => {
                                     if (props.joinHook) {
                                         props.joinHook(e);

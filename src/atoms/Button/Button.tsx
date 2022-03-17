@@ -59,14 +59,14 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                 className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${props.styleClass} ${props.color ? 'custom-hover' : ''}`}
                 disabled={props.disabled}
                 onClick={onClick}
-                style={{ background: [ButtonType.SECONDARY].includes(type) ? undefined : props.color }}
+                style={{ background: theme === ButtonTheme.CUSTOM ? props.color : [ButtonType.SECONDARY].includes(type) ? undefined : props.color }}
             >
                 {props.icon && <Icon styleName="mr-2" icon={props.icon.type} width={props.icon.width} height={props.icon.height} />}
                 <span
                     className={`h-100 ${props.disabled ? 'disabled' : [ ButtonTheme.TOURNAMENT, ButtonTheme.TRACKING, ButtonTheme.TRAINING ].includes(theme) && type === ButtonType.SECONDARY ? `${theme} ${type}` : ''}`}
                     style={{
-                        color: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
-                        WebkitTextFillColor: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        color: theme === ButtonTheme.CUSTOM ? 'black' : [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        WebkitTextFillColor: theme === ButtonTheme.CUSTOM ? 'black' : [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
                     }}
                 >
                     {props.label || props.children}
