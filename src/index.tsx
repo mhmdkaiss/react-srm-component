@@ -14,6 +14,7 @@ import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dialog } from './components/Dialog/Dialog';
 import { DisplayList, DisplaySelector } from './components/DisplaySelector/DisplaySelector';
 import { GameList } from './components/GameList/GameList';
+import { FingerIndicator } from './components/FingerIndicator/FingerIndicator';
 import { HoverUserTeamCard } from './components/HoverUserTeamCard/HoverUserTeamCard';
 import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
 import { NCCheckbox } from './components/NCCheckbox/NCCheckbox';
@@ -133,6 +134,7 @@ export {
     DisplaySelector,
     DisplayList,
     GameList,
+    FingerIndicator,
     NCInput,
     NCSwitch,
     NCChip,

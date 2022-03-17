@@ -24,6 +24,7 @@
     cursor: pointer;
     height: 64px;
     width: 100%;
+    justify-content: center;
 
     &:hover {
         @include hoverEffect();

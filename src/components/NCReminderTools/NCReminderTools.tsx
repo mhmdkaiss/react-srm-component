@@ -6,6 +6,7 @@ export type ReminderToolPropsType = {
     iconName: string,
     label:string,
     action: () => void;
+    showFinger?: boolean,
 }
 
 interface NCReminderToolsProps {

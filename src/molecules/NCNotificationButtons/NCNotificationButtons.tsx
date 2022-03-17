@@ -4,16 +4,18 @@ import { ReminderToolPropsType } from '../../components/NCReminderTools/NCRemind
 import './NCNotificationButtons.scss';
 
 interface NCNotificationButtonsProps {
-    buttons: Array<ReminderToolPropsType>
+    buttons: Array<ReminderToolPropsType>;
+    showFingers?: boolean;
 }
 
-export const NCNotificationButtons: React.FunctionComponent<NCNotificationButtonsProps> = ({ buttons }) => {
+export const NCNotificationButtons: React.FunctionComponent<NCNotificationButtonsProps> = ({ buttons, showFingers }) => {
     return (
         <div className="nc-notification-buttons-container">
             {
                 buttons.map((button, i: number) => {
                     return (
                         <NCNotificationButton
+                            showFinger= {showFingers}
                             key={`notification-button-${i}`}
                             {...button}
                         />

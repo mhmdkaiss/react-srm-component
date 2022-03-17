@@ -1,5 +1,6 @@
 
 import React, { MouseEvent, ReactElement } from 'react';
+import { FingerIndicator } from '../../components/FingerIndicator/FingerIndicator';
 import { Icon, IconType } from '../Icon/Icon';
 import './Button.scss';
 
@@ -38,6 +39,7 @@ export interface ButtonProps {
     containerClass?: string;
     icon?: { type: IconType, width: number, height: number };
     color?: string;
+    showFinger?: boolean;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps) => {
@@ -68,6 +70,12 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                     }}
                 >
                     {props.label || props.children}
+                    {
+                        props.showFinger &&
+                        <div className='position-absolute'>
+                            <FingerIndicator />
+                        </div>
+                    }
                 </span>
             </button>
         </div>
