@@ -117,21 +117,24 @@ export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProp
                                 {selectFields.sort(props.orderSelectFields).map(
                                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                     (field: any, index: number) => {
-                                        const { name, value } = fieldName && fieldValue
-                                            ? { name: field[fieldName], value: field[fieldValue] }
-                                            : { name: field, value: field };
-                                        const disabled = field.disable ? field.disable : false;
-                                        return (
-                                            <option
-                                                key={`select-${id}-option-${index}`}
-                                                id={`select-menu-item-${index}`}
-                                                disabled={disabled}
-                                                label={name}
-                                                value={value}
-                                            >
-                                                {name}
-                                            </option>
-                                        );
+                                        if (field) {
+                                            const { name, value } = fieldName && fieldValue
+                                                ? { name: field[fieldName], value: field[fieldValue] }
+                                                : { name: field, value: field };
+                                            const disabled = field.disable ? field.disable : false;
+                                            return (
+                                                <option
+                                                    key={`select-${id}-option-${index}`}
+                                                    id={`select-menu-item-${index}`}
+                                                    disabled={disabled}
+                                                    label={name}
+                                                    value={value}
+                                                >
+                                                    {name}
+                                                </option>
+                                            );
+                                        }
+                                        return null;
                                     }
                                 )}
                             </React.Fragment>
