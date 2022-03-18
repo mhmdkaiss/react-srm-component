@@ -14,7 +14,7 @@ export interface NCMenuAuthProps {
     user: NCMenuAuthUser | null,
     hideUserInfo?: boolean;
     dropdownMenuItems?: Array<DropdownMenuItem>;
-    premiumAvatar?: boolean;
+    platformMenu?: boolean;
     onLogout?: () => void,
     onOpenDashboard?: () => void,
     onAction?: () => void,
@@ -71,7 +71,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                                     <span className="code">#{props.user.code}</span>
                                 </div>
                             }
-                            <MemoProfileImage user={{ ...props.user, isPremium: props.premiumAvatar || props.user.isPremium }} />
+                            <MemoProfileImage user={{ ...props.user, isPremium: props.platformMenu || props.user.isPremium }} />
                         </div>
 
                         <div className="position-fixed menu">
@@ -84,7 +84,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
             {!props.user && (
                 <div className={`my-auto ${!props.isSideMenu ? 'mr-4 d-none d-md-block' : 'menu-item'}`}>
                     <HashLink
-                        className={'login-button'}
+                        className={`login-button ${props.platformMenu ? 'primary-color font-weight-bold text-uppercase' : ''}`}
                         to={{ pathname: '/login', hash: '#' }}
                         onClick={onAction}
                     >

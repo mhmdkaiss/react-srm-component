@@ -37,4 +37,8 @@
             display: none;
         }
     }
+
+    .login-button.primary-color:hover {
+        color: $white !important;
+    }
 }
