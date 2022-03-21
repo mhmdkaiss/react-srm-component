@@ -87,9 +87,19 @@
             }
 
             .icon-platform,
-            .icon-plus {
+            .icon-plus,
+            .icon-gift {
                 background: $grey6;
+            }
+
+            .icon-platform,
+            .icon-plus {
                 margin: 0px 1px;
+            }
+
+            .icon-gift {
+                margin-right: 4px;
+                margin-bottom: 4px;
             }
         }
 

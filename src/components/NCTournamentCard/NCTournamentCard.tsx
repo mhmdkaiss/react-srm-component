@@ -17,6 +17,7 @@ export interface NCTournamentCardProps {
     banner: string;
     restricted?: boolean;
     prize?: string;
+    gift?: boolean;
     winner?: string;
     cardStyle?: TournamentCardStyle;
     forceSmall?: boolean;
@@ -83,6 +84,13 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 {
                     props.prize &&
                     <div>{ props.prize }</div>
+                }
+                {
+                    props.gift &&
+                    <div className='d-flex'>
+                        <Icon icon={IconType.Gift} width={16} height={16} />
+                        <div>{ intl.formatMessage({ id: 'tournament.reward.gift' }) }</div>
+                    </div>
                 }
                 <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.format === 1 ? 'solo' : 'team' }` }) }</div>
             </div>

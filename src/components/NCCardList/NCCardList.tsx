@@ -38,8 +38,8 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                 ? { ...customArrowsStyle }
                 : {
                     icon: IconType.GoToPreviousPage,
-                    height: 12,
-                    width: 12
+                    height: 24,
+                    width: 24
                 };
         return <Icon {...iconProps} />;
     };
