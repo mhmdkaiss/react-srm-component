@@ -302,7 +302,7 @@
         }
 
         .marquee-slider {
-            animation: marquee 10s ease-in-out 0.3s infinite alternate-reverse;
+            animation: marquee 10s linear 0.3s infinite alternate-reverse;
 
             @keyframes marquee {
                 0% {
