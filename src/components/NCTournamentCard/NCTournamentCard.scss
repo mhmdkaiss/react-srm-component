@@ -302,23 +302,14 @@
         }
 
         .marquee-slider {
-            animation: marquee 10s linear infinite;
+            animation: marquee 10s ease-in-out 0.3s infinite alternate-reverse;
 
             @keyframes marquee {
                 0% {
-                    left: 0px;
-                }
-                20% {
-                    left: 0px;
-                }
-                50% {
-                    left: -100%;
-                }
-                70% {
                     left: -100%;
                 }
                 100% {
-                    left: 0px;
+                    left: 0%;
                 }
             }
         }

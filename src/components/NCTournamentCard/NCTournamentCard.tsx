@@ -72,7 +72,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                 setMarqueeHeight(marqueeSliderRef.current.offsetHeight);
                 let textDuration = (sliderSize - containerSize - textAnimationMargin) / textAnimationSpeed;
                 textDuration = (textDuration > 0 && textDuration < 2) ? 2 : textDuration;
-                setTextAnimationDuration(textDuration);
+                setTextAnimationDuration(textDuration / 2);
                 setEllipsis(textDuration > 0);
             }
         }, mainAnimationDuration);
