@@ -73,7 +73,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                     {
                         props.showFinger &&
                         <div className='position-absolute'>
-                            <FingerIndicator />
+                            <FingerIndicator/>
                         </div>
                     }
                 </span>
