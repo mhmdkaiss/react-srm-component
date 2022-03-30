@@ -15,5 +15,6 @@ export enum SocialEnum {
     Twitch = 'twitch',
     YouTube = 'youTube',
     Discord = 'discord',
-    Instagram = 'instagram'
+    Instagram = 'instagram',
+    Linkedin = 'linkedin'
 }

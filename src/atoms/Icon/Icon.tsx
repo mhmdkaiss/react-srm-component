@@ -36,6 +36,7 @@ export enum IconType {
     Home = 'home',
     Info = 'info',
     Instagram = 'instagram',
+    Linkedin = 'linkedin',
     Lock = 'lock',
     Login = 'login',
     Maximize = 'maximize',
