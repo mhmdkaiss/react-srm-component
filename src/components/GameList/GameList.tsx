@@ -11,19 +11,26 @@ export interface GameListProps {
     fancy?: boolean,
     multiple?: boolean,
     defaultSelected?: Array<number>,
+    selected?: Array<number>,
     onChange?: (game: NoGame) => void;
     selectedChanged?: (selected: Array<number>) => void;
     disabled?: boolean;
 }
 
 export const GameList: React.FunctionComponent<GameListProps> = (props: GameListProps) => {
-    const [ selected, setSelected ] = useState<Array<number>>(props.defaultSelected || [0]);
+    const [ selected, setSelected ] = useState<Array<number>>(props.selected || props.defaultSelected || [0]);
 
     useEffect(() => {
         if (props.selectedChanged) {
             props.selectedChanged(selected);
         }
     }, [selected]);
+
+    useEffect(() => {
+        if (props.selected) {
+            setSelected(props.selected);
+        }
+    }, [props.selected]);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const newValue = parseInt(event.currentTarget.value);
