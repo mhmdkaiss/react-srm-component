@@ -5,6 +5,13 @@ import moment from 'moment';
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
 import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
 import { Icon, IconType } from '../../../atoms/Icon/Icon';
+import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
+import { Tournament, TournamentContent } from '../../../models/Tournament';
+
+export enum TournamentInfoStyle {
+    Text,
+    TournamentCard
+}
 
 export interface NCCornerCalendarV1Props {
     events: Array<NCCornerCalendarV1Event>,
@@ -13,6 +20,9 @@ export interface NCCornerCalendarV1Props {
     onOpenEvent?: (eventId: string) => void;
     horizontal?: boolean;
     weekdayFormat?: 'short' | 'narrow',
+    tournamentInfoStyle?: TournamentInfoStyle
+    numberOfEventsMessage?: string
+    hideLegend?: boolean
 }
 
 export interface NCCornerCalendarV1Event {
@@ -20,6 +30,8 @@ export interface NCCornerCalendarV1Event {
     date: number,
     name: string,
     classNames?: Array<string>
+    tournament?: Tournament
+    tournamentContent?: TournamentContent
 }
 
 interface MonthYear {
@@ -92,6 +104,74 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
         }, 130);
     };
 
+    const renderTournamentInfo = (eventInfo: NCCornerCalendarV1Event) => {
+        switch (props.tournamentInfoStyle) {
+            case TournamentInfoStyle.TournamentCard:
+                return renderTournamentInfoCard(eventInfo);
+            default:
+                return renderTournamentInfoText(eventInfo);
+        }
+    };
+
+    const renderTournamentInfoText = (eventInfo: NCCornerCalendarV1Event) => {
+        const date = new Date(eventInfo.date * 1000);
+        return <React.Fragment>
+            <div className='date pb-2'>{intl.formatDate(date, { day: 'numeric', month: 'long' })}</div>
+            <div className='time pb-2'>{intl.formatDate(date, { hour: '2-digit', minute: '2-digit' })}</div>
+            <div className='name pb-4'>{eventInfo.name}</div>
+            {props.openEventLabel && props.onOpenEvent && <Button
+                theme={ButtonTheme.CUSTOM}
+                label={props.openEventLabel}
+                setClick={() => openEvent(eventInfo.id)}
+            />}
+        </React.Fragment>;
+    };
+
+    const renderTournamentInfoCard = (eventInfo: NCCornerCalendarV1Event) => {
+        if (!eventInfo.tournament) {
+            return <React.Fragment></React.Fragment>;
+        }
+        let banner = `${process.env.REACT_APP_S3_PUBLIC_URL}/game/${eventInfo.tournament.gameSlug}/medias/TournamentBanner`;
+        if (eventInfo.tournamentContent?.banner) {
+            banner = eventInfo.tournamentContent?.banner;
+        }
+        const game = props.games?.find(g => g.slug === eventInfo.tournament?.gameSlug);
+        let onOpen = undefined;
+        if (props.onOpenEvent) {
+            onOpen = () => {
+                props.onOpenEvent?.(eventInfo.id);
+            };
+        }
+        return <div className='d-flex justify-content-center w-100'>
+            <NCTournamentCard
+                tournament={eventInfo.tournament}
+                banner={banner}
+                gameName={game?.name || ''}
+                prize={getReward(eventInfo.tournament)}
+                joinHook={onOpen}
+            />
+        </div>;
+    };
+
+    const getReward = (tournament: Tournament) => {
+        const rewards = tournament.rewards;
+        let formatedCash;
+        if (Object.values(rewards).length > 0){
+            const cash: number = Object.values(rewards)
+                .flat()
+                .map(e => e.value)
+                .reduce((p, c) => p + c);
+            formatedCash = intl.formatNumber(tournament.sum ? tournament.sum : cash, {
+                style: 'currency',
+                currency: rewards[1][0].cur,
+                minimumFractionDigits: 0,
+            });
+        } else {
+            formatedCash = intl.formatMessage({ id: 'organization.tournament.no.reward' });
+        }
+        return formatedCash;
+    };
+
     return <div className='nc-corner-calendar-v1 d-flex flex-column p-3'>
         <div className='row'>
             <div className='col-12 col-md-6 calendars'>
@@ -134,29 +214,26 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
                     })}
             </div>
             <div className='col-12 col-md-6 d-flex flex-column details align-self-center px-4 mt-3 mt-lg-0'>
+                { props.numberOfEventsMessage && selectedEvents.length > 0 && <span className='text-center number-of-events-message'>
+                    {selectedEvents.length} {props.numberOfEventsMessage}
+                </span>}
                 {selectedEvents.map((se, i) => {
-                    const date = new Date(se.date * 1000);
                     return <div className='mb-1' key={se.id}>
                         {i !== 0 && <div className='divider'></div>}
-                        <div className='date pb-2'>{intl.formatDate(date, { day: 'numeric', month: 'long' })}</div>
-                        <div className='time pb-2'>{intl.formatDate(date, { hour: '2-digit', minute: '2-digit' })}</div>
-                        <div className='name pb-4'>{se.name}</div>
-                        {props.openEventLabel && props.onOpenEvent && <Button
-                            theme={ButtonTheme.CUSTOM}
-                            label={props.openEventLabel}
-                            setClick={() => openEvent(se.id)}
-                        />}
+                        {renderTournamentInfo(se)}
                     </div>;
                 }
                 )}
             </div>
         </div>
-        <div className='divider m-0'></div>
-        <div className='legend d-flex flex-column flex-sm-row justify-content-around mt-3 mb-4'>
-            {props.games.map(g => <div key={g.slug} className='d-flex'>
-                <div className={`circle mr-3 ${g.slug}`}></div>
-                {g.name}
-            </div>)}
-        </div>
+        {!props.hideLegend && props.games.length > 0 && <React.Fragment>
+            <div className='divider m-0'></div>
+            <div className='legend d-flex flex-column flex-sm-row justify-content-around mt-3 mb-4'>
+                {props.games.map(g => <div key={g.slug} className='d-flex'>
+                    <div className={`circle mr-3 ${g.slug}`}></div>
+                    {g.name}
+                </div>)}
+            </div>
+        </React.Fragment>}
     </div>;
 };

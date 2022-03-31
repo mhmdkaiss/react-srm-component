@@ -11,6 +11,12 @@ export interface Tournament {
     }
     state: TournamentState,
     format?: number,
+    settings?: {
+        id: string,
+        game: string
+    },
+    rewards?: { [key: number]: Array<TournamentReward> },
+    sum?: number,
 }
 
 export enum TournamentFee {
@@ -27,4 +33,28 @@ export enum TournamentState {
     Ended = 4,
     Cancelled = 5,
     Error = 6,
+}
+
+export interface TournamentContent {
+    banner?: string
+    banner_og?: string
+    id?: string
+    lang?: string
+    title?: string
+}
+
+export interface TournamentReward {
+    cur: string;
+    kind: RewardKind;
+    value: number;
+    partner?: string;
+    title?: string;
+    image?: string;
+    giftId?: string;
+}
+
+export enum RewardKind {
+    CASH = 'cash',
+    GIFT = 'gift',
+    COIN = 'coin',
 }

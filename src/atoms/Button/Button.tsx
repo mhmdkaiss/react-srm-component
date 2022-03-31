@@ -65,8 +65,8 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                 <span
                     className={`h-100 ${props.disabled ? 'disabled' : [ ButtonTheme.TOURNAMENT, ButtonTheme.TRACKING, ButtonTheme.TRAINING ].includes(theme) && type === ButtonType.SECONDARY ? `${theme} ${type}` : ''}`}
                     style={{
-                        color: theme === ButtonTheme.CUSTOM ? 'black' : [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
-                        WebkitTextFillColor: theme === ButtonTheme.CUSTOM ? 'black' : [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        color: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        WebkitTextFillColor: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
                     }}
                 >
                     {props.label || props.children}
