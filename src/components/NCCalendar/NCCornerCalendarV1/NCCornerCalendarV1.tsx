@@ -155,6 +155,9 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
 
     const getReward = (tournament: Tournament) => {
         const rewards = tournament.rewards;
+        if (!rewards) {
+            return;
+        }
         let formatedCash;
         if (Object.values(rewards).length > 0){
             const cash: number = Object.values(rewards)
