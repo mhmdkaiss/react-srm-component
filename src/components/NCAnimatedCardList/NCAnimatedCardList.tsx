@@ -41,6 +41,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
                 cards={props.loadingCard ? Array(props.cards.length || 4).fill(props.loadingCard) : props.cards}
                 hoveredCard={updateHoverCard}
                 scrollHook={props.scrollHook}
+                cardClicked={props.cardClicked}
             />
             { hoverCard }
         </React.Fragment>

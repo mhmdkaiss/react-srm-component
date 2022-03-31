@@ -7,6 +7,7 @@ export interface NCCardListProps {
     cardGap?: number;
     hoveredCard?: (cardIndex: number, cardRect: DOMRect, containerRect: DOMRect) => void;
     scrollHook?: (scrollLeft: number) => void;
+    cardClicked?: (index: number) => void;
     customArrowsStyle?: IconProps;
 }
 
@@ -145,6 +146,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
                                 onMouseLeave={() => {
                                     if (hoverTimer) {
                                         clearTimeout(hoverTimer);
+                                    }
+                                }}
+                                onClick={() => {
+                                    if (props.cardClicked) {
+                                        props.cardClicked(index);
                                     }
                                 }}
                             >
