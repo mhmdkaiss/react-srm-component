@@ -147,7 +147,19 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                             />
                         </div>}
                     </NCCornerSideMenu>
-                    <div className='d-flex justify-content-center'>
+                    <div className='d-flex justify-content-center align-items-center'>
+                        { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
+                            <img
+                                src={props.ncLogo}
+                                className="logo d-none d-lg-block"
+                                alt="Nicecactus Logo"
+                            />
+                            <img
+                                src={props.ncLogoSmall}
+                                className="logo d-lg-none"
+                                alt="Nicecactus Logo"
+                            />
+                        </a> }
                         <HashLink smooth to={{ pathname: '/', hash: '#' }} className='mx-3'>
                             <img
                                 src={props.partnerLogo}
@@ -160,13 +172,7 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                                 alt="Partner Logo"
                             />
                         </HashLink>
-                        { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
-                            <img
-                                src={props.ncLogo}
-                                className="logo"
-                                alt="Nicecactus Logo"
-                            />
-                        </a> }
+                        <div className='menu-item-separator-right d-lg-none'></div>
                     </div>
                 </div>
                 <div className="menu-buttons">
