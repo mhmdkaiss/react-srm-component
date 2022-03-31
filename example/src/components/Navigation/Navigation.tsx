@@ -168,6 +168,9 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/template/corner-footer'>
                         <ListItemText primary='Corner footer'/>
                     </ListItem>
+                    <ListItem button component={Link} to='/template/corner-Header'>
+                        <ListItemText primary='Corner Header'/>
+                    </ListItem>
                 </List>
             </Collapse>
             <ListItem button onClick={() => setSharedComponentsOpen(!sharedComponentsOpen)}>

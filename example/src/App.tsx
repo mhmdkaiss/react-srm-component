@@ -10,6 +10,7 @@ import { BubblesDemoPage } from './pages/BubblesDemoPage/BubblesDemoPage';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
 import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
 import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
+import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
 import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
 import { FeedCardDemoPage } from './pages/FeedCardDemoPage/FeedCardDemoPage';
@@ -143,6 +144,10 @@ const routes = [
     {
         path: '/template/corner-footer',
         component: CornerFooterDemoPage,
+    },
+    {
+        path: '/template/corner-header',
+        component: CornerHeaderDemoPage,
     },
     {
         path: '/component/menu',

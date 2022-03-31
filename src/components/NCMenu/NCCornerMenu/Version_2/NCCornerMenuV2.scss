@@ -1,0 +1,75 @@
+@import 'src/styles/colors';
+@import 'src/styles/button-mixins';
+
+.nc-corner-menu-v2 {
+    position: sticky;
+    top: 0;
+    height: 56px;
+    z-index: 10;
+
+    .menu-item-separator-left {
+        width: 2px;
+        background: #b2f617;
+        height: 45px;
+        transform: rotate(335deg);
+    }
+
+    .menu-item-separator-right {
+        width: 2px;
+        background: #b2f617;
+        height: 45px;
+        transform: rotate(30deg);
+    }
+
+    .logo-middle {
+        max-height: 26px;
+    }
+
+    .powered-display {
+        display: block;
+
+        @media screen and (max-width: 1000px) {
+            display: none;
+        }
+    }
+
+    .top-menu-container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            max-height: 26px;
+        }
+
+        .language-switcher {
+            &:hover {
+                .menu {
+                    display: block;
+                }
+            }
+            .menu {
+                display: none;
+            }
+        }
+
+        .side-menu-button {
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+
+            .mask-icon {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
+
+    .top-menu {
+        .login-button {
+            @media screen and (max-width: 387px) {
+                display: none;
+            }
+        }
+    }
+}
