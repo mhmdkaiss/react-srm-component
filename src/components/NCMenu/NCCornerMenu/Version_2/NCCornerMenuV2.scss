@@ -8,9 +8,16 @@
     z-index: 10;
 
     .menu-logos,
-    .menu-items,
     .menu-buttons {
-        width: 33%;
+        position: absolute;
+    }
+
+    .menu-buttons {
+        right: 15px;
+    }
+
+    .menu-logos {
+        left: 15px;
     }
 
     .menu-item-separator-left {

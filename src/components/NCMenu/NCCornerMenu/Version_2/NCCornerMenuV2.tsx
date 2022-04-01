@@ -64,7 +64,7 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                         />
                     </a> }
                 </div>
-                <div className="menu-items d-flex align-items-center justify-content-center text-center">
+                <div className="menu-items d-flex align-items-center justify-content-center text-center mx-auto">
                     {props.menuItems && props.menuItems?.map((menuItem, index) => {
                         return (
                             <React.Fragment key={index}>
