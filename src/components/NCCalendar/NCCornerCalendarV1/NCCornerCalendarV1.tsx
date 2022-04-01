@@ -7,6 +7,7 @@ import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
 import { Icon, IconType } from '../../../atoms/Icon/Icon';
 import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
 import { Tournament, TournamentContent } from '../../../models/Tournament';
+import { TournamentUtilsService } from '../../../services/tournament-utils.service';
 
 export enum TournamentInfoStyle {
     Text,
@@ -147,32 +148,11 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
                 tournament={eventInfo.tournament}
                 banner={banner}
                 gameName={game?.name || ''}
-                prize={getReward(eventInfo.tournament)}
+                prize={TournamentUtilsService.getReward(eventInfo.tournament, intl)}
                 joinHook={onOpen}
+                gift={TournamentUtilsService.gotGift(eventInfo.tournament)}
             />
         </div>;
-    };
-
-    const getReward = (tournament: Tournament) => {
-        const rewards = tournament.rewards;
-        if (!rewards) {
-            return;
-        }
-        let formatedCash;
-        if (Object.values(rewards).length > 0){
-            const cash: number = Object.values(rewards)
-                .flat()
-                .map(e => e.value)
-                .reduce((p, c) => p + c);
-            formatedCash = intl.formatNumber(tournament.sum ? tournament.sum : cash, {
-                style: 'currency',
-                currency: rewards[1][0].cur,
-                minimumFractionDigits: 0,
-            });
-        } else {
-            formatedCash = intl.formatMessage({ id: 'organization.tournament.no.reward' });
-        }
-        return formatedCash;
     };
 
     return <div className='nc-corner-calendar-v1 d-flex flex-column p-3'>
