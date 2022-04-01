@@ -49,7 +49,7 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
     return (
         <div className="nc-corner-menu-v2 d-flex">
             <div className="top-menu-container justify-content-between d-none d-md-flex w-100 px-4">
-                <div className='d-flex align-items-center'>
+                <div className='menu-logos d-flex align-items-center justify-content-start'>
                     <p className='powered-display mr-1 my-auto'>Powered by</p>
                     { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
                         <img
@@ -110,7 +110,7 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                         );
                     })}
                 </div>
-                <div className="menu-buttons d-flex align-items-center">
+                <div className="menu-buttons d-flex align-items-center justify-content-end">
                     { props.language && props.language.availlableLanguages?.length > 1 && <div className='language-switcher mx-4'>
                         <NCMenuLanguageSwitcher languages={props.language.availlableLanguages} selectedLanguage={props.language.selectedLanguage} onLanguageSelected={props.language.onLanguageSelected}/>
                         <div className="position-fixed menu pt-2">
