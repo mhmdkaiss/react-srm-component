@@ -4,6 +4,7 @@ import { Icon, IconType } from '../../atoms/Icon/Icon';
 import React from 'react';
 import { Team } from '../../models/Team';
 import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
+import { MemoizedTeamBackground } from '../TeamBackground/TeamBackground';
 
 export enum SelectionType {
     Close = 'close',
@@ -60,7 +61,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                 style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
             >
             </div>
-            <MemoBackgroundImg team={props.team.slug} />
+            <MemoizedTeamBackground team={props.team.slug} />
             <MemoizedTeamPicture slug={props.team.slug} size={profilePictureSize} />
             <div
                 className={`d-flex flex-column details mt-1 ${
@@ -95,16 +96,3 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
         </div>
     );
 };
-
-const MemoBackgroundImg = React.memo<{ team: string }>(({ team }) => {
-    const defaultBackground = `${process.env.REACT_APP_S3_URL}/media/default/default-team-banner.svg`;
-    const currentBackground = `${process.env.REACT_APP_S3_URL}/teams/${team}/medias/BannerImage`;
-    return (
-        <div
-            className='background-image w-100 h-100 position-absolute'
-            style={{ backgroundImage: `url(${currentBackground}?${Date.now()}), url(${defaultBackground})` }}
-        ></div>
-    );
-});
-
-MemoBackgroundImg.displayName = 'team-brackground-image';
