@@ -17,6 +17,7 @@ export interface Tournament {
     },
     rewards?: { [key: number]: Array<TournamentReward> },
     sum?: number,
+    matchSettings?: Array<MatchSettings>,
 }
 
 export enum TournamentFee {
@@ -57,4 +58,9 @@ export enum RewardKind {
     CASH = 'cash',
     GIFT = 'gift',
     COIN = 'coin',
+}
+
+export interface MatchSettings {
+    min: number;
+    max: number;
 }

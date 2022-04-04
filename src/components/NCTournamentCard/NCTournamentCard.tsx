@@ -79,6 +79,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     }, [ marqueeSliderRef.current, marqueeContainerRef.current, marqueeSliderRef.current?.offsetHeight ]);
 
     const renderSecondRow = () => {
+        const isSolo = props.tournament.matchSettings?.[0].min === 1;
         return (
             <div className="tournament-infos">
                 {
@@ -92,7 +93,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                         <div>{ intl.formatMessage({ id: 'tournament.reward.gift' }) }</div>
                     </div>
                 }
-                <div>{ intl.formatMessage({ id: `tournament.format.${props.tournament.format === 1 ? 'solo' : 'team' }` }) }</div>
+                <div>{ intl.formatMessage({ id: `tournament.format.${isSolo ? 'solo' : 'team' }` }) }</div>
             </div>
         );
     };
