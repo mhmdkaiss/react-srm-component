@@ -138,7 +138,7 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                             </div>;
                         })}
                         <NCMenuAuth onAction={() => setIsMenuOpen(false)} isSideMenu={true} user={props.user} onLogout={props.onLogout} onOpenDashboard={props.onOpenDashboard} />
-                        { props.language && props.language?.availlableLanguages?.length > 1 && <div className='mx-4'>
+                        { props.language && props.language?.availlableLanguages?.length > 1 && <div className='nc-side-menu-language-container'>
                             <NCMenuLanguageSwitcher
                                 languages={props.language.availlableLanguages}
                                 selectedLanguage={props.language.selectedLanguage}
