@@ -1,6 +1,5 @@
 import React from 'react';
 import { NCCornerMenu, MenuVersion } from '@cactus/srm-component';
-import './CornerHeaderDemoPage.scss';
 
 export const CornerHeaderDemoPage: React.FunctionComponent = () => {
     const mapUserToAuthMenuUser = () => {

@@ -38,18 +38,8 @@
         max-height: 26px;
     }
 
-    .powered-display {
-        display: block;
-
-        @media screen and (max-width: 1000px) {
-            display: none;
-        }
-    }
-
     .top-menu-container {
         align-items: center;
-        display: flex;
-        justify-content: space-between;
 
         .logo {
             max-height: 26px;
@@ -84,5 +74,9 @@
                 display: none;
             }
         }
+    }
+
+    .menu-item {
+        width: 90px;
     }
 }

@@ -48,9 +48,9 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
 
     return (
         <div className="nc-corner-menu-v2 d-flex">
-            <div className="top-menu-container justify-content-between d-none d-md-flex w-100 px-4">
+            <div className="top-menu-container justify-content-between d-none d-xl-flex w-100">
                 <div className='menu-logos d-flex align-items-center justify-content-start'>
-                    <p className='powered-display mr-1 my-auto'>Powered by</p>
+                    <p className='mr-1 my-auto'>Powered by</p>
                     { !props.hideNcLogo && <a href={process.env.REACT_APP_NICECACTUS_URL}>
                         <img
                             src={props.ncLogo}
@@ -126,9 +126,9 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                 </div>
             </div>
 
-            <div className="d-md-none top-menu-container w-100 px-2 px-sm-3">
+            <div className="d-xl-none d-flex justify-content-between top-menu-container w-100 px-2 px-sm-3">
                 <div className="d-flex align-items-center">
-                    <div className='side-menu-button cursor-pointer d-flex justify-content-center align-items-center' onClick={(e) => toggleSideMenu(e)}>
+                    <div className='side-menu-button cursor-pointer d-flex justify-content-center align-items-center mr-3' onClick={(e) => toggleSideMenu(e)}>
                         <Icon icon={IconType.BurgerMenu}/>
                     </div>
                     <NCCornerSideMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen}>
@@ -172,7 +172,6 @@ export const NCCornerMenuVersion_2: React.FunctionComponent<NCCornerMenuProps> =
                                 alt="Partner Logo"
                             />
                         </HashLink>
-                        <div className='menu-item-separator-right d-lg-none'></div>
                     </div>
                 </div>
                 <div className="menu-buttons">
