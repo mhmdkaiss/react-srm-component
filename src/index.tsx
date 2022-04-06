@@ -56,6 +56,7 @@ import {
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { NCTheme, ThemePlatform } from './styles/Themes';
+import { TournamentUtilsService } from './services/tournament-utils.service';
 export { NCBubble } from './atoms/NCBubble/NCBubble';
 export { NCDropZone } from './atoms/NCDropZone/NCDropZone';
 export { NCImage } from './atoms/NCImage/NCImage';
@@ -107,6 +108,7 @@ export {
     DAYS_OF_WEEK,
     getDaysOfWeek
 } from './utils/getDaysOfWeek';
+
 export {
     DatePicker,
     Dialog,
@@ -170,5 +172,6 @@ export {
     NCSlider,
     NCSliderBackground,
     NCSliderSelector,
+    TournamentUtilsService,
 };
 
