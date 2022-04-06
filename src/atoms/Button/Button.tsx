@@ -39,6 +39,7 @@ export interface ButtonProps {
     containerClass?: string;
     icon?: { type: IconType, width: number, height: number };
     color?: string;
+    textColor?: string;
     showFinger?: boolean;
 }
 
@@ -65,8 +66,8 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                 <span
                     className={`h-100 ${props.disabled ? 'disabled' : [ ButtonTheme.TOURNAMENT, ButtonTheme.TRACKING, ButtonTheme.TRAINING ].includes(theme) && type === ButtonType.SECONDARY ? `${theme} ${type}` : ''}`}
                     style={{
-                        color: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
-                        WebkitTextFillColor: [ButtonType.SECONDARY].includes(type) ? props.color : undefined,
+                        color: props?.textColor || ([ButtonType.SECONDARY].includes(type) && props?.color) || undefined,
+                        WebkitTextFillColor: props?.textColor || ([ButtonType.SECONDARY].includes(type) && props?.color) || undefined,
                     }}
                 >
                     {props.label || props.children}

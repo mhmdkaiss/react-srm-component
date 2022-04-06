@@ -22,6 +22,7 @@ export interface NCTournamentCardProps {
     cardStyle?: TournamentCardStyle;
     forceSmall?: boolean;
     color?: string;
+    textColor?: string;
     joinHook?: (event: React.MouseEvent) => void;
     readHook?: (event: React.MouseEvent) => void;
 }
@@ -246,6 +247,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
                                 type={!props.color || props.restricted || props.winner ? ButtonType.SECONDARY : ButtonType.PRIMARY}
                                 label={intl.formatMessage({ id: `tournament.card.${props.winner ? 'about' : props.restricted ? 'moreinfo' : (props.tournament.state >= TournamentState.Ended) ? 'see' : 'join'}` })}
                                 color={props.color || ''}
+                                textColor={props.textColor}
                                 setClick={(e: React.MouseEvent) => {
                                     if (props.joinHook) {
                                         props.joinHook(e);
