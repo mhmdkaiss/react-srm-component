@@ -22,9 +22,12 @@ export interface ButtonIconProps {
 const renderButtonIcon = (props: ButtonIconProps) => {
     return (
         <button value={props.value}
-            className={`buttonicon ${props.fancy?'fancy':''} ${props.active?'active':''} ${props.size} d-flex align-items-center justify-content-center ${props.styleClass}`}
-            onClick={props.onClick}
-            disabled = {props.disabled}
+            className={`buttonicon ${props.fancy?'fancy':''} ${props.disabled ? 'disabled' : ''} ${props.active?'active':''} ${props.size} d-flex align-items-center disabled justify-content-center ${props.styleClass}`}
+            onClick={(e) => {
+                if (!props.disabled && props.onClick) {
+                    props.onClick(e);
+                }
+            }}
         >
             <IconMask icon={props.icon} name={props.name} />
         </button>
@@ -34,8 +37,10 @@ const renderButtonIcon = (props: ButtonIconProps) => {
 export const ButtonIcon: React.FunctionComponent<ButtonIconProps> = (props: ButtonIconProps) => {
     return (
         props.tooltipTitle ?
-            <Tooltip title={props.tooltipTitle} arrow>
-                {renderButtonIcon(props)}
+            <Tooltip title={props.tooltipTitle}>
+                <div>
+                    {renderButtonIcon(props)}
+                </div>
             </Tooltip> :
             renderButtonIcon(props)
     );

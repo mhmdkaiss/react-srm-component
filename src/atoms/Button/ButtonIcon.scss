@@ -50,46 +50,50 @@
         flex-grow: 0;
         border: solid 1px transparent;
 
-        &:active {
-            background: $grey4;
-            border: 1px solid $primary-color;
-            box-sizing: border-box;
-            box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
-            border-radius: 18px;
-            @include icon-color($primary-color);
-        }
-
-        &.active {
-            background: $grey4;
-            border: 1px solid $primary-color;
-            box-sizing: border-box;
-            box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
-            border-radius: 18px;
-            @include icon-color($primary-color);
-
+        &:not(.disabled) {
             &:active {
-                background: $grey2;
-                border: solid 1px transparent;
-                box-shadow: unset;
-                border-radius: 20px;
-                @include icon-color($grey6);
+                background: $grey4;
+                border: 1px solid $primary-color;
+                box-sizing: border-box;
+                box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
+                border-radius: 18px;
+                @include icon-color($primary-color);
+            }
+
+            &.active {
+                background: $grey4;
+                border: 1px solid $primary-color;
+                box-sizing: border-box;
+                box-shadow: 0px 0px 22px rgba(178, 246, 23, 0.21);
+                border-radius: 18px;
+                @include icon-color($primary-color);
+
+                &:active {
+                    background: $grey2;
+                    border: solid 1px transparent;
+                    box-shadow: unset;
+                    border-radius: 20px;
+                    @include icon-color($grey6);
+                }
             }
         }
     }
 
-    &.active {
-        @include icon-color($primary-color);
+    &:not(.disabled) {
+        &.active {
+            @include icon-color($primary-color);
+
+            &:active {
+                @include icon-color($grey6);
+            }
+        }
 
         &:active {
-            @include icon-color($grey6);
+            @include icon-color($primary-color);
         }
     }
 
-    &:active {
-        @include icon-color($primary-color);
-    }
-
-    &:disabled {
+    &.disabled {
         opacity: 0.5;
 
         &:hover {
