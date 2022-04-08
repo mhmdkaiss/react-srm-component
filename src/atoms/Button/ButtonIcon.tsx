@@ -22,7 +22,7 @@ export interface ButtonIconProps {
 const renderButtonIcon = (props: ButtonIconProps) => {
     return (
         <button value={props.value}
-            className={`buttonicon ${props.fancy?'fancy':''} ${props.disabled ? 'disabled' : ''} ${props.active?'active':''} ${props.size} d-flex align-items-center disabled justify-content-center ${props.styleClass}`}
+            className={`buttonicon ${props.fancy?'fancy':''} ${props.disabled ? 'disabled' : ''} ${props.active?'active':''} ${props.size} d-flex align-items-center justify-content-center ${props.styleClass}`}
             onClick={(e) => {
                 if (!props.disabled && props.onClick) {
                     props.onClick(e);
