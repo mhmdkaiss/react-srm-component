@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import './NCCornerCalendarV1.scss';
-import { useIntl } from 'react-intl';
-import moment from 'moment';
+
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
-import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
 import { Icon, IconType } from '../../../atoms/Icon/Icon';
-import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
+import React, { useEffect, useState } from 'react';
 import { Tournament, TournamentContent } from '../../../models/Tournament';
+
+import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
+import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
 import { TournamentUtilsService } from '../../../services/tournament-utils.service';
+import moment from 'moment';
+import { useIntl } from 'react-intl';
 
 export enum TournamentInfoStyle {
     Text,
@@ -72,17 +74,10 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
 
     const selectFirstDateWithEvents = () => {
         if (props.events.length > 0) {
-            const date = moment(props.events[props.events.length - 1].date * 1000);
-            const events: Array<string> = [];
-            for (let i = props.events.length - 1; i >= 0; i--) {
-                const tournament = props.events[i];
-                if (moment(tournament.date * 1000).isSame(date, 'day')) {
-                    events.push(tournament.id);
-                } else {
-                    break;
-                }
+            const event = props.events.reverse().find(event => moment(event.date * 1000) > moment());
+            if (event) {
+                onDateSelected(moment(event.date * 1000).toDate(), [event.id]);
             }
-            onDateSelected(date.toDate(), events);
         }
     };
 

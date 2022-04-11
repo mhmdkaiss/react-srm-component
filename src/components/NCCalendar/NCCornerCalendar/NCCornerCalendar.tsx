@@ -1,7 +1,9 @@
-import React from 'react';
 import './NCCornerCalendar.scss';
-import { useIntl } from 'react-intl';
+
 import moment, { Moment } from 'moment';
+
+import React from 'react';
+import { useIntl } from 'react-intl';
 
 export interface NCCornerCalendarProps {
     month: number,
