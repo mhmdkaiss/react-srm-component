@@ -80,7 +80,11 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     }, [ marqueeSliderRef.current, marqueeContainerRef.current, marqueeSliderRef.current?.offsetHeight ]);
 
     const renderSecondRow = () => {
-        const isSolo = props.tournament.matchSettings?.[0].min === 1;
+        let isSolo = false;
+        try {
+            isSolo = props.tournament?.matchSettings?.['default']?.min === 1 || props.tournament?.matchSettings?.[0]?.min === 1;
+        } catch (e) {}
+
         return (
             <div className="tournament-infos">
                 {
