@@ -9,7 +9,10 @@ import './HoverUserTeamCard.scss';
 interface HoverUserTeamCardProps {
     team: Team;
     isSolo: boolean;
+    noGameAccount?: boolean;
     copyGameAccountCallback?: () => void;
+    teamCallback?: (teamSlug: string) => void;
+    userCallback?: (userId: string) => void;
 }
 
 export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> = (props: HoverUserTeamCardProps) => {
@@ -18,6 +21,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
     const [ teamCaptain, setTeamCaptain ] = useState<Player>();
     const [ teamCaptainId, setTeamCaptainId ] = useState<string>();
     const player = Object.values(props.team.players)[0];
+    const gotLink = (props.isSolo && props.userCallback) || (!props.isSolo && props.teamCallback);
 
     const copyGameAccount = () => {
         navigator.clipboard.writeText(player.account);
@@ -35,6 +39,14 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
             });
         }
     }, [props.team]);
+
+    const handleClick = () => {
+        if (props.isSolo && props.userCallback) {
+            props.userCallback(Object.keys(props.team.players)[0]);
+        } else if (!props.isSolo && props.teamCallback) {
+            props.teamCallback(props.team.slug);
+        }
+    };
 
     if (props.team) {
         return (
@@ -60,7 +72,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                 >
 
                     <img
-                        className={`avatar mx-auto mb-2 mt-4 ${props.isSolo ? 'solo' : 'team'}`}
+                        className={`avatar mx-auto mb-2 mt-4 ${props.isSolo ? 'solo' : 'team'} ${gotLink ? 'cursor-pointer' : ''}`}
                         src={
                             props.isSolo
                                 ? process.env.REACT_APP_S3_URL + '/user/' + Object.keys(props.team.players)[0] + '/medias/ProfileImage'
@@ -72,68 +84,84 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                 : process.env.REACT_APP_S3_URL + '/media/default/default-team-avatar.png')
                         }
                         alt=""
+                        onClick={handleClick}
                     />
-                    <div className="user-team-card-hover-text d-flex justify-content-center">
+                    <div
+                        className={`user-team-card-hover-text d-flex justify-content-center ${gotLink ? 'cursor-pointer' : ''}`}
+                        onClick={handleClick}
+                    >
                         {!props.isSolo ? <div className="color-grey5 font-weight-bold pr-2 text-uppercase">[{props.team?.tag}]</div> : null}
                         <div className="color-white">{props.team?.name}</div>
                     </div>
-                    {props.isSolo
-                        ? <div>
-                            <div className='color-white justify-content-center user-team-card-hover-text pb-4 mt-4'>
-                                <div className='text-uppercase font-weight-bold'>
-                                    {intl.formatMessage({ id: 'player.game.account' })}
-                                </div>
-                                <Tooltip title={intl.formatMessage({ id: 'player.copy.game.account' })} arrow>
-                                    <div
-                                        className="cursor-pointer"
-                                        onClick={() => copyGameAccount()}
-                                    >
-                                        {player.account}
+                    {
+                        props.isSolo ?
+                            props.noGameAccount ?
+                                <div className='pb-4'></div> :
+                                <div>
+                                    <div className='color-white justify-content-center user-team-card-hover-text pb-4 mt-4'>
+                                        <div className='text-uppercase font-weight-bold'>
+                                            {intl.formatMessage({ id: 'player.game.account' })}
+                                        </div>
+                                        <Tooltip title={intl.formatMessage({ id: 'player.copy.game.account' })} arrow>
+                                            <div
+                                                className="cursor-pointer"
+                                                onClick={() => copyGameAccount()}
+                                            >
+                                                {player.account}
+                                            </div>
+                                        </Tooltip>
                                     </div>
-                                </Tooltip>
-                            </div>
-                        </div>
-                        : <div className='color-white user-team-card-hover-text mt-2 mx-2'>
-                            <div className='captain d-flex'>
-                                <div className='title ml-2 mr-4 d-flex align-self-center'>{intl.formatMessage({ id: 'team.captain' })}</div>
-                                {teamCaptain && teamCaptainId &&
-                                <div className='d-flex ml-4 justify-content-center cursor-pointer'>
-                                    <UserCardRounded
-                                        player={teamCaptain}
-                                        playerId={teamCaptainId}
-                                        size={UserCardRoundedSize.small}
-                                        gameAccount={true}
-                                        copyGameAccountCallback={props.copyGameAccountCallback}
-                                    />
+                                </div> :
+                            <React.Fragment>
+                                <div className='color-white user-team-card-hover-text mt-2 mx-2'>
+                                    <div className='captain d-flex'>
+                                        <div className='title ml-2 mr-4 d-flex align-self-center'>{intl.formatMessage({ id: 'team.captain' })}</div>
+                                        {teamCaptain && teamCaptainId &&
+                                        <div
+                                            className='d-flex ml-4 justify-content-center cursor-pointer'
+                                            onClick={() => {
+                                                if (props.userCallback) {
+                                                    props.userCallback(teamCaptainId);
+                                                }
+                                            }}
+                                        >
+                                            <UserCardRounded
+                                                player={teamCaptain}
+                                                playerId={teamCaptainId}
+                                                size={UserCardRoundedSize.small}
+                                                gameAccount={!props.noGameAccount}
+                                                copyGameAccountCallback={props.copyGameAccountCallback}
+                                            />
+                                        </div>
+                                        }
+                                    </div>
+                                    <div className='d-flex ml-2 mt-2'>{intl.formatMessage({ id: 'team.titular.players' })}</div>
                                 </div>
-                                }
-                            </div>
-                            <div className='d-flex ml-2 mt-2'>{intl.formatMessage({ id: 'team.titular.players' })}</div>
-                        </div>
+                                <div className="user-grid mx-2 mt-2 pb-3">
+                                    {teamPlayer.map((item, key) => {
+                                        return (
+                                            <div
+                                                key={key}
+                                                className="d-flex user-container mx-2 my-1 cursor-pointer"
+                                                onClick={() => {
+                                                    if (props.userCallback) {
+                                                        props.userCallback(item[0]);
+                                                    }
+                                                }}
+                                            >
+                                                <UserCardRounded
+                                                    player={item[1]}
+                                                    playerId={item[0]}
+                                                    size={UserCardRoundedSize.small}
+                                                    gameAccount={!props.noGameAccount}
+                                                    copyGameAccountCallback={props.copyGameAccountCallback}
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </React.Fragment>
                     }
-                    {!props.isSolo ? (
-                        <div className="user-grid mx-2 mt-2 pb-3">
-                            {teamPlayer.map((item, key) => {
-                                return (
-                                    <div key={key} className="d-flex user-container mx-2 my-1 cursor-pointer">
-                                        {Object.keys(props.team.players).map((item) => {
-                                            return (
-                                                <div key={item} className="d-flex user-container mx-2 my-1">
-                                                </div>
-                                            );
-                                        })}
-                                        <UserCardRounded
-                                            player={item[1]}
-                                            playerId={item[0]}
-                                            size={UserCardRoundedSize.small}
-                                            gameAccount={true}
-                                            copyGameAccountCallback={props.copyGameAccountCallback}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    ) : null}
                 </div>
             </div>
         );

@@ -50,7 +50,7 @@ export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProp
                     </div>
                 }
 
-                <div className={`dialog-body${props.wildBody ? ' w-100' : ''}`}>{props.children}</div>
+                <div className={`dialog-body ${props.wildBody ? 'w-100 p-0' : ''}`}>{props.children}</div>
             </div>
         </div>
     );
