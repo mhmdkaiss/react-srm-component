@@ -27,6 +27,7 @@ import { NCLoader } from './components/NCLoader/NCLoader';
 import { NCLottieAnimation } from './components/NCLottieAnimation/NCLottieAnimation';
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
 import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
+import { NCParticipantCardList } from './components/NCParticipantCardList/NCParticipantCardList';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
 import { NCPreviewSearchAsync } from './components/NCPreviewSearchAsync/NCPreviewSearchAsync';
 import { NCRadioGroup, NcRadioGroupFields } from './components/NCRadioGroup/NCRadioGroup';
@@ -113,6 +114,7 @@ export {
     DatePicker,
     Dialog,
     NCParticipantList,
+    NCParticipantCardList,
     SearchBar,
     Tabs,
     TeamCard,

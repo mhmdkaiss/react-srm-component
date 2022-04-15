@@ -6,6 +6,7 @@ import {
     NCInput,
     NCMediaUpload,
     NCMultiSearch,
+    NCParticipantCardList,
     NCPreviewSearch,
     NCPreviewSearchAsync,
     NCRadioGroup,
@@ -230,6 +231,18 @@ export const InputDemoPage: React.FunctionComponent = () => {
         title: 'title',
         checked: false };
 
+    const [ participantsCards, setParticipants ] = useState([
+        { username: 'test1', score: 2 },
+        { username: 'test2', score: 5 },
+        { username: 'test3', score: 3 },
+        { username: 'test4', score: 100 },
+        { username: 'test5', score: 1 },
+        { username: 'test6', score: 7 },
+        { username: 'test7', score: 3 },
+        { username: 'test8', score: 10 },
+        { username: 'test9', score: 1 },
+    ]);
+
     return (
         <div className='white'>
             <div>
@@ -414,6 +427,11 @@ export const InputDemoPage: React.FunctionComponent = () => {
                         onChange={ () => null }
                     />
                 </div>
+            </div>
+
+            <span className="theme-title">Participants Card List</span>
+            <div className='w-50'>
+                <NCParticipantCardList list={participantsCards} triggerOnChange={() => setParticipants([...participantsCards])}/>
             </div>
 
             <div className='my-5'>
