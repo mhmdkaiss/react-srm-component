@@ -5,8 +5,8 @@ import { useDynamicText } from '../../hooks/useDynamicText';
 import './NCPromotionalBanner.scss';
 
 interface NCPromotionalBannerProps {
-    text: Array<string>;
     image: string,
+    text?: Array<string>;
     buttonText?: string;
     buttonLink?: string;
 }
@@ -22,7 +22,7 @@ export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerPro
 
     return (
         <div
-            className={`nc-promo-banner ${props.buttonLink ? 'clickable' : ''}`}
+            className={`nc-promo-banner ${props.buttonLink ? 'clickable' : ''} ${!props.buttonLink && !dynamicTextValue.length ? 'full' : ''}`}
             onClick={() => {
                 if (props.buttonLink && !props.buttonText) {
                     openLink();

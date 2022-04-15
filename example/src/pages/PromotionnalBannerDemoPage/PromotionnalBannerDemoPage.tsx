@@ -27,6 +27,11 @@ export const PromotionnalBannerDemoPage: React.FunctionComponent = () => {
                     buttonLink={'https://www.google.com/'}
                 />
             </div>
+            <div className='mb-3'>
+                <NCPromotionalBanner
+                    image='https://esm-dev-public.s3.amazonaws.com/training/program/5ef46a80ad6ad898839cbb04/medias/Cover'
+                />
+            </div>
         </div>
     );
 };
