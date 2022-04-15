@@ -82,11 +82,7 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
     };
 
     useEffect(() => {
-        if (props.horizontal) {
-            if (props.events.length > 0) {
-                setVisibleMonth(moment(props.events[props.events.length - 1].date * 1000));
-            }
-        } else {
+        if (!props.horizontal) {
             setMonthsWithEvents(getAllMonthsWithEvents());
         }
         selectFirstDateWithEvents();
