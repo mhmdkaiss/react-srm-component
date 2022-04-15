@@ -14,7 +14,7 @@ interface NCPromotionalBannerProps {
 export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerProps> = (
     props: NCPromotionalBannerProps
 ) => {
-    const dynamicTextValue = useDynamicText(props.text || ['']);
+    const dynamicTextValue = props.text?.length ? useDynamicText(props.text) : undefined;
 
     const openLink = () => {
         window.open(props.buttonLink, '_blank');
@@ -22,7 +22,7 @@ export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerPro
 
     return (
         <div
-            className={`nc-promo-banner ${props.buttonLink ? 'clickable' : ''} ${!props.buttonLink && !dynamicTextValue.length ? 'full' : ''}`}
+            className={`nc-promo-banner ${props.buttonLink ? 'clickable' : ''} ${!props.buttonText && !dynamicTextValue?.length ? 'full' : ''}`}
             onClick={() => {
                 if (props.buttonLink && !props.buttonText) {
                     openLink();
