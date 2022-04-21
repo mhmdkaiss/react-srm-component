@@ -1,0 +1,17 @@
+@import '../../styles/colors.scss';
+
+.nc-progress-bar {
+    position: relative;
+    align-self: center;
+    width: 100%;
+    background: $grey1;
+    border-radius: 100px;
+
+    .in-progress {
+        position: absolute;
+        top: 0px;
+        background: $electric-lime-gradient;
+        border-radius: inherit;
+        height: inherit;
+    }
+}

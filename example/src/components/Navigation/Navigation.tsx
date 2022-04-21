@@ -10,13 +10,14 @@ import './Navigation.scss';
 export const Navigation: React.FunctionComponent = () => {
     const [ atomsOpen, setAtomsOpen ] = React.useState(false);
     const [ componentsOpen, setComponentsOpen ] = React.useState(false);
+    const [ cardsOpen, setCardsOpen ] = React.useState(false);
     const [ sharedComponentsOpen, setSharedComponentsOpen ] = React.useState(false);
     const [ templatesOpen, setTemplatesOpen ] = React.useState(false);
 
     const location = useLocation();
 
     useEffect(() => {
-        checkUnCollapsed(location.pathname.split('/')[1]);
+        checkUnCollapsed(location.pathname.split('/').slice(-2)[0]);
     }, [location]);
 
     const checkUnCollapsed = (pathName: string) => {
@@ -26,6 +27,11 @@ export const Navigation: React.FunctionComponent = () => {
                 setAtomsOpen(true);
                 break;
             case 'component':
+                setComponentsOpen(true);
+                setCardsOpen(false);
+                break;
+            case 'card':
+                setCardsOpen(true);
                 setComponentsOpen(true);
                 break;
             case 'shared':
@@ -69,14 +75,17 @@ export const Navigation: React.FunctionComponent = () => {
                     <ListItem button component={Link} to='/atoms/button'>
                         <ListItemText primary='Buttons'/>
                     </ListItem>
-                    <ListItem button component={Link} to='/atoms/inputs'>
-                        <ListItemText primary='Inputs'/>
+                    <ListItem button component={Link} to='/atoms/dialog'>
+                        <ListItemText primary='Dialog'/>
                     </ListItem>
                     <ListItem button component={Link} to='/atoms/headers'>
                         <ListItemText primary='Headers'/>
                     </ListItem>
-                    <ListItem button component={Link} to='/atoms/dialog'>
-                        <ListItemText primary='Dialog'/>
+                    <ListItem button component={Link} to='/atoms/inputs'>
+                        <ListItemText primary='Inputs'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/atoms/progress-bar'>
+                        <ListItemText primary='Progress bar'/>
                     </ListItem>
                     <ListItem button component={Link} to='/component/stepper'>
                         <ListItemText primary='Steppers'/>
@@ -99,21 +108,36 @@ export const Navigation: React.FunctionComponent = () => {
             </ListItem>
             <Collapse in={componentsOpen} timeout='auto' unmountOnExit>
                 <List component='div' disablePadding>
-                    <ListItem button component={Link} to='/component/user-team-cards'>
-                        <ListItemText primary='User/Team cards'/>
+                    <ListItem button onClick={() => setCardsOpen(!cardsOpen)}>
+                        <ListItemText primary='Cards'/>
+                        <Icon
+                            icon={cardsOpen ? IconType.Minimize : IconType.Maximize}
+                            width={24}
+                            height={24}
+                        />
                     </ListItem>
-                    <ListItem button component={Link} to='/component/tournament-cards'>
-                        <ListItemText primary='Tournaments cards'/>
-                    </ListItem>
-                    <ListItem button component={Link} to='/component/training-cards'>
-                        <ListItemText primary='Training cards'/>
-                    </ListItem>
-                    <ListItem button component={Link} to='/component/partner-card'>
-                        <ListItemText primary='Partner card'/>
-                    </ListItem>
-                    <ListItem button component={Link} to='/component/feed-cards'>
-                        <ListItemText primary='Feed cards'/>
-                    </ListItem>
+                    <Collapse in={cardsOpen} timeout='auto' unmountOnExit>
+                        <List component='div' disablePadding>
+                            <ListItem button component={Link} to='/component/card/challenge-cards'>
+                                <ListItemText primary='Challenges'/>
+                            </ListItem>
+                            <ListItem button component={Link} to='/component/card/feed-cards'>
+                                <ListItemText primary='Feed'/>
+                            </ListItem>
+                            <ListItem button component={Link} to='/component/card/partner-card'>
+                                <ListItemText primary='Partner'/>
+                            </ListItem>
+                            <ListItem button component={Link} to='/component/card/tournament-cards'>
+                                <ListItemText primary='Tournaments'/>
+                            </ListItem>
+                            <ListItem button component={Link} to='/component/card/training-cards'>
+                                <ListItemText primary='Training'/>
+                            </ListItem>
+                            <ListItem button component={Link} to='/component/card/user-team-cards'>
+                                <ListItemText primary='User/Team'/>
+                            </ListItem>
+                        </List>
+                    </Collapse>
                     <ListItem button component={Link} to='/component/tournament-rounds'>
                         <ListItemText primary='Tournament Rounds'/>
                     </ListItem>

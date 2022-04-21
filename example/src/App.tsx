@@ -9,6 +9,7 @@ import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
 import { BubblesDemoPage } from './pages/BubblesDemoPage/BubblesDemoPage';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
 import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
+import { ChallengeCardDemoPage } from './pages/ChallengeCardDemoPage/ChallengeCardDemoPage';
 import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
 import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
@@ -24,6 +25,7 @@ import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryD
 import { MenuDemoPage } from './pages/MenuDemoPage/MenuDemoPage';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
+import { ProgressBarDemoPage } from './pages/ProgressBarDemoPage/ProgressBarDemoPage';
 import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/PromotionnalBannerDemoPage';
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
@@ -62,6 +64,10 @@ const routes = [
         component: HeadersDemoPage
     },
     {
+        path: '/atoms/progress-bar',
+        component: ProgressBarDemoPage
+    },
+    {
         path: '/atoms/dialog',
         component: DialogDemoPage
     },
@@ -70,15 +76,15 @@ const routes = [
         component: StepperDemoPage
     },
     {
-        path: '/component/user-team-cards',
+        path: '/component/card/user-team-cards',
         component: UserTeamCardsDemoPage,
     },
     {
-        path: '/component/tournament-cards',
+        path: '/component/card/tournament-cards',
         component: TournamentCardDemoPage,
     },
     {
-        path: '/component/training-cards',
+        path: '/component/card/training-cards',
         component: TrainingCardDemoPage,
     },
     {
@@ -118,11 +124,15 @@ const routes = [
         component: TournamentRoundsDemoPage,
     },
     {
-        path: '/component/partner-card',
+        path: '/component/card/partner-card',
         component: PartnerCardDemoPage,
     },
     {
-        path: '/component/feed-cards',
+        path: '/component/card/challenge-cards',
+        component: ChallengeCardDemoPage,
+    },
+    {
+        path: '/component/card/feed-cards',
         component: FeedCardDemoPage,
     },
     {

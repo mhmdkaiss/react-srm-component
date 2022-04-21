@@ -15,3 +15,11 @@ export class NoGame {
         public title: string,
     ) {}
 }
+
+export interface OrganisationGame {
+	_id: string;
+	name: string;
+	value: string;
+	slug: string;
+    platforms?: Array<string>;
+}

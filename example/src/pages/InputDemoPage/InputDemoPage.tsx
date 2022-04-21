@@ -1,4 +1,5 @@
 import {
+    ChallengeResult,
     DatePicker,
     NCCheckbox,
     NCChip,
@@ -231,16 +232,16 @@ export const InputDemoPage: React.FunctionComponent = () => {
         title: 'title',
         checked: false };
 
-    const [ participantsCards, setParticipants ] = useState([
-        { username: 'test1', score: 2 },
-        { username: 'test2', score: 5 },
-        { username: 'test3', score: 3 },
-        { username: 'test4', score: 100 },
-        { username: 'test5', score: 1 },
-        { username: 'test6', score: 7 },
-        { username: 'test7', score: 3 },
-        { username: 'test8', score: 10 },
-        { username: 'test9', score: 1 },
+    const [ participantsCards, setParticipants ] = useState<Array<ChallengeResult>>([
+        { id: 'testId1', username: 'test1', score: 2, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId2', username: 'test2', score: 5, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId3', username: 'test3', score: 3, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId4', username: 'test4', score: 100, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId5', username: 'test5', score: 1, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId6', username: 'test6', score: 7, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId7', username: 'test7', score: 3, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId8', username: 'test8', score: 10, media: '', route: '', date: '2022-01-01T00:00:00Z' },
+        { id: 'testId9', username: 'test9', score: 1, media: '', route: '', date: '2022-01-01T00:00:00Z' },
     ]);
 
     return (

@@ -13,8 +13,8 @@ import { Chat } from './components/Chat/Chat';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dialog } from './components/Dialog/Dialog';
 import { DisplayList, DisplaySelector } from './components/DisplaySelector/DisplaySelector';
-import { GameList } from './components/GameList/GameList';
 import { FingerIndicator } from './components/FingerIndicator/FingerIndicator';
+import { GameList } from './components/GameList/GameList';
 import { HoverUserTeamCard } from './components/HoverUserTeamCard/HoverUserTeamCard';
 import { NCAccordion, NCAccordionData } from './components/NCAccordion/NCAccordion';
 import { NCCheckbox } from './components/NCCheckbox/NCCheckbox';
@@ -26,8 +26,8 @@ import { NCLineUp } from './components/NCLineUp/NCLineUp';
 import { NCLoader } from './components/NCLoader/NCLoader';
 import { NCLottieAnimation } from './components/NCLottieAnimation/NCLottieAnimation';
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
-import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
 import { NCParticipantCardList } from './components/NCParticipantCardList/NCParticipantCardList';
+import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
 import { NCPreviewSearchAsync } from './components/NCPreviewSearchAsync/NCPreviewSearchAsync';
 import { NCRadioGroup, NcRadioGroupFields } from './components/NCRadioGroup/NCRadioGroup';
@@ -50,21 +50,21 @@ import { Tabs } from './components/Tabs/Tabs';
 import { SelectionType, TeamCard } from './components/TeamCard/TeamCard';
 import { TeamPicture } from './components/TeamPicture/TeamPicture';
 import { UserCard } from './components/UserCard/UserCard';
-import {
-    UserCardRounded,
-    UserCardRoundedSize
-} from './components/UserCard/UserCardRounded';
+import { UserCardRounded, UserCardRoundedSize } from './components/UserCard/UserCardRounded';
 import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
-import { NCTheme, ThemePlatform } from './styles/Themes';
 import { TournamentUtilsService } from './services/tournament-utils.service';
+import { NCTheme, ThemePlatform } from './styles/Themes';
 export { NCBubble } from './atoms/NCBubble/NCBubble';
+export { NCCardLoading } from './atoms/NCCardLoading/NCCardLoading';
 export { NCDropZone } from './atoms/NCDropZone/NCDropZone';
 export { NCImage } from './atoms/NCImage/NCImage';
+export { NCProgressBar } from './atoms/NCProgressBar/NCProgressBar';
 export { AuthForm } from './components/CornerShared/AuthForm/AuthForm';
 export { NCAnimatedCardList } from './components/NCAnimatedCardList/NCAnimatedCardList';
 export * from './components/NCCalendar';
 export { NCCardList } from './components/NCCardList/NCCardList';
+export { NCChallengeCard } from './components/NCChallengeCard/NCChallengeCard';
 export { NCFeedCard } from './components/NCFeedCard/NCFeedCard';
 export { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';
 export { NCHoverCard } from './components/NCHoverCard/NCHoverCard';
@@ -79,19 +79,23 @@ export { NCPureAccordion } from './components/NCPureAccordion/NCPureAccordion';
 export { NCStream } from './components/NCStream/NCStream';
 export { NCTimePicker, NC_TIME_PICKER_DEFAULT_LABEL } from './components/NCTimePicker/NCTimePicker';
 export { NCTournamentCard, TournamentCardStyle } from './components/NCTournamentCard/NCTournamentCard';
-export { NCTournamentCardLoading } from './components/NCTournamentCard/NCTournamentCardLoading/NCTournamentCardLoading';
 export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTournamentDiscord';
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { PlatformList } from './components/PlatformList/PlatformList';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
+export { useProgressBar } from './hooks/useProgressBar';
 export { AuthFormType } from './models/AuthFormType';
+export { Challenge, ChallengeExtended, ChallengeResult } from './models/Challenge';
 export { PaginatedList } from './models/Common';
 export { FeedModel } from './models/Feed';
+export { OrganisationGame } from './models/Game';
 export { Partner } from './models/Partner';
 export { Platform } from './models/Platform';
+export { Reward, RewardKind } from './models/Reward';
 export { SocialEnum, SocialLink } from './models/Social';
 export { TournamentState } from './models/Tournament';
 export { NCWeeklyScheduling } from './molecules/NCWeeklyScheduling/NCWeeklyScheduling';
+export * as NCColors from './styles/NCColors';
 export {
     formatDateTime,
     FormattedDateTime,
@@ -109,7 +113,10 @@ export {
     DAYS_OF_WEEK,
     getDaysOfWeek
 } from './utils/getDaysOfWeek';
-
+export {
+    flatRewards,
+    rewardsToString
+} from './utils/rewards';
 export {
     DatePicker,
     Dialog,

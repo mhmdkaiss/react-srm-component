@@ -1,0 +1,252 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+
+.nc-challenge-card {
+    width: 100%;
+    min-width: 952px;
+    height: fit-content;
+    background: transparent;
+
+    &.not-available {
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        border: none;
+        background-color: $grey2 !important;
+
+        .challenge-banner > .banner-image {
+            border-radius: 8px 0 0 8px;
+            border: none;
+        }
+
+        .challenge-ongoing-container > .nc-progress-bar {
+            background: $grey4;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .separator {
+        display: flex;
+        display: block;
+        width: 2px;
+        height: 2px;
+        background: $tournament;
+        border-radius: 50%;
+        margin: 0px 8px;
+    }
+
+    &.small {
+        width: 148px;
+    }
+
+    .challenge-banner {
+        width: 340px;
+        height: 243px;
+
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    }
+
+    .challenge-content > div {
+        padding-bottom: 8px;
+        display: flex;
+    }
+
+    .challenge-content {
+        overflow: hidden;
+        flex: 1;
+        padding: 32px 24px 0 24px;
+
+        .challange-header {
+            justify-content: space-between;
+
+            p {
+                align-self: center;
+                font-size: $higher-text;
+                line-height: 115%;
+                color: $grey6;
+                padding-right: 8px;
+            }
+
+            .icon-unavailableLocation {
+                background-color: $red;
+                align-self: center;
+                margin-top: -3px;
+            }
+
+            .challenge-more-info {
+                color: $grey6;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+
+        .challange-info-container {
+            padding-top: 8px;
+            justify-content: space-between;
+
+            & > div {
+                gap: 8px;
+                align-items: center;
+            }
+
+            .challenge-game {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+
+                .game-title {
+                    margin: 0;
+                    align-self: center;
+                    font-weight: 700;
+                    font-size: $small-text;
+                    line-height: 14px;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: $primary-color;
+                }
+
+                .icon-game {
+                    background-color: $primary-color;
+                }
+            }
+
+            .challenge-contest-type {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+
+                .mask-icon {
+                    background-color: $grey6;
+                    align-self: center;
+                    margin-top: -6px;
+                }
+
+                .contest-type-text {
+                    margin-top: -2px;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: $medium-text;
+                    line-height: 24px;
+                    color: $grey6;
+                }
+            }
+
+            .view-leaderboard {
+                font-style: normal;
+                font-weight: 400;
+                font-size: $small-text;
+                line-height: 20px;
+                text-align: center;
+                letter-spacing: 0.015em;
+                text-decoration-line: underline;
+                color: $white;
+
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+
+        .challenge-ongoing-container {
+            .ongoing-text {
+                font-weight: 400;
+                font-size: $small-text;
+                line-height: 140%;
+                letter-spacing: 0.015em;
+                color: $primary-color;
+                align-self: center;
+                margin: 0;
+                padding-left: 8px;
+            }
+        }
+
+        .challange-date-container {
+            gap: 8px;
+            align-items: center;
+
+            p {
+                font-weight: 400;
+                font-size: $smallest-text;
+                line-height: 116%;
+                text-align: center;
+                letter-spacing: 0.04em;
+                text-transform: capitalize;
+                color: $grey6;
+            }
+        }
+
+        .challenge-description {
+            font-style: normal;
+            font-weight: 400;
+            font-size: $medium-text;
+            line-height: 24px;
+            color: $grey6;
+        }
+
+        .challenge-footer {
+            justify-content: space-between;
+            align-items: center;
+
+            .challenge-extra-info {
+                gap: 8px;
+                align-items: center;
+                color: $grey6;
+
+                .challenge-display-format,
+                .challenge-participants {
+                    font-weight: 400;
+                    font-size: $smallest-text;
+                    line-height: 116%;
+                    letter-spacing: 0.04em;
+                }
+
+                .challenge-rewards {
+                    font-weight: 700;
+                    font-size: $medium-text;
+                    line-height: 100%;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                }
+
+                .challenge-winner {
+                    gap: 8px;
+
+                    .winner {
+                        font-weight: 400;
+                        font-size: $small-text;
+                        line-height: 20px;
+                        letter-spacing: 0.015em;
+                        align-self: center;
+                    }
+
+                    .icon-crown {
+                        background: linear-gradient(
+                            180deg,
+                            #ffe350 0%,
+                            #fff2b0 46.15%,
+                            #bc9e00 100%
+                        );
+                    }
+                }
+            }
+
+            .unavailable-location-text {
+                font-weight: 400;
+                font-size: $tiny-text;
+                line-height: 14px;
+                align-items: center;
+                letter-spacing: 0.06em;
+                color: $red;
+            }
+        }
+    }
+}

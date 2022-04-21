@@ -37,7 +37,7 @@
 @import '../components/NCLineUp/NCLineUp.scss';
 @import '../components/NCReminderTools/NCReminderTools.scss';
 @import '../components/NCTournamentCard/NCTournamentCard.scss';
-@import '../components/NCTournamentCard/NCTournamentCardLoading/NCTournamentCardLoading.scss';
+@import '../components/NCChallengeCard/NCChallengeCard.scss';
 @import '../components/NCSlider/NCSlider.scss';
 @import '../components/NCSlider/NCSliderBackground/NCSliderBackground.scss';
 @import '../components/NCSlider/NCSliderSelector/NCSliderSelector.scss';
@@ -86,6 +86,8 @@
 @import '../atoms/NCDropdown/NCDropdown.scss';
 @import '../atoms/NCCountdown/NCCountdown.scss';
 @import '../atoms/NCBubble/NCBubble.scss';
+@import '../atoms/NCCardLoading/NCCardLoading.scss';
+@import '../atoms/NCProgressBar/NCProgressBar.scss';
 
 // Molecules
 @import '../molecules/NCActions/NCActions.scss';

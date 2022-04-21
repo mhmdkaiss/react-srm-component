@@ -1,16 +1,18 @@
-import { IconMask } from './IconMask';
 import React from 'react';
+import { IconMask } from './IconMask';
 
 export enum IconType {
     AddFolder = 'addFolder',
     AddUser = 'addUser',
     Apple = 'apple',
     Arrow = 'arrow',
+    ArtGallery = 'artGallery',
     Back = 'back',
     Book = 'book',
     Brackets = 'brackets',
     BurgerMenu = 'burgerMenu',
     Calendar = 'calendar',
+    Camera = 'camera',
     Clip = 'clip',
     Clock = 'clock',
     Close = 'close',
@@ -63,6 +65,7 @@ export enum IconType {
     Stream = 'stream',
     Success = 'success',
     Sword = 'sword',
+    Ticket = 'ticket',
     Tournament = 'tournament',
     Training = 'training',
     Trashcan = 'trashcan',
@@ -75,7 +78,7 @@ export enum IconType {
     User = 'user',
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
-    YouTube = 'youtube',
+    YouTube = 'youtube'
 }
 
 export interface IconProps {
