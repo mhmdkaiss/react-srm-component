@@ -4,6 +4,7 @@ import { Button, ButtonTheme, ButtonType } from '../../atoms/Button/Button';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
 import { IconMask } from '../../atoms/Icon/IconMask';
 import { Tournament, TournamentFee, TournamentState } from '../../models/Tournament';
+import { getTournamentSettings } from '../../utils/matchSettings';
 import './NCTournamentCard.scss';
 
 export enum TournamentCardStyle {
@@ -82,7 +83,8 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     const renderSecondRow = () => {
         let isSolo = false;
         try {
-            isSolo = props.tournament?.matchSettings?.['default']?.min === 1 || props.tournament?.matchSettings?.[0]?.min === 1;
+            const settings = getTournamentSettings(props.tournament?.matchSettings);
+            isSolo = settings?.min === 1 || props.tournament?.format === 1;
         } catch (e) {}
 
         return (
