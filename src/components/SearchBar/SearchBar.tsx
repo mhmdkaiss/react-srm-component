@@ -49,7 +49,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
         if (props.setOnKeyDown) {
             props.setOnKeyDown(e);
         }
-        if (!props.overrideKeyDown && e.key === 'Enter') {
+        if (!props.overrideKeyDown && e.key === 'Enter' && !props.hideStore) {
             doSearch();
         }
     };

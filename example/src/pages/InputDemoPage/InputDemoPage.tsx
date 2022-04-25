@@ -227,7 +227,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
 
     const platform = { id: 'pc',
         route: 'route',
-        active: 1,
+        active: true,
         color: 'color',
         title: 'title',
         checked: false };
