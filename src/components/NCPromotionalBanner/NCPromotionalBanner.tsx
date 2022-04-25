@@ -22,7 +22,7 @@ export const NCPromotionalBanner: React.FunctionComponent<NCPromotionalBannerPro
 
     return (
         <div
-            className={`nc-promo-banner ${props.buttonLink && !props.buttonText ? 'clickable' : ''} ${!props.buttonText && !props.text ? 'full' : ''}`}
+            className={`nc-promo-banner ${props.buttonLink && !props.buttonText ? 'clickable' : ''} ${!props.buttonText?.length && !props.text?.length && 'full'}`}
             onClick={() => {
                 if (props.buttonLink && !props.buttonText) {
                     openLink();
