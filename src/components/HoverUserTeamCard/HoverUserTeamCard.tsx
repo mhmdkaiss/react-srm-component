@@ -10,6 +10,7 @@ interface HoverUserTeamCardProps {
     team: Team;
     isSolo: boolean;
     noGameAccount?: boolean;
+    hideElo?: boolean;
     copyGameAccountCallback?: () => void;
     teamCallback?: (teamSlug: string) => void;
     userCallback?: (userId: string) => void;
@@ -49,6 +50,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
     };
 
     if (props.team) {
+        const userCardSize = props.noGameAccount && props.hideElo ? UserCardRoundedSize.xs : UserCardRoundedSize.small;
         return (
             <div className="hover-user-team-card-component hovered-card text-center">
                 <div
@@ -128,7 +130,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                             <UserCardRounded
                                                 player={teamCaptain}
                                                 playerId={teamCaptainId}
-                                                size={UserCardRoundedSize.small}
+                                                size={userCardSize}
                                                 gameAccount={!props.noGameAccount}
                                                 copyGameAccountCallback={props.copyGameAccountCallback}
                                             />
@@ -152,7 +154,7 @@ export const HoverUserTeamCard: React.FunctionComponent<HoverUserTeamCardProps> 
                                                 <UserCardRounded
                                                     player={item[1]}
                                                     playerId={item[0]}
-                                                    size={UserCardRoundedSize.small}
+                                                    size={userCardSize}
                                                     gameAccount={!props.noGameAccount}
                                                     copyGameAccountCallback={props.copyGameAccountCallback}
                                                 />
