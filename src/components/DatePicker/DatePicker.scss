@@ -1,14 +1,27 @@
-@import "src/styles/colors";
+@import '../../styles/colors.scss';
 
 .datepicker-container {
+    width: 275px;
+
     .datepicker-input {
-        input::-webkit-calendar-picker-indicator{
+        width: 100%;
+
+        input::-webkit-calendar-picker-indicator {
             color: $grey6;
             z-index: 2;
             opacity: 0;
         }
+
+        .MuiInputBase-input.MuiInput-input {
+            width: 82%;
+        }
+
+        .MuiInputBase-root.MuiInput-root.MuiInputBase-formControl.MuiInput-formControl {
+            background: $grey2;
+        }
     }
 
+    // FIXME: Style for the old calendar icon
     .icon {
         z-index: 1;
         position: absolute;
@@ -21,11 +34,34 @@
         mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+    }
+
+    .icon-calendar {
+        cursor: pointer;
+        background: $grey6;
     }
 
     &:hover {
+        .icon-calendar,
         .icon {
             background: $primary-color;
         }
+    }
+
+    // FIXME: Finish the style for having the new DateTimePicker looks like the old one
+    .MuiOutlinedInput-root,
+    .MuiOutlinedInput-input {
+        color: $grey6;
+        background: $grey2;
+        padding: 7px 1rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .MuiInputLabel-root {
+        color: $grey5;
     }
 }

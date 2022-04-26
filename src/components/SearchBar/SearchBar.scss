@@ -1,4 +1,4 @@
-@import "src/styles/colors";
+@import 'src/styles/colors';
 
 .searchbar-container {
     .searchbar-input {
@@ -25,6 +25,9 @@
         mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
 
         &:hover {
             background: $primary-color;

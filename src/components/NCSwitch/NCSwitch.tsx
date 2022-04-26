@@ -1,8 +1,7 @@
-import './NCSwitch.scss';
-
 import { MuiThemeProvider } from '@material-ui/core';
 import React from 'react';
 import { ThemePlatform } from '../../styles/Themes';
+import './NCSwitch.scss';
 
 export interface NCSwitchProps {
     checked?: boolean;

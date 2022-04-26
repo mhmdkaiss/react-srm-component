@@ -1,15 +1,13 @@
-import './SearchBar.scss';
-
 import {
     Chip,
     MenuItem,
     MuiThemeProvider,
     Select,
-    TextField,
+    TextField
 } from '@material-ui/core';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-
 import { ThemePlatform } from '../../styles/Themes';
+import './SearchBar.scss';
 
 export interface SearchBarProps {
     searchResult?: { [key: string]: string };
@@ -24,6 +22,7 @@ export interface SearchBarProps {
     typingHook?: (text: string) => any;
     focusHook?: (isFocused: boolean) => any;
     setOnKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => any;
+    onChange?:(newValue: string) => void;
     disabled? : boolean ;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
@@ -55,6 +54,10 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
     };
 
     const doSearch = () => {
+        if (props.disabled) {
+            return;
+        }
+
         if (!searchText) {
             return;
         }
@@ -111,6 +114,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                 <div className='d-flex w-100 position-relative searchbar-container'>
                     {Object.keys(props.searchFields).length > 1 && (
                         <Select
+                            disabled={props.disabled}
                             value={searchField}
                             className='mx-3'
                             onChange={(
@@ -139,9 +143,13 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                         name='searchBar'
                         className='w-100 searchbar-input'
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                            setSearchText(event.currentTarget.value || '');
+                            const newValue = event.currentTarget.value;
+                            if (props.onChange) {
+                                props.onChange(newValue);
+                            }
+                            setSearchText(newValue);
                             if (props.typingHook) {
-                                props.typingHook(event.currentTarget.value);
+                                props.typingHook(newValue);
                             }
                         }}
                         onKeyDown={handleKeyDown}
@@ -156,7 +164,7 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                                 props.focusHook(false);
                             }
                         }}
-                        disabled = {props.disabled}
+                        disabled={props.disabled}
                     />
                     <div
                         className='search-button'
