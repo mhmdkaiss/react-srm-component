@@ -28,6 +28,7 @@ import { NCLottieAnimation } from './components/NCLottieAnimation/NCLottieAnimat
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
 import { NCParticipantCardList } from './components/NCParticipantCardList/NCParticipantCardList';
 import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
+import { NCInputMultiple } from './components/NCInputMultiple/NCInputMultiple';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
 import { NCPreviewSearchAsync } from './components/NCPreviewSearchAsync/NCPreviewSearchAsync';
 import { NCRadioGroup, NcRadioGroupFields } from './components/NCRadioGroup/NCRadioGroup';
@@ -122,6 +123,7 @@ export {
     Dialog,
     NCParticipantList,
     NCParticipantCardList,
+    NCInputMultiple,
     SearchBar,
     Tabs,
     TeamCard,

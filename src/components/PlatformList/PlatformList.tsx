@@ -1,5 +1,5 @@
 import './PlatformList.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ExtendedPlatform } from '../../models/Platform';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
 import { NCCheckbox } from '../NCCheckbox/NCCheckbox';
@@ -8,6 +8,7 @@ import { IconMask } from '../../atoms/Icon/IconMask';
 export interface PlatformListProps {
     platforms: Array<ExtendedPlatform>;
     onChange: ( platforms : Array<ExtendedPlatform> ) => void;
+    singlePlatform?: boolean;
     disabled? : boolean ;
 }
 
@@ -21,23 +22,27 @@ enum IconsPlatforms {
     Pcmobile = 'pc-mobile'
 }
 
-export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { platforms, onChange, disabled = false } : PlatformListProps) => {
+export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { platforms, onChange, singlePlatform, disabled = false } : PlatformListProps) => {
     const [ search, setSearch ] = useState('Various');
     const [ icon, setIcon ] = useState<string>('Pc');
     const [ isDropdownVisible, setIsDropdownVisible ] = useState(false);
 
-    const [ platformsState, setPlatforms ] = useState( platforms );
+    const [ platformsState, setPlatformsState ] = useState( platforms );
+    const tempSelectedPlatforms : Array<ExtendedPlatform> = [];
+
+    useEffect(() => {
+        setPlatformsState(platforms);
+    }, [platforms]);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function getKeyByValue(object : any, id : string ) {
         return Object.keys(object).find(key => object[key] === id);
     }
 
-    const tempSelectedPlatforms : Array< ExtendedPlatform > = [];
-
     const changeCheckbox = ( index: number) => {
         let count = 0;
 
-        const tempPlatforms = JSON.parse(JSON.stringify( platformsState ));
+        const tempPlatforms = JSON.parse(JSON.stringify( singlePlatform ? platforms.map((e) => ({ ...e, checked: false }) ) : platformsState ));
         tempPlatforms[index].checked = !tempPlatforms[index].checked;
 
         for (let i=0; i< tempPlatforms.length ; i++){
@@ -60,7 +65,7 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             setSearch(id);
         }
 
-        setPlatforms(tempPlatforms);
+        setPlatformsState(tempPlatforms);
     };
 
     return (
@@ -88,7 +93,6 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             </div>
 
             <div className={'platform-dropdown dropdown ' + ((isDropdownVisible) ? '' : 'd-none')} >
-
                 {
                     platformsState.map((element, index) => (
                         <div key={index} className='p-1 d-flex align-items-center checkbox-div'>

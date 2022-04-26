@@ -1,0 +1,14 @@
+@import '../../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/mixins.scss';
+
+.nc-input-multipule-text {
+    .icon {
+        background: $primary-color;
+        cursor: pointer;
+    }
+    .trash-icon {
+        background: $red;
+        cursor: pointer;
+    }
+}

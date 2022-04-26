@@ -2,6 +2,7 @@ import React from 'react';
 import { IconMask } from './IconMask';
 
 export enum IconType {
+    Add = 'add',
     AddFolder = 'addFolder',
     AddUser = 'addUser',
     Apple = 'apple',
@@ -78,7 +79,7 @@ export enum IconType {
     User = 'user',
     WaffleMenu = 'waffleMenu',
     Warning = 'warning',
-    YouTube = 'youtube'
+    YouTube = 'youtube',
 }
 
 export interface IconProps {

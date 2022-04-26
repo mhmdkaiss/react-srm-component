@@ -5,6 +5,7 @@ import {
     NCChip,
     NCColorPicker,
     NCInput,
+    NCInputMultiple,
     NCMediaUpload,
     NCMultiSearch,
     NCParticipantCardList,
@@ -22,6 +23,7 @@ import {
     SearchBar
 } from '@cactus/srm-component';
 import React, { useState } from 'react';
+import { NCInputMultipleKeys } from '../../../../src/components/NCInputMultiple/NCInputMultiple';
 import { generateSearchResultWithName } from '../../mock/Inputs/Input.mock';
 
 export const InputDemoPage: React.FunctionComponent = () => {
@@ -244,6 +246,8 @@ export const InputDemoPage: React.FunctionComponent = () => {
         { id: 'testId9', username: 'test9', score: 1, media: '', route: '', date: '2022-01-01T00:00:00Z' },
     ]);
 
+    const [ multipleInputs, setMultipleInputs ] = useState<Array<NCInputMultipleKeys>>([]);
+
     return (
         <div className='white'>
             <div>
@@ -251,6 +255,9 @@ export const InputDemoPage: React.FunctionComponent = () => {
                 <NCInput label='Label' value='Value' onChange={(e) => {
                     console.log('event', e);
                 }} />
+                <div className='w-100 my-5'>
+                    <NCInputMultiple withMedia={true} list={multipleInputs} label='label' onChange={(e) => setMultipleInputs(e)}/>
+                </div>
                 {renderNCTextArea()}
                 {renderNcSelect()}
                 {renderNCSelector()}
