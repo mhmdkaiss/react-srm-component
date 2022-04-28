@@ -9,6 +9,7 @@ export interface NCCardListProps {
     scrollHook?: (scrollLeft: number) => void;
     cardClicked?: (index: number) => void;
     customArrowsStyle?: IconProps;
+    fullScroll?: boolean;
 }
 
 export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCardListProps) => {
@@ -76,11 +77,11 @@ export const NCCardList: React.FunctionComponent<NCCardListProps> = (props: NCCa
 
     const updateScrollTimer = (recursion?: boolean) => {
         if (!recursion) {
-            scrollContainer(scrollLeft);
+            scrollContainer(scrollLeft, props.fullScroll ? scrollableRef.current?.clientWidth : undefined);
         }
 
         const timer = setTimeout(() => {
-            scrollContainer(scrollLeft, 30);
+            scrollContainer(scrollLeft, props.fullScroll ? scrollableRef.current?.clientWidth : undefined);
             updateScrollTimer(true);
         }, 100);
         setScrollTimer(timer);

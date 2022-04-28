@@ -9,6 +9,7 @@ export interface NCAnimatedCardListProps {
     loadingCard?: React.ReactNode;
     scrollHook?: (scrollLeft: number) => void;
     cardClicked?: (index: number) => void;
+    fullScroll?: boolean;
 }
 
 export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps> = (props: NCAnimatedCardListProps) => {
@@ -42,6 +43,7 @@ export const NCAnimatedCardList: React.FunctionComponent<NCAnimatedCardListProps
                 hoveredCard={updateHoverCard}
                 scrollHook={props.scrollHook}
                 cardClicked={props.cardClicked}
+                fullScroll={props.fullScroll}
             />
             { hoverCard }
         </React.Fragment>
