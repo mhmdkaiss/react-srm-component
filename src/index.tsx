@@ -84,6 +84,7 @@ export { NCTournamentDiscord } from './components/NCTournamentDiscord/NCTourname
 export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournamentRounds';
 export { PlatformList } from './components/PlatformList/PlatformList';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
+export { NCAssetNgDialog } from './components/NCAssetNgDialog/NCAssetNgDialog';
 export { useProgressBar } from './hooks/useProgressBar';
 export { AuthFormType } from './models/AuthFormType';
 export { Challenge, ChallengeExtended, ChallengeResult } from './models/Challenge';

@@ -230,5 +230,37 @@
     {
         "term": "ds.nc-menu-auth.premium",
         "comment": "Premium"
+    },
+    {
+        "term": "ds.yes",
+        "comment": "Yes"
+    },
+    {
+        "term": "ds.no",
+        "comment": "No"
+    },
+    {
+        "term": "ds.save",
+        "comment": "Save"
+    },
+    {
+        "term": "ds.error.id.main",
+        "comment": "Sorry, this ID is already used !"
+    },
+    {
+        "term": "ds.error.id.discord",
+        "comment": "Please try with a different one. If you are facing any issue, please contact us via our discord."
+    },
+    {
+        "term": "organization.welcome.title",
+        "comment": "Welcome in {name} space"
+    },
+    {
+        "term": "organization.welcome.asset",
+        "comment": "Do you hold one or more than one {name} Asset?"
+    },
+    {
+        "term": "organization.welcome.id",
+        "comment": "Please enter your {name} “ID” you want to play with:"
     }
 ]
