@@ -1,6 +1,6 @@
 import './NCMenuAuth.scss';
 
-import { Button, ButtonTheme } from '../../../atoms/Button/Button';
+import { Button, ButtonTheme, ButtonType } from '../../../atoms/Button/Button';
 import { DropdownMenuItem, NCDropdownMenu } from '../../../atoms/NCDropdownMenu/NCDropdownMenu';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -18,6 +18,7 @@ export interface NCMenuAuthProps {
     onLogout?: () => void,
     onOpenDashboard?: () => void,
     onAction?: () => void,
+    onEvent?: (event: string) => void,
 }
 
 export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
@@ -55,6 +56,58 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
         }
     ];
 
+    const renderRegistration = () => {
+        if (props.user) {
+            return;
+        }
+
+        return props.platformMenu ?
+            <React.Fragment>
+                <Button
+                    label={intl.formatMessage({ id: 'ds.nc-menu-auth.login' })}
+                    setClick={() => {
+                        if (props.onEvent) {
+                            props.onEvent('login');
+                        }
+                    }}
+                    type={ButtonType.SECONDARY}
+                    styleClass='border-0'
+                />
+                {
+                    !props.isSideMenu &&
+                    <Button
+                        containerClass='ml-2'
+                        label={intl.formatMessage({ id: 'ds.nc-menu-auth.register' })}
+                        setClick={() => {
+                            if (props.onEvent) {
+                                props.onEvent('register');
+                            }
+                        }}
+                    />
+                }
+            </React.Fragment> :
+            <React.Fragment>
+                <div className={`my-auto ${!props.isSideMenu ? 'mr-4 d-none d-md-block' : 'menu-item'}`}>
+                    <HashLink
+                        className={`login-button ${props.platformMenu ? 'primary-color font-weight-bold text-uppercase' : ''}`}
+                        to={{ pathname: '/login', hash: '#' }}
+                        onClick={onAction}
+                    >
+                        <FormattedMessage id="ds.nc-menu-auth.login" />
+                    </HashLink>
+                </div>
+                {
+                    !props.isSideMenu &&
+                    <HashLink to={{ pathname: '/register', hash: '#' }} onClick={onAction}>
+                        <Button
+                            label={intl.formatMessage({ id: 'ds.nc-menu-auth.register' })}
+                            theme={ButtonTheme.CUSTOM}
+                        />
+                    </HashLink>
+                }
+            </React.Fragment>;
+    };
+
     return (
         <div
             className={`nc-menu-auth d-flex cursor-pointer ${
@@ -81,25 +134,7 @@ export const NCMenuAuth: React.FunctionComponent<NCMenuAuthProps> = (props) => {
                     </div>
                 </div>
             )}
-            {!props.user && (
-                <div className={`my-auto ${!props.isSideMenu ? 'mr-4 d-none d-md-block' : 'menu-item'}`}>
-                    <HashLink
-                        className={`login-button ${props.platformMenu ? 'primary-color font-weight-bold text-uppercase' : ''}`}
-                        to={{ pathname: '/login', hash: '#' }}
-                        onClick={onAction}
-                    >
-                        <FormattedMessage id="ds.nc-menu-auth.login" />
-                    </HashLink>
-                </div>
-            )}
-            {!props.user && !props.isSideMenu && (
-                <HashLink to={{ pathname: '/register', hash: '#' }} onClick={onAction}>
-                    <Button
-                        label={intl.formatMessage({ id: 'ds.nc-menu-auth.register' })}
-                        theme={ButtonTheme.CUSTOM}
-                    />
-                </HashLink>
-            )}
+            { renderRegistration() }
         </div>
     );
 };

@@ -4,8 +4,7 @@ import { NCLanguageIcon } from '../../../atoms/NCLanguageIcon/NCLanguageIcon';
 export interface NCMenuLanguageSwitcherProps {
   languages: Array<string>,
   selectedLanguage: string,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onLanguageSelected: (language: string) => void,
+  onLanguageSelected?: (language: string) => void,
   isSideMenu?: boolean,
 }
 
@@ -15,7 +14,17 @@ export const NCMenuLanguageSwitcher: React.FunctionComponent<NCMenuLanguageSwitc
     const renderSideMenuSwitcher = () => {
         return <div className='d-flex w-100 justify-content-around'>
             { props.languages.map(l => {
-                return <NCLanguageIcon key={l} language={l} onClick={() => props.onLanguageSelected(l)} />;
+                return (
+                    <NCLanguageIcon
+                        key={l}
+                        language={l}
+                        onClick={() => {
+                            if (props.onLanguageSelected) {
+                                props.onLanguageSelected(l);
+                            }
+                        }}
+                    />
+                );
             })}
         </div>;
     };
