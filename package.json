@@ -23,6 +23,7 @@
         "css": "npm-run-all css:compile css-prefix css-rtl css-minify",
         "css:compile": "node-sass src/styles --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-embed -o dist/src/styles",
         "deploy": "gh-pages -d example/build",
+        "link": "(yarn link) && (cd ./node_modules/react; yarn link) && (cd ./node_modules/react-dom; yarn link) && (cd ./node_modules/react-intl; yarn link) && (cd ./node_modules/react-router-dom; yarn link)",
         "lint": "eslint . --ext .ts,.tsx",
         "lint:css": "stylelint --ip main.*.chunk.css dist/src/styles/*.css",
         "predeploy": "cd example && yarn install && yarn run build",

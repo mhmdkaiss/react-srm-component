@@ -41,7 +41,7 @@ export const UserCardRounded: React.FunctionComponent<UserCardRoundedProps> = (p
     } else if (typeof props.player.premium === 'boolean') {
         isPremium = props.player.premium;
     } else {
-        isPremium = props.player.premium.status === PremiumStatus.PREMIUM;
+        isPremium = props.player.premium?.status === PremiumStatus.PREMIUM;
     }
 
     return (

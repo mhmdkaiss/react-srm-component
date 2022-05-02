@@ -1,9 +1,10 @@
 import './UserCard.scss';
 
-import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
-import { Player, PremiumStatus } from '../../models/Player';
-import React from 'react';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
+import { Player, PremiumStatus } from '../../models/Player';
+
+import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
+import React from 'react';
 
 export interface UserCardProps {
     playerId: string;
@@ -44,7 +45,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
     } else if (typeof props.player.premium === 'boolean') {
         isPremium = props.player.premium;
     } else {
-        isPremium = props.player.premium.status === PremiumStatus.PREMIUM;
+        isPremium = props.player.premium?.status === PremiumStatus.PREMIUM;
     }
 
     return (

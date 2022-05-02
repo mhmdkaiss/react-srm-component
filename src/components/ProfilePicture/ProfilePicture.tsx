@@ -1,6 +1,7 @@
-import React, { CSSProperties } from 'react';
-import { Premium, PremiumStatus } from '../../models/Player';
 import './ProfilePicture.scss';
+
+import { Premium, PremiumStatus } from '../../models/Player';
+import React, { CSSProperties } from 'react';
 
 export interface ProfilePictureProps {
     playerId: string;
@@ -30,7 +31,7 @@ export const ProfilePicture: React.FunctionComponent<ProfilePictureProps> = (
         if (typeof props.player.premium === 'boolean') {
             isPremium = props.player.premium;
         } else {
-            isPremium = props.player.premium.status === PremiumStatus.PREMIUM;
+            isPremium = props.player.premium?.status === PremiumStatus.PREMIUM;
         }
     }
 
