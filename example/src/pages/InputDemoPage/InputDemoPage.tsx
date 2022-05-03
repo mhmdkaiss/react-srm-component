@@ -324,7 +324,7 @@ export const InputDemoPage: React.FunctionComponent = () => {
                             actionHook={(e) => {
                                 console.log('event', e);
                             }}
-                            list={[{ name: 'item1' }, { name: 'Item 2' }]}
+                            list={[{ name: 'item1' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }, { name: 'Item 2' }]}
                             displayParam='name'
                             onSelection={(e) => {
                                 console.log(e);

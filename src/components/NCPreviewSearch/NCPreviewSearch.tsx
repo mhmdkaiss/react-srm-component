@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 import { SearchBar, SearchBarProps } from '../SearchBar/SearchBar';
 import './NCPreviewSearch.scss';
+import { useInView } from 'react-intersection-observer';
 
 export interface NCPreviewSearchProps extends SearchBarProps {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,7 +12,8 @@ export interface NCPreviewSearchProps extends SearchBarProps {
     selected?: any,
     onSelection: (clicked: any) => void;
     onChange?: (newValue: string) => void;
-    disabled? : boolean;
+    disabled?: boolean;
+    scrollToBottomTriggerFunc?: () => void;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
@@ -19,11 +21,16 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
     const [ showList, setShowList ] = useState<boolean>(false);
     const [ search, setSearch ] = useState<string>('');
 
+    const { ref: intersect, inView: IntersectVisible } = useInView();
+
     useEffect(() => {
         if (!props.value) {
             setSearch('');
         }
-    }, [props.value]);
+        if (IntersectVisible && props.scrollToBottomTriggerFunc) {
+            props.scrollToBottomTriggerFunc();
+        }
+    }, [ props.value, IntersectVisible ]);
 
     return (
         <React.Fragment>
@@ -35,9 +42,6 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                         hideStore={props.hideStore}
                         focusHook={(focused) => {
                             setTimeout(() => setShowList(focused), focused ? 0 : 200);
-                            if (props.focusHook) {
-                                props.focusHook(focused);
-                            }
                         }}
                         actionHook={props.actionHook}
                         onChange={props.onChange}
@@ -65,6 +69,7 @@ export const NCPreviewSearch: React.FunctionComponent<NCPreviewSearchProps> = (p
                                     );
                                 })
                             }
+                            <div ref={intersect}/>
                         </div>
                     }
                 </div>
