@@ -1,0 +1,100 @@
+@import '../../styles/colors';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.nc-breadcrumb {
+    width: $big-text;
+
+    .nc-breadcrumb-item {
+        .dot,
+        .dot-container {
+            width: $medium-text;
+            height: $medium-text;
+            border-radius: 50%;
+
+            &.first {
+                width: $big-text;
+                height: $big-text;
+            }
+
+            .icon-success {
+                position: absolute;
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                left: -1px;
+                top: -1px;
+                background: $primary-color;
+            }
+        }
+
+        .separator {
+            width: 2px;
+            height: 26px;
+        }
+
+        .dot,
+        .separator {
+            background: $grey5;
+        }
+
+        .label {
+            display: none;
+            right: calc(100% + 12px);
+            top: 8px;
+            color: $grey5;
+            white-space: nowrap;
+            background: $grey1;
+            border-radius: 8px;
+            padding: 4px 8px;
+        }
+
+        &.selected {
+            .dot,
+            .separator {
+                background: $primary-color;
+            }
+
+            .label {
+                color: $primary-color;
+            }
+        }
+
+        &.current,
+        &:hover {
+            .label {
+                display: block;
+            }
+        }
+
+        &:hover {
+            .dot,
+            .dot-container {
+                box-shadow: 0px 0px 12px $grey5;
+            }
+
+            &.selected {
+                .dot,
+                .dot-container {
+                    box-shadow: 0px 0px 12px $primary-color;
+                }
+            }
+        }
+
+        @include breakpoint(mobile) {
+            .dot,
+            .dot-container {
+                width: 12px;
+                height: 12px;
+
+                &.first {
+                    width: $medium-text;
+                    height: $medium-text;
+                }
+            }
+
+            .label {
+                display: none !important;
+            }
+        }
+    }
+}

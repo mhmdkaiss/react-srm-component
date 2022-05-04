@@ -85,6 +85,7 @@ export { NCTournamentRounds } from './components/NCTournamentRounds/NCTournament
 export { PlatformList } from './components/PlatformList/PlatformList';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
 export { NCAssetNgDialog } from './components/NCAssetNgDialog/NCAssetNgDialog';
+export { NCBreadcrumb } from './components/NCBreadcrumb/NCBreadcrumb';
 export { useProgressBar } from './hooks/useProgressBar';
 export { AuthFormType } from './models/AuthFormType';
 export { Challenge, ChallengeExtended, ChallengeResult } from './models/Challenge';

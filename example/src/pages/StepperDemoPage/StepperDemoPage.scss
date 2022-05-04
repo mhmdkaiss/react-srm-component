@@ -1,3 +1,22 @@
 .stepper-page {
     width: 1000px;
+
+    .breadcrumb-demo-container {
+        top: 18px;
+        left: 18px;
+
+        .breadcrumb-demo {
+            right: 0px;
+            top: 0px;
+        }
+    }
+
+    .breadcrumb-demo-section {
+        padding: 32px 0px;
+        border: 1px solid red;
+
+        &:not(:first-child) {
+            margin: 160px 0px;
+        }
+    }
 }

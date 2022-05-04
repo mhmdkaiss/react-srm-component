@@ -1,8 +1,8 @@
 import './StepperDemoPage.scss';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-import { NCStepper } from '@cactus/srm-component';
+import { NCStepper, NCBreadcrumb } from '@cactus/srm-component';
 
 export const StepperDemoPage: React.FunctionComponent = () => {
     const MAX_STEP = 8;
@@ -14,6 +14,11 @@ export const StepperDemoPage: React.FunctionComponent = () => {
 
     const [ activeStep, setActiveStep ] = useState<number>(ACTIVE_STEP);
     const [ error, setError ] = useState<boolean>(false);
+
+    const refSection1 = useRef<HTMLDivElement>(null);
+    const refSection2 = useRef<HTMLDivElement>(null);
+    const refSection3 = useRef<HTMLDivElement>(null);
+    const refSection4 = useRef<HTMLDivElement>(null);
 
     const moveStep = (currentStep: number, next: boolean) => {
         if (next) {
@@ -72,6 +77,30 @@ export const StepperDemoPage: React.FunctionComponent = () => {
                     <button className="mx-2" onClick={(() => setError(!error))}>Switch {error ? 'Active' : 'Error'}</button>
                 </div>
             </div>
+
+            <div className='position-sticky breadcrumb-demo-container d-flex justify-content-between my-5'>
+                <h6 className="secondary-color-cool">NC Breadcrumb</h6>
+                <div className='position-absolute breadcrumb-demo'>
+                    <NCBreadcrumb
+                        routes={
+                            [
+                                { label: 'Section 1', ref: refSection1 },
+                                { label: 'Section 2', ref: refSection2 },
+                                { label: 'Section 3', ref: refSection3 },
+                                { label: 'Section 4', ref: refSection4 }
+                            ]
+                        }
+                        currentStep={2}
+                    />
+                </div>
+            </div>
+            <div>
+                <div ref={refSection1} className='breadcrumb-demo-section text-center'>Section 1</div>
+                <div ref={refSection2} className='breadcrumb-demo-section text-center'>Section 2</div>
+                <div ref={refSection3} className='breadcrumb-demo-section text-center'>Section 3</div>
+                <div ref={refSection4} className='breadcrumb-demo-section text-center'>Section 4</div>
+            </div>
+
         </div>
     );
 };
