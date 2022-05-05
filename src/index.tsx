@@ -28,7 +28,7 @@ import { NCLottieAnimation } from './components/NCLottieAnimation/NCLottieAnimat
 import { NCMultiSearch } from './components/NCMultiSearch/NCMultiSearch';
 import { NCParticipantCardList } from './components/NCParticipantCardList/NCParticipantCardList';
 import { NCParticipantList } from './components/NCParticipantList/NCParticipantList';
-import { NCInputMultiple } from './components/NCInputMultiple/NCInputMultiple';
+import { NCInputMultiple, NCInputMultipleKeys } from './components/NCInputMultiple/NCInputMultiple';
 import { NCPreviewSearch } from './components/NCPreviewSearch/NCPreviewSearch';
 import { NCPreviewSearchAsync } from './components/NCPreviewSearchAsync/NCPreviewSearchAsync';
 import { NCRadioGroup, NcRadioGroupFields } from './components/NCRadioGroup/NCRadioGroup';
@@ -56,6 +56,7 @@ import { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 import { NCToastType, ToastModel, ToastPosition } from './models/NCToastModel';
 import { TournamentUtilsService } from './services/tournament-utils.service';
 import { NCTheme, ThemePlatform } from './styles/Themes';
+import { ContestType } from './models/Challenge';
 export { NCBubble } from './atoms/NCBubble/NCBubble';
 export { NCCardLoading } from './atoms/NCCardLoading/NCCardLoading';
 export { NCDropZone } from './atoms/NCDropZone/NCDropZone';
@@ -91,7 +92,7 @@ export { AuthFormType } from './models/AuthFormType';
 export { Challenge, ChallengeExtended, ChallengeResult } from './models/Challenge';
 export { PaginatedList } from './models/Common';
 export { FeedModel } from './models/Feed';
-export { OrganisationGame } from './models/Game';
+export { OrganisationGame, NoGame } from './models/Game';
 export { Partner } from './models/Partner';
 export { Platform } from './models/Platform';
 export { Reward, RewardKind } from './models/Reward';
@@ -126,6 +127,7 @@ export {
     NCParticipantList,
     NCParticipantCardList,
     NCInputMultiple,
+    NCInputMultipleKeys,
     SearchBar,
     Tabs,
     TeamCard,
@@ -138,6 +140,7 @@ export {
     Icon,
     IconMask,
     IconType,
+    ContestType,
     UserCardRounded,
     UserCardRoundedSize,
     Chat,

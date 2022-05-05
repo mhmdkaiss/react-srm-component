@@ -1,7 +1,6 @@
-import './ProfilePicture.scss';
-
-import { Premium, PremiumStatus } from '../../models/Player';
 import React, { CSSProperties } from 'react';
+import { Premium, PremiumStatus } from '../../models/Player';
+import './ProfilePicture.scss';
 
 export interface ProfilePictureProps {
     playerId: string;

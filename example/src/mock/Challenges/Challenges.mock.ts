@@ -19,7 +19,12 @@ export const withoutGameSlug: ChallengeExtended = {
         banner: '',
     },
     participants: 1,
-    game: undefined,
+    game: {
+        slug: '',
+        name: '',
+        _id: '',
+        value: ''
+    },
     banner: '',
     rewards: {
         0: [{
@@ -46,7 +51,12 @@ export const classic: ChallengeExtended = {
         banner: '',
     },
     participants: 1,
-    game: undefined,
+    game: {
+        slug: '',
+        name: 'dragon ball',
+        _id: '',
+        value: ''
+    },
     banner: '',
     rewards: {
         0: [{
@@ -77,7 +87,10 @@ export const japanese : ChallengeExtended = {
         banner: ''
     },
     game: {
-        name: 'Dragon ball fighter Z'
+        slug: '',
+        name: 'dragon ball',
+        _id: '',
+        value: ''
     },
     participants: 101,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/5e8307f2537278bb83fac7ed/medias/CarrouselImage`,
@@ -106,7 +119,9 @@ export const withGameSlug: ChallengeExtended = {
     },
     game: {
         slug: 'league-of-legends',
-        name: 'LOL'
+        name: 'LOL',
+        _id: '',
+        value: ''
     },
     participants: 10,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/5c436c2c766ea609157540e8/medias/CarrouselImage`,
@@ -140,7 +155,9 @@ export const notAvailable: ChallengeExtended = {
     },
     game: {
         slug: 'fifa-21',
-        name: 'Fifa 21'
+        name: 'Fifa 21',
+        _id: '',
+        value: ''
     },
     participants: 101,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/5f843fdaf32cc449004e0375/medias/CarrouselImage`,
@@ -174,7 +191,9 @@ export const ongonig: ChallengeExtended = {
     },
     game: {
         slug: 'rocket-league',
-        name: 'Rocket League'
+        name: 'Rocket League',
+        _id: '',
+        value: ''
     },
     participants: 50,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/5cbefb8ccf473930ea0237f1/medias/CarrouselImage`,
@@ -201,7 +220,12 @@ export const ended: ChallengeExtended = {
         rules: '',
         banner: ''
     },
-    game: undefined,
+    game: {
+        slug: '',
+        name: 'Dragon ball fighter Z',
+        _id: '',
+        value: ''
+    },
     participants: 2,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/6082e67c848aab9ba76d25c1/medias/CarrouselImage`,
     rewards: {
