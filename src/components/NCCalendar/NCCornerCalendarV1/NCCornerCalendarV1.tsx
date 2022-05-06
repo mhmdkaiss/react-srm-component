@@ -148,7 +148,7 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
 
     return <div className='nc-corner-calendar-v1 d-flex flex-column p-3'>
         <div className='row'>
-            <div className='col-12 col-md-6 calendars'>
+            <div className='col-12 col-md-6 calendars mx-auto'>
                 {props.horizontal ? <React.Fragment>
                     <div className='d-flex justify-content-between'>
                         <div className='month-switcher cursor-pointer' onClick={() => changeMonth(-1)}>

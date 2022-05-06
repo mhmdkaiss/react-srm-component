@@ -43,7 +43,7 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
     const marqueeSliderRef = useRef<HTMLDivElement | null>(null);
     const marqueeContainerRef = useRef<HTMLDivElement | null>(null);
     const [ marqueeWidth, setMarqueeWidth ] = useState<number>(0);
-    const [ marqueeHeight, setMarqueeHeight ] = useState<number>(0);
+    const [ marqueeHeight, setMarqueeHeight ] = useState<number>(24);
     const [ ellipsis, setEllipsis ] = useState<boolean>(false);
 
     const mainAnimationDuration = 200;
