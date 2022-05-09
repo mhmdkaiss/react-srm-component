@@ -84,13 +84,12 @@ export const StepperDemoPage: React.FunctionComponent = () => {
                     <NCBreadcrumb
                         routes={
                             [
-                                { label: 'Section 1', ref: refSection1 },
-                                { label: 'Section 2', ref: refSection2 },
-                                { label: 'Section 3', ref: refSection3 },
+                                { label: 'Section 1', ref: refSection1, enabled: true, checked: true },
+                                { label: 'Section 2', ref: refSection2, enabled: true },
+                                { label: 'Section 3', ref: refSection3, enabled: true, checked: true },
                                 { label: 'Section 4', ref: refSection4 }
                             ]
                         }
-                        currentStep={2}
                     />
                 </div>
             </div>

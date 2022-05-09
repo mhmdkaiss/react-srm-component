@@ -4,16 +4,17 @@ import { Icon, IconType } from '../../atoms/Icon/Icon';
 
 export interface BreadcrumbRoute {
     label: string,
+    enabled?: boolean,
+    checked?: boolean,
     ref?: React.RefObject<HTMLDivElement>,
 }
 
 interface NCBreadcrumbProps {
     routes: Array<BreadcrumbRoute>,
-    currentStep?: number,
 }
 
 export const NCBreadcrumb: React.FunctionComponent<NCBreadcrumbProps> = (props: NCBreadcrumbProps) => {
-    const currentStep = props.currentStep || 0;
+    const currentStep = props.routes.length - 1 - props.routes.slice().reverse().findIndex(r => r.enabled);
 
     return (
         <div className='nc-breadcrumb'>
@@ -22,7 +23,7 @@ export const NCBreadcrumb: React.FunctionComponent<NCBreadcrumbProps> = (props: 
                     return (
                         <div
                             key={`${r.label}-${i}`}
-                            className={`nc-breadcrumb-item d-flex flex-column align-items-center ${i <= currentStep ? 'selected' : ''} ${i === currentStep ? 'current' : ''}`}
+                            className={`nc-breadcrumb-item d-flex flex-column align-items-center ${r.enabled ? 'enabled' : ''} ${i === currentStep ? 'current' : ''}`}
                         >
                             {
                                 i > 0 &&
@@ -38,7 +39,7 @@ export const NCBreadcrumb: React.FunctionComponent<NCBreadcrumbProps> = (props: 
                             >
                                 <div className='label position-absolute'>{r.label}</div>
                                 {
-                                    i < currentStep ?
+                                    r.enabled && r.checked ?
                                         <div className={`dot-container position-relative my-2 ${i === 0 ? 'first' : ''}`}>
                                             <Icon icon={IconType.Success} />
                                         </div> :
