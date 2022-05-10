@@ -1,11 +1,13 @@
+import './Navigation.scss';
+
 import { Icon, IconType } from '@cactus/srm-component';
+import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './Navigation.scss';
 
 export const Navigation: React.FunctionComponent = () => {
     const [ atomsOpen, setAtomsOpen ] = React.useState(false);
@@ -173,6 +175,9 @@ export const Navigation: React.FunctionComponent = () => {
                     </ListItem>
                     <ListItem button component={Link} to='/component/menu'>
                         <ListItemText primary='Menu'/>
+                    </ListItem>
+                    <ListItem button component={Link} to='/component/cookies'>
+                        <ListItemText primary='Cookies'/>
                     </ListItem>
                 </List>
             </Collapse>

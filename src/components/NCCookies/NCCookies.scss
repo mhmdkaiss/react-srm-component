@@ -1,0 +1,27 @@
+@import '../../styles/colors';
+
+.CookieConsent {
+    background-color: $grey4 !important;
+    max-width: 350px;
+    border-radius: 5px;
+    padding: 8px;
+    position: absolute !important;
+    left: 1em !important;
+    bottom: 1em !important;
+
+    div {
+        width: 100%;
+    }
+
+    button {
+        color: $white !important;
+        background-color: $primary-color !important;
+        border-radius: 4px !important;
+        padding: 0.4em 0.8em !important;
+        width: 90%;
+
+        &:hover {
+            background-color: #9ee203 !important;
+        }
+    }
+}

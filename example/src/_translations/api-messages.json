@@ -262,5 +262,13 @@
     {
         "term": "organization.welcome.id",
         "comment": "Please enter your {name} “ID” you want to play with:"
+    },
+    {
+        "term": "cookies.accept",
+        "comment": "This website uses cookies to ensure you get the best experience on our website."
+    },
+    {
+        "term": "cookies.got.it",
+        "comment": "Got it!"
     }
 ]

@@ -1,15 +1,16 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import React, { ReactElement } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
-import { Navigation } from './components/Navigation/Navigation';
+
+import React, { ReactElement } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+
+import AppBar from '@material-ui/core/AppBar';
 import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
 import { BubblesDemoPage } from './pages/BubblesDemoPage/BubblesDemoPage';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
 import { CalendarDemoPage } from './pages/CalendarDemoPage/CalendarDemoPage';
 import { ChallengeCardDemoPage } from './pages/ChallengeCardDemoPage/ChallengeCardDemoPage';
+import ContextStore from './store';
+import { CookiesDemoPage } from './pages/CookiesDemoPage/CookiesDemoPage';
 import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
 import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
@@ -23,6 +24,7 @@ import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage';
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage';
 import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryDemoPage';
 import { MenuDemoPage } from './pages/MenuDemoPage/MenuDemoPage';
+import { Navigation } from './components/Navigation/Navigation';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
 import { ProgressBarDemoPage } from './pages/ProgressBarDemoPage/ProgressBarDemoPage';
@@ -30,13 +32,14 @@ import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/P
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
 import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage';
+import Toolbar from '@material-ui/core/Toolbar';
 import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage';
 import { TournamentRoundsDemoPage } from './pages/TournamentRoundsDemoPage/TournamentRoundsDemoPage';
 import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardDemoPage';
+import Typography from '@material-ui/core/Typography';
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
-import ContextStore from './store';
 
 const routes = [
     {
@@ -162,6 +165,10 @@ const routes = [
     {
         path: '/component/menu',
         component: MenuDemoPage,
+    },
+    {
+        path: '/component/cookies',
+        component: CookiesDemoPage,
     },
 ];
 
