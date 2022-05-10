@@ -165,7 +165,7 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
             style={{ height: `${height}px` }}
         >
             {
-                props.content && props.content.length &&
+                props.content && !!props.content.length &&
                 <NCSliderBackground
                     scrollableRef={scrollableSliderRef}
                     content={props.content}
