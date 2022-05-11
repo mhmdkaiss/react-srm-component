@@ -62,10 +62,10 @@ export const NCInputMultiple: React.FunctionComponent<NCInputMultipleProps> = (p
                                         <div className='w-25 mr-4'>
                                             <NCMediaUpload
                                                 mediaLibrary
-                                                s3PublicUrl={String(process.env.REACT_APP_S3_BUCKET)}
+                                                s3PublicUrl={String(process.env.REACT_APP_S3_PUBLIC_URL)}
                                                 currentImage={
                                                     (i as NCInputMultipleKeys).logo ||
-                                                    `${process.env.REACT_APP_S3_BUCKET}/media/default/default-team-banner.svg`
+                                                    `${process.env.REACT_APP_S3_PUBLIC_URL}/media/default/default-team-banner.svg`
                                                 }
                                                 actionHook={(ctx, file) => {
                                                     if (ctx === 'url') {
