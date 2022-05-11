@@ -14,9 +14,9 @@ export const NCParticipantCardList: React.FunctionComponent<NCParticipantCardLis
     return (
         <div className='nc-participant-card-list px-4 scrollbar'>
             {
-                props.list.map((item, index) => {
+                props.list.map((item) => {
                     return (
-                        <div key={index} className={'participant-card px-4 mb-2 row'}>
+                        <div key={item.id} className={'participant-card px-4 mb-2 row'}>
                             <div className='col-8 d-flex align-items-center'>
                                 <NCInput styleName='input-style mr-4' value={item.score}
                                     onChange={(e) => {
