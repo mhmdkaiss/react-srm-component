@@ -15,7 +15,7 @@ export enum TournamentCardStyle {
 export interface NCTournamentCardProps {
     tournament: Tournament;
     gameName: string;
-    banner: string;
+    banner: string | Array<string>;
     restricted?: boolean;
     prize?: string;
     gift?: boolean;
@@ -187,9 +187,11 @@ export const NCTournamentCard: React.FunctionComponent<NCTournamentCardProps> = 
             }
         >
             <div className="tournament-banner position-relative">
-                <img
+                <div
                     className="banner-image position-absolute"
-                    src={props.banner}
+                    style={{
+                        backgroundImage: props.banner.toString().split(',').map(b => `url(${b})`).toString(),
+                    }}
                 />
             </div>
             <div className="tournament-content align-self-center">
