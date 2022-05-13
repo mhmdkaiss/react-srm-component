@@ -7,5 +7,5 @@ export interface Platform {
 }
 
 export interface ExtendedPlatform extends Platform {
-    checked : boolean;
+    checked?: boolean;
 }

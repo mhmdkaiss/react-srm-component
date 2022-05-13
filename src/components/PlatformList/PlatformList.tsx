@@ -1,9 +1,9 @@
-import './PlatformList.scss';
 import React, { useEffect, useState } from 'react';
-import { ExtendedPlatform } from '../../models/Platform';
 import { Icon, IconType } from '../../atoms/Icon/Icon';
-import { NCCheckbox } from '../NCCheckbox/NCCheckbox';
 import { IconMask } from '../../atoms/Icon/IconMask';
+import { ExtendedPlatform } from '../../models/Platform';
+import { NCCheckbox } from '../NCCheckbox/NCCheckbox';
+import './PlatformList.scss';
 
 export interface PlatformListProps {
     platforms: Array<ExtendedPlatform>;
@@ -31,7 +31,9 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
     const tempSelectedPlatforms : Array<ExtendedPlatform> = [];
 
     useEffect(() => {
-        setPlatformsState(platforms);
+        if (platforms.length > 0) {
+            changeCheckbox();
+        }
     }, [platforms]);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,14 +41,24 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
         return Object.keys(object).find(key => object[key] === id);
     }
 
-    const changeCheckbox = ( index: number) => {
-        let count = 0;
+    const initialPlatforms = (index?: number) => {
+        if (singlePlatform ) {
+            return (index !== undefined)? platforms.map((e) => ({ ...e, checked: false }) ) : platforms;
+        } else {
+            return platformsState;
+        }
+    };
 
-        const tempPlatforms = JSON.parse(JSON.stringify( singlePlatform ? platforms.map((e) => ({ ...e, checked: false }) ) : platformsState ));
-        tempPlatforms[index].checked = !tempPlatforms[index].checked;
+    const changeCheckbox = ( index?: number) => {
+        let count = 0;
+        const tempPlatforms = JSON.parse(JSON.stringify(initialPlatforms(index)));
+
+        if (index !== undefined) {
+            tempPlatforms[index].checked = !tempPlatforms[index].checked;
+        }
 
         for (let i=0; i< tempPlatforms.length ; i++){
-            if (tempPlatforms[i].checked === true ) {
+            if (tempPlatforms[i].checked) {
                 count ++;
                 tempSelectedPlatforms.push(tempPlatforms[i]);
             }
@@ -56,11 +68,8 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             setIcon('Pc');
             setSearch('Various');
         } else {
-            let id = '';
-            for (let i=0; i< tempPlatforms.length ; i++){
-                if (tempPlatforms[i].checked === true ) {id = tempPlatforms[i].id;}
-            }
-            const key = getKeyByValue( IconsPlatforms, id ) ? getKeyByValue( IconsPlatforms, id ) ?? '' : 'Pc' ;
+            const id = tempPlatforms.find((element: ExtendedPlatform) => element.checked)?.id || '';
+            const key = getKeyByValue( IconsPlatforms, id ) ?? 'Pc' ;
             setIcon(key);
             setSearch(id);
         }
@@ -98,7 +107,7 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
                         <div key={index} className='p-1 d-flex align-items-center checkbox-div'>
                             <NCCheckbox
                                 checked={element.checked}
-                                onChange={() => { changeCheckbox( index); onChange(tempSelectedPlatforms);} }
+                                onChange={() => { changeCheckbox(index); onChange(tempSelectedPlatforms);} }
                             />
                             <span className='ml-2'>{element.id}</span>
                         </div>
