@@ -8,9 +8,15 @@ export interface NCSliderSelectorProps {
     autoplay?: boolean;
     height?: number;
     slideTimer?: number;
+    selectedSlide?: number;
+    goToSlide?: (index: number) => void;
+    color?: string;
+    style? :string;
 }
 
-export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = (props: NCSliderSelectorProps) => {
+export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = (
+    props: NCSliderSelectorProps
+) => {
     const scrollableSliderRef: React.RefObject<HTMLDivElement> = React.createRef();
 
     const [ isMouseDown, setIsMouseDown ] = useState<boolean>();
@@ -19,9 +25,14 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
     const [ previousTouch, setPreviousTouch ] = useState<number>();
     const [ autoplayTimer, setAutoplayTimer ] = useState<NodeJS.Timeout>();
     const [ isMouseIn, setIsMouseIn ] = useState<boolean>(false);
+    const [ hoverSelectorIndex, setHoverSelectorIndex ] = useState<number>();
 
     const height = props.height || 480;
     const slideTimer = props.slideTimer || 2000;
+
+    useEffect(() => {
+        setSelectedSlide(props.selectedSlide ?? 0);
+    }, [props.selectedSlide]);
 
     useEffect(() => {
         if (isMouseIn || !props.autoplay) {
@@ -35,6 +46,7 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
     useEffect(() => {
         scrollRefToSelected(props.scrollableRef);
         scrollRefToSelected(scrollableSliderRef);
+        props.goToSlide?.(selectedSlide);
     }, [selectedSlide]);
 
     useEffect(() => {
@@ -63,17 +75,14 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
         };
     }, []);
 
-    const scrollRefToSelected = (ref: React.RefObject<HTMLDivElement>) => {
-        if (ref.current) {
-            ref.current.scrollTo({ left: selectedSlide * ref.current.clientWidth, behavior: 'smooth' });
-        }
-    };
+    const scrollRefToSelected = (ref: React.RefObject<HTMLDivElement>) =>
+        ref.current?.scrollTo({
+            left: selectedSlide * ref.current.clientWidth,
+            behavior: 'smooth'
+        });
 
-    const scrollRefBy = (ref: React.RefObject<HTMLDivElement>, scroll: number) => {
-        if (ref.current) {
-            ref.current.scrollBy({ left: scroll });
-        }
-    };
+    const scrollRefBy = (ref: React.RefObject<HTMLDivElement>, scroll: number) =>
+        ref.current?.scrollBy({ left: scroll });
 
     const mouseMove = (e: React.MouseEvent) => {
         if (isMouseDown) {
@@ -172,23 +181,39 @@ export const NCSliderSelector: React.FunctionComponent<NCSliderSelectorProps> = 
                     height={props.height}
                 />
             }
+
             <div className="slide-selector-container position-absolute mb-4 d-flex">
-                {
-                    [...Array(props.slideCount)].fill(1).map((_, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className={`slide-selector-wrapper cursor-pointer ${index === selectedSlide ? 'active' : ''}`}
-                                onClick={() => {
-                                    clearSliderTimeout();
-                                    setSelectedSlide(index);
-                                }}
-                            >
-                                <div className={'slide-selector mx-1 my-2'}></div>
-                            </div>
-                        );
-                    })
-                }
+                {[...Array(props.slideCount)].fill(1).map((_, index) =>
+                    <div
+                        key={index}
+                        className={
+                            'slide-selector-wrapper cursor-pointer' +
+                            ` ${index === selectedSlide ? 'active' : ''}` +
+                            ` ${props.style ?? ''}`
+                        }
+                        onMouseEnter={() => {
+                            if (props.color) {
+                                setHoverSelectorIndex(index);
+                            }
+                        }}
+                        onMouseLeave={() => {
+                            if (props.color) {
+                                setHoverSelectorIndex(undefined);
+                            }
+                        }}
+                        onClick={() => {
+                            clearSliderTimeout();
+                            setSelectedSlide(index);
+                        }}
+                    >
+                        <div
+                            className='slide-selector mx-1 my-2'
+                            style={(index === selectedSlide || hoverSelectorIndex === index)
+                                ? { background: props.color } : {}
+                            }
+                        ></div>
+                    </div>
+                )}
             </div>
         </div>
     );

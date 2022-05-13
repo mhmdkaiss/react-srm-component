@@ -1,8 +1,9 @@
-@import '../../styles/colors';
-@import '../../styles/variables';
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
 
 .nc-countdown {
     display: flex;
+    flex-direction: row;
     font-weight: bold;
     font-size: $medium-text;
     line-height: 100%;
@@ -11,4 +12,8 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: $electric-lime;
+
+    .formatted-text {
+        padding-right: 3px;
+    }
 }

@@ -8,6 +8,19 @@ export enum ContestType {
     TICKET,
 }
 
+export interface I18N {
+    title: string,
+    description: string,
+    banner: string,
+    rules?: string,
+    banner_og?: string,
+    banner_promo?: string,
+    banner_promo_button?: string,
+    banner_promo_text?: string,
+    requirements?: Array<string>,
+    logo?: string
+}
+
 export interface Challenge {
 	id: string;
 	organization: string;
@@ -15,20 +28,16 @@ export interface Challenge {
     endDate: string;
     featured: boolean;
     type: ContestType;
+    i18n: I18N;
     partners?: Array<string>;
     discord?: Array<string>;
     twitch?: string;
     isAvailableInRegion: boolean;
 	rewards?: { [key: number]: Array<Reward> };
-    i18n: {
-        title: string;
-        description: string;
-        rules: string;
-        banner: string;
-    }
     gameSlug?: string;
     platform?: string;
     sponsors?: Array<Sponsor>;
+    color?: string;
 }
 
 export interface ChallengeExtended extends Challenge {
@@ -46,4 +55,3 @@ export interface ChallengeResult {
     score: number;
     username: string;
 }
-

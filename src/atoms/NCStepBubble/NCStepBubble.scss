@@ -1,14 +1,13 @@
-@import '../../styles/colors';
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .nc-step-bubble {
+    position: relative;
     border: 2px solid $persimmon;
-    border-radius: 100%;
+    border-radius: 50%;
     height: 64px;
     width: 64px;
-    text-align: center;
-    align-self: center;
 
     @media screen and (max-width: $sm) {
         margin-right: 16px;
@@ -18,15 +17,35 @@
         flex-shrink: 0;
     }
 
+    .bubble-filled {
+        background-color: $persimmon;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            background: inherit;
+            filter: blur(6px);
+            opacity: 0.2;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top: -10%;
+            border-radius: 50%;
+        }
+    }
+
     .nc-step-number {
-        margin: 14px 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
         font-size: $large-text;
         font-weight: bold;
         line-height: 112%;
         color: $persimmon;
 
         @media screen and (max-width: $sm) {
-            margin: 7px 0;
             font-size: $medium-text;
             line-height: 120%;
             letter-spacing: 0.04em;

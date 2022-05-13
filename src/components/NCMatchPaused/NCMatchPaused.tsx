@@ -31,14 +31,17 @@ export const NCMatchPaused: React.FunctionComponent<NCMatchPausedProps> = (
                             height={16}
                             styleName="nc-copy-match-paused-id-icon"
                         />
-                        <p>Copy match ID</p>
+                        <p>{intl.formatMessage({ id: 'bracket.match-details.copy-match-id' })}</p>
                     </div>
                 </div>
                 <div className='nc-scheduled-date-container'>
                     <div className='nc-match-scheduled-date'>
                         {formatted.date}
                     </div>
-                    <NCCountdown datetime={date} />
+                    <NCCountdown
+                        datetime={date}
+                        text={intl.formatMessage({ id: 'tournament.match.paused.countdown' })}
+                    />
                 </div>
             </div>
         </React.Fragment>

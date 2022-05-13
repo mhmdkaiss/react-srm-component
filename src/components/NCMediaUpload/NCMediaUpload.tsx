@@ -12,6 +12,7 @@ export type ctxType = 'url' | 'blob'
 export interface NCMediaUploadProps {
     labelImg?: string;
     infoMsg?: string;
+    intlId?: string;
     // @deprecated
     currentImage?: string;
     currentImg?: string;
@@ -131,8 +132,11 @@ export const NCMediaUpload: React.FunctionComponent<NCMediaUploadProps> = (props
                         className="image-zone"
                         style={{ backgroundImage: style.image }}
                     >
-
-                        <NCTypography intlID='media-upload.info.message'>{props.infoMsg}</NCTypography>
+                        <NCTypography
+                            intlID={props.intlId ?? 'media-upload.info.message'}
+                        >
+                            {props.infoMsg}
+                        </NCTypography>
                         <Icon icon={IconType.Cloud} height={64} width={64} />
                         <span className="error-msg">{errorMesg}</span>
                     </div>

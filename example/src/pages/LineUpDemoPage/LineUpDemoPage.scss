@@ -1,0 +1,48 @@
+@import '@cactus/srm-component/dist/src/styles/colors.scss';
+@import '@cactus/srm-component/dist/src/styles/variables.scss';
+
+.line-up-demo-mobile-version {
+    width: 360px;
+    min-width: 360px;
+
+    .nc-notification-buttons-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nc-step {
+        display: flex;
+        align-items: center;
+        max-width: initial;
+        flex-direction: row;
+        margin: 8px;
+
+        .nc-step-description {
+            line-height: 150%;
+            display: flex;
+            align-self: center;
+            color: $white;
+            font-size: $small-text;
+            letter-spacing: 0.015em;
+            line-height: 140%;
+            text-align: left;
+            align-items: center;
+            margin: 0;
+            max-width: initial;
+        }
+
+        .nc-step-bubble {
+            margin-right: 16px;
+            height: 32px;
+            flex-basis: 32px;
+            flex-grow: 0;
+            flex-shrink: 0;
+
+            .nc-step-number {
+                font-size: $medium-text;
+                line-height: 120%;
+                letter-spacing: 0.04em;
+            }
+        }
+    }
+}

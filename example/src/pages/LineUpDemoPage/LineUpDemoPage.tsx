@@ -6,6 +6,7 @@ import {
     NCTitle
 } from '@cactus/srm-component';
 import React, { useState } from 'react';
+import './LineUpDemoPage.scss';
 
 export const LineUpDemoPage: React.FunctionComponent = () => {
     const [ open, setOpen ] = useState<boolean>(false);
@@ -49,14 +50,26 @@ export const LineUpDemoPage: React.FunctionComponent = () => {
             <h1 className="secondary-color-light pb-3">
                 Line up widget
             </h1>
-            <NCCard>
-                <NCTitle label={lineUpTitle} />
-                <NCLineUp message={lineUpMessage} nextSteps={demoSteps} />
-                <NCReminderTools
-                    text={reminderToolsText}
-                    reminderTools={reminderTools}
-                />
-            </NCCard>
+            <div className='d-flex flex-row'>
+                <NCCard>
+                    <NCTitle label={lineUpTitle} />
+                    <NCLineUp message={lineUpMessage} nextSteps={demoSteps} />
+                    <NCReminderTools
+                        text={reminderToolsText}
+                        reminderTools={reminderTools}
+                    />
+                </NCCard>
+                <div className='line-up-demo-mobile-version pl-4'>
+                    <NCCard>
+                        <NCTitle label={`${lineUpTitle} (mobile)`} />
+                        <NCLineUp message={lineUpMessage} nextSteps={demoSteps} />
+                        <NCReminderTools
+                            text={reminderToolsText}
+                            reminderTools={reminderTools}
+                        />
+                    </NCCard>
+                </div>
+            </div>
             <NCDialog show={open} setShow={setOpen}>
                 <div>
                     Demo Dialog

@@ -7,7 +7,10 @@ interface NCLineUpProps {
     nextSteps: Array<string>
 }
 
-export const NCLineUp: React.FunctionComponent<NCLineUpProps> = ({ message, nextSteps }) => {
+export const NCLineUp: React.FunctionComponent<NCLineUpProps> = ({
+    message,
+    nextSteps
+}) => {
     return (
         <React.Fragment>
             <div className="nc-line-up-text-container">

@@ -38,12 +38,12 @@ export const yellow = '#faff00';
 export const yellowSchool = '#ffde00';
 
 export const nicecactus = electricLime;
+export const primary = nicecactus;
 
 export const beginner = '#1fdeb0';
 export const novice = '#fff600';
 export const intermediate = '#ff7e00';
 export const advanced = '#ff0048';
-export const primary = '#0f161d';
 
 export const discordBackground = '#5865f2';
 export const discordForeground = white;

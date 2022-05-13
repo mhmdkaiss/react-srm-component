@@ -1,7 +1,7 @@
-import './NCSlider.scss';
 import React, { useEffect, useState } from 'react';
-import { NCSliderSelector } from './NCSliderSelector/NCSliderSelector';
+import './NCSlider.scss';
 import { NCSliderBackground } from './NCSliderBackground/NCSliderBackground';
+import { NCSliderSelector } from './NCSliderSelector/NCSliderSelector';
 
 export interface NCSliderProps {
     backgroundUrls: Array<string>;
