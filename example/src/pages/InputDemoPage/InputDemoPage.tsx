@@ -248,6 +248,8 @@ export const InputDemoPage: React.FunctionComponent = () => {
 
     const [ multipleInputs, setMultipleInputs ] = useState<Array<NCInputMultipleKeys>>([]);
 
+    const [ val, setVal ] = useState<number>(Date.now());
+
     return (
         <div className='white'>
             <div>
@@ -270,13 +272,38 @@ export const InputDemoPage: React.FunctionComponent = () => {
 
             <div className='my-5'>
                 <h4>Date picker</h4>
-                <DatePicker
-                    initialDate={''}
-                    label='Date picker'
-                    dateChanged={(e) => {
-                        console.log('event', e);
-                    }}
-                />
+                <div className='d-flex'>
+                    <div>
+                        <h6>Timestamp input</h6>
+                        <DatePicker
+                            value={val}
+                            label='Date picker'
+                            dateChanged={(e) => {
+                                setVal(e);
+                            }}
+                        />
+                    </div>
+                    <div className='mx-4'>
+                        <h6>String input</h6>
+                        <DatePicker
+                            initialValue={'2019-07-14T18:30:00.000Z'}
+                            label='Date picker'
+                            dateChanged={(e) => {
+                                console.log('event', e);
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <h6>No default value</h6>
+                        <DatePicker
+                            label='Date picker'
+                            dateChanged={(e) => {
+                                console.log('event', e);
+                            }}
+                        />
+                    </div>
+                </div>
+
                 <div className='pt-4'>
                     <NCTimePicker
                         label='Time picker'

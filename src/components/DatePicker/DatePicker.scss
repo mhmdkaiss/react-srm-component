@@ -3,6 +3,10 @@
 .datepicker-container {
     width: 275px;
 
+    * {
+        cursor: pointer;
+    }
+
     .datepicker-input {
         width: 100%;
 
@@ -29,7 +33,6 @@
         bottom: 8px;
         width: 16px;
         height: 16px;
-        cursor: pointer;
         background: $grey6;
         mask-position: center;
         mask-repeat: no-repeat;
@@ -40,7 +43,6 @@
     }
 
     .icon-calendar {
-        cursor: pointer;
         background: $grey6;
     }
 
