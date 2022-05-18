@@ -33,7 +33,6 @@ export const withoutGameSlug: ChallengeExtended = {
             cur: 'EUR'
         }],
     }
-
 };
 
 export const classic: ChallengeExtended = {
@@ -51,12 +50,6 @@ export const classic: ChallengeExtended = {
         banner: '',
     },
     participants: 1,
-    game: {
-        slug: '',
-        name: 'dragon ball',
-        _id: '',
-        value: ''
-    },
     banner: '',
     rewards: {
         0: [{
@@ -88,7 +81,7 @@ export const japanese : ChallengeExtended = {
     },
     game: {
         slug: '',
-        name: 'dragon ball',
+        name: 'dragon ball z fighter',
         _id: '',
         value: ''
     },
@@ -219,12 +212,6 @@ export const ended: ChallengeExtended = {
         description: 'The knight moves in an L-shape!',
         rules: '',
         banner: ''
-    },
-    game: {
-        slug: '',
-        name: 'Dragon ball fighter Z',
-        _id: '',
-        value: ''
     },
     participants: 2,
     banner: `${process.env.REACT_APP_S3_PUBLIC_URL}/game/6082e67c848aab9ba76d25c1/medias/CarrouselImage`,

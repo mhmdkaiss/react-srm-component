@@ -42,7 +42,7 @@ export interface Challenge {
 
 export interface ChallengeExtended extends Challenge {
     banner: string;
-    game: OrganisationGame;
+    game?: OrganisationGame;
     participants: number;
     winner?: string;
 }

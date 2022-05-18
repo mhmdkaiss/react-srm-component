@@ -37,6 +37,7 @@ const CONTEST_TYPES = {
 
 export interface NCChallengeCardProps {
     challenge: ChallengeExtended;
+    goTo: (challengeId: string) => void,
     color?: string
 }
 
@@ -65,7 +66,7 @@ export const NCChallengeCard: React.FunctionComponent<NCChallengeCardProps> = (
         return (
             challenge.game &&
                 <div className='challenge-game' >
-                    {challenge.game?.slug &&
+                    {challenge.game.slug &&
                         <IconMask
                             icon={`${process.env.REACT_APP_S3_PUBLIC_URL}/game/${challenge.game.slug}/medias/LogoImage`}
                             width={ICON_SIZE}
@@ -73,7 +74,9 @@ export const NCChallengeCard: React.FunctionComponent<NCChallengeCardProps> = (
                             name='game'
                         />
                     }
-                    {challenge.game?.name && <p className="game-title">{challenge.game.name}</p>}
+                    {challenge.game.name &&
+                        <p className="game-title">{challenge.game.name}</p>
+                    }
                 </div>
         );
     };
@@ -81,30 +84,30 @@ export const NCChallengeCard: React.FunctionComponent<NCChallengeCardProps> = (
     const renderContestType = () => {
         const contestType: ChallengeContestType = Object.assign(CONTEST_TYPES[type]);
         return (
-            <div className='challenge-contest-type'>
+            <React.Fragment>
                 {(challenge.game?.slug || challenge.game?.name) &&
                     <div className='separator'></div>
                 }
-                <Icon
-                    icon={contestType.icon}
-                    width={ICON_SIZE}
-                    height={ICON_SIZE}
-                />
-                <p className='contest-type-text'>{contestType.text}</p>
-            </div>
+                <div className='challenge-contest-type'>
+                    <Icon
+                        icon={contestType.icon}
+                        width={ICON_SIZE}
+                        height={ICON_SIZE}
+                    />
+                    <p className='contest-type-text'>{contestType.text}</p>
+                </div>
+            </React.Fragment>
         );
     };
 
     const renderRewards = () => {
-        return (
-            rewards &&
-                <React.Fragment>
-                    {challenge.participants > 0 &&
-                        <div className='separator'></div>
-                    }
-                    <div className='challenge-rewards'>{rewards}</div>
-                </React.Fragment>
-        );
+        return rewards &&
+            <React.Fragment>
+                {challenge.participants > 0 &&
+                    <div className='separator'></div>
+                }
+                <div className='challenge-rewards'>{rewards}</div>
+            </React.Fragment>;
     };
 
     const renderWinner = () => {
@@ -177,6 +180,7 @@ export const NCChallengeCard: React.FunctionComponent<NCChallengeCardProps> = (
                         styleClass='challenge-more-info'
                         theme={ButtonTheme.CLASSIC}
                         type={ButtonType.SECONDARY}
+                        setClick={() => props.goTo(challenge.id)}
                     />
                 </div>
                 <div className='challange-info-container'>
@@ -198,7 +202,7 @@ export const NCChallengeCard: React.FunctionComponent<NCChallengeCardProps> = (
                 <div className='challenge-ongoing-container'>
                     <NCProgressBar width='36%' ratio={progressRatio} color={props.color} />
                     {daysInfoMessage &&
-                        <p className="ongoing-text">{`${daysInfoMessage}`}</p>
+                        <p className="ongoing-text">{daysInfoMessage}</p>
                     }
                 </div>
                 {challenge.i18n.description &&
