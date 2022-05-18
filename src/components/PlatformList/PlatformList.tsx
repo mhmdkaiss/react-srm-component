@@ -77,6 +77,13 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
         setPlatformsState(tempPlatforms);
     };
 
+    const clickPlatform = (index: number) => {
+        if (singlePlatform) {
+            changeCheckbox(index);
+            onChange(tempSelectedPlatforms);
+        }
+    };
+
     return (
         <div className="platform-style ">
             <div
@@ -104,11 +111,14 @@ export const PlatformList: React.FunctionComponent<PlatformListProps> = ( { plat
             <div className={'platform-dropdown dropdown ' + ((isDropdownVisible) ? '' : 'd-none')} >
                 {
                     platformsState.map((element, index) => (
-                        <div key={index} className='p-1 d-flex align-items-center checkbox-div'>
-                            <NCCheckbox
+                        <div key={index}
+                            className={'p-1 d-flex align-items-center ' + `${singlePlatform ? 'select-div' : ''} ` }
+                            onClick={() => clickPlatform(index) }
+                        >
+                            { !singlePlatform && <NCCheckbox
                                 checked={element.checked}
                                 onChange={() => { changeCheckbox(index); onChange(tempSelectedPlatforms);} }
-                            />
+                            />}
                             <span className='ml-2'>{element.id}</span>
                         </div>
                     ))

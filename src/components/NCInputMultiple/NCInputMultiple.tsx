@@ -59,7 +59,7 @@ export const NCInputMultiple: React.FunctionComponent<NCInputMultipleProps> = (p
                             return (
                                 <div key={index} className={`d-flex align-items-center ${props.withMedia ? ' col-6 mb-2' : ''}`} >
                                     { props.withMedia &&
-                                        <div className='w-25 mr-4'>
+                                        <div className='w-50 mr-4'>
                                             <NCMediaUpload
                                                 mediaLibrary
                                                 s3PublicUrl={String(process.env.REACT_APP_S3_PUBLIC_URL)}
