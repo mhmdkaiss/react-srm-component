@@ -1,31 +1,46 @@
-import './FeedCardDemoPage.scss';
 import { NCFeedCard } from '@cactus/srm-component';
-
 import React from 'react';
+import { NCExampleIntroProps } from '../../components/NCExample/NCExampleIntro';
+import { NCExampleItemProps } from '../../components/NCExample/NCExampleItem';
+import { NCExamplePage } from '../../components/NCExample/NCExamplePage';
 import {
     createBOMockFeedModel,
-    createTwiterMockFeedModel,
+    createTwiterMockFeedModel
 } from '../../mock/FeedCard/FeedCard.mock';
 
 export const FeedCardDemoPage: React.FunctionComponent = () => {
-    return (
-        <div className='feed-card-demo-page d-flex flex-column'>
-            <div>
-                <h2>Twitter</h2>
-                <div className='row'>
-                    <div className='col-5'>
-                        <NCFeedCard data={createTwiterMockFeedModel()} />
-                    </div>
-                </div>
-            </div>
-            <div className="mt-5">
-                <h2>Back Office</h2>
-                <div className='row'>
-                    <div className='col-5'>
-                        <NCFeedCard data={createBOMockFeedModel()} />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+    const TMFM = createTwiterMockFeedModel();
+    const BOMFM = createBOMockFeedModel();
+
+    const exampleIntro: NCExampleIntroProps = {
+        title: 'Feed Card',
+        description: '',
+        links: [],
+    };
+
+    const exampleProps: Array<NCExampleItemProps> = [
+        {
+            name: 'NCFeedCard',
+            description: '',
+            component: NCFeedCard,
+            exampleList: [
+                {
+                    renderPreview: false,
+                    name: 'Twitter feed',
+                    props: {
+                        data: TMFM,
+                    }
+                },
+                {
+                    renderPreview: false,
+                    name: 'BO Feed',
+                    props: {
+                        data: BOMFM,
+                    }
+                },
+            ]
+        },
+    ];
+
+    return <NCExamplePage intro={exampleIntro} examples={exampleProps} />;
 };

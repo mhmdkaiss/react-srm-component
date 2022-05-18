@@ -10,6 +10,12 @@ interface NCTypographyProps {
     intlObj?: MessageDescriptor & { values?: MessageValues },
     intlID?: string | number,
     intlValues?: MessageValues,
+    test?: {
+        lala: string,
+        deep: {
+            lala: string,
+        }
+    }
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -60,6 +66,10 @@ const variantMap: VariantType = {
     'overtitle': {
         type: 'span',
         className: 'overtitle',
+    },
+    'caption': {
+        type: 'span',
+        className: 'caption',
     },
     'span': {
         type: 'span',

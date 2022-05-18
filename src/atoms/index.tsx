@@ -10,8 +10,15 @@ export { NCDialog } from './NCDialog/NCDialog';
 export { NCDropdown } from './NCDropdown/NCDropdown';
 export { NCDropdownMenu } from './NCDropdownMenu/NCDropdownMenu';
 export { NCDropZone } from './NCDropZone/NCDropZone';
+export {
+    NCList,
+    NCListTools,
+    NCListProps,
+    NCListRows,
+    NCListCel,
+    NCListHeader
+} from './NCList/NCList';
 export { NCLanguageIcon } from './NCLanguageIcon/NCLanguageIcon';
-export { NCList } from './NCList/NCList';
 export { NCNotificationButton } from './NCNotificationButton/NCNotificationButton';
 export { NCStepBubble } from './NCStepBubble/NCStepBubble';
 export { NCTitle } from './NCTitle/NCTitle';

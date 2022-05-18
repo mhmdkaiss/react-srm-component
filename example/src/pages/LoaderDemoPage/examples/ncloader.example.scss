@@ -1,11 +1,11 @@
 @import '@cactus/srm-component/dist/src/styles/loader';
 @import '@cactus/srm-component/dist/src/styles/colors';
 
-.loader-1 {
+.loader-default {
     @include loader(300px);
 }
 
-.loader-2 {
+.loader-image {
     @include loader(
         300px,
         'https://public.nicecact.us/game/super-smash-bros-ultimate/medias/LogoImage'

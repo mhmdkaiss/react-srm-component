@@ -1,9 +1,7 @@
-import './App.scss';
-
+import { NCDefault, NCTabs } from '@cactus/srm-component/dist';
 import React, { ReactElement } from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-
-import AppBar from '@material-ui/core/AppBar';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import './App.scss';
 import { AuthFormDemoPage } from './pages/AuthFormDemoPage/AuthFormDemoPage';
 import { BubblesDemoPage } from './pages/BubblesDemoPage/BubblesDemoPage';
 import { ButtonsDemoPage } from './pages/ButtonsDemoPage/ButtonsDemoPage';
@@ -12,7 +10,6 @@ import { ChallengeCardDemoPage } from './pages/ChallengeCardDemoPage/ChallengeCa
 import ContextStore from './store';
 import { CookiesDemoPage } from './pages/CookiesDemoPage/CookiesDemoPage';
 import { CornerFooterDemoPage } from './pages/CornerFooterDemoPage/CornerFooterDemoPage';
-import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
 import { DialogDemoPage } from './pages/DialogDemoPage/DialogDemoPage';
 import { DivWithBackgroundDemoPage } from './pages/DivWithBackgroundDemoPage/DivWithBackgroundDemoPage';
 import { FeedCardDemoPage } from './pages/FeedCardDemoPage/FeedCardDemoPage';
@@ -22,9 +19,9 @@ import { LineUpDemoPage } from './pages/LineUpDemoPage/LineUpDemoPage';
 import { ListDemoPage } from './pages/ListDemoPage/ListDemoPage';
 import { LoaderDemoPage } from './pages/LoaderDemoPage/LoaderDemoPage';
 import { LottieAnimationDemoPage } from './pages/LottieAnimationDemoPage/LottieAnimationDemoPage';
+import { MapRoundsDemoPage } from './pages/MapRoundsDemoPage/MapRoundsDemoPage';
 import { MediaLibraryDemoPage } from './pages/MediaLibraryDemoPage/MediaLibraryDemoPage';
 import { MenuDemoPage } from './pages/MenuDemoPage/MenuDemoPage';
-import { Navigation } from './components/Navigation/Navigation';
 import { PartnerCardDemoPage } from './pages/PartnerCardDemoPage/PartnerCardDemoPage';
 import { PremiumCTADemoPage } from './pages/PremiumCTADemoPage/PremiumCTADemoPage';
 import { ProgressBarDemoPage } from './pages/ProgressBarDemoPage/ProgressBarDemoPage';
@@ -32,186 +29,314 @@ import { PromotionnalBannerDemoPage } from './pages/PromotionnalBannerDemoPage/P
 import { SliderDemoPage } from './pages/SliderDemoPage/SliderDemoPage';
 import { StepperDemoPage } from './pages/StepperDemoPage/StepperDemoPage';
 import { ToastDemoPage } from './pages/ToastDemoPage/ToastDemoPage';
-import Toolbar from '@material-ui/core/Toolbar';
 import { TournamentCardDemoPage } from './pages/TournamentCardDemoPage/TournamentCardDemoPage';
 import { TournamentRoundsDemoPage } from './pages/TournamentRoundsDemoPage/TournamentRoundsDemoPage';
 import { TrainingCardDemoPage } from './pages/TrainingCardDemoPage/TrainingCardDemoPage';
-import Typography from '@material-ui/core/Typography';
 import { TypographyDemoPage } from './pages/TypographyDemoPage/TypographyDemoPage';
 import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCardsDemoPage';
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
+import { NCTabParameter } from '../../src/molecules/NCTabs/NCTabs';
+import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
 
-const routes = [
+const routes: Array<NCTabParameter> = [
     {
-        path: '/atoms/typography',
-        component: TypographyDemoPage,
+        name: 'Welcome',
+        path: '/welcome',
+        component: NCDefault,
     },
     {
-        path: '/atoms/zone',
-        component: ZoneDemoPage,
+        name: 'Atoms',
+        path: '/atom',
+        dropdownOnClick: true,
+        children: [
+            {
+                name: 'Bubbles',
+                path: '/bubbles',
+                component: BubblesDemoPage,
+            },
+            {
+                name: 'Typography',
+                path: '/typography',
+                component: TypographyDemoPage,
+            },
+            {
+                name: 'Buttons',
+                path: '/button',
+                component: ButtonsDemoPage,
+            },
+            {
+                name: 'Inputs',
+                path: '/inputs',
+                component: InputDemoPage
+            },
+            {
+                name: 'Headers',
+                path: '/headers',
+                component: HeadersDemoPage
+            },
+            {
+                name: 'Dialog',
+                path: '/dialog',
+                component: DialogDemoPage
+            },
+            {
+                name: 'Zone',
+                path: '/zone',
+                component: ZoneDemoPage,
+            },
+        ],
     },
     {
-        path: '/atoms/bubble',
-        component: BubblesDemoPage
+        name: 'Card',
+        path: '/card',
+        children: [
+            {
+                name: 'user-team',
+                path: '/user-team',
+                component: UserTeamCardsDemoPage,
+            },
+            {
+                name: 'tournament',
+                path: '/tournament',
+                component: TournamentCardDemoPage,
+            },
+            {
+                name: 'training',
+                path: '/training',
+                component: TrainingCardDemoPage,
+            },
+            {
+                name: 'partner',
+                path: '/partner',
+                component: PartnerCardDemoPage,
+            },
+            {
+                name: 'challenge',
+                path: '/challenge',
+                component: ChallengeCardDemoPage,
+            },
+            {
+                name: 'feed',
+                path: '/feed',
+                component: FeedCardDemoPage,
+            },
+        ],
     },
     {
-        path: '/atoms/button',
-        component: ButtonsDemoPage
+        name: 'Components',
+        path: '/component',
+        dropdownOnClick: true,
+        children: [
+            {
+                name: 'stepper',
+                path: '/stepper',
+                component: StepperDemoPage
+            },
+            {
+                name: 'lists',
+                path: '/lists',
+                component: ListDemoPage,
+            },
+            {
+                name: 'toasts',
+                path: '/toasts',
+                component: ToastDemoPage,
+            },
+            {
+                name: 'loader',
+                path: '/loader',
+                component: LoaderDemoPage,
+            },
+            {
+                name: 'lottie-animation',
+                path: '/lottie-animation',
+                component: LottieAnimationDemoPage,
+            },
+            {
+                name: 'premium-cta',
+                path: '/premium-cta',
+                component: PremiumCTADemoPage,
+            },
+            {
+                name: 'promotionnal-banner',
+                path: '/promotionnal-banner',
+                component: PromotionnalBannerDemoPage,
+            },
+            {
+                name: 'line-up',
+                path: '/line-up',
+                component: LineUpDemoPage,
+            },
+            {
+                name: 'slider',
+                path: '/slider',
+                component: SliderDemoPage,
+            },
+            {
+                name: 'tournament-rounds',
+                path: '/tournament-rounds',
+                component: TournamentRoundsDemoPage,
+            },
+            {
+                name: 'media-library',
+                path: '/media-library',
+                component: MediaLibraryDemoPage,
+            },
+            {
+                name: 'calendar',
+                path: '/calendar',
+                component: CalendarDemoPage,
+            },
+            {
+                name: 'menu',
+                path: '/menu',
+                component: MenuDemoPage,
+            },
+            {
+                name: 'promotionnal-banner',
+                path: '/promotionnal-banner',
+                component: PromotionnalBannerDemoPage,
+            },
+            {
+                name: 'progress-bar',
+                path: '/progress-bar',
+                component: ProgressBarDemoPage,
+            },
+            {
+                name: 'map-rounds',
+                path: '/map-rounds',
+                component: MapRoundsDemoPage,
+            },
+            {
+                name: 'cookies',
+                path: '/cookies',
+                component: CookiesDemoPage,
+            },
+        ],
     },
     {
-        path: '/atoms/inputs',
-        component: InputDemoPage
+        name: 'Templates',
+        path: '/template',
+        dropdownOnClick: true,
+        children: [
+            {
+                name: 'Div With Background',
+                path: '/div-with-background',
+                component: DivWithBackgroundDemoPage,
+            },
+            {
+                name: 'Corner Header',
+                path: '/corner-header',
+                component: CornerHeaderDemoPage,
+            },
+            {
+                name: 'Corner Footer',
+                path: '/corner-footer',
+                component: CornerFooterDemoPage,
+            },
+            {
+                name: 'Auth Form',
+                path: '/auth-form',
+                component: AuthFormDemoPage,
+            },
+        ],
     },
     {
-        path: '/atoms/headers',
-        component: HeadersDemoPage
-    },
-    {
-        path: '/atoms/progress-bar',
-        component: ProgressBarDemoPage
-    },
-    {
-        path: '/atoms/dialog',
-        component: DialogDemoPage
-    },
-    {
-        path: '/component/stepper',
-        component: StepperDemoPage
-    },
-    {
-        path: '/component/card/user-team-cards',
-        component: UserTeamCardsDemoPage,
-    },
-    {
-        path: '/component/card/tournament-cards',
-        component: TournamentCardDemoPage,
-    },
-    {
-        path: '/component/card/training-cards',
-        component: TrainingCardDemoPage,
-    },
-    {
-        path: '/component/lists',
-        component: ListDemoPage,
-    },
-    {
-        path: '/component/toasts',
-        component: ToastDemoPage,
-    },
-    {
-        path: '/component/loader',
-        component: LoaderDemoPage,
-    },
-    {
-        path: '/component/lottie-animation',
-        component: LottieAnimationDemoPage,
-    },
-    {
-        path: '/component/premium-cta',
-        component: PremiumCTADemoPage,
-    },
-    {
-        path: '/component/promotionnal-banner',
-        component: PromotionnalBannerDemoPage,
-    },
-    {
-        path: '/component/line-up',
-        component: LineUpDemoPage,
-    },
-    {
-        path: '/component/slider',
-        component: SliderDemoPage,
-    },
-    {
-        path: '/component/tournament-rounds',
-        component: TournamentRoundsDemoPage,
-    },
-    {
-        path: '/component/card/partner-card',
-        component: PartnerCardDemoPage,
-    },
-    {
-        path: '/component/card/challenge-cards',
-        component: ChallengeCardDemoPage,
-    },
-    {
-        path: '/component/card/feed-cards',
-        component: FeedCardDemoPage,
-    },
-    {
-        path: '/component/media-library',
-        component: MediaLibraryDemoPage,
-    },
-    {
-        path: '/shared/auth-form',
-        component: AuthFormDemoPage,
-    },
-    {
-        path: '/component/calendar',
-        component: CalendarDemoPage,
-    },
-    {
-        path: '/template/div-with-background',
-        component: DivWithBackgroundDemoPage,
-    },
-    {
-        path: '/template/corner-footer',
-        component: CornerFooterDemoPage,
-    },
-    {
-        path: '/template/corner-header',
-        component: CornerHeaderDemoPage,
-    },
-    {
-        path: '/component/menu',
-        component: MenuDemoPage,
-    },
-    {
-        path: '/component/cookies',
-        component: CookiesDemoPage,
+        name: 'Default Redirection',
+        hide: true,
+        path: '/',
+        redirect: '/welcome',
     },
 ];
 
 const App = (): ReactElement => {
-    return (
-        <div className='app'>
+    const Content = () => {
+        const basename = '/';
+
+        return (
             <ContextStore.Provider>
-                <Router basename={'/'}>
-                    <AppBar position='static'>
-                        <Toolbar>
-                            <Typography variant='h6' className='title'>
-                                NC Shared library
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <div className='d-flex flex-row w-100 h-100'>
-                        <div className='navigation'>
-                            <Navigation/>
-                        </div>
-                        <div className='content w-100 p-5'>
-                            <Switch>
-                                {routes.map((route, i) => (
+                <Router basename={basename}>
+                    <NCTabs
+                        basename={basename}
+                        tabs={routes}
+                        variant='bo'
+                    />
+                    <div className={'content-wrapper'}>
+                        <Switch>
+                            {
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                routes.map((route: any, i: any) => (
                                     <RouteWithSubRoutes key={i} {...route} />
-                                ))}
-                            </Switch>
-                        </div>
+                                ))
+                            }
+                        </Switch>
                     </div>
                 </Router>
             </ContextStore.Provider>
+        );
+    };
+
+    return (
+        <div
+            data-testid="shared-examples"
+            className="shared-examples"
+            style={{
+                backgroundImage: `url(${process.env.REACT_APP_S3_URL}/game/5d31aa9684d0814f4c04bbd5/medias/BackgroundImage`,
+            }}
+        >
+            <div className="examples-wrapper">
+                <Content />
+            </div>
         </div>
     );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function RouteWithSubRoutes(route: any) {
+function RouteWithSubRoutes(route: NCTabParameter) {
+    if (route.redirect) {
+        return <Redirect exact from={route.path} to={route.redirect} />;
+    }
+    if (route.internalLink) {
+        return (
+            <Route
+                path={route.path}
+                render={() => {
+                    window.location.pathname = route.internalLink as string;
+                    return null;
+                }}
+            />
+        );
+    }
+    if (route.children) {
+        return <Route path={route.path}>{SubRoutes(route)}</Route>;
+    }
+
     return (
         <Route
             path={route.path}
             render={(props) => (
                 // pass the sub-routes down to keep nesting
-                <route.component {...props} routes={route.routes} />
+                <route.component {...props} routes={route.children} />
             )}
         />
+    );
+}
+
+function SubRoutes(route: NCTabParameter) {
+    function goodPath(_path: string) {
+        return _path && _path === '/' ? '' : _path;
+    }
+    return (
+        <Switch>
+            {(route.children as []).map((subRoute: NCTabParameter, i: number) => (
+                <RouteWithSubRoutes
+                    key={i}
+                    {...{
+                        ...subRoute,
+                        path: route.path + goodPath(subRoute.path),
+                    }}
+                />
+            ))}
+        </Switch>
     );
 }
 

@@ -4,7 +4,7 @@ import { Button, ButtonSize, ButtonTheme, ButtonType } from '../../atoms/Button/
 import { useDynamicText } from '../../hooks/useDynamicText';
 import './NCPromotionalBanner.scss';
 
-interface NCPromotionalBannerProps {
+export interface NCPromotionalBannerProps {
     image: string,
     text?: Array<string>;
     buttonText?: string;

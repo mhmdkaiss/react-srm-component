@@ -146,9 +146,21 @@ h6 {
     font-weight: 700;
     font-size: $small-text;
     text-transform: uppercase;
+    letter-spacing: 0.06rem;
 
     @include media-breakpoint-down(xs) {
         font-size: $small-text;
         line-height: 150%;
+    }
+}
+
+.caption {
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    line-height: 116%;
+    font-size: $smallest-text;
+
+    @include media-breakpoint-down(xs) {
+        line-height: 130%;
     }
 }

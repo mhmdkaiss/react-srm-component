@@ -1,9 +1,7 @@
-import './GameList.scss';
-
 import React, { useEffect, useState } from 'react';
-
-import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
 import { ButtonSize } from '../../atoms/Button/Button';
+import { ButtonIcon } from '../../atoms/Button/ButtonIcon';
+import './GameList.scss';
 import { NoGame } from '../../models/Game';
 
 export interface GameListProps {

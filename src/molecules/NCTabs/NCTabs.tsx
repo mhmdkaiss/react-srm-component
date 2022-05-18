@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { NCDropdown, NCTypography } from '../../atoms';
 import './NCTabs.scss';
 
-export interface TabParameter {
+export interface NCTabParameter {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     basePath?: string;
     name: string;
@@ -11,9 +11,12 @@ export interface TabParameter {
     redirect?: string;
     internalLink?: string;
     component?: any;
-    children?: Array<TabParameter>;
+    children?: Array<NCTabParameter>;
     disabled?: boolean;
     hide?: boolean;
+    dropdownOnClick?: boolean;
+    exact?: boolean;
+    strict?: boolean;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
@@ -22,7 +25,7 @@ export interface TabSettings {
 }
 
 interface NCTabsProps {
-    tabs: Array<TabParameter>;
+    tabs: Array<NCTabParameter>;
     basename?: string;
     color?: string;
     variant?: 'bo' | 'default';
@@ -37,7 +40,7 @@ export const NCTabs: React.FunctionComponent<NCTabsProps & React.HTMLAttributes<
 }: NCTabsProps & React.HTMLAttributes<HTMLDivElement>) => {
     // TODO: handle color customization
 
-    const renderTab = (tab: TabParameter, idx: number) => {
+    const renderTab = (tab: NCTabParameter, idx: number) => {
         if (tab.hide) {
             return;
         }
@@ -57,8 +60,9 @@ export const NCTabs: React.FunctionComponent<NCTabsProps & React.HTMLAttributes<
                         search: location?.search,
                     }}
                     onClick={(e) => e.preventDefault()}
+                    exact={tab.exact}
                 >
-                    <NCDropdown name={tab.name} tab={tab}>
+                    <NCDropdown name={tab.name} tab={tab} click={tab.dropdownOnClick}>
                         <NCTypography variant={`${variant === 'bo' ? 'body1' : 'overtitle'}`}>{tab.name}</NCTypography>
                     </NCDropdown>
                 </NavLink>
@@ -76,7 +80,7 @@ export const NCTabs: React.FunctionComponent<NCTabsProps & React.HTMLAttributes<
                     pathname: tabPath,
                     search: location?.search,
                 }}
-                exact
+                exact={tab.exact}
             >
                 <NCTypography variant={`${variant === 'bo' ? 'body1' : 'overtitle'}`}>{tab.name}</NCTypography>
             </NavLink>

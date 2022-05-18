@@ -9,7 +9,7 @@ export type ReminderToolPropsType = {
     showFinger?: boolean,
 }
 
-interface NCReminderToolsProps {
+export interface NCReminderToolsProps {
     text: string;
     reminderTools: Array<ReminderToolPropsType>
 }

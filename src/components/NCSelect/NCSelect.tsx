@@ -23,14 +23,17 @@ const MENU_DEFAULT_STYLE = {
     },
 };
 
+export type orderCallback<T> = (a: T, b: T) => number;
+
 export interface SelectProps {
 	id?: string;
 	select?: { [key: string]: string };
-	selectedField?: string | Array<string>;
+	selectedField?: number | string | Array<string>;
 	selectFields: Array<unknown>;
 	fieldValue?: string;
 	fieldName?: string;
-	orderSelectFields?: <T>(a: T, b: T) => number;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	orderSelectFields?: orderCallback<any>;
 	actionHook: (v: string | undefined) => void;
 	defaultOptionLabel?: string;
 	defaultOption?: {
@@ -44,7 +47,7 @@ export interface SelectProps {
 }
 
 export const NCSelect: React.FunctionComponent<SelectProps> = (props: SelectProps) => {
-    const [ selectField, setSelectField ] = useState<string | Array<string>>();
+    const [ selectField, setSelectField ] = useState<number | string | Array<string>>();
     const { id, multiple, selectFields, selectedField, fieldName, fieldValue } = props;
     const menuStyle = multiple
         ? (props.menuProps ? props.menuProps : MENU_DEFAULT_STYLE)

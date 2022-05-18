@@ -39,6 +39,7 @@ export interface ButtonProps {
     containerClass?: string;
     icon?: { type: IconType, width: number, height: number };
     color?: string;
+    buttonAtomType?: 'submit' | 'reset' | 'button' | undefined;
     textColor?: string;
     showFinger?: boolean;
 }
@@ -60,6 +61,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps)
                 className={`button d-flex align-items-center justify-content-center ${theme} ${type} ${size} ${props.styleClass} ${props.color ? 'custom-hover' : ''}`}
                 disabled={props.disabled}
                 onClick={onClick}
+                type={props.buttonAtomType}
                 style={{ background: theme === ButtonTheme.CUSTOM ? props.color : [ButtonType.SECONDARY].includes(type) ? undefined : props.color }}
             >
                 {props.icon && <Icon styleName="mr-2" icon={props.icon.type} width={props.icon.width} height={props.icon.height} />}

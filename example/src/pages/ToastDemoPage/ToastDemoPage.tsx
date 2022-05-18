@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
 import {
     Button,
     ButtonSize,
     ButtonTheme,
-    ButtonType,
-    NCToastType,
+    ButtonType, NCInput, NCSelect,
+    NCToastContainer, NCToastType,
     ToastModel,
-    ToastPosition,
-    NCSelect,
-    NCToastContainer,
-    NCInput,
+    ToastPosition
 } from '@cactus/srm-component';
+import React, { useState } from 'react';
 import ContextStore from '../../store';
 
 const positionsFields = [

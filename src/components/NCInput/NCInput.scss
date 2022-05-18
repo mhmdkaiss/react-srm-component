@@ -1,18 +1,26 @@
 @import 'src/styles/colors';
 
-.nc-input-icon {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    background: $grey6;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: contain;
+.nc-input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 4px;
+    width: 100%;
 
-    &:hover {
-        background: $primary-color;
+    .nc-input-icon {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        background: $grey6;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+
+        &:hover {
+            background: $primary-color;
+        }
     }
 }

@@ -1,6 +1,8 @@
-import React from 'react';
-import './PartnerCardDemoPage.scss';
 import { NCCardList, NCPartnerCard } from '@cactus/srm-component';
+import React from 'react';
+import { NCExampleIntroProps } from '../../components/NCExample/NCExampleIntro';
+import { NCExampleItemProps } from '../../components/NCExample/NCExampleItem';
+import { NCExamplePage } from '../../components/NCExample/NCExamplePage';
 import { createMockPartner } from '../../mock/PartnerCard/PartnerCard.mock';
 
 export const PartnerCardDemoPage: React.FunctionComponent = () => {
@@ -10,17 +12,45 @@ export const PartnerCardDemoPage: React.FunctionComponent = () => {
             return [<NCPartnerCard key={partner.id} partner={partner} />];
         });
     };
+    const MOCK_PARTNER = createMockPartner();
+    const MOCK_CARDSLIST = generateCards();
 
-    return (
-        <div className='d-flex flex-column partner-card-demo-page'>
-            <div>
-                <h2>Single</h2>
-                <NCPartnerCard partner={createMockPartner()} />
-            </div>
-            <div className='w-25 mt-5'>
-                <h2>List</h2>
-                <NCCardList cards={generateCards()}/>
-            </div>
-        </div>
-    );
+    const exampleIntro: NCExampleIntroProps = {
+        title: 'Partner Card',
+        description: '',
+        links: [],
+    };
+
+    const exampleProps: Array<NCExampleItemProps> = [
+        {
+            name: 'NCPartnerCard',
+            description: '',
+            component: NCPartnerCard,
+            exampleList: [
+                {
+                    renderPreview: false,
+                    name: 'Simple',
+                    props: {
+                        partner: MOCK_PARTNER,
+                    }
+                },
+            ]
+        },
+        {
+            name: 'NCCardList',
+            description: '',
+            component: NCCardList,
+            exampleList: [
+                {
+                    renderPreview: false,
+                    name: 'Simple',
+                    props: {
+                        cards: MOCK_CARDSLIST,
+                    }
+                },
+            ]
+        },
+    ];
+
+    return <NCExamplePage intro={exampleIntro} examples={exampleProps} />;
 };

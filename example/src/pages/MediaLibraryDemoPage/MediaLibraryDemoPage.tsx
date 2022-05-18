@@ -1,16 +1,39 @@
-import { Button, NCDialog, NCMediaLibrary } from '@cactus/srm-component';
-import React, { useState } from 'react';
+import raw from 'raw.macro';
+import React from 'react';
+import { NCExampleIntroProps } from '../../components/NCExample/NCExampleIntro';
+import { NCExampleItemProps } from '../../components/NCExample/NCExampleItem';
+import { NCExamplePage } from '../../components/NCExample/NCExamplePage';
+import { NCMediaLibraryDialogExample } from './examples/medialibrary-dialog.example';
+import { NCMediaLibraryExample } from './examples/medialibrary.example';
+
+const NCMediaLibraryExampleRaw = raw('./examples/medialibrary.example.tsx');
+const NCMediaLibraryDialogExampleRaw = raw('./examples/medialibrary-dialog.example.tsx');
 
 export const MediaLibraryDemoPage: React.FunctionComponent = () => {
-    const [ open, setOpen ] = useState<boolean>(false);
+    const exampleIntro: NCExampleIntroProps = {
+        title: 'Media Library',
+        description: '',
+        links: [],
+    };
 
-    return (
-        <div className='media-library-demo-page'>
-            <NCMediaLibrary actionHook={(m) => {console.log('NCMediaLibrary:actionHook', m);}} s3PublicUrl="https://public.nextcactus.gg" />
-            <Button label={'Media Library Modal'} setClick={() => setOpen(true)}></Button>
-            <NCDialog show={open} setShow={setOpen}>
-                <NCMediaLibrary actionHook={(m) => {console.log('NCDialog:NCMediaLibrary:actionHook', m);}} s3PublicUrl="https://public.nextcactus.gg" />
-            </NCDialog>
-        </div>
-    );
+    const exampleProps: Array<NCExampleItemProps> = [
+        {
+            name: 'MediaLibrary',
+            description: '',
+            exampleList: [
+                {
+                    name: 'Simple',
+                    raw: NCMediaLibraryExampleRaw,
+                    component: NCMediaLibraryExample,
+                },
+                {
+                    name: 'Dialog',
+                    raw: NCMediaLibraryDialogExampleRaw,
+                    component: NCMediaLibraryDialogExample,
+                },
+            ]
+        },
+    ];
+
+    return <NCExamplePage intro={exampleIntro} examples={exampleProps} />;
 };

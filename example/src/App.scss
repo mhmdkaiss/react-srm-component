@@ -27,11 +27,41 @@
     font-style: normal;
 }
 
-.navigation {
-    border-right: solid 1px $grey1;
-}
+.shared-examples {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-y: auto;
 
-.content {
-    margin-right: auto;
-    margin-left: auto;
+    .examples-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-top: 16px;
+        margin-bottom: -3rem;
+        padding-top: 24px;
+        padding-left: 64px;
+        padding-right: 64px;
+
+        & > div {
+            width: 100%;
+            justify-content: center;
+        }
+
+        & > .content-wrapper {
+            margin-bottom: 50px;
+        }
+    }
+
+    code {
+        color: unset;
+    }
+
+    .scroll-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
 }

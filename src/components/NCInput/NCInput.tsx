@@ -3,16 +3,17 @@ import { MuiThemeProvider, TextField } from '@material-ui/core';
 import React, { ChangeEvent } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 import './NCInput.scss';
-
 export interface NCInputProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref?: any;
     id?: string;
     value: string | number;
-    label?: string;
+    label?: React.ReactText | React.ReactChild | Array<React.ReactChild>;
     type?: string;
     placeHolder?: string;
     onChange: (value: string) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onChangeV2?: (ev: any) => void;
     disabled?: boolean;
     autofocus?: boolean;
     iconType?: string;
@@ -22,7 +23,7 @@ export interface NCInputProps {
 }
 
 export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputProps) => {
-    const { iconType, styleName, onChange, onBlur, iconHook } = props;
+    const { iconType, styleName, onChange, onChangeV2, onBlur, iconHook } = props;
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
@@ -36,7 +37,12 @@ export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputPro
                         placeholder={props.placeHolder}
                         label={props.label}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                            onChange(event.currentTarget.value);
+                            if (onChange) {
+                                onChange(event.currentTarget.value);
+                            }
+                            if (onChangeV2) {
+                                onChangeV2(event.currentTarget);
+                            }
                         }}
                         type={props.type}
                         disabled={props.disabled || false}
@@ -66,3 +72,4 @@ export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputPro
         </React.Fragment>
     );
 };
+

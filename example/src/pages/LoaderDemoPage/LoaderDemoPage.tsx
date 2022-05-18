@@ -1,22 +1,39 @@
-import { NCLoader } from '@cactus/srm-component';
+import raw from 'raw.macro';
 import React from 'react';
-import './LoaderDemoPage.scss';
+import { NCExampleIntroProps } from '../../components/NCExample/NCExampleIntro';
+import { NCExampleItemProps } from '../../components/NCExample/NCExampleItem';
+import { NCExamplePage } from '../../components/NCExample/NCExamplePage';
+import { NCLoaderImageExample } from './examples/ncloader-image.example';
+import { NCLoaderExample } from './examples/ncloader.example';
+
+const NCLoaderExampleRaw = raw('./examples/ncloader.example.tsx');
+const NCLoaderImageExampleRaw = raw('./examples/ncloader-image.example.tsx');
 
 export const LoaderDemoPage: React.FunctionComponent = () => {
-    return (
-        <React.Fragment>
-            <h1 className="secondary-color-light">Loaders</h1>
+    const exampleIntro: NCExampleIntroProps = {
+        title: 'Loaders',
+        description: '',
+        links: [],
+    };
 
-            <div className="d-flex">
-                <div className="loader-1 text-center mr-5">
-                    <h3 className="secondary-color-light">Default</h3>
-                    <NCLoader />
-                </div>
-                <div className="loader-2 text-center ml-5">
-                    <h3 className="secondary-color-light">Custom image</h3>
-                    <NCLoader />
-                </div>
-            </div>
-        </React.Fragment>
-    );
+    const exampleProps: Array<NCExampleItemProps> = [
+        {
+            name: 'NCLoader',
+            description: '',
+            exampleList: [
+                {
+                    name: 'Default',
+                    raw: NCLoaderExampleRaw,
+                    component: NCLoaderExample,
+                },
+                {
+                    name: 'Image',
+                    raw: NCLoaderImageExampleRaw,
+                    component: NCLoaderImageExample,
+                },
+            ]
+        },
+    ];
+
+    return <NCExamplePage intro={exampleIntro} examples={exampleProps} />;
 };

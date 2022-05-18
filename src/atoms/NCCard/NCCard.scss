@@ -1,6 +1,17 @@
 @import '../../styles/colors';
 @import '../../styles/mixins';
 
+@keyframes slide-top {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .nc-card {
     width: 100%;
     background: $grey4;
@@ -10,5 +21,9 @@
 
     @include breakpoint(mobile) {
         padding: 18px;
+    }
+
+    &.transition-slide {
+        animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     }
 }

@@ -1,8 +1,43 @@
 @import 'src/styles/colors';
 @import 'src/styles/variables';
 
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+        display: none;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        display: inherit;
+    }
+}
+
+@keyframes slide-out-top {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+
 .nc-tournament-list,
 .nc-list {
+    // new variant as example
+    // &.new-variant {
+    //     thead {
+    //         // overright all you want
+    //     }
+    //     tbody {
+    //         // overright all you want
+    //     }
+    // }
+    // end example
+
     &.thead-sticky {
         thead {
             position: sticky;
@@ -25,6 +60,32 @@
         th {
             background: $grey3;
             border-bottom: 1px solid $grey5;
+        }
+    }
+
+    &.tr-hover {
+        tbody tr:hover {
+            background: $grey3;
+        }
+    }
+
+    &.tr-animated {
+        tbody {
+            color: $white;
+            tr {
+                animation: slide-in-top 0.5s
+                    cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+
+                &.selected {
+                    animation: slide-in-top 0.5s
+                        cubic-bezier(0.55, 0.085, 0.68, 0.53) backwards;
+                }
+                &.unselected {
+                    animation: slide-out-top 0.5s
+                        cubic-bezier(0.55, 0.085, 0.68, 0.53) backwards;
+                    display: none;
+                }
+            }
         }
     }
 

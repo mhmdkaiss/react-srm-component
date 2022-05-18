@@ -5,6 +5,7 @@ import { NCTheme, getTheme } from '../../styles/Themes';
 import React, { useEffect, useRef, useState } from 'react';
 
 export interface NCPreviewSearchAsyncProps {
+    id?: string;
     /* eslint-disable @typescript-eslint/no-explicit-any */
     list: Array<{ [key: string]: any }>;
     displayParam: string;
@@ -107,6 +108,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                     className='nc-preview-search-async w-100 position-relative'
                 >
                     <TextField
+                        id={props.id}
                         inputRef={inputRef}
                         className='w-100 nc-async-search-input'
                         label={props.label}

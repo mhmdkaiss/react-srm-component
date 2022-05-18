@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NCBox, NCDialog, NCDropZone, NCList, NCTypography } from '../../atoms';
 import { Button, ButtonType } from '../../atoms/Button/Button';
 import { IconType } from '../../atoms/Icon/Icon';
-import { NCListProps, NCListRows } from '../../atoms/NCList/NCList';
+import { NCListProps, NCListTools } from '../../atoms/NCList/NCList';
 import { NCInput } from '../../components/NCInput/NCInput';
 import { Media, MediaLibraryService } from '../../services/media-library.service';
 import { NCActions } from '../NCActions/NCActions';
@@ -60,11 +60,30 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
         }).sort(f => (f.file ? 1 : -1));
         setTable({
             header: table.header,
-            data: fillRows(_m)
+            data: NCListTools.fillRows(_m, ((_, item) => {
+                return {
+                    tr: {
+                        trData: item,
+                        actionHook: handleClickLine,
+                    },
+                    name: {
+                        tdClassName: '',
+                        tdContent: <NCTypography variant='body1'>{item.name}</NCTypography>,
+                    },
+                    size: {
+                        tdClassName: '',
+                        tdContent: <NCTypography variant='body1'>{item.file ? convertBytes(item.size) : '-'}</NCTypography>,
+                    },
+                    uploaddate: {
+                        tdClassName: '',
+                        tdContent: <NCTypography variant='body1'>{(new Date(item.modified)).toLocaleString()}</NCTypography>,
+                    },
+                };
+            }))
         });
     };
 
-    const handleClickLine = (media: Media) => {
+    const handleClickLine = (_: number, media: Media) => {
         try {
             setSelectedItem(media);
             const newPath = `${media.key}`;
@@ -93,7 +112,7 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
     const createFolder = (path: string, name: string) => {
         const _nFolder = `${path}${name}/`;
         MediaLibraryService.createMedia(_nFolder, '').then(() => {
-            handleClickLine(new Media(_nFolder));
+            handleClickLine(0, new Media(_nFolder));
         });
     };
 
@@ -135,29 +154,6 @@ export const NCMediaLibrary: React.FunctionComponent<NCMediaLibraryProps> = (pro
         }
 
         return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-    };
-
-    const fillRows = (ms: Array<Media>): Array<NCListRows> => {
-        return ms.map(m => {
-            return {
-                tr: {
-                    actionHook: handleClickLine,
-                    trData: m,
-                },
-                name: {
-                    tdClassName: '',
-                    tdContent: <NCTypography variant='body1'>{m.name}</NCTypography>,
-                },
-                size: {
-                    tdClassName: '',
-                    tdContent: <NCTypography variant='body1'>{m.file ? convertBytes(m.size) : '-'}</NCTypography>,
-                },
-                uploaddate: {
-                    tdClassName: '',
-                    tdContent: <NCTypography variant='body1'>{(new Date(m.modified)).toLocaleString()}</NCTypography>,
-                },
-            };
-        });
     };
 
     return (
