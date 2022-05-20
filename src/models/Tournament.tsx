@@ -17,7 +17,7 @@ export interface Tournament {
     },
     rewards?: { [key: number]: Array<TournamentReward> },
     sum?: number,
-    matchSettings?: Array<MatchSettings>,
+    matchSettings?: { [value: string]: MatchSettings },
 }
 
 export enum TournamentFee {
