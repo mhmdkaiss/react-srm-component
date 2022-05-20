@@ -6,6 +6,7 @@ import { makeSlugHash } from './utils/makeSlugHash';
 
 export interface NCExample {
     name: string;
+    description?: React.ReactText | React.ReactChild | Array<React.ReactChild>
 
     renderPreview?: boolean;
 
@@ -18,7 +19,7 @@ export interface NCExample {
 export interface NCExampleItemProps {
     key?: any;
     name: string;
-    description?: string;
+    description?: React.ReactText | React.ReactChild | Array<React.ReactChild>
 
     component?: React.FunctionComponent<any>;
 
@@ -106,6 +107,7 @@ export const NCExampleItem: React.FunctionComponent<NCExampleItemProps> = (props
                                 }}
                             >
                                 <NCTypography variant='h3'>{item.name}</NCTypography>
+                                <NCTypography variant='body1'>{item.description}</NCTypography>
 
                                 <NCBox style={{
                                     border: '4px dotted #888c88',

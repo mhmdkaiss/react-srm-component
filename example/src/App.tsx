@@ -37,12 +37,13 @@ import { UserTeamCardsDemoPage } from './pages/UserTeamCardsDemoPage/UserTeamCar
 import { ZoneDemoPage } from './pages/ZoneDemoPage/ZoneDemoPage';
 import { NCTabParameter } from '../../src/molecules/NCTabs/NCTabs';
 import { CornerHeaderDemoPage } from './pages/CornerHeaderDemoPage/CornerHeaderDemoPage';
+import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 
 const routes: Array<NCTabParameter> = [
     {
         name: 'Welcome',
         path: '/welcome',
-        component: NCDefault,
+        component: WelcomePage,
     },
     {
         name: 'Atoms',
