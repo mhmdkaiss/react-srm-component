@@ -1,6 +1,6 @@
 
 import { MuiThemeProvider, TextField } from '@material-ui/core';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useRef } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 import './NCInput.scss';
 export interface NCInputProps {
@@ -24,12 +24,18 @@ export interface NCInputProps {
 
 export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputProps) => {
     const { iconType, styleName, onChange, onChangeV2, onBlur, iconHook } = props;
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
-                <div className={`d-flex w-100 position-relative ${styleName ? styleName: ''}`}>
+                <div
+                    className={`d-flex w-100 position-relative ${styleName ? styleName: ''}`}
+                    onClick={() => inputRef.current?.focus()}
+                >
                     <TextField
                         ref={props.ref}
+                        inputRef={inputRef}
                         id={props.id}
                         autoFocus={props.autofocus}
                         className={`w-100 nicecactus-input ${props.disabled ? 'disabled' : ''}`}

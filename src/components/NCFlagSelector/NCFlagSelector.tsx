@@ -64,18 +64,14 @@ export const NCFlagSelector: React.FunctionComponent<NCFlagSelectorProps> = (pro
             <MuiThemeProvider theme={ThemePlatform}>
                 <div className="flag-selector">
                     <div className="lang-list">
-                        {(
-                            languagesOrdered.map((l: Lang) => {
-                                return (
-                                    <span
-                                        key={'flag-selector-' + l.code}
-                                        className={`flag ${l.code === selectedLang ? 'flag-active' : ''}`}
-                                        onClick={() => handleSelectClick(l.code)
-                                        }>
-                                        <img src={`${props.publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} />
-                                    </span>
-                                );
-                            })
+                        {languagesOrdered.map((l: Lang) =>
+                            <span
+                                key={'flag-selector-' + l.code}
+                                className={`flag clickable ${l.code === selectedLang ? 'flag-active' : ''}`}
+                                onClick={() => handleSelectClick(l.code)}
+                            >
+                                <img src={`${props.publicUrl}/lang/${l._id}/medias/ContentImage`} alt={l.name} />
+                            </span>
                         )}
                     </div>
                     <label>{props.label || intl.formatMessage({
