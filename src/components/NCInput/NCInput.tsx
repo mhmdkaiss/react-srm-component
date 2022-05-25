@@ -7,6 +7,7 @@ export interface NCInputProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref?: any;
     id?: string;
+    name?: string;
     value: string | number;
     label?: React.ReactText | React.ReactChild | Array<React.ReactChild>;
     type?: string;
@@ -37,6 +38,7 @@ export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputPro
                         ref={props.ref}
                         inputRef={inputRef}
                         id={props.id}
+                        name={props.name}
                         autoFocus={props.autofocus}
                         className={`w-100 nicecactus-input ${props.disabled ? 'disabled' : ''}`}
                         value={props.value}

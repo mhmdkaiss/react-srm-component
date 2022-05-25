@@ -18,6 +18,7 @@ export interface NCPreviewSearchAsyncProps {
     loadingMessage?: string;
     theme?: NCTheme;
     /* eslint-enable @typescript-eslint/no-explicit-any */
+    disabled?: boolean;
 }
 
 export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncProps> = (props: NCPreviewSearchAsyncProps) => {
@@ -121,6 +122,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                         onKeyDown={onKeyDown}
                         onFocus={() => setFocus(true)}
                         onBlur={(e) => e.stopPropagation()}
+                        disabled={props.disabled}
                     />
                     {focus && search.trim() && (
                         <div
