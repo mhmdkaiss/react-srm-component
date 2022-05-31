@@ -12,7 +12,7 @@ export interface NCInputProps {
     label?: React.ReactText | React.ReactChild | Array<React.ReactChild>;
     type?: string;
     placeHolder?: string;
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onChangeV2?: (ev: any) => void;
     disabled?: boolean;
@@ -21,6 +21,7 @@ export interface NCInputProps {
     iconHook?: () => void;
     styleName?: string;
     onBlur?: () => void;
+    inputProps?: { [key: string]: number | string }
 }
 
 export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputProps) => {
@@ -45,6 +46,12 @@ export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputPro
                         placeholder={props.placeHolder}
                         label={props.label}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                            if (props.type === 'number' && props.inputProps?.min) {
+                                const val = Number(event.currentTarget.value);
+                                if (val < props.inputProps.min || val > props.inputProps.max) {
+                                    return;
+                                }
+                            }
                             if (onChange) {
                                 onChange(event.currentTarget.value);
                             }
@@ -59,6 +66,7 @@ export const NCInput: React.FunctionComponent<NCInputProps> = (props: NCInputPro
                                 onBlur();
                             }
                         }}
+                        InputProps={{ inputProps: props.inputProps }}
                     />
                     {iconType &&
                         <div
