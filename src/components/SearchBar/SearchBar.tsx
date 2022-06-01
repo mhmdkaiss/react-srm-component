@@ -23,6 +23,7 @@ export interface SearchBarProps {
     focusHook?: (isFocused: boolean) => any;
     setOnKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => any;
     onChange?:(newValue: string) => void;
+    onSelectChange?: (newValue: string) => void;
     disabled? : boolean ;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
@@ -124,6 +125,9 @@ export const SearchBar: React.FunctionComponent<SearchBarProps> = (props: Search
                                 }>
                             ) => {
                                 setSearchField(event.target.value as string);
+                                if (props.onSelectChange){
+                                    props.onSelectChange(event.target.value as string);
+                                }
                             }}
                         >
                             {Object.keys(props.searchFields).map(
