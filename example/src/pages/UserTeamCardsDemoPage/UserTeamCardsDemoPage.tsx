@@ -14,6 +14,7 @@ import {
     ByeCard,
     HoverUserTeamCard,
     TeamCardRounded,
+    TeamPermission,
 } from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
@@ -51,6 +52,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 player={PLAYER_MOCK.player}
                                 selectable={true}
                                 selected={userCardSelected}
+                                deletable
                             />
                         </div>
                         <div className='ml-3 text-center'>
@@ -95,6 +97,35 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                                 full={true}
                                 xs={true}
                                 player={PLAYER_MOCK.player}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className='my-4 d-flex flex-column'>
+                    <span>Team permission (Full details not xs)</span>
+                    <div className='d-flex'>
+                        <div className='mr-3'>
+                            <UserCard
+                                playerId={PLAYER_MOCK.id}
+                                full={true}
+                                xs={false}
+                                player={PLAYER_MOCK.player}
+                                permission={TeamPermission.MANAGER}
+                            />
+                        </div>
+                        <div
+                            className='ml-3 text-center'
+                            onClick={() =>
+                                setUserCardSelected(!userCardSelected)
+                            }
+                        >
+                            <UserCard
+                                playerId={PLAYER_MOCK.id}
+                                full={true}
+                                xs={false}
+                                player={PLAYER_MOCK.player}
+                                permission={TeamPermission.MANAGER}
+                                onPermissionChange={(e) => console.log(e)}
                             />
                         </div>
                     </div>

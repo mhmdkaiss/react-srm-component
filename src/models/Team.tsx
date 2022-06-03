@@ -1,22 +1,26 @@
 import { Player } from './Player';
 import { Round } from './Round';
 
-export interface Team {
-    team: string;
-    name: string;
+export interface Team extends TeamCardInfo {
     avatar: string;
     ranking: number;
-    tag: string;
-    players: { [key: string]: Player };
     checkIn: boolean;
     fd: number;
     fr: number;
     fullScore: number;
     pos: number;
     rounds?: { [key: string]: Round };
+}
+
+export interface TeamCardInfo {
+    team: string;
+    name: string;
+    tag: string;
+    players: { [key: string]: Player };
     slug: string;
     route: string;
 }
+
 export interface TeamBracket extends Team {
     pending?: boolean;
     winner?: boolean;
@@ -36,4 +40,10 @@ export interface TeamRanking {
 
 export interface TeamLeaderboard extends Team {
     score?: string,
+}
+
+export enum TeamPermission {
+    MEMBER = 0,
+    MANAGER = 1,
+    OWNER = 2,
 }

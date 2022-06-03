@@ -97,6 +97,7 @@ export { Reward, RewardKind } from './models/Reward';
 export { SocialEnum, SocialLink } from './models/Social';
 export { Sponsor } from './models/Sponsor';
 export { TournamentState } from './models/Tournament';
+export { TeamCardInfo, TeamPermission } from './models/Team';
 export { NCWeeklyScheduling } from './molecules/NCWeeklyScheduling/NCWeeklyScheduling';
 export { TournamentUtilsService } from './services/tournament-utils.service';
 export * as NCColors from './styles/NCColors';

@@ -4,22 +4,31 @@ import { Icon, IconType } from '../../atoms/Icon/Icon';
 import { Player, PremiumStatus } from '../../models/Player';
 
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
-import React from 'react';
+import React, { useState } from 'react';
+import { Select, MenuItem } from '@material-ui/core';
+import { TeamPermission } from '../../models/Team';
 
 export interface UserCardProps {
     playerId: string;
     player: Player;
-    full: boolean;
-    xs: boolean;
+    full?: boolean;
+    xs?: boolean;
     selectable?: boolean;
     selected?: boolean;
     hoverHook?: (hovered?: string) => void;
     disabled?: boolean;
+    deletable?: boolean;
+    onDelete?: () => void;
+    onClick?: () => void;
+    permission?: TeamPermission;
+    onPermissionChange?: (permission: TeamPermission) => void;
 }
 
 export const UserCard: React.FunctionComponent<UserCardProps> = (
     props: UserCardProps
 ) => {
+    const permissions = Object.values(TeamPermission).filter((p: string | number) => typeof p === 'number');
+    const [ selectedPermission, setSelectedPermission ] = useState<TeamPermission | undefined>(props.xs ? undefined : props.permission);
     const hashIndex = props.player.name.lastIndexOf('#');
     const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
     const name =
@@ -48,6 +57,59 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
         isPremium = props.player.premium?.status === PremiumStatus.PREMIUM;
     }
 
+    const renderPermissionSelector = () => {
+        return (
+            (typeof selectedPermission === 'number') ?
+                <div className='permission-selector-container'>
+                    <Select
+                        defaultValue={''}
+                        renderValue={(val: unknown) => renderPermission(val as TeamPermission)}
+                        value={selectedPermission}
+                        className="select"
+                        onClick={(e) => {
+                            if (props.onPermissionChange) {
+                                e.stopPropagation();
+                            }
+                        }}
+                        onChange={(event) => {
+                            setSelectedPermission(event.target.value as TeamPermission);
+                        }}
+                        disabled={props.disabled || !props.onPermissionChange}
+                    >
+                        {
+                            permissions && permissions.map((p, index) => {
+                                return (
+                                    <MenuItem key={index} value={p} className="menu-test">
+                                        {renderPermission(p as TeamPermission)}
+                                    </MenuItem>
+                                );
+                            })
+                        }
+                    </Select>
+                </div> :
+                null
+        );
+    };
+
+    const renderPermission = (p: TeamPermission) => {
+        return (
+            <div className="d-flex permission-container">
+                <Icon
+                    icon={
+                        p === TeamPermission.OWNER ?
+                            IconType.Crown :
+                            p === TeamPermission.MANAGER ?
+                                IconType.People :
+                                IconType.User
+                    }
+                    width={props.xs ? 12 : 16}
+                    height={props.xs ? 12 : 16}
+                ></Icon>
+                <div className="text-capitalize my-auto ml-1 mr-3">{TeamPermission[p].toLowerCase()}</div>
+            </div>
+        );
+    };
+
     return (
         <div
             className={`d-flex nc-user-card position-relative align-items-center pl-2 pr-3
@@ -56,9 +118,12 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                 ${isPremium ? 'premium' : ''}
                 ${props.selectable ? 'cursor-pointer pr-2' : 'pr-3'}
                 ${props.selected ? 'user-card-selected' : ''}
-                ${props.disabled ? 'disabled' : ''}`}
+                ${props.disabled ? 'disabled' : ''}
+                ${props.deletable ? 'pr-4' : 'pr-3'}
+            `}
             onMouseEnter={() => handleHoverHook(props.playerId)}
             onMouseLeave={() => handleHoverHook(undefined)}
+            onClick={props.onClick}
         >
             <div
                 className='background-texture w-100 h-100 position-absolute'
@@ -83,6 +148,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                         <span className='account text-elipsis'>
                             {props.player.account}
                         </span>
+                        { renderPermissionSelector() }
                     </div>
                     {isPremium && (
                         <Icon
@@ -114,6 +180,20 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                     )}
                 </div>
             )}
+            {
+                props.deletable &&
+                <Icon
+                    icon={IconType.Close}
+                    width={13}
+                    height={13}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        if (props.onDelete) {
+                            props.onDelete();
+                        }
+                    }}
+                />
+            }
         </div>
     );
 };

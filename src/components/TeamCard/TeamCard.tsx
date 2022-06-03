@@ -2,7 +2,7 @@ import './TeamCard.scss';
 
 import { Icon, IconType } from '../../atoms/Icon/Icon';
 import React from 'react';
-import { Team } from '../../models/Team';
+import { TeamCardInfo } from '../../models/Team';
 import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
 import { MemoizedTeamBackground } from '../TeamBackground/TeamBackground';
 
@@ -12,9 +12,9 @@ export enum SelectionType {
 }
 
 interface TeamCardProps {
-    team: Team;
-    full: boolean;
-    xs: boolean;
+    team: TeamCardInfo;
+    full?: boolean;
+    xs?: boolean;
     selectable?: SelectionType;
     selected?: boolean;
     hoverHook?: (hovered?: string) => void;

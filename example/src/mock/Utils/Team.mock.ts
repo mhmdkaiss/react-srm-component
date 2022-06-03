@@ -19,7 +19,15 @@ export const TEAMS_MOCK = [
                 elo: 0,
             }
         },
-        score: 10
+        avatar: '',
+        ranking: 0,
+        checkIn: false,
+        fd: 0,
+        fr: 0,
+        fullScore: 0,
+        pos: 0,
+        team: '',
+        tag: '',
     },
     {
         name: 'Team 2',
@@ -42,8 +50,17 @@ export const TEAMS_MOCK = [
                 elo: 0,
             }
         },
-        score: 5
-    }
+        avatar: '',
+        ranking: 0,
+        checkIn: false,
+        fd: 0,
+        fr: 0,
+        fullScore: 0,
+        pos: 0,
+        team: 'test',
+        tag: 'test',
+    },
+
 ];
 
 export const PLAYERS_MOCK = TEAMS_MOCK.map(t => {

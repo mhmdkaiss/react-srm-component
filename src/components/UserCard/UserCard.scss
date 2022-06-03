@@ -11,6 +11,17 @@
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
     border-radius: 8px;
 
+    .icon-close {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        background: $grey5;
+
+        &:hover {
+            background: $red;
+        }
+    }
+
     .background-image,
     .background-texture {
         left: 0;
@@ -144,4 +155,47 @@
             }
         }
     }
+
+    .select {
+        .MuiSelect-selectMenu {
+            padding: 0 !important;
+            padding-right: 6px !important;
+        }
+
+        .MuiSelect-icon {
+            color: $grey6;
+        }
+
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        &.Mui-disabled {
+            .MuiSelect-icon {
+                display: none;
+            }
+
+            .MuiSelect-selectMenu {
+                padding: 0 !important;
+            }
+        }
+
+        &:hover:not(.Mui-disabled) {
+            filter: brightness(2);
+        }
+    }
+}
+
+.permission-container {
+    font-size: $small-text;
+    color: $grey6;
+
+    .mask-icon {
+        background: $grey6;
+    }
+}
+
+.MuiPaper-root {
+    background-color: $grey3 !important;
 }
