@@ -33,6 +33,7 @@ export { NCCheckbox } from './components/NCCheckbox/NCCheckbox';
 export { NCChip } from './components/NCChip/NCChip';
 export { NCColorPicker } from './components/NCColorPicker/NCColorPicker';
 export { NCCookies } from './components/NCCookies/NCCookies';
+export { NCCookiesConsent } from './components/NCCookiesConsent/NCCookiesConsent';
 export { NCDefault } from './components/NCDefault/NCDefault';
 export { NCFeedCard } from './components/NCFeedCard/NCFeedCard';
 export { NCFlagSelector } from './components/NCFlagSelector/NCFlagSelector';

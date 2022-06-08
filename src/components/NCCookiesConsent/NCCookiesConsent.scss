@@ -1,0 +1,29 @@
+@import '../../styles/colors';
+
+.cookie-consent {
+    max-width: 310px;
+
+    .header {
+        color: $white;
+    }
+
+    .content {
+        margin: 16px 0;
+
+        .cookie-option {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+    }
+
+    .actions {
+        display: grid;
+        gap: 16px;
+
+        button {
+            width: 100%;
+            min-width: 140px;
+        }
+    }
+}

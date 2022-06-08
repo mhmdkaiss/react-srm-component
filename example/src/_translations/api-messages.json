@@ -270,5 +270,25 @@
     {
         "term": "cookies.got.it",
         "comment": "Got it!"
+    },
+    {
+        "term": "cookies.accept.partial",
+        "comment": "Accept"
+    },
+    {
+        "term": "cookies.accept.all",
+        "comment": "Accept all"
+    },
+    {
+        "term": "cookies.decline.all",
+        "comment": "Decline all"
+    },
+    {
+        "term": "cookies.accept.user",
+        "comment": "Accept user cookies"
+    },
+    {
+        "term": "cookies.accept.session",
+        "comment": "Accept session cookies"
     }
 ]

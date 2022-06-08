@@ -1,6 +1,14 @@
+import './NCDialog.scss';
+
 import React from 'react';
 import { TimesIcon } from '../../styles/svg';
-import './NCDialog.scss';
+
+export interface Position {
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
+}
 
 export interface DialogProps {
     title?: string | React.ReactText | React.ReactChild;
@@ -9,10 +17,14 @@ export interface DialogProps {
     setShow: (show: boolean) => void;
     noPadding?: boolean;
     noHeader?: boolean;
+    noClose?: boolean;
     onClose?: (closed: string) => void;
     wildBody?: boolean;
+    position?: Position;
 }
 export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProps) => {
+    const defaultPosition = { top: 0, right: 0, bottom: 0, left: 0 };
+
     if (props.show === false) {
         return null;
     }
@@ -25,28 +37,26 @@ export const NCDialog: React.FunctionComponent<DialogProps> = (props: DialogProp
         <div
             className="nc-dialog"
             data-testid="nc-dialog"
-            onClick={() => closeDialog()}
+            onClick={() => !props.noClose && closeDialog()}
+            style={ props.position ? props.position : defaultPosition }
         >
             <div
                 className={`dialog-content ${props.noPadding ? 'no-padding' : ''}`}
                 onClick={(e) => e.stopPropagation()}
                 style={{ backgroundImage: `url(${process.env.REACT_APP_S3_URL}/media/shared-library/background/dialog-background.png)` }}
             >
-                {props.noHeader
-                    ? <div
-                        className="dialog-close-no-header d-flex"
-                        onClick={() => closeDialog()}
-                    >
-                        <TimesIcon />
-                    </div>
-                    : <div className="dialog-header">
+                {!props.noHeader &&
+                    <div className="dialog-header">
                         <div className="dialog-title">{props.title}</div>
-                        <div
-                            className="dialog-close"
-                            onClick={() => closeDialog()}
-                        >
-                            <TimesIcon />
-                        </div>
+                        {
+                            !props.noClose &&
+                            <div
+                                className="dialog-close"
+                                onClick={() => closeDialog()}
+                            >
+                                <TimesIcon />
+                            </div>
+                        }
                     </div>
                 }
 

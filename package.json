@@ -54,6 +54,8 @@
         "@material-ui/core": "4.11.0",
         "@material-ui/icons": "4.11.2",
         "@tinymce/tinymce-react": "3.13.0",
+        "@types/js-cookie": "^3.0.2",
+        "@use-cookie-consent/react": "^0.3.6",
         "axios": "^0.21.0",
         "bootstrap": "^4.5.2",
         "easy-peasy": "^3.3.1",

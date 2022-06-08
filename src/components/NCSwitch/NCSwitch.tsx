@@ -1,10 +1,12 @@
+import './NCSwitch.scss';
+
 import { MuiThemeProvider } from '@material-ui/core';
 import React from 'react';
 import { ThemePlatform } from '../../styles/Themes';
-import './NCSwitch.scss';
 
 export interface NCSwitchProps {
     checked?: boolean;
+    disabled?: boolean;
     onChange: (checked: boolean) => void;
 }
 
@@ -13,7 +15,11 @@ export const NCSwitch: React.FunctionComponent<NCSwitchProps> = (props: NCSwitch
         <React.Fragment>
             <MuiThemeProvider theme={ThemePlatform}>
                 <label className="nc-switch">
-                    <input type="checkbox" onChange={(e) => {props.checked = !props.checked; props.onChange(e.target.checked);}} checked={props.checked || false} />
+                    <input type="checkbox"
+                        onChange={(e) => {props.checked = !props.checked; props.onChange(e.target.checked);}}
+                        checked={props.checked ?? false}
+                        disabled={props.disabled ?? false}
+                    />
                     <span className="slider"></span>
                 </label>
             </MuiThemeProvider>
