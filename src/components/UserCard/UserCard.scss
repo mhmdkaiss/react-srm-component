@@ -185,17 +185,10 @@
             filter: brightness(2);
         }
     }
-}
 
-.permission-container {
-    font-size: $small-text;
-    color: $grey6;
-
-    .mask-icon {
-        background: $grey6;
+    .permission-container {
+        font-size: $small-text;
+        color: $grey6;
+        line-height: $small-text;
     }
-}
-
-.MuiPaper-root {
-    background-color: $grey3 !important;
 }

@@ -5,8 +5,10 @@ import { Player, PremiumStatus } from '../../models/Player';
 
 import { MemoizedProfilePicture } from '../ProfilePicture/ProfilePicture';
 import React, { useState } from 'react';
-import { Select, MenuItem } from '@material-ui/core';
+import { Select, MenuItem, MuiThemeProvider } from '@material-ui/core';
 import { TeamPermission } from '../../models/Team';
+import { ThemePlatform } from '../../styles/Themes';
+import { NCColors } from '../..';
 
 export interface UserCardProps {
     playerId: string;
@@ -22,12 +24,13 @@ export interface UserCardProps {
     onClick?: () => void;
     permission?: TeamPermission;
     onPermissionChange?: (permission: TeamPermission) => void;
+    noOwnerChange?: boolean;
 }
 
 export const UserCard: React.FunctionComponent<UserCardProps> = (
     props: UserCardProps
 ) => {
-    const permissions = Object.values(TeamPermission).filter((p: string | number) => typeof p === 'number');
+    const permissions = Object.values(TeamPermission).filter((p: string | number) => typeof p === 'number' && (!props.noOwnerChange || p !== TeamPermission.OWNER));
     const [ selectedPermission, setSelectedPermission ] = useState<TeamPermission | undefined>(props.xs ? undefined : props.permission);
     const hashIndex = props.player.name.lastIndexOf('#');
     const code = hashIndex !== -1 ? props.player.name.slice(hashIndex) : '';
@@ -58,34 +61,42 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
     }
 
     const renderPermissionSelector = () => {
+        const changePermission = (!props.noOwnerChange || selectedPermission !== TeamPermission.OWNER) ?
+            props.onPermissionChange : undefined;
+
         return (
             (typeof selectedPermission === 'number') ?
-                <div className='permission-selector-container'>
-                    <Select
-                        defaultValue={''}
-                        renderValue={(val: unknown) => renderPermission(val as TeamPermission)}
-                        value={selectedPermission}
-                        className="select"
-                        onClick={(e) => {
-                            if (props.onPermissionChange) {
-                                e.stopPropagation();
+                <div className='permission-selector-container mt-2'>
+                    <MuiThemeProvider theme={ThemePlatform}>
+                        <Select
+                            defaultValue={''}
+                            renderValue={(val: unknown) => renderPermission(val as TeamPermission)}
+                            value={selectedPermission}
+                            className="select"
+                            onClick={(e) => {
+                                if (changePermission) {
+                                    e.stopPropagation();
+                                }
+                            }}
+                            onChange={(event) => {
+                                if (changePermission) {
+                                    changePermission(event.target.value as TeamPermission);
+                                }
+                                setSelectedPermission(event.target.value as TeamPermission);
+                            }}
+                            disabled={props.disabled || !changePermission}
+                        >
+                            {
+                                permissions && permissions.map((p, index) => {
+                                    return (
+                                        <MenuItem key={index} value={p} className="menu-test">
+                                            {renderPermission(p as TeamPermission)}
+                                        </MenuItem>
+                                    );
+                                })
                             }
-                        }}
-                        onChange={(event) => {
-                            setSelectedPermission(event.target.value as TeamPermission);
-                        }}
-                        disabled={props.disabled || !props.onPermissionChange}
-                    >
-                        {
-                            permissions && permissions.map((p, index) => {
-                                return (
-                                    <MenuItem key={index} value={p} className="menu-test">
-                                        {renderPermission(p as TeamPermission)}
-                                    </MenuItem>
-                                );
-                            })
-                        }
-                    </Select>
+                        </Select>
+                    </MuiThemeProvider>
                 </div> :
                 null
         );
@@ -93,7 +104,13 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
 
     const renderPermission = (p: TeamPermission) => {
         return (
-            <div className="d-flex permission-container">
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+                className={`permission-container ${props.onClick ? 'cursor-pointer' : undefined}`}
+            >
                 <Icon
                     icon={
                         p === TeamPermission.OWNER ?
@@ -104,8 +121,15 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                     }
                     width={props.xs ? 12 : 16}
                     height={props.xs ? 12 : 16}
+                    color={NCColors.grey6}
                 ></Icon>
-                <div className="text-capitalize my-auto ml-1 mr-3">{TeamPermission[p].toLowerCase()}</div>
+                <div
+                    style={{
+                        marginLeft: '8px',
+                        textTransform: 'capitalize'
+                    }}
+                    className='mt-auto mr-3'
+                >{TeamPermission[p].toLowerCase()}</div>
             </div>
         );
     };
@@ -120,6 +144,7 @@ export const UserCard: React.FunctionComponent<UserCardProps> = (
                 ${props.selected ? 'user-card-selected' : ''}
                 ${props.disabled ? 'disabled' : ''}
                 ${props.deletable ? 'pr-4' : 'pr-3'}
+                ${props.onClick ? 'cursor-pointer' : undefined}
             `}
             onMouseEnter={() => handleHoverHook(props.playerId)}
             onMouseLeave={() => handleHoverHook(undefined)}
