@@ -2,10 +2,10 @@ import './UserTeamCard.scss';
 
 import React from 'react';
 
-import { Team } from '../../models/Team';
+import { TeamCardInfo } from '../../models/Team';
 
 interface UserTeamCardProps {
-    team: Team;
+    team: TeamCardInfo;
     isSolo: boolean;
     hoverHook?: (hovered?: string) => void;
 }

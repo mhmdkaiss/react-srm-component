@@ -13,7 +13,6 @@ export interface Team extends TeamCardInfo {
 }
 
 export interface TeamCardInfo {
-    team: string;
     name: string;
     tag: string;
     players: { [key: string]: Player };
