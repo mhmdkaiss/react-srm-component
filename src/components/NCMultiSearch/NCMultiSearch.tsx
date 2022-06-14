@@ -40,6 +40,7 @@ export const NCMultiSearch: React.FunctionComponent<NCMultiSearchProps> = (props
                         hideStore={props.hideStore}
                         focusHook={props.focusHook}
                         typingHook={props.typingHook}
+                        onChange={props.onChange}
                         actionHook={props.actionHook}
                         list={props.hideSelected
                             ? props.list.filter(item => !props.selected.includes(item[props.displayParam]))
