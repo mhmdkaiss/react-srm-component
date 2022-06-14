@@ -1,10 +1,11 @@
 import './TeamCard.scss';
 
 import { Icon, IconType } from '../../atoms/Icon/Icon';
+
+import { MemoizedTeamBackground } from '../TeamBackground/TeamBackground';
+import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
 import React from 'react';
 import { TeamCardInfo } from '../../models/Team';
-import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
-import { MemoizedTeamBackground } from '../TeamBackground/TeamBackground';
 
 export enum SelectionType {
     Close = 'close',
@@ -17,6 +18,7 @@ interface TeamCardProps {
     xs?: boolean;
     selectable?: SelectionType;
     selected?: boolean;
+    teamSize?: boolean;
     hoverHook?: (hovered?: string) => void;
 }
 
@@ -80,6 +82,12 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                         />
                         <span className='name'>{captainName}</span>
                         <span className='code ml-1'>#{captainCode}</span>
+                    </div>
+                )}
+                {props.teamSize && (
+                    <div className="team-size">
+                        <Icon icon={IconType.People} width={20} height={20} />
+                        <span className="ml-2">{Object.keys(props.team.players).length}</span>
                     </div>
                 )}
             </div>

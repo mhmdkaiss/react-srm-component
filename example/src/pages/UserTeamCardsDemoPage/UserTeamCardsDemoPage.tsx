@@ -1,21 +1,21 @@
 import './UserTeamCardsDemoPage.scss';
 
 import {
+    ByeCard,
+    HoverUserTeamCard,
+    SelectionType,
+    TeamCard,
+    TeamCardRounded,
+    TeamPermission,
+    UserCard,
+    UserCardRounded,
+    UserCardRoundedSize,
+} from '@cactus/srm-component';
+import {
     PLAYER_MOCK,
     TEAM_MOCK,
 } from '../../mock/UserTeamCards/UserTeamCards.mock';
 import React, { useState } from 'react';
-import {
-    SelectionType,
-    TeamCard,
-    UserCard,
-    UserCardRounded,
-    UserCardRoundedSize,
-    ByeCard,
-    HoverUserTeamCard,
-    TeamCardRounded,
-    TeamPermission,
-} from '@cactus/srm-component';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
     const [ userCardSelected, setUserCardSelected ] = useState<boolean>(false);
@@ -230,7 +230,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     <span>Full details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
-                            <TeamCard full={true} xs={false} team={TEAM_MOCK} />
+                            <TeamCard full={true} xs={false} team={TEAM_MOCK} teamSize={true} />
                         </div>
                         <div className='ml-3'>
                             <TeamCard full={true} xs={true} team={TEAM_MOCK} />

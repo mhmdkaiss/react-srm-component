@@ -153,4 +153,15 @@
             }
         }
     }
+
+    .team-size {
+        display: flex;
+        justify-content: end;
+        align-items: baseline;
+        font-size: $tall-text;
+
+        .icon-people {
+            background-color: $white;
+        }
+    }
 }
