@@ -290,5 +290,9 @@
     {
         "term": "cookies.accept.session",
         "comment": "Accept session cookies"
+    },
+    {
+        "term": "cookies.reject.all",
+        "comment": "Continue without accepting cookies"
     }
 ]

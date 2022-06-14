@@ -82,6 +82,13 @@ export const NCCookiesConsent: React.FunctionComponent<NCCookiesConsentProps> = 
                     }
                     <Button label={cookies.every((cookie) => cookie.active) ? intl.formatMessage({ id: 'cookies.accept.all' }) : intl.formatMessage({ id: 'cookies.accept.partial' })} setClick={() => onAccept()} />
                 </div>
+                <div className="reject-cookies">
+                    <span onClick={() => onDecline()}>
+                        <NCTypography variant='body1'>
+                            <FormattedMessage id="cookies.reject.all" description="Reject cookies" />
+                        </NCTypography>
+                    </span>
+                </div>
             </div>
         </NCDialog>
     );
