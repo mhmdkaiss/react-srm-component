@@ -2,12 +2,12 @@ import { Tooltip } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Player } from '../../models/Player';
-import { Team } from '../../models/Team';
+import { TeamCardInfo } from '../../models/Team';
 import { UserCardRounded, UserCardRoundedSize } from '../UserCard/UserCardRounded';
 import './HoverUserTeamCard.scss';
 
 interface HoverUserTeamCardProps {
-    team: Team;
+    team: TeamCardInfo;
     isSolo: boolean;
     noGameAccount?: boolean;
     hideElo?: boolean;

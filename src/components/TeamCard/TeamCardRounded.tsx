@@ -1,11 +1,10 @@
+import React from 'react';
+import { TeamCardInfo } from '../../models/Team';
+import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
 import './TeamCardRounded.scss';
 
-import React from 'react';
-import { Team } from '../../models/Team';
-import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
-
 interface TeamCardRoundedProps {
-    team: Team;
+    team: TeamCardInfo;
     onClick?: (click: boolean) => void
 }
 
