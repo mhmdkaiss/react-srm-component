@@ -6,6 +6,7 @@ import { MemoizedTeamBackground } from '../TeamBackground/TeamBackground';
 import { MemoizedTeamPicture } from '../TeamPicture/TeamPicture';
 import React from 'react';
 import { TeamCardInfo } from '../../models/Team';
+import moment from 'moment';
 
 export enum SelectionType {
     Close = 'close',
@@ -19,6 +20,7 @@ interface TeamCardProps {
     selectable?: SelectionType;
     selected?: boolean;
     teamSize?: boolean;
+    date?: number;
     hoverHook?: (hovered?: string) => void;
 }
 
@@ -82,6 +84,17 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                         />
                         <span className='name'>{captainName}</span>
                         <span className='code ml-1'>#{captainCode}</span>
+                    </div>
+                )}
+                {props.date && (
+                    <div className='text-elipsis d-flex align-items-center'>
+                        <Icon
+                            styleName="mr-2"
+                            icon={IconType.Calendar}
+                            width={12}
+                            height={12}
+                        />
+                        <span className='name'>{moment(props.date).format('L')}</span>
                     </div>
                 )}
                 {props.teamSize && (

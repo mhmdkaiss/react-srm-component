@@ -64,12 +64,14 @@
                 color: $white;
             }
 
+            .icon-calendar,
             .icon-crown,
             .icon-close {
                 background: $white;
             }
         }
 
+        .icon-calendar,
         .icon-crown,
         .icon-close {
             background: $black;
@@ -99,6 +101,7 @@
         }
     }
 
+    .icon-calendar,
     .icon-crown {
         background: $white;
         min-width: 12px;

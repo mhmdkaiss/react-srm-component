@@ -17,6 +17,7 @@ import {
     TEAM_MOCK,
 } from '../../mock/UserTeamCards/UserTeamCards.mock';
 import React, { useState } from 'react';
+import moment from 'moment';
 
 export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
     const [ userCardSelected, setUserCardSelected ] = useState<boolean>(false);
@@ -231,10 +232,10 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     <span className='component-subtitle'>Full details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
-                            <TeamCard full={true} xs={false} team={TEAM_MOCK} teamSize={true} />
+                            <TeamCard full={true} xs={false} team={TEAM_MOCK} teamSize={true} date={Date.now()} />
                         </div>
                         <div className='ml-3'>
-                            <TeamCard full={true} xs={true} team={TEAM_MOCK} />
+                            <TeamCard full={true} xs={true} team={TEAM_MOCK} date={Date.now()} />
                         </div>
                         <div
                             className='ml-3'
