@@ -2,10 +2,20 @@
 @import '@cactus/srm-component/dist/src/styles/variables';
 
 .user-team-cards-demo-page {
-    color: $grey5;
-    font-size: $big-text;
+    .component-title,
+    .component-subtitle {
+        color: $grey5;
+    }
 
     .component-title {
         font-size: $bigger-text;
+    }
+
+    .component-subtitle {
+        font-size: $big-text;
+    }
+
+    .component-container {
+        gap: 16px;
     }
 }

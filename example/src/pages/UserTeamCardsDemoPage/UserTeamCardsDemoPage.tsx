@@ -6,6 +6,7 @@ import {
     SelectionType,
     TeamCard,
     TeamCardRounded,
+    TeamCardSearch,
     TeamPermission,
     UserCard,
     UserCardRounded,
@@ -29,7 +30,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     {PLAYER_MOCK.player.captain ? ' CAPTAIN' : ''}
                 </span>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Basic details</span>
+                    <span className='component-subtitle'>Basic details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <UserCard
@@ -66,7 +67,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     </div>
                 </div>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Full details</span>
+                    <span className='component-subtitle'>Full details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <UserCard
@@ -102,7 +103,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     </div>
                 </div>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Team permission (Full details not xs)</span>
+                    <span className='component-subtitle'>Team permission (Full details not xs)</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <UserCard
@@ -131,7 +132,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     </div>
                 </div>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Rounded</span>
+                    <span className='component-subtitle'>Rounded</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <UserCardRounded
@@ -184,7 +185,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     {PLAYER_MOCK.player.captain ? ' CAPTAIN' : ''}
                 </span>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Basic details</span>
+                    <span className='component-subtitle'>Basic details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <TeamCard
@@ -227,7 +228,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                     </div>
                 </div>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Full details</span>
+                    <span className='component-subtitle'>Full details</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <TeamCard full={true} xs={false} team={TEAM_MOCK} teamSize={true} />
@@ -267,7 +268,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                 </div>
 
                 <div className='my-4 d-flex flex-column'>
-                    <span>Rounded</span>
+                    <span className='component-subtitle'>Rounded</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <TeamCardRounded
@@ -277,13 +278,41 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className='my-4 d-flex flex-column'>
+                    <span className='component-title'>Team Search card</span>
+                    <div className='d-flex flex-column component-container'>
+                        <TeamCardSearch
+                            team={{
+                                ...TEAM_MOCK,
+                                sn: {
+                                    discord: 'http://www.google.com',
+                                    twitter: 'http://www.google.com',
+                                    youtube: 'http://www.google.com'
+
+                                },
+                            }}
+                        />
+                        <TeamCardSearch
+                            team={{
+                                ...TEAM_MOCK,
+                            }}
+                        />
+                        <TeamCardSearch
+                            team={{
+                                ...TEAM_MOCK,
+                                players: {},
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
             <div>
                 <span className='component-title'>
                     Bye card
                 </span>
                 <div className='my-4 d-flex flex-column'>
-                    <span>Users</span>
+                    <span className='component-subtitle'>Users</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <ByeCard
@@ -321,7 +350,7 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                 </div>
 
                 <div className='my-4 d-flex flex-column'>
-                    <span>Teams</span>
+                    <span className='component-subtitle'>Teams</span>
                     <div className='d-flex'>
                         <div className='mr-3'>
                             <ByeCard
@@ -364,14 +393,14 @@ export const UserTeamCardsDemoPage: React.FunctionComponent = () => {
                 </span>
                 <div className='my-4 d-flex'>
                     <div className='mr-4'>
-                        <span>User</span>
+                        <span className='component-subtitle'>User</span>
                         <HoverUserTeamCard
                             isSolo={true}
                             team={TEAM_MOCK}
                         />
                     </div>
                     <div className='ml-4'>
-                        <span>Team</span>
+                        <span className='component-subtitle'>Team</span>
                         <HoverUserTeamCard
                             isSolo={false}
                             team={TEAM_MOCK}

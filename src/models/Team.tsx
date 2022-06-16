@@ -18,6 +18,7 @@ export interface TeamCardInfo {
     players: { [key: string]: Player };
     slug: string;
     route: string;
+    sn?: { [key: string]: string };
 }
 
 export interface TeamBracket extends Team {

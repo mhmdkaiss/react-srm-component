@@ -81,6 +81,7 @@ export { SearchBar } from './components/SearchBar/SearchBar';
 export { Tabs } from './components/Tabs/Tabs';
 export { SelectionType, TeamCard } from './components/TeamCard/TeamCard';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
+export { TeamCardSearch } from './components/TeamCard/TeamCardSearch';
 export { TeamPicture } from './components/TeamPicture/TeamPicture';
 export { UserCard } from './components/UserCard/UserCard';
 export { UserCardRounded, UserCardRoundedSize } from './components/UserCard/UserCardRounded';

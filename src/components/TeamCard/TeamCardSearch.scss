@@ -1,0 +1,15 @@
+@import '../../styles/colors';
+
+.team-card-search {
+    .network-link:hover {
+        filter: brightness(150%);
+    }
+
+    .members {
+        line-height: 100%;
+    }
+
+    .mask-icon {
+        background: $grey6;
+    }
+}
