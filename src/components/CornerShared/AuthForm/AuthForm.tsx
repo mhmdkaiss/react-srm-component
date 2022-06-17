@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useIntl } from 'react-intl';
-import { Button } from '../../../atoms';
-import { ButtonSize, ButtonTheme, ButtonType } from '../../../atoms/Button/Button';
 import {
     Checkbox,
     FormControlLabel,
     MuiThemeProvider,
     TextField,
     Theme,
-    Typography,
+    Typography
 } from '@material-ui/core';
-import { AuthFormAgreement, AuthFormData, AuthFormType } from '../../../models/AuthFormType';
+import React, { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
+import { Button } from '../../../atoms';
+import { ButtonSize, ButtonTheme, ButtonType } from '../../../atoms/Button/Button';
 import { IconType } from '../../../atoms/Icon/Icon';
-import './AuthForm.scss';
+import { AuthFormAgreement, AuthFormData, AuthFormType } from '../../../models/AuthFormType';
+import { OptionalFields, OptionalFieldType } from '../../../models/AuthOptionalFields';
 import { AuthFormDefaultTheme } from '../../../styles/MuiAuthFormTheme';
+import { DatePicker } from '../../DatePicker/DatePicker';
+import './AuthForm.scss';
 
 interface AuthFormProps {
     formType: AuthFormType;
@@ -23,6 +25,7 @@ interface AuthFormProps {
     theme?: Theme;
     errorMessage?: string;
     onSwitchFormType: (type: AuthFormType) => void;
+    optionalFields?: Array<OptionalFields>;
 }
 
 const emailRegex = /.+@.+\.[a-z]{2,3}/;
@@ -31,6 +34,11 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
     const intl = useIntl();
 
     const [ userName, setUserName ] = useState<string>('');
+    const [ firstName, setFirstName ] = useState<string>('');
+    const [ lastName, setLastName ] = useState<string>('');
+    const [ phoneNumber, setPhoneNumber ] = useState<string>('');
+    const [ birthDate, setBirthDate ] = useState<number>(Date.now());
+    const [ checkBirthDate, setCheckBirthDate ] = useState<boolean>(false);
     const [ userEmail, setUserEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     const [ passwordCheck, setPasswordCheck ] = useState<string>('');
@@ -44,7 +52,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
 
     useEffect(() => {
         checkDisableButton();
-    }, [ userName, userEmail, passwordCheck, password, agreementList, formType, processing ]);
+    }, [ userName, firstName, lastName, phoneNumber, checkBirthDate, userEmail, passwordCheck, password, agreementList, formType, processing ]);
 
     const onSwitchFormType = (formType: AuthFormType) => {
         if (props.onSwitchFormType) {
@@ -67,7 +75,11 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                     password.length === 0 ||
                     passwordCheck.length === 0 ||
                     password !== passwordCheck ||
-                    !emailRegex.test(userEmail)
+                    !emailRegex.test(userEmail) ||
+                    (firstName.length === 0 && props.optionalFields?.filter((o) => o.type === OptionalFieldType.FIRSTNAME)[0].mandatory ||
+                    lastName.length ===0 && props.optionalFields?.filter((o) => o.type === OptionalFieldType.LASTNAME)[0].mandatory ||
+                    phoneNumber.length === 0 && props.optionalFields?.filter((o) => o.type === OptionalFieldType.PHONENUMBER)[0].mandatory ||
+                    !checkBirthDate && props.optionalFields?.filter((o) => o.type === OptionalFieldType.BIRTHDATE)[0].mandatory )
                 );
             case AuthFormType.Forgot:
                 return userEmail.length === 0 || !emailRegex.test(userEmail);
@@ -231,6 +243,37 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
         );
     };
 
+    const renderOptionalFields = () => {
+        return props.optionalFields?.map((f) => {
+            if (f.type !== OptionalFieldType.BIRTHDATE) {
+                return (
+                    <div>
+                        <span>{ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `(${f.mandatory ? ` ${ intl.formatMessage({ id: 'auth.form.register.mandatory.field' })})` : ''}`}</span>
+                        <TextField
+                            disabled={processing}
+                            className='shared-input mb-3 w-100'
+                            value={f.type === OptionalFieldType.FIRSTNAME ? firstName : f.type === OptionalFieldType.LASTNAME ? lastName : phoneNumber}
+                            autoFocus={true}
+                            onChange={(e) => (f.type === OptionalFieldType.FIRSTNAME ? setFirstName(e.target.value) : f.type === OptionalFieldType.LASTNAME ? setLastName(e.target.value) : setPhoneNumber(e.target.value))}/>
+                    </div>
+                );
+            } else {
+                return (
+                    <div>
+                        <span>{ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `(${f.mandatory ? ` ${ intl.formatMessage({ id: 'auth.form.register.mandatory.field' })}` : ''})`}</span>
+                        <DatePicker
+                            value={birthDate}
+                            dateChanged={(e) => {
+                                setBirthDate(e);
+                                setCheckBirthDate(true);
+                            }}
+                        />
+                    </div>
+                );
+            }
+        });
+    };
+
     const renderRegisterForm = () => {
         return (
             <React.Fragment>
@@ -265,6 +308,7 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                         placeholder={intl.formatMessage({ id: 'auth.form.repeat.password' })}
                         onChange={(e) => setPasswordCheck(e.target.value)}
                     />
+                    {renderOptionalFields()}
                 </MuiThemeProvider>
                 {renderAgreements()}
                 <div className="d-flex justify-content-center col-12">
@@ -296,6 +340,10 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
                     userName,
                     password,
                     email: userEmail,
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                    birthDate,
                     agreementList: props.agreementList
                 });
                 break;

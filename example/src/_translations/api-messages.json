@@ -140,16 +140,16 @@
         "comment": "auth.form.user.email"
     },
     {
-        "term": "auth.form.user.name",
-        "comment": "auth.form.user.name"
-    },
-    {
         "term": "auth.form.forgot.password.ask",
         "comment": "auth.form.forgot.password.ask"
     },
     {
         "term": "auth.form.register.mandatory.agreements",
         "comment": "auth.form.register.mandatory.agreements"
+    },
+    {
+        "term": "auth.form.register.mandatory.field",
+        "comment": "auth.form.register.mandatory.field"
     },
     {
         "term": "auth.form.register.agreement.terms",

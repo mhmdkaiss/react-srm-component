@@ -1,7 +1,6 @@
+import { NCTabs, NCTypography, TabParameter } from '@cactus/srm-component';
 import React from 'react';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
-import { NCTypography, NCTabs } from '@cactus/srm-component';
-import { TabParameter } from '@cactus/srm-component/src/components/Tabs/Tabs';
 
 export const NCTabsBoExample: React.FunctionComponent = () => {
     const location = useLocation();

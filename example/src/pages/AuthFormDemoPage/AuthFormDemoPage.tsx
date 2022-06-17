@@ -1,10 +1,13 @@
-import { AuthForm, AuthFormType, NCSelect } from '@cactus/srm-component';
+import { AuthForm, AuthFormType, NCSelect, OptionalFields, OptionalFieldType } from '@cactus/srm-component';
 import { createMuiTheme } from '@material-ui/core';
 import React, { useState } from 'react';
+import { useIntl } from 'react-intl';
 import { AuthFormAgreement, AuthFormData } from '../../../../src/models/AuthFormType';
 import './AuthFormDemoPage.scss';
 
 export const AuthFormDemoPage: React.FunctionComponent = () => {
+    const intl = useIntl();
+
     const formTypeValues = [
         { key: 'Login', value: AuthFormType.Login.valueOf() },
         { key: 'Register', value: AuthFormType.Register.valueOf() },
@@ -17,6 +20,12 @@ export const AuthFormDemoPage: React.FunctionComponent = () => {
         { key: '1', text: 'I\'m over 12 years old AND if I am below 16 my parents authorize me to access this website', mandatory: true, checked: false },
         { key: '2', text: 'I agree to share communications with [PARTNER]', mandatory: false, checked: false },
         { key: '3', text: 'I agree to receive communication from nicecactus', mandatory: false, checked: false }
+    ];
+    const optionalFields: Array<OptionalFields> = [
+        { type: OptionalFieldType.FIRSTNAME, mandatory: true },
+        { type: OptionalFieldType.LASTNAME, mandatory: false },
+        { type: OptionalFieldType.PHONENUMBER, mandatory: true },
+        { type: OptionalFieldType.BIRTHDATE, mandatory: false },
     ];
 
     const AuthFormTheme = createMuiTheme({
@@ -61,6 +70,7 @@ export const AuthFormDemoPage: React.FunctionComponent = () => {
                     socialNetworks={socialNetworks}
                     theme={AuthFormTheme}
                     onSwitchFormType={setFormType}
+                    optionalFields={optionalFields}
                 />
             </div>
         </div>

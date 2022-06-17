@@ -78,7 +78,7 @@ export { NCTrainingCard } from './components/NCTrainingCard/NCTrainingCard';
 export { PlatformList } from './components/PlatformList/PlatformList';
 export { ProfilePicture } from './components/ProfilePicture/ProfilePicture';
 export { SearchBar } from './components/SearchBar/SearchBar';
-export { Tabs } from './components/Tabs/Tabs';
+export { TabParameter, Tabs } from './components/Tabs/Tabs';
 export { SelectionType, TeamCard } from './components/TeamCard/TeamCard';
 export { TeamCardRounded } from './components/TeamCard/TeamCardRounded';
 export { TeamCardSearch } from './components/TeamCard/TeamCardSearch';
@@ -88,6 +88,7 @@ export { UserCardRounded, UserCardRoundedSize } from './components/UserCard/User
 export { UserTeamCard } from './components/UserTeamCard/UserTeamCard';
 export { useProgressBar } from './hooks/useProgressBar';
 export { AuthFormType } from './models/AuthFormType';
+export { OptionalFields, OptionalFieldType } from './models/AuthOptionalFields';
 export { Challenge, ChallengeExtended, ChallengeResult, ContestType } from './models/Challenge';
 export { PaginatedList } from './models/Common';
 export { FeedModel } from './models/Feed';

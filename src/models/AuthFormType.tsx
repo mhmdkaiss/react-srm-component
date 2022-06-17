@@ -18,6 +18,10 @@ export interface AuthFormData {
     type: AuthFormType,
     email?: string,
     userName?: string,
+    firstName?: string,
+    lastName?: string,
+    phoneNumber?: string,
+    birthDate?: number,
     password?: string,
     socialNetwork?: string,
     agreementList?: Array<AuthFormAgreement>

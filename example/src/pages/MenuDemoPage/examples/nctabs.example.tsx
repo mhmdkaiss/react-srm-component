@@ -1,8 +1,7 @@
+import { NCTabs, NCTypography, TabParameter } from '@cactus/srm-component';
 import React from 'react';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { NCTypography, NCTabs } from '@cactus/srm-component';
-import { TabParameter } from '@cactus/srm-component/src/components/Tabs/Tabs';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 
 export const NCTabsExample: React.FunctionComponent = () => {
     const intl = useIntl();
