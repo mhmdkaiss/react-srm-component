@@ -90,7 +90,7 @@ export const NCListActionsExample: React.FunctionComponent = () => {
         <>
             <NCList variant='nc-list' type='tr-hover tr-animated' header={table.header} data={table.data} selected={selectedItem} />
             { displayTemplate && item &&
-                <NCCard>
+                <NCCard transition>
                     <>
                         {JSON.stringify(item)}
                     </>

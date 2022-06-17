@@ -25,16 +25,12 @@ const enShortWeekdayFormat = new Intl.DateTimeFormat('en', { weekday: 'short' })
 export const NCCornerCalendar: React.FunctionComponent<NCCornerCalendarProps> = (props: NCCornerCalendarProps) => {
     const intl = useIntl();
 
-    const arrayOf = (size: number): Array<string> => {
-        return [...Array(size)];
-    };
-
     const isFirstDayOfWeek = (date: Date): boolean => {
         return enShortWeekdayFormat.format(date) === 'Mon';
     };
 
     const getLocalizedWeekDay = (date: Date): string => {
-        return intl.formatDate(date, { weekday: props.weekdayFormat || 'short' });
+        return intl.formatDate(date, { weekday: 'short' });
     };
 
     const getOrderedWeekdays = (): Array<string> => {
@@ -69,32 +65,37 @@ export const NCCornerCalendar: React.FunctionComponent<NCCornerCalendarProps> = 
 
     const renderDays = () => {
         const daysInMonth = moment(firstDateOfMonth).daysInMonth();
-        return arrayOf(daysInMonth).map((_, i) => {
+        const daysArray = [];
+        for (let i = 0; i < daysInMonth; i++) {
             const date = moment(firstDateOfMonth).add(i, 'days');
             const events = getEvents(date);
             const classNames = Array.from(new Set(events.flatMap(e => e.classNames)));
-            return <div
+            daysArray.push(<div
                 key={i}
                 onClick={() => selectDay(date.toDate(), events)}
                 className={`calendar-item day ${events.length ? 'has-events' : ''} ${props.selectedDate && date.isSame(props.selectedDate, 'day') ? 'selected' : ''} ${classNames.join(' ')}`}
             >
                 {i + 1}
-            </div>;
-        });
+            </div>);
+        }
+        return daysArray;
     };
 
     const renderEmptyDays = () => {
         const firstWeekDayOfMonth = getLocalizedWeekDay(firstDateOfMonth);
 
         const weekStartOffset = weekdays.findIndex(wd => wd === firstWeekDayOfMonth);
-        return arrayOf(weekStartOffset).map((_, i) => {
-            return <div key={i} className='calendar-item empty-day '></div>;
-        });
+        const emptyDayArray = [];
+        for (let i = 0; i < weekStartOffset; i++) {
+            emptyDayArray.push(<div key={i} className='calendar-item empty-day '></div>);
+        }
+        return emptyDayArray;
     };
 
     const renderWeekdays = () => {
         return weekdays.map((wd, i) => {
-            return <div className='weekday calendar-item' key={i}>{wd}</div>;
+            const narrowDay = wd.slice(0, 1).toUpperCase();
+            return <div className='weekday calendar-item' key={i}>{props.weekdayFormat === 'narrow' ? narrowDay : wd}</div>;
         });
     };
 
