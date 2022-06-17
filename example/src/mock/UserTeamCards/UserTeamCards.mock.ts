@@ -61,4 +61,5 @@ export const TEAM_MOCK = {
     pos: 0,
     team: '',
     slug: '',
+    teamInfo: { members: 2 },
 };

@@ -28,6 +28,7 @@ export const TEAMS_MOCK = [
         pos: 0,
         team: '',
         tag: '',
+        teamInfo: { members: 2 },
     },
     {
         name: 'Team 2',
@@ -59,6 +60,7 @@ export const TEAMS_MOCK = [
         pos: 0,
         team: 'test',
         tag: 'test',
+        teamInfo: { members: 2 },
     },
 
 ];

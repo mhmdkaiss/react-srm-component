@@ -1,6 +1,16 @@
 import { Player } from './Player';
 import { Round } from './Round';
 
+export interface TeamCardInfo {
+    team: string;
+    name: string;
+    tag: string;
+    players: { [key: string]: Player };
+    slug: string;
+    route: string;
+    teamInfo?: TeamInfo;
+    sn?: { [key: string]: string };
+}
 export interface Team extends TeamCardInfo {
     avatar: string;
     ranking: number;
@@ -12,19 +22,14 @@ export interface Team extends TeamCardInfo {
     rounds?: { [key: string]: Round };
 }
 
-export interface TeamCardInfo {
-    name: string;
-    tag: string;
-    players: { [key: string]: Player };
-    slug: string;
-    route: string;
-    sn?: { [key: string]: string };
-}
-
 export interface TeamBracket extends Team {
     pending?: boolean;
     winner?: boolean;
     logged?: boolean;
+}
+
+export interface TeamInfo {
+    members: number;
 }
 
 export interface TeamRanking {

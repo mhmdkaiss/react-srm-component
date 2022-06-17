@@ -160,8 +160,8 @@
     .team-size {
         display: flex;
         justify-content: end;
-        align-items: baseline;
         font-size: $tall-text;
+        padding-top: 16px;
 
         .icon-people {
             background-color: $white;

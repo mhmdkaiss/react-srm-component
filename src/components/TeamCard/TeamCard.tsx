@@ -100,7 +100,7 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
                 {props.teamSize && (
                     <div className="team-size">
                         <Icon icon={IconType.People} width={20} height={20} />
-                        <span className="ml-2">{Object.keys(props.team.players).length}</span>
+                        <span className="ml-2">{props.team.teamInfo?.members || Object.keys(props.team.players).length}</span>
                     </div>
                 )}
             </div>
