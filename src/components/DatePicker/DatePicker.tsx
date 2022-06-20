@@ -13,23 +13,32 @@ import React, { ChangeEvent, useRef } from 'react';
 import { ThemePlatform } from '../../styles/Themes';
 import './DatePicker.scss';
 
-const DATE_FORMAT = 'YYYY-MM-DDTHH:mm';
+const DATETIME_FORMAT = 'YYYY-MM-DDTHH:mm';
+const DATE_FORMAT = 'YYYY-MM-DD';
+
+export enum PickerType {
+    DATETIME = 'datetime-local',
+    DATE = 'date',
+}
 
 export interface DatePickerProps {
     label?: string;
     value?: string | number;
     initialValue?: string | number;
     dateChanged: (timestamp: number) => void;
+    withoutTime?: boolean;
 }
 
 export const DatePicker: React.FunctionComponent<DatePickerProps> = (props: DatePickerProps) => {
     const pickerRef = useRef<HTMLInputElement>(null);
 
-    const val = props.value ? moment(props.value).format(DATE_FORMAT) : undefined;
-    const defaultVal = props.initialValue ? moment(props.initialValue).format(DATE_FORMAT) : undefined;
+    const val = props.value && !props.withoutTime ? moment(props.value).format(DATETIME_FORMAT) : moment(props.value).format(DATE_FORMAT);
+    const defaultVal = props.initialValue && !props.withoutTime ? moment(props.initialValue).format(DATETIME_FORMAT) : moment(props.initialValue).format(DATE_FORMAT);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        props.dateChanged(moment(event.target.value).valueOf());
+        if (moment(Date.now()).unix() > moment(event.target.value).unix() || !props.withoutTime) {
+            props.dateChanged( moment(event.target.value).valueOf());
+        }
     };
 
     return (
@@ -47,7 +56,7 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = (props: Date
                 >
                     <TextField
                         inputRef={pickerRef}
-                        type="datetime-local"
+                        type={`${ !props.withoutTime ? PickerType.DATETIME : PickerType.DATE }`}
                         className="datepicker-input nicecactus-input"
                         value={val}
                         defaultValue={defaultVal}

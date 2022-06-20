@@ -248,25 +248,26 @@ export const AuthForm: React.FunctionComponent<AuthFormProps> = (props: AuthForm
             if (f.type !== OptionalFieldType.BIRTHDATE) {
                 return (
                     <div>
-                        <span>{ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `(${f.mandatory ? ` ${ intl.formatMessage({ id: 'auth.form.register.mandatory.field' })})` : ''}`}</span>
                         <TextField
                             disabled={processing}
                             className='shared-input mb-3 w-100'
                             value={f.type === OptionalFieldType.FIRSTNAME ? firstName : f.type === OptionalFieldType.LASTNAME ? lastName : phoneNumber}
                             autoFocus={true}
+                            placeholder={ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `${f.mandatory ? ' *' : ''}`}
                             onChange={(e) => (f.type === OptionalFieldType.FIRSTNAME ? setFirstName(e.target.value) : f.type === OptionalFieldType.LASTNAME ? setLastName(e.target.value) : setPhoneNumber(e.target.value))}/>
                     </div>
                 );
             } else {
                 return (
                     <div>
-                        <span>{ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `(${f.mandatory ? ` ${ intl.formatMessage({ id: 'auth.form.register.mandatory.field' })}` : ''})`}</span>
+                        <span>{ intl.formatMessage({ id: `user.account.${f.type}_label` }) + `${f.mandatory ? ' *' : ''}`}</span>
                         <DatePicker
                             value={birthDate}
                             dateChanged={(e) => {
                                 setBirthDate(e);
                                 setCheckBirthDate(true);
                             }}
+                            withoutTime
                         />
                     </div>
                 );

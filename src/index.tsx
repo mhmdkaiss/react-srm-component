@@ -16,7 +16,7 @@ export { NCProgressBar } from './atoms/NCProgressBar/NCProgressBar';
 export { ByeCard } from './components/ByeCard/ByeCard';
 export { Chat } from './components/Chat/Chat';
 export { AuthForm } from './components/CornerShared/AuthForm/AuthForm';
-export { DatePicker } from './components/DatePicker/DatePicker';
+export { DatePicker, PickerType } from './components/DatePicker/DatePicker';
 export { Dialog } from './components/Dialog/Dialog';
 export { DisplayList, DisplaySelector } from './components/DisplaySelector/DisplaySelector';
 export { FingerIndicator } from './components/FingerIndicator/FingerIndicator';
