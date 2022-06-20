@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 export interface NCFeedCardProps {
     data: FeedModel;
+    smallCard?: boolean;
 }
 
 export const NCFeedCard: React.FunctionComponent<NCFeedCardProps> = (
@@ -137,8 +138,8 @@ export const NCFeedCard: React.FunctionComponent<NCFeedCardProps> = (
     };
 
     return (
-        <div className='nc-feed-card d-flex flex-column'>
-            <div className='py-3 px-2 px-md-3 d-flex justify-content-between'>
+        <div className={`nc-feed-card d-flex flex-column ${props.smallCard ? 'small' : ''}`}>
+            <div className='py-3 px-2 px-md-3 d-flex justify-content-between sub-part'>
                 {props.data.tweetId ? (
                     <a
                         href={`https://twitter.com/${props.data.username}`}
@@ -154,7 +155,7 @@ export const NCFeedCard: React.FunctionComponent<NCFeedCardProps> = (
                 <div className='icon-container'>{renderIcon()}</div>
             </div>
             <div dangerouslySetInnerHTML={{ __html: props.data.content }}></div>
-            <div className='d-flex justify-content-between py-3 px-2 px-md-3'>
+            <div className='d-flex justify-content-between py-3 px-2 px-md-3 sub-part'>
                 <div>{renderShare()}</div>
                 <span className='date'>{formatDate()}</span>
             </div>

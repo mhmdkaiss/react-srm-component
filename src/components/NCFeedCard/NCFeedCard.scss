@@ -83,4 +83,15 @@
             }
         }
     }
+
+    &.small {
+        width: 280px;
+        min-width: 280px;
+        height: fit-content;
+
+        .sub-part {
+            background: $grey3;
+            padding: 8px !important;
+        }
+    }
 }

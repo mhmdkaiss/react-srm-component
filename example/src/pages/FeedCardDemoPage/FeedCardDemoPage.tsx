@@ -38,6 +38,23 @@ export const FeedCardDemoPage: React.FunctionComponent = () => {
                         data: BOMFM,
                     }
                 },
+                {
+                    renderPreview: false,
+                    name: 'Twitter feed [Small]',
+                    props: {
+                        data: TMFM,
+                        smallCard: true,
+                    }
+                },
+                {
+                    renderPreview: false,
+                    name: 'BO feed [Small]',
+                    props: {
+                        data: BOMFM,
+                        smallCard: true,
+                    }
+                },
+
             ]
         },
     ];
