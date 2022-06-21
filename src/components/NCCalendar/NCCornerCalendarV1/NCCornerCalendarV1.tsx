@@ -1,15 +1,15 @@
 import './NCCornerCalendarV1.scss';
 
+import React, { useEffect, useState } from 'react';
 import { Button, ButtonTheme } from '../../../atoms/Button/Button';
 import { Icon, IconType } from '../../../atoms/Icon/Icon';
-import React, { useEffect, useState } from 'react';
 import { Tournament, TournamentContent } from '../../../models/Tournament';
 
-import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
-import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
-import { TournamentUtilsService } from '../../../services/tournament-utils.service';
 import moment from 'moment';
 import { useIntl } from 'react-intl';
+import { TournamentUtilsService } from '../../../services/tournament-utils.service';
+import { NCTournamentCard } from '../../NCTournamentCard/NCTournamentCard';
+import { NCCornerCalendar } from '../NCCornerCalendar/NCCornerCalendar';
 
 export enum TournamentInfoStyle {
     Text,
@@ -123,7 +123,12 @@ export const NCCornerCalendarV1: React.FunctionComponent<NCCornerCalendarV1Props
         if (!eventInfo.tournament) {
             return <React.Fragment></React.Fragment>;
         }
-        let banner = `${process.env.REACT_APP_S3_PUBLIC_URL}/game/${eventInfo.tournament.gameSlug}/medias/TournamentBanner`;
+        const mediaUrl = `${process.env.REACT_APP_S3_PUBLIC_URL}/game/${eventInfo.tournament.gameSlug}/medias`;
+        let banner : string | Array<string> = [ `${mediaUrl}/TournamentMobileBanner`,
+            `${mediaUrl}/tournamentMobileGameBanner`,
+            `${mediaUrl}/tournamentBanner`,
+            `${mediaUrl}/tournamentGameBanner`,
+        ];
         if (eventInfo.tournamentContent?.banner) {
             banner = eventInfo.tournamentContent?.banner;
         }
