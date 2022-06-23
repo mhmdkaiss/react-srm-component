@@ -1,11 +1,11 @@
 import './NCCookiesConsent.scss';
 
-import { Button, NCDialog, NCTypography } from '../../atoms';
-import { FormattedMessage, useIntl } from 'react-intl';
 import React, { useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Button, NCDialog, NCTypography } from '../../atoms';
 
-import { ButtonTheme } from '../../atoms/Button/Button';
 import Cookies from 'js-cookie';
+import { ButtonTheme } from '../../atoms/Button/Button';
 import { NCSwitch } from '../NCSwitch/NCSwitch';
 
 interface CookieOption {
@@ -70,7 +70,6 @@ export const NCCookiesConsent: React.FunctionComponent<NCCookiesConsentProps> = 
                                         cookies[index].active = active;
                                         setCookies([...cookies]);
                                     }}
-                                    disabled={!props.decline}
                                 />
                             </div>
                         ))
