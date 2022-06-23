@@ -3,6 +3,7 @@ import './NCPreviewSearchAsync.scss';
 import { MuiThemeProvider, TextField } from '@material-ui/core';
 import { NCTheme, getTheme } from '../../styles/Themes';
 import React, { useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 export interface NCPreviewSearchAsyncProps {
     id?: string;
@@ -19,6 +20,7 @@ export interface NCPreviewSearchAsyncProps {
     theme?: NCTheme;
     /* eslint-enable @typescript-eslint/no-explicit-any */
     disabled?: boolean;
+    scrollToBottomTriggerFunc?: () => void;
 }
 
 export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncProps> = (props: NCPreviewSearchAsyncProps) => {
@@ -30,6 +32,14 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
     const inputRef = useRef<HTMLInputElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
     const itemsRef = useRef<Array<HTMLDivElement | null>>([]);
+
+    const { ref: intersect, inView: IntersectVisible } = useInView();
+
+    useEffect(() => {
+        if (IntersectVisible && props.scrollToBottomTriggerFunc) {
+            props.scrollToBottomTriggerFunc();
+        }
+    }, [IntersectVisible]);
 
     useEffect(() => {
         itemsRef.current = itemsRef.current.slice(0, props.list.length);
@@ -166,6 +176,7 @@ export const NCPreviewSearchAsync: React.FunctionComponent<NCPreviewSearchAsyncP
                                     {props.noResultMessage}
                                 </div>
                             )}
+                            <div ref={intersect}/>
                         </div>
                     )}
                 </div>
